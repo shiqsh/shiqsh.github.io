@@ -1,1 +1,120 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qian-Sheng Shi - About Me</title>
+    <style>
+        /* 基础设置：清除默认边距，设置全屏高度和全局字体 */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh; /* 让页面充满整个浏览器窗口的高度 */
+            font-family: 'Times New Roman', Times, serif; /* 核心：复古学术衬线字体 */
+        }
+
+        /* 左侧导航栏样式 */
+        .sidebar {
+            width: 13%; /* 左侧占总宽度的 13% */
+            background-color: #B9F3A1; /* 绿色 */
+            border-right: 1px solid #666; /* 右侧加一条深色分割线 */
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        /* 右侧主内容区样式 */
+        .main-content {
+            width: 87%; /* 右侧占总宽度的 87% */
+            background-color: #E1F5FE; /* 天蓝色 */
+            padding: 40px 60px;
+            box-sizing: border-box;
+            overflow-y: auto; /* 内容过多时允许上下滚动 */
+        }
+
+        /* 超链接全局设置：变成蓝色 */
+        a {
+            color: blue; /* 核心解答：将超链接设置为蓝色 */
+            text-decoration: underline; /* 加上下划线 */
+        }
+
+        /* 鼠标悬停在超链接上时颜色加深 */
+        a:hover {
+            color: darkblue;
+        }
+
+        /* 侧边栏内的导航链接特殊排版 */
+        .sidebar a {
+            display: block; /* 让每个链接独占一行 */
+            margin-bottom: 20px; /* 链接之间的间距 */
+            text-transform: uppercase; /* 字母全部大写，和图中左侧保持一致 */
+            font-size: 14px;
+        }
+
+        /* 主标题样式（你的名字） */
+        h1 {
+            color: #003366; /* 使用深蓝色 */
+            font-style: italic; /* 斜体 */
+            font-size: 2.5em;
+            margin-top: 0;
+        }
+
+        /* 中文名字样式 */
+        .chinese-name {
+            color: #003366; /* 保持一模一样的深蓝色 */
+            font-style: italic; /* 保持斜体 */
+            font-size: 1.3em; /* 字号改小，作为副标题 */
+            margin-top: -20px;
+            margin-bottom: 20px; /* 和下方的格言拉开距离 */
+        }
+
+        /* 定制的格言样式 */
+        .quote {
+            color: blue; /* 字体颜色为蓝色 */
+            font-style: italic; /* 斜体 */
+            font-weight: bold; /* 加粗 */
+            font-size: 1.1em;
+            margin: 20px 0;
+        }
+
+        /* 照片样式限制 */
+        .profile-pic {
+            max-width: 400px; /* 限制照片最大宽度 */
+            border: 1px solid #333; /* 给照片加个细边框，更符合旧式网页特点 */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <a href="aboutme.html">About Me</a>
+        <a href="research.html">Research</a>
+        <a href="publication.html">Publication</a>
+        <a href="note.html">Note</a>
+        <a href="ablum.html">Album</a>
+    </div>
+
+  <div class="main-content">
+        <h1 class="section-title">Education</h1>
+
+        <div class="edu-item">
+            <div class="edu-year">2023–present</div>
+            <div class="edu-details">
+                <strong>Ph.D. Candidate</strong>, <em>School of Physical Science and Technology, ShanghaiTech University</em>, Shanghai<br>
+                Major: Condensed Matter Physics Theory
+            </div>
+        </div>
+
+        <div class="edu-item">
+            <div class="edu-year">2019–2023</div>
+            <div class="edu-details">
+                <strong>Bachelor's Degree</strong>, <em>College of Physics, Jilin University</em>, Changchun, Jilin<br>
+                Major: Theoretical Physics<br>
+                Dissertation:"Understanding the Microscopic Mechanism of Second Harmonic Generation in Trilayer Graphene"<br>
+            </div>
+        </div>
+        
+        </div>
+</body>
+</html>
