@@ -1,10 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>我的个人主页</title>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qian-Sheng Shi - Homepage</title>
+    <style>
+        /* 基础设置：清除默认边距，设置全屏高度和全局字体 */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh; /* 让页面充满整个浏览器窗口的高度 */
+            font-family: 'Times New Roman', Times, serif; /* 核心：复古学术衬线字体 */
+        }
+
+        /* 左侧导航栏样式 */
+        .sidebar {
+            width: 25%; /* 左侧占总宽度的 25% */
+            background-color: #C1D96D; /* 还原图中的黄绿色 */
+            border-right: 1px solid #666; /* 右侧加一条深色分割线 */
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        /* 右侧主内容区样式 */
+        .main-content {
+            width: 75%; /* 右侧占总宽度的 75% */
+            background-color: #FFFFE0; /* 还原图中的浅淡黄色 */
+            padding: 40px 60px;
+            box-sizing: border-box;
+            overflow-y: auto; /* 内容过多时允许上下滚动 */
+        }
+
+        /* 超链接全局设置：变成蓝色 */
+        a {
+            color: blue; /* 核心解答：将超链接设置为蓝色 */
+            text-decoration: underline; /* 加上下划线 */
+        }
+
+        /* 鼠标悬停在超链接上时颜色加深 */
+        a:hover {
+            color: darkblue;
+        }
+
+        /* 侧边栏内的导航链接特殊排版 */
+        .sidebar a {
+            display: block; /* 让每个链接独占一行 */
+            margin-bottom: 20px; /* 链接之间的间距 */
+            text-transform: uppercase; /* 字母全部大写，和图中左侧保持一致 */
+            font-size: 14px;
+        }
+
+        /* 主标题样式（你的名字） */
+        h1 {
+            color: #7BB32E; /* 类似图中绿色的标题颜色 */
+            font-style: italic; /* 斜体 */
+            font-size: 2.5em;
+            margin-top: 0;
+        }
+
+        /* 定制的格言样式 */
+        .quote {
+            color: blue; /* 字体颜色为蓝色 */
+            font-style: italic; /* 斜体 */
+            font-weight: bold; /* 加粗 */
+            font-size: 1.1em;
+            margin: 20px 0;
+        }
+
+        /* 照片样式限制 */
+        .profile-pic {
+            max-width: 400px; /* 限制照片最大宽度 */
+            border: 1px solid #333; /* 给照片加个细边框，更符合旧式网页特点 */
+        }
+    </style>
 </head>
 <body>
-    <h1>欢迎来到我的 GitHub 主页！</h1>
-    <p>这是一个正在建设中的网站。</p>
+
+    <div class="sidebar">
+        <a href="index.html">About Me</a>
+        <a href="research.html">Research</a>
+        <a href="publication.html">Publication</a>
+    </div>
+
+    <div class="main-content">
+        <h1>Qian-Sheng Shi</h1>
+
+        <p class="quote">
+            "No problem is too small or too trivial if we can really do something about it"
+        </p>
+
+        <p>
+            <em>Ph.D. Candidate</em><br>
+            School of Physical Science and Technology<br>
+            ShanghaiTech University<br>
+            <a href="mailto:shiqsh@shanghaitech.edu.cn">shiqsh@shanghaitech.edu.cn</a>
+        </p>
+    </div>
+
 </body>
 </html>
