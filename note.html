@@ -1,1 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 
+<!-- 让页面在手机和电脑上都能正常缩放 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Notes - Qian-Sheng Shi</title>
+
+<style>
+    /* 整个页面的基础字体和背景设置 */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Times New Roman', Times, serif;
+        background-color: #E1F5FE;
+    }
+
+    /* note 页面主要内容区域，保持和主页右侧内容区一致 */
+    .main-content {
+        padding: 40px 60px;
+        box-sizing: border-box;
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    /* 页面标题样式，和主页标题风格一致 */
+    h1 {
+        color: #003366;
+        font-style: italic;
+        font-size: 2.5em;
+        margin-top: 0;
+    }
+
+    /* 所有超链接保持蓝色和下划线 */
+    a {
+        color: blue;
+        text-decoration: underline;
+    }
+
+    /* 鼠标悬停在链接上时颜色加深 */
+    a:hover {
+        color: darkblue;
+    }
+
+    /* 每一条 note 之间留一点距离 */
+    ol li {
+        margin-bottom: 12px;
+    }
+</style>
+</head>
+
+<body>
+    <!-- note 页面的主要内容 -->
+    <div class="main-content">
+        <h1>Notes</h1>
+
+        <!-- 有序列表：浏览器会自动生成 1. 2. 3. -->
+        <ol>
+            <li>
+                <!-- 点击 note 标题后，在新标签页打开 PDF -->
+                <a href="notes/orbital-magnetization/orbital-magnetization.pdf" target="_blank">
+                    Introduction on Orbital Magnetization
+                </a>
+            </li>
+        </ol>
+    </div>
+</body>
+</html>
+
+
+<!-- 以后新增第二篇 note，只需要在 <ol> 里面继续加：
+<li>
+    <!-- 第二篇 note 的 PDF 链接 -->
+    <a href="notes/berry-phase/berry-phase.pdf" target="_blank">
+        Berry Phase
+    </a>
+</li> -->
