@@ -1,0 +1,1149 @@
+\documentclass[10pt, oneside]{article}
+\usepackage{amsmath, amsthm, amssymb, mathrsfs, wasysym, verbatim, bbm, color, graphicx, geometry, authblk}
+\usepackage{booktabs, multirow, makecell,colortbl, enumitem}
+\usepackage{setspace}
+%\usepackage{ctex}
+%\usepackage{calrsfs}
+\usepackage{braket}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{framed}
+\usepackage{bm}
+\usepackage{tikz}
+%\usepackage{mathptmx}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=blue,      
+	urlcolor=blue,
+	citecolor=blue,
+}
+
+\usetikzlibrary{shapes.geometric, arrows}
+% Styles
+\tikzstyle{startstop} = [ellipse, minimum width=3cm, minimum height=1cm,
+                         text centered, draw=black, fill=red!30]
+\tikzstyle{process}   = [rectangle, draw=black, fill=green!20,
+                         minimum width=5cm, minimum height=1cm, text centered]
+\tikzstyle{decision}  = [diamond, draw=black, fill=yellow!30,
+                         aspect=2, text centered, inner sep=1pt]
+\tikzstyle{arrow}     = [thick,->,>=stealth]
+
+\geometry{tmargin=0.75in, bmargin=.75in, lmargin=.75in, rmargin=.75in}
+\setlength{\parindent}{2em} % 设置段落首行缩进为两个汉字符
+\setlength{\parskip}{1pt} % 设置段前段后距离为0
+%the \bm 就是 \bm{}
+
+\newcommand{\te}{\theta}
+\newcommand{\ph}{\phi}
+\newcommand{\ps}{\psi}
+\newcommand{\vph}{\varphi}
+\newcommand{\vps}{\varpsi}
+\newcommand{\pr}{\prime}
+\newcommand{\pa}{\partial}
+\newcommand{\mr}[1]{\mathrm{#1}}
+\newcommand{\mb}[1]{\mathbf{#1}}
+\newcommand{\p}[1]{\left(#1\right)}
+\newcommand{\bb}[1]{\left[#1\right]}
+\newcommand{\br}[1]{\left\{#1\right\}}
+\newcommand{\bv}[1]{\left|#1\right|}
+
+\numberwithin{equation}{subsection}
+
+\title{Orbital Magnetization of TBG under Heterostrain}
+\author[1]{Qian-Sheng Shi}
+\affil[1]{\textit{School of Physical Science and Technology, ShanghaiTech University, Shanghai 201210, China}}
+\date{\today}
+
+\begin{document}
+	
+\maketitle
+
+\tableofcontents
+
+\section{Semiclassical Dynamics of Bloch Electrons}
+
+The emergence of orbital magnetization is a direct consequence of time-reversal symmetry breaking, which means either we add terms that break it or we consider the interacting case. 
+
+\subsection{Anomalous Velocity}
+Here, we give a detailed derivation of the semiclassical equation of motion \(\bm{v}= \frac{1}{ \hbar} \frac{\partial \varepsilon_{n} \p{\bm{k}}}{\partial \bm{k}} - \dot{\bm{k}} \times \bm{\Omega}_{n} \p{\bm{k}}\).
+
+A Bloch function takes the form 
+\begin{align}
+	\ket{\psi_{n \bm{k}} \p{\bm{r}}} = e^{i \bm{k} \cdot \bm{r}} \ket{u_{n \bm{k}} \p{\bm{r}}},
+\end{align}
+where the periodic function satisfies \(\ket{u_{n \bm{k}} \p{\bm{r}}} = \ket{u_{n \bm{k}}  \p{\bm{r} + \bm{R}}}\) and \(\bm{R}\) is the lattice vectors. A wave packet in the \(n\)-th band can be written as 
+\begin{align}
+	\ket{W} = \int d \bm{k} a\p{\bm{k}} \ket{\psi_{n \bm{k}}}.
+\end{align}
+If the wave packet depends on time, the envelope function has the form \(a \p{\bm{k}, t} = \bv{a \p{\bm{k}, t}} e^{-i \gamma \p{\bm{k}, t}}\). The center of the wave packet in momentum space is 
+\begin{align}
+	\bm{k}_c = \int d \bm{k} \bv{a \p{\bm{k}, t}}^2 \bm{k},
+\end{align}
+and it satisfies \(\int d \bm{k} \bv{a \p{\bm{k}, t}}^2 = 1\). 
+
+Normally, the position operator is \(\hat{\bm{r}} = -i \nabla_{\bm{k}}\) for plane wave \(e^{i \bm{k} \cdot \bm{r}}\). However, it should change since the dependence on \(\bm{k}\) for \(\ket{u_{n \bm{k}} \p{\bm{r}}}\). The gradient of Bloch function is 
+\begin{align}
+	\begin{split}
+		\nabla_{\bm{k}} \ket{\psi_{n \bm{k}}} &= \nabla_{\bm{k}} \bb{e^{i \bm{k} \cdot \bm{r}} \ket{u_{n \bm{k}}}} \\
+		& = i \bm{r} e^{i \bm{k} \cdot \bm{r}}  \ket{u_{n \bm{k}}} + e^{i \bm{k} \cdot \bm{r}} \nabla_{\bm{k}}  \ket{u_{n \bm{k}} } \\
+		& = i \bm{r} \ket{\psi_{n \bm{k}}} + e^{i \bm{k} \cdot \bm{r}} \nabla_{\bm{k}} \ket{u_{n \bm{k}}},
+	\end{split}
+\end{align}
+Thus, \(\bm{r} \ket{\psi_{n}}\) can be expressed as 
+\begin{align}
+	\bm{r} \ket{\psi_{n \bm{k}}} = -i \nabla_{\bm{k}} \ket{\psi_{n \bm{k}}} + i e^{i \bm{k} \cdot \bm{r}} \nabla_{\bm{k}} \ket{u_{n \bm{k}}}.
+\end{align} 
+
+\begin{itemize}
+	\item Blount relation
+\end{itemize}
+Now, left-multiply by \(\bra{\psi_{m \bm{k}^\pr}}\)
+\begin{align}
+	\begin{split}
+		\braket{\psi_{m \bm{k}^\pr} | \bm{r} | \psi_{n \bm{k}}} & = - i \braket{\psi_{m \bm{k}^\pr} | \nabla_{\bm{k}} \psi_{n \bm{k}}} +i \braket{\psi_{m \bm{k}^\pr} |i e^{i \bm{k} \cdot \bm{r}} \nabla_{\bm{k}} u_{n \bm{k}}}  \\
+		& =  - i \nabla_{\bm{k}} \braket{\psi_{m \bm{k}^\pr} |  \psi_{n \bm{k}}} + i \braket{u_{m \bm{k}^\pr} | e^{i \p{\bm{k} - \bm{k}^\pr} \cdot \bm{r}} | \nabla_{\bm{k}} u_{n \bm{k}}} \\
+		& =  - i \delta_{mn}  \nabla_{\bm{k}} \delta\p{\bm{k}^\pr - \bm{k}} + i \braket{u_{m \bm{k}} | \nabla_{\bm{k}} u_{n \bm{k}}} \delta \p{\bm{k}- \bm{k}^\pr}.
+	\end{split}
+\end{align}
+The Berry connection \(\bm{A}_{mn} \p{\bm{k}}\) is defined as 
+\begin{align}
+	\bm{A}_{mn} \p{\bm{k}} = i \braket{ u_{ m \bm{k}} | \nabla_{\bm{k}} |  u_{n \bm{k}}},
+\end{align}
+Thus, we have the Blount relation of single band 
+\begin{align}
+	\boxed{
+		\braket{\psi_{m \bm{k}^\pr} | \hat{\bm{r}} | \psi_{n \bm{k}}} = \bb{-i \delta_{mn} \nabla_{\bm{k}}  + \bm{A}_{mn} \p{\bm{k}} } \delta \p{\bm{k}^\pr - \bm{k}}
+	}.
+\end{align}
+Noted that if we exchange the bra and ket like \(\braket{\psi_{n \bm{k}} | \bm{r} | \psi_{m \bm{k}^\pr}}\), the first term changes into \(- i \delta_{mn} \nabla_{\bm{k}^\pr} \delta \p{\bm{k} - \bm{k}^\pr}\), where we have 
+\begin{align}
+	\nabla_{\bm{k}^\pr} \delta \p{\bm{k} - \bm{k}^\pr} = - \nabla_{\bm{k}} \delta \p{\bm{k} - \bm{k}^\pr}.
+\end{align}
+Another form of Blount relation is 
+\begin{align}
+	\braket{\psi_{n \bm{k}} | \bm{r} | \psi_{m \bm{k}^\pr}} = \bb{i \delta_{mn} \nabla_{\bm{k}}  + \bm{A}_{mn} \p{\bm{k}} } \delta \p{\bm{k}^\pr - \bm{k}}
+\end{align}
+
+
+
+\begin{itemize}
+	\item Position operator
+\end{itemize}
+The expectation value of position is 
+\begin{align}
+	\begin{split}
+		\braket{{W| \hat{\bm{r}} } | W} &= \int d \bm{k}^\pr d \bm{k} a^{*} \p{\bm{k}^\pr} a \p{\bm{k}} \braket{\psi_{\bm{k}^\pr}| \hat{\bm{r}} | \psi_{\bm{k}}} \\
+		&= \int d \bm{k}^\pr d \bm{k} a^{*} \p{\bm{k}^\pr} a \p{\bm{k}} \bb{-i \braket{\psi_{\bm{k}^\pr} | \nabla_{\bm{k}} | \psi_{\bm{k}} } + i \braket{\psi_{\bm{k}^\pr}|e^{i \bm{k} \cdot \bm{r}} \nabla_{\bm{k}} | u_{n \bm{k}}} }. \\
+	\end{split}
+\end{align} 
+Since \(\ket{\psi_{\bm{k}^\pr}}\) is irrelevant to \(\bm{k}\), \(\braket{\psi_{\bm{k}^\pr} | \nabla_{\bm{k}} | \psi_{\bm{k}} } = \nabla_{\bm{k}} \braket{\psi_{\bm{k}^\pr} | \psi_{\bm{k}} } =  \nabla_{\bm{k}} \delta \p{\bm{k}^\pr - \bm{k}} \). Plug in, and we have the integral
+\begin{align}
+	\begin{split}
+		\int d \bm{k} a \p{\bm{k}}  \nabla_{\bm{k}} \delta \p{\bm{k}^\pr - \bm{k}}  & =  \int d \bm{k} a \p{\bm{k}}  \nabla_{\bm{k}} \delta \p{\bm{k} - \bm{k}^\pr} \\
+		& = - \int d \bm{k} \bb{\nabla_{\bm{k}} a \p{\bm{k}}} \delta \p{\bm{k}-\bm{k}^{\pr}},
+	\end{split}
+\end{align}
+with \(\int dx f \p{x} \delta^\pr \p{x-a} = -f^\pr \p{a}\). Thus, the first part is 
+\begin{align}
+	I_1 = i \int d \bm{k} a^{*} \p{\bm{k}} \nabla_{\bm{k}} a \p{\bm{k}}.
+\end{align}
+Since
+\begin{align}
+	\begin{split}
+		i \braket{\psi_{\bm{k}^\pr} | e^{i \bm{k} \cdot \bm{r}} | \nabla_{\bm{k}} u_{\bm{k}}} & = i \braket{ u_{n \bm{k}^\pr} | e^{ - i \bm{k}^{\pr} \cdot \bm{r}} e^{i \bm{k} \cdot \bm{r}} | \nabla_{\bm{k}} u_{n \bm{k}}}  =  i \braket{ u_{n \bm{k}^\pr} |  e^{i \p{\bm{k} - \bm{k}^\pr} \cdot \bm{r}} | \nabla_{\bm{k}} u_{n \bm{k}}} \\
+		& = i \braket{ u_{n \bm{k}^\pr} | \nabla_{\bm{k}} |  u_{n \bm{k}}} \delta \p{\bm{k}-\bm{k}^\pr},
+	\end{split}
+\end{align}
+Thus, the second part of integral is 
+\begin{align}
+	\begin{split}
+		I_2 & = \int d \bm{k}^\pr d \bm{k} a^{*}\p{\bm{k}^\pr} a \p{\bm{k}} i \braket{ u_{n \bm{k}^\pr} | \nabla_{\bm{k}} |  u_{n \bm{k}}} \delta \p{\bm{k}-\bm{k}^\pr} \\
+		& = \int d \bm{k}  a^{*}\p{\bm{k}} \bb{i  \braket{ u_{n \bm{k}^\pr} | \nabla_{\bm{k}} |  u_{n \bm{k}}} \delta \p{\bm{k}-\bm{k}^\pr} } a \p{\bm{k}} \\
+		& = \int d \bm{k}  a^{*}\p{\bm{k}} \bm{A} \p{\bm{k}} a \p{\bm{k}},
+	\end{split}
+\end{align}
+So the position operator is 
+\begin{align}
+	\boxed{\hat{\bm{r}} = i \nabla_{\bm{k}} + \bm{A} \p{\bm{k}}}.
+\end{align}
+It's natural to see that the commutator of two position operators will lead to the Berry curvature where
+\begin{align}
+	\begin{split}
+		\bb{\hat{\bm{r}}_\mu, \hat{\bm{r}}_\nu} & =  \bb{i \pa_{\mu} + \bm{A}_{\mu}, i \pa_{\nu} + \bm{A}_{\nu}} \\
+		& = \bb{i \partial_{\mu}, \bm{A}_\nu} + \bb{\bm{A}_\mu, i \partial_\nu} \\
+		& = i \p{\partial_{\mu} \bm{A}_\nu - \partial_{\nu} \bm{A}_\mu}\\
+		& = i \bm{\Omega}_{\mu \nu},
+	\end{split}
+\end{align}
+where \(\bb{i \pa_\mu, \bm{A}_\nu} f\p{\bm{k}} = i \pa_\mu \p{\bm{A}_\nu f} - i \bm{A}_\nu \p{\pa_{\mu} f} = i \p{\pa_\mu \bm{A}_\nu } f + i \bm{A}_\nu \p{\pa_\mu f} - i \bm{A}_\nu \p{\pa_{\mu} f} = i \p{\pa_\mu \bm{A_\nu}} f\) and \(f \p{\bm{k}}\) is an arbitrary function. The Berry curvature is defined as
+\begin{align}
+	\bm{\Omega}_{\mu \nu} = \partial_{\mu} \bm{A}_\nu - \partial_{\nu} \bm{A}_\mu.
+\end{align}
+In 3D case, with \(\bm{\Omega}_{\mu \nu} = \epsilon_{\mu \nu \lambda} \bm{A}_\lambda\),  we can define the Berry curvature as a vector \(\bm{\Omega} = \nabla_{\bm{k}} \times \bm{A}\).
+
+
+The velocity operator can be derived from the Heisenberg equation of motion \(\hat{\bm{v}} = \frac{i}{\hbar} \bb{\hat{H}, \hat{\bm{r}}}\). Substituting the position operator, we have
+\begin{align}
+	\hat{{\bm{v}}} = \frac{i}{\hbar} \bb{\hat{H}_0 + \hat{V}, \hat{\bm{r}}}
+\end{align}
+The first commutator is
+\begin{align}
+	\begin{split}
+		\frac{i}{\hbar} \bb{\hat{H}_0, \hat{\bm{r}}_{\mu}} & = \frac{i}{\hbar} \bb{\hat{H}_0 + \hat{V}, i \pa_{\mu} + \bm{A}_\mu} = \frac{i}{\hbar} \bb{ \hat{H}_0, i \pa_{\mu}} = \frac{i}{\hbar} \p{\hat{H}_0 \p{i \pa_\mu} - i \partial_\mu \hat{H}_0} \\
+		& = \frac{i}{\hbar} \p{-i} \pa_\mu \hat{H}_0 \\
+		& = \frac{1}{\hbar} \pa_\mu \hat{H}_0.
+	\end{split}
+\end{align}
+With the potential term \(\hat{V} = e \bm{E} \hat{\bm{r}}\), the second commutator is
+\begin{align}
+	\begin{split}
+		\frac{i}{\hbar} \bb{\hat{V}, \hat{\bm{r}}_\mu} & = \frac{i}{\hbar} \bb{e \bm{E}_\nu \hat{\bm{r}_\nu}, \hat{\bm{r}}_\mu} = \frac{i}{\hbar} e \bm{E}_\nu \bb{\hat{\bm{r}}_\nu, \hat{\bm{r}}_\mu} \\
+		& = \frac{i}{\hbar} e \bm{E}_\nu \p{-i} \bm{\Omega}_{\mu \nu}  = \frac{e \bm{E}_\nu}{\hbar} \bm{\Omega}_{\mu \nu}\\
+		& = - \dot{\bm{k}}_\nu \bm{\Omega}_{\mu \nu},
+	\end{split}
+\end{align}
+where \(\hbar \dot{\bm{k}}_\nu = -e \bm{E}_\nu\).
+
+
+Projecting to the \(n\)-th band, we have \(\bm{v}_\mu = \frac{1}{\hbar} \pa_\mu \varepsilon_n \p{\bm{k}} - \dot{\bm{k}}_\nu \bm{\Omega}_{\mu \nu} \). Also, in 3D case, it is 
+\begin{align}
+	\boxed{\bm{v} = \frac{1}{\hbar} \nabla_{\bm{k}} \varepsilon_n \p{\bm{k}} - \dot{\bm{k}} \times \bm{\Omega}_{n} \p{\bm{k}}},
+\end{align}
+where \( \dot{\bm{k}} \times \bm{\Omega}_{n} \p{\bm{k}}\) is the anomalous velocity. It is kindly like the Lorentz force in the momentum space.
+
+We can also derive the anomalous velocity from the Lagrangian of the wave packet. Before we derive the Lagrangian, we need to introduce the gradient of the phase of envelope function. We can rewrite the envelope function as 
+\begin{align}
+	a \p{\bm{k}, t} = \rho \p{\bm{k} - \bm{k}_c} e^{-i \gamma \p{\bm{k}, t}},
+\end{align}
+where we set \(\bm{q} = \bm{k} - \bm{k}_c\) and \(\rho \p{\bm{q}}\) satisfies
+\begin{align}
+	\int d \bm{k} \rho^2 \p{\bm{q}} = 1, \quad \int d \bm{k} \rho^2 \p{\bm{q}} \bm{q} = 0.
+\end{align}
+We can define the gradient of the phase \(\bm{\eta} \p{t} \) as
+\begin{align}
+	\bm{\eta} = \nabla_{\bm{k}} \gamma,
+\end{align}
+where the phase is 
+\begin{align}
+	\gamma \p{\bm{k}, t} = \bm{q} \cdot \bm{\eta} + \gamma_0 \p{t},
+\end{align}
+and the envelope function is \(a \p{\bm{k}, t} = \rho \p{\bm{k} - \bm{k}_c} \exp{\bb{-i \p{\bm{k} - \bm{k}_c} \cdot \bm{\eta} - i \gamma_0}} \).
+
+
+The Lagrangian can be derived from the time-dependent variational principle \(\delta \mathcal{S} =  \delta \int dt \mathcal{L} = 0\) with 
+\begin{align}
+	\mathcal{L} = \braket{W| i \hbar \frac{d}{dt} - \hat{H} | W} = i \hbar \braket{W|\dot{W}} - \braket{W|\hat{H}|W}.
+\end{align}
+The first term is 
+\begin{align}
+	\begin{split}
+		i \hbar \braket{W|\dot{W}}  & = i \hbar \int d \bm{k}^\pr \int d \bm{k} a^{*} \p{\bm{k}^\pr, t} \dot{a} \p{\bm{k}, t} \braket{\psi_{n \bm{k}^\pr} | \psi_{n \bm{k}}} \\
+		& = i \hbar \int d \bm{k}^\pr \int d \bm{k} a^{*} \p{\bm{k}^\pr, t} \dot{a} \p{\bm{k}, t} \delta \p{\bm{k}^\pr - \bm{k}} \\
+		& = i \hbar \int d \bm{k} a^{*}\p{\bm{k}, t} \dot{a} \p{\bm{k}, t} \\
+		& = i \hbar \int d \bm{k} \p{\rho \dot{\rho} - \rho^2 i \dot{\gamma}},
+	\end{split}
+\end{align}
+where \(a^* \dot{a} = \p{\rho e^{i \gamma}} \p{\dot{\rho}  e^{-i \gamma} - i \dot{\gamma} \rho e^{-i \gamma}} = \rho \dot{\rho} - \rho^2 i \dot{\gamma}\). The first term is 
+\begin{align}
+	I_1  = i \hbar \int d \bm{k} \rho \dot{\rho}  = i \hbar \frac12 \pa_{t} \int d \bm{k} \rho^2 = 0,
+\end{align}
+For the second term, the time derivative of the phase is \(\dot{\gamma} = - \dot{\bm{k}_c} \cdot \bm{\eta} + \p{\bm{k} - \bm{k}_c} \cdot \dot{\bm{\eta}} + \dot{\gamma}_0\) with the \(\bm{k}\) set as the integration variable(which means we cannot differentiate with respect to \(\bm{k}\)). Thus, the integral is 
+\begin{align}
+	\begin{split}
+		I_2 & = i \hbar \int d \bm{k} \p{-i \rho^2} \bb{- \dot{\bm{k}_c} \cdot \bm{\eta} + \p{\bm{k} - \bm{k}_c} \cdot \dot{\bm{\eta}} + \dot{\gamma}_0} \\
+		& = - \hbar \dot{\bm{k}_c} \cdot \bm{\eta} + \hbar \dot{\gamma}_0,\\
+		& = - \hbar \dot{\bm{k}_c} \cdot \bm{\eta},
+	\end{split}
+\end{align}
+where the last term is the total time derivative which can be ignored. The second term of the Lagrangian is
+\begin{align}
+	\begin{split}
+		\braket{W | \hat{H} | W} &  = \int d \bm{k} \rho^2 \p{\bm{k} - \bm{k}_c} \varepsilon_n \p{\bm{k}} \\
+		& = \int d \bm{q} \rho^2 \varepsilon_{n} \p{\bm{k}_c} \\
+		& = \varepsilon_n \p{\bm{k}_c},
+	\end{split}
+\end{align}
+where we can think \(\varepsilon_{n} \p{\bm{k}} = \varepsilon_{n} \p{\bm{k}_c}\) with the width of wave packet is narrow enough. Thus, the Lagrangian is
+\begin{align}
+	\mathcal{L} = - \hbar \dot{\bm{k}_c} \cdot \bm{\eta} - \varepsilon_n \p{\bm{k}_c}.
+\end{align}
+
+Now, we need to get the connection of the gradient of the phase \(\bm{\eta}\) and center of the wave packet in real space \(\bm{r}_c\). The center of the wave packet is
+\begin{align}
+	\bm{r}_{c} = \braket{W|\hat{\bm{r}} |W},
+\end{align}
+where \(\hat{\bm{r}}\) is the bare position operator. With the relation we derive before
+\begin{align}
+	\braket{\psi_{n \bm{k}^\pr} | \hat{\bm{r}} | \psi_{n \bm{k}}} = \bb{-i \nabla_{\bm{k}}  + \bm{A}_{n} \p{\bm{k}} } \delta \p{\bm{k}^\pr - \bm{k}},
+\end{align}
+we can write the center of the wave packet as
+\begin{align}
+	\begin{split}
+		\bm{r}_c & = \int d \bm{k} \int d \bm{k}^\pr a^{*} \p{\bm{k}^\pr} a \p{\bm{k}} \bb{-i \nabla_{\bm{k}}  + \bm{A}_{n} \p{\bm{k}} } \delta \p{\bm{k}^\pr - \bm{k}} \\
+		& = \int d \bm{k} a^{*} \p{\bm{k}} \p{i \nabla_{\bm{k}} } a \p{\bm{k}} + \int d \bm{k} \bv{a \p{\bm{k}}}^2 \bm{A}_{n} \p{\bm{k}},
+	\end{split}
+\end{align}
+where the sign change in the first term is because of the integration by part. The kernel of the first term is
+\begin{align}
+	a^* i \nabla_{\bm{k}} a = i \rho \nabla_{\bm{k}} \rho + \rho^2 \nabla_{\bm{k}} \gamma.
+\end{align}
+The \(\rho \nabla_{\bm{k}} \rho\) is the boundary term which has no contribution to the integral. Thus, the center of the wave packet is
+\begin{align}
+	\begin{split}
+		\bm{r}_c & = \int d \bm{k} \rho^2 \bb{\nabla_{\bm{k}} \gamma + \bm{A}_{n} \p{\bm{k}}} \\
+		& = \bm{\eta} + \bm{A}_{n} \p{\bm{k}_c},
+	\end{split}
+\end{align}
+where we can also think \(\bm{A}_{n} \p{\bm{k}} = \bm{A}_{n} \p{\bm{k}_c}\) with the width of wave packet is narrow enough. Thus, the Lagrangian can be rewritten as
+\begin{align}
+	\begin{split}
+		\mathcal{L} & = - \hbar \dot{\bm{k}_c} \cdot \bb{\bm{r}_c - \bm{A}_{n} \p{\bm{k}_c}} - \varepsilon_n \p{\bm{k}_c} \\
+		& = - \hbar \dot{\bm{k}_c} \cdot \bm{r}_c + \hbar \dot{\bm{k}_c} \cdot \bm{A}_{n} \p{\bm{k}_c} - \varepsilon_n \p{\bm{k}_c} \\
+		& = \hbar \dot{\bm{r}}_c \cdot \bm{k}_c + \hbar \dot{\bm{k}}_c \cdot \bm{A}_{n} \p{\bm{k}_c} - \varepsilon_n \p{\bm{k}_c},
+	\end{split}
+\end{align}
+where \( -  \dot{\bm{k}_c} \cdot \bm{r}_c = - \pa_{t} \p{\bm{r}_c \cdot \bm{k}_c} + \dot{\bm{r}}_c \cdot \bm{k}_c\) and the total time derivative can be ignored.
+
+
+\subsection{Quantum Geometry}
+In quantum geometry, the momentum space is the parameter space of the Bloch function. Every \(\bm{k}\)-point corresponds to a state \(\ket{u}_{n \bm{k}}\)(single band case). The key question is how close of the two states \(\ket{u_{\bm{k}}}\) and \(\ket{u_{\bm{k} + d \bm{k}}}\). So all of our discussion is based on the overlap \(\braket{u_{\bm{k}} | u_{\bm{k} + d \bm{k}}}\). For normalized Bloch states \(\braket{u_{\bm{k}} | u_{\bm{k}}} = 1\), we simplify the states as \(\ket{u_{\bm{k}}} \equiv \ket{u}\) and \(\ket{u_{\bm{k} + d \bm{k}}} \equiv \ket{u + d u}\). The Taylor expansion of \(\ket{u + du}\) is 
+\begin{align}
+	\ket{u + du} = \ket{u} + \ket{\pa_\mu u} d \bm{k}_\mu + \frac12 \ket{\pa_\mu \pa_\nu u} d \bm{k}_\mu d \bm{k}_\nu + o\p{d \bm{k}^3},
+\end{align}
+where the summation follows the Einstein convention. The overlap is
+\begin{align}
+	\begin{split}
+		\braket{u | u + du} & = 1 + \braket{u | \pa_\mu u} d \bm{k}_\mu + \frac12 \braket{u | \pa_\mu \pa_\nu u} d \bm{k}_\mu d \bm{k}_\nu + o\p{d \bm{k}^3} \\
+		& = 1 +  \braket{u | \pa_\mu u} d \bm{k}_\mu + \frac12 \braket{u | \pa_\mu \pa_\nu u} d \bm{k}_\mu d \bm{k}_\nu + o\p{d \bm{k}^3}.
+	\end{split}	
+\end{align}
+So the first-order term is the Berry connection where \(\bm{A}_{\mu} \p{\bm{k}} = i \braket{u | \pa_\mu}\) and \(\braket{u | \pa_\mu} = - i \bm{A}_{\mu} \p{\bm{k}}\). Thus, if we only keep the first-order term, the overlap is 
+\begin{align}
+	\begin{split}
+		\braket{u | u + du} & = 1 - i \bm{A}_{\mu} \p{\bm{k}} d \bm{k}_\mu + o\p{d \bm{k}^2} \\
+		& \approx e^{- i \bm{A}_{\mu} \p{\bm{k}} d \bm{k}_\mu },
+	\end{split}
+\end{align}
+which means
+\begin{align}
+	\arg \braket{u | u + du} = -i \bm{A}_\mu d \bm{k}_\mu.
+\end{align}
+That the Berry connection corresponds to the phase of the overlap. We will see if it is a closed loop, the Berry phase is the integral of the Berry connection along the loop. For the second-order term, we consider the modulus of the overlap. We write the overlap as \(S = \braket{u | u + du} = 1 + \alpha_\mu d \bm{k}_\mu + \frac12 \beta_{\mu \nu} d \bm{k}_\mu d \bm{k}_\nu + o \p{d \bm{k}^3}\). The modulus is
+\begin{align}
+	\begin{split}
+		\bv{S}^2 & = S^* S = 1 + \p{\alpha^*_\mu + \alpha_\mu} d \bm{k}_\mu + \bb{\frac12 \p{\beta_{\mu \nu }+ \beta^{*}_{\mu \nu}} + \alpha^{*}_\mu \alpha_\nu} d \bm{k}_\mu d \bm{k}_\nu + o\p{d \bm{k}^3}.
+	\end{split}
+\end{align}
+Since \(\alpha^{*}_{\mu}\) and \(\alpha_\mu\) are all pure imaginary numbers, the first-order term is zero which means it only introduces the difference of phase and has no contribution to the modulus. With relation
+\begin{align}
+	\begin{split}
+		\pa_\mu \pa_\nu \braket{u | u} & = \braket{\pa_\mu \pa_\nu u | u} + \braket{\pa_\mu u | \pa_\nu u} + \braket{\pa_\nu u | \pa_\mu u} + \braket{u | \pa_\mu \pa_\nu u} \\
+		& = \beta_{\mu \nu} + \beta^{*}_{\mu \nu} +  \braket{\pa_\mu u | \pa_\nu u} + \braket{\pa_\nu u | \pa_\mu u} = 0,
+	\end{split}
+\end{align}
+We have
+\begin{align}
+	\frac12 \p{\beta_{\mu \nu} + \beta_{\nu \mu}} = - \mr{Re} \braket{\pa_\mu u | \pa_\nu u}.
+\end{align}
+The Berry connection can be similarly written as \(\alpha_\mu = -i \bm{A}_\mu\) and \(\alpha^{*}_{\mu} \alpha_{\nu} = \bm{A}^{*}_{\mu} \bm{A}_\nu\) which is a real number. Thus, the modulus of the overlap is
+\begin{align}
+	\begin{split}
+		\bv{S}^2 & = 1 - \bb{\mr{Re}  \braket{\pa_\mu u | \pa_\nu u} - \bm{A}^{*}_{\mu} \bm{A}_\nu} d \bm{k}_\mu d \bm{k}_\nu + o\p{d \bm{k}^3} \\
+		& = 1 - g_{\mu \nu} d \bm{k}_\mu d \bm{k}_\nu + o\p{d \bm{k}^3},
+	\end{split}
+\end{align}
+where the quantum metric \(g_{\mu \nu}\) is defined as
+\begin{align}
+	\begin{split}
+		g_{\mu \nu} = \mr{Re}  \braket{\pa_\mu u | \pa_\nu u} - \braket{\pa_\mu u | u} \braket{u | \pa_\nu u} = \mr{Re} \bb{\braket{\pa_\mu u | \p{1 - \ket{u} \bra{u}} | \pa_\nu u}}.
+	\end{split}
+\end{align}
+The projection operator \(1 - \ket{u} \bra{u}\) is used to remove the term of \(\ket{\pa_{\mu} u}\) along the direction of \(\ket{u}\) which has no contribution to the overlap. The quantum metric is a positive-definite metric which means \(g_{\mu \nu} d \bm{k}_\mu d \bm{k}_\nu > 0\). Thus, the modulus of the overlap is less which means the two Bloch states has the orthogonal component. As we mentioned before, Berry connection \(\bm{A}\) is gauge dependent, but the integral of Berry connection along a closed loop is gauge invariant which is the Berry phase. And we can also define the Berry curvature by Stokes' theorem which is 
+\begin{align}
+	\gamma = \oint_{C} \bm{A} \cdot d \bm{k} = \int_{S} \bm{\Omega} \cdot d \bm{S}= \frac12 \int_S \Omega_{\mu\nu}(\mathbf k)\, dk_\mu\wedge dk_\nu,
+\end{align}
+where Stokes' theorem is \(\oint_C(A_xdk_x+A_ydk_y)=\int_S\Omega_{xy}dk_x\wedge dk_y\) and the Berry curvature \(\bm{\Omega}\) is 
+\begin{align}
+	\begin{split}
+		\Omega_{\mu \nu} & = \partial_\mu \bm{A}_\nu - \partial_\nu \bm{A}_\mu \\
+		& = i \bb{\pa_\mu \braket{ u | \pa_\nu u} - \pa_\nu \braket{u | \pa_\mu u}}  = i \bb{\braket{\pa_\mu u | \pa_\nu u} - \braket{\pa_\nu u | \pa_\mu u}} \\
+		& = - 2 \mr{Im} \braket{\pa_\mu u | \pa_\nu u}.
+	\end{split}
+\end{align}
+So the definition of quantum geometry tensor is
+\begin{align}
+	\boxed{
+		\mathcal{Q}_{\mu \nu} = g_{\mu \nu} - \frac{i}{2} \Omega_{\mu \nu}.
+	}
+\end{align}
+
+\begin{itemize}
+	\item Quantum metric and measure
+\end{itemize}
+
+It is useful to distinguish a metric from a measure. A metric defines the infinitesimal distance between two nearby points. For example, in polar coordinates, \(ds^2 = dr^2 + r^2 d\theta^2\) so that \(g_{rr}=1, \, g_{\theta\theta}=r^2\). The metric tells us how to measure the distance associated with a coordinate displacement \((dr,d\theta)\). By contrast, a measure is the volume element used in an integral.  Given a metric \(g_{\mu\nu}\), the associated geometric measure is \(d\mu = \sqrt{\det g}\,d^d x \). For example, in polar coordinates, \(\sqrt{\det g}=r\). So, the area element is \(d\mu = r\,dr\,d\theta\). Therefore, the metric determines distances, while the measure determines the integration weight.
+
+In the quantum-geometric case, the quantum metric defines the distance between neighboring Bloch states, \(ds_{\rm Q}^2 = g_{\mu\nu}(\mathbf k)\,dk^\mu dk^\nu\). This distance is not the ordinary distance between two momentum points, but the distance between the corresponding quantum states \(\ket{u_{\bm{k}}}\) and \(\ket{u_{\bm{k} + d \bm{k}}}\) after removing the physically irrelevant phase difference. Once a metric is given, one can formally define a corresponding quantum-geometric measure \(d\mu_{\rm Q} = \sqrt{\det g(\mathbf k)}\,d^d k\)
+This measure describes the geometric volume swept out by the Bloch states in the space of physical quantum states as \(\bm{k}\) varies. 
+A large \(\sqrt{\det g\p{\bm{k}}}\) means that a small region \(d^d k\) in momentum space corresponds to a large change of the Bloch wave functions. 
+
+This quantum-geometric measure should not be confused with the semiclassical phase-space measure. 
+The usual number of momentum states is counted by \(\frac{d^d k}{\p{2 \pi}^{d}}.\)
+In semiclassical dynamics with Berry curvature and magnetic field, the phase-space measure is modified to
+\begin{align}
+	d\Gamma = \frac{d^d r\,d^d k}{\p{2 \pi}^{d}} \mathcal D(\mathbf k), \qquad \mathcal D(\mathbf k) = 1+\frac{e}{\hbar}\mathbf B\cdot\boldsymbol\Omega(\mathbf k).
+\end{align}
+This measure counts the modified density of semiclassical wave-packet states in phase space.  Therefore, the quantum-geometric measure \(\sqrt{\det g}\,d^d k\) describes the geometry of Bloch wave functions, whereas the semiclassical measure \(d\Gamma\) describes the density of available semiclassical states.
+
+\begin{itemize}
+	\item Covariant derivative
+\end{itemize}
+The quantum metric can be also connected to the covariant derivative. With the gauge degree of freedom, the states changes into \(\ket{u_0} \rightarrow \ket{u^\pr} = e^{i \phi\p{\bm{k}}} \ket{u_0}\). If we set \(\ket{u_0}\) has no dependence on \(\bm{k}\), the derivative \(\ket{\pa_{\mu} u}\) is 
+\begin{align}
+	\ket{\pa_\mu u^\pr} = \pa_\mu e^{i \phi\p{\bm{k}}} \ket{u_0} = i \pa_\mu \phi \p{\bm{k}} \ket{u_0}.
+\end{align}
+Since \(\ket{u}\) and \(\ket{u_0}\) correspond to the same physical state where they only differ by a phase, which means the derivative should satisfy \(\ket{\pa_\mu u^\pr} = \ket{\pa_\mu u_0} = 0\). However, generally \(i \pa_\mu \phi \p{\bm{k}} \ket{u_0}\) is not zero which means the derivative is gauge dependent. So the question changes into we need to remove the change of state along the direction of \(\ket{u}\) which is the phase difference. Thus, we can decompose a state into two parts, one is parallel with the direction of \(\ket{u}\) and the other is perpendicular to \(\ket{u}\). The gauge-invariant derivative should only keep the part perpendicular to \(\ket{u}\) which is the covariant derivative. So for a state \(\ket{v}\), we decompose it as 
+\begin{align}
+	\ket{v}  = \ket{u} \braket{u | v} + \p{1 - \ket{u}\bra{u}} \ket{v},
+\end{align}
+If the state is the derivative \(\ket{v} = \ket{\pa_\mu u}\), it is 
+\begin{align}
+	\begin{split}
+		\ket{\pa_\mu u} & = \ket{u}\braket{u | \pa_{\mu} u} + \p{1 - \ket{u}\bra{u}} \ket{\pa_\mu u} \\
+		& = - i \bm{A}_\mu \ket{u} + \p{1 - \ket{u}\bra{u}} \ket{\pa_\mu u},
+	\end{split} 
+\end{align}
+where the parallel part is \(\ket{u}\braket{u | \pa_{\mu} u}  = -i \bm{A}_{\mu} \ket{u}\). The covariant derivative is defined as
+\begin{align}
+	\begin{split}
+		\boxed{\ket{D_{\mu} u} = \p{1 - \ket{u}\bra{u}} \ket{\pa_\mu u} = \ket{\pa_\mu u} + i \bm{A}_\mu \ket{u}}.
+	\end{split}
+\end{align}
+Still considering the gauge transformation 
+\begin{align}
+	\ket{u} \rightarrow \ket{u^\pr} = e^{i \phi \p{\bm{k}}} \ket{u},
+\end{align}
+and the derivative is
+\begin{align}
+	\begin{split}
+		\ket{\pa_\mu u^\pr} & = e^{i \phi \p{\bm{k}}} \ket{\pa_\mu u} + i \pa_{\mu} \phi \ket{u^\pr} \\
+		& = e^{i \phi \p{\bm{k}}}\p{\ket{\pa_\mu u} + i \pa_{\mu} \phi \ket{u}},\\
+	\end{split}
+\end{align}
+where the second term is the pure change of phase. The Berry connection after the gauge transformation is
+\begin{align}
+	\begin{split}
+		\bm{A}^\pr_\mu & = i \braket{u^\pr | \pa_\mu u^\pr} = i \braket{u | \pa_\mu u} - \pa_\mu \phi = \bm{A}_\mu - \pa_\mu \phi.
+	\end{split}
+\end{align}
+So the covariant derivative after the gauge transformation is
+\begin{align}
+	\begin{split}
+		\ket{D_\mu u^\pr} & = \ket{\pa_\mu u^\pr} + i \bm{A}^\pr_\mu \ket{u^\pr} \\
+		& = e^{i \phi \p{\bm{k}}} \ket{\pa_\mu u} + i \pa_{\mu} \phi e^{i \phi \p{\bm{k}}} \ket{u} + i \bb{\bm{A}_\mu - \pa_\mu \phi} e^{i \phi \p{\bm{k}}} \ket{u} \\
+		& = e^{i \phi \p{\bm{k}}} \p{\ket{\pa_\mu u} + i \bm{A}_\mu \ket{u}} = e^{i \phi\p{\bm{k}}} \ket{D_\mu u},
+	\end{split}
+\end{align}
+which means that the overlap \(\braket{D_\mu u | D_\mu u}\) is gauge-invariant, and we rewrite the \(\ket{u_{\bm{k} + d \bm{k}}}\) as
+\begin{align}
+	\begin{split}
+		\ket{u_{\bm{k} + d \bm{k}}} & = \ket{u} + \bb{-i \bm{A}_\mu \ket{u} + \ket{D_{\mu} u}} d\bm{k}_\mu + o\p{d \bm{k}^2} \\
+		& = \p{1 - i \bm{A}_\mu d \bm{k}_\mu} \ket{u} + \ket{D_\mu u} d \bm{k}_\mu + o\p{d \bm{k}^2}.
+	\end{split}
+\end{align}
+So the first term is change of phase and the second term is the change along the perpendicular direction where \(\braket{u|D_\mu u} = 0\). Thus, the norm is \(d^2_{S} = \braket{D_\mu u | D_\mu u} d \bm{k}_\mu d \bm{k}_{\nu}\) and the quantum metric is 
+\begin{align}
+	g_{\mu \nu} = \mr{Re} {\braket{D_\mu u | D_\nu u}},
+\end{align}
+where the metric must be positive and symmetric. The Berry curvature can be also written as
+\begin{align}
+	\begin{split}
+		\Omega_{\mu \nu} & = - 2 \mr{Im} \braket{\pa_\mu u | \pa_\nu u} = - 2 \mr{Im} \bb{\braket{D_\mu u | D_\nu u} - i \bm{A}_\mu \braket{u | D_\nu u} + i \bm{A}_\nu \braket{D_\mu u | u}} \\
+		& = - 2 \mr{Im} \braket{D_\mu u | D_\nu u},
+	\end{split}
+\end{align}	
+where the imaginary part captures the change associated with phase winding, namely the Berry curvature. It is easy to see
+\begin{align}
+    \begin{split}
+		\mr{Im}  \braket{D_\mu u | D_\nu u} & =  \mr{Im} \braket{\pa_\mu u | \pa_\nu u}, \\
+		\mr{Re}  \braket{D_\mu u | D_\nu u} & =  \mr{Re} \braket{\pa_\mu u | \pa_\nu u} - \bm{A}^{*}_\mu \bm{A}_\nu.
+	\end{split}
+\end{align}
+
+\section{Orbital Magnetization from Semiclassical Wave-Packet Dynamics}
+\subsection{Derivation via Pertrurbation Theory}
+Now, we give a detail derivation of orbital magnetization with perturbation theory in the paper[Qian Niu, PRB 59, 14915(1999)]. In the above section, what we have concerned is the center of the wave packet in real space \(\bm{r}_c\). However, because the wave packet possesses a finite spatial width, it inherently experiences the spatial nonuniformity of the surrounding field near its center \(\bm r_{c}\). Consequently, we must introduce the perturbation theory by expanding the local Hamiltonian \(\hat{H}_c\) at the center of the wave packet \(\bm{r}_c\), treating the linear gradient term as a perturbation to evaluate the first-order energy correction. We have 
+\begin{align}
+	\hat{H} = \hat{H}_c + \Delta \hat{H},
+\end{align}
+where  \(\hat{H}_c\) is the local Hamiltonian, and we write the linear gradient term as the Hermitian form 
+\begin{align}
+	\Delta \hat{H} = \frac12 \bb{\p{\hat{\bm{r}}- \bm{r}_c} \frac{\pa \hat{H}_{c}}{\pa \bm{r}_c} + \frac{\pa \hat{H}_c}{\pa \bm{r}_c} \p{\hat{\bm{r}} - \bm{r}_c}}.
+\end{align}
+There we omit the specific component of the gradient term like \(\pa_{\bm{r}_{c;i}}\) for simplifying. The first-order energy correction is
+\begin{align}
+	\begin{split}
+		\Delta E = \braket{W | \Delta \hat{H} | W}  = \mr{Re} \braket{W | \p{\hat{\bm{r}}- \bm{r}_c} \frac{\pa \hat{H}_{c}}{\pa \bm{r}_c} | W}.
+	\end{split}
+\end{align}
+Where if we set \(\hat{\bm{r}}- \bm{r}_c = \hat{A}\) and \(\pa_{\bm{r}_c} \hat{H}_c = \hat{B}\), Since \(\hat{A}\) and \(\hat{B}\) are both Hermitian operators. The energy correction is \(\Delta E = \frac12 \bb{\braket{W | \hat{A} \hat{B} | W} + \braket{W | \hat{B} \hat{A} | W}} = \frac12 \bb{\braket{W | \hat{A} \hat{B} | W} + \braket{W | \p{\hat{A} \hat{B}}^{\dagger} | W}} =  \frac12 \bb{\braket{W | \hat{A} \hat{B} | W} + \braket{W | \hat{A} \hat{B} | W}^{*}} \). Thus, the energy correction is the real part of \(\braket{W | \hat{A} \hat{B} | W}\). 
+
+So the question changes into how to calculate \(\braket{\psi_{n \bm{k}} | \pa_{\bm{r}_c} \hat{H}_c \hat{\bm{r}} | \psi_{n \bm{k}}}\). The reason why we can exchange the order of \(\hat{\bm{r}}\) and \(\pa_{\bm{r}_c} \hat{H}_c \) is that the derivative \(\pa_{\bm{r}_c} \hat{H}_c\) is with respect to the center of the wave packet \(\bm{r}_c\). Thus, the operator \(\pa_{\bm{r}_c} \hat{H}_c \) is independent of the position operator \(\hat{\bm{r}}\), and they commute with each other. Also, the position \(\bm{r}_c\) is only a number, so we change put it out of the overlap. We will calculate it later.
+
+For the local Hamiltonian \(\hat{H}_{c}\), its eigenequation is 
+\begin{align}
+	\hat{H}_{c} \p{\bm{r}_c, \bm{k}} \ket{u_{n \bm{k}}} = \varepsilon_{n} \p{\bm{r}_c, \bm{k}} \ket{u_{n \bm{k}}},
+\end{align}
+where \(n\) is the band index, and we neglect the plane wave part \(e^{i \bm{k} \cdot \hat{\bm{r}}}\) for simplifying. Define \(\hat{F} = \pa_{\bm{r}_c} \hat{H}_c\), with the completeness relation 
+\begin{align}
+	\sum_{m} \int d \bm{q} \ket{\psi_{m  \bm{q}}} \bra{\psi_{m \bm{q}}} = \mathbb{I},
+\end{align}
+and the overlap changes into 
+\begin{align}
+	\begin{split}
+		M \p{\bm{k}, \bm{k}^\pr} & = \braket{\psi_{n \bm{k}} | \hat{F} \hat{r} | \psi_{n \bm{k}}} \\
+		& = \sum_{m} \int d \bm{q} \braket{\psi_{n \bm{k}} | \hat{F} | \psi_{m \bm{q}}} \braket{\psi_{m \bm{q}} | \hat{r} | \psi_{n \bm{k}^\pr}} \\
+		& = \sum_{m} \int d \bm{q} \braket{u_{n \bm{k}} | \hat{F} | u_{m \bm{q}}} \delta \p{\bm{k} - \bm{q}}  \braket{\psi_{m \bm{q}} | \hat{r} | \psi_{n \bm{k}^\pr}} \\
+		& =  \sum_{m}  \braket{u_{n \bm{k}} | \hat{F} | u_{m \bm{k}}}  \braket{\psi_{m \bm{k}} | \hat{r} | \psi_{n \bm{k}^\pr}}.
+	\end{split}
+\end{align}
+Here since \(\hat{H}_{c} \p{\bm{r, \bm{r}_{c}}} = \hat{H}_{c} \p{\bm{r} + \bm{R}, \bm{r}_c}\), the derivative on \(\bm{r}_c\) is independent of the translation of \(\bm{r}\), which means \(\pa_{\bm{r}_c} \hat{H}_{c} \p{\bm{r, \bm{r}_{c}}} = \pa_{\bm{r}_c} \hat{H}_{c} \p{\bm{r} + \bm{R}, \bm{r}_c}\) and \(\bb{\pa_{\bm{r}_c}  \hat{H}_{c}, \hat{T}_{\bm{R}}} = 0\). Thus, the operator \(\hat{F}\) does not change the momentum \(\bm{k}\) and the overlap is nonzero only when \(\bm{k} = \bm{q}\). The Blount relation with band index is 
+\begin{align}
+	\braket{\psi_{m \bm{k}} | \hat{\bm{r}}_i | \psi_{n \bm{k}^\pr}} = \bb{-i \delta_{mn} \pa_{\bm{k}_i} + \bm{A}^{i}_{mn} \p{\bm{k}}} \delta \p{\bm{k} - \bm{k}^\pr}.
+\end{align}
+So if \(m = n\), the intraband overlap is 
+\begin{align}
+	\begin{split}
+		M^{intra} & =  \braket{u_{n \bm{k}} | \hat{F} | u_{n \bm{k}}}  \braket{\psi_{n \bm{k}} | \hat{\bm{r}} | \psi_{n \bm{k}^\pr}} = \braket{u_{n \bm{k}} | \frac{\pa \hat{H}_c}{\pa \bm{r}_c} | u_{n \bm{k}}}  \braket{\psi_{n \bm{k}} | \hat{\bm{r}} | \psi_{n \bm{k}^\pr}} \\
+		& = \frac{\pa \varepsilon_{cn}}{\pa \bm{r}_c}   \braket{\psi_{n \bm{k}} | \hat{\bm{r}} | \psi_{n \bm{k}^\pr}},
+	\end{split}
+\end{align}
+with the Feynman-Hellmann relation \(\braket{u_{n \bm{k}} | \frac{\pa \hat{H}_c}{\pa \bm{r}_c} | u_{n \bm{k}}} = \frac{\pa E_{cn}}{\pa \bm{r}_c}\). If \(m \neq n\), the interband overlap is
+\begin{align}
+	\begin{split}
+		M^{inter} & = \sum_{m \neq n}  \braket{u_{n \bm{k}} | \hat{F} | u_{m \bm{k}}}  \braket{\psi_{m \bm{k}} | \hat{\bm{r}} | \psi_{n \bm{k}^\pr}} = \sum_{m \neq n}  \braket{u_{n \bm{k}} | \frac{\pa \hat{H}_c}{\pa \bm{r}_c} | u_{m \bm{k}}} \bm{A}_{mn} \p{\bm{k}^\pr} \delta \p{\bm{k} - \bm{k}^\pr} \\
+		& = \sum_{m \neq n}  \braket{u_{n \bm{k}} | \frac{\pa \hat{H}_c}{\pa \bm{r}_c} | u_{m \bm{k}}} i \braket{u_{m \bm{k}^\pr} | \pa_{\bm{k}^\pr} u_{n \bm{k}^\pr}} \delta \p{\bm{k} - \bm{k}^\pr}.
+	\end{split}
+\end{align}
+Note that the intraband will be canceled by the term of 
+\begin{align}
+	\bm{r}_{c} \braket{W | \frac{\pa \hat{H}_c}{\pa \bm{r}_c} | W} = \bm{r}_c \int d \bm{k} a^2 \braket{u_{n \bm{k}} | \frac{\pa \hat{H}_c}{\pa \bm{r}_c} | u_{n \bm{k}}} = \bm{r_{c}} \frac{\pa \varepsilon_{cn}}{\bm{r}_c}.
+\end{align}
+Thus, the energy correction is only contributed by the interband term. Now, the question changes into how to calculate the interband term \(\braket{u_{n \bm{k}} | \frac{\pa \hat{H}_c}{\pa \bm{r}_c} | u_{m \bm{k}}}\). With the eigenequation of the local Hamiltonian, we have
+\begin{align}
+	\begin{split}
+		\p{\pa_{\bm{r}_c} \hat{H}_c} \ket{u_m} + \hat{H}_c \ket{\pa_{\bm{r}_c} u_m} &= \p{\pa_{\bm{r}_c} \varepsilon_{cm}} \ket{u_m} + \varepsilon_{cm} \ket{\pa_{\bm{r}_c} u_m} \\
+		\Rightarrow \braket{u_n |  \pa_{\bm{r}_c} \hat{H}_c  | u_m} & = \p{\varepsilon_{cm} - \varepsilon_{cn}} \braket{u_n | \pa_{\bm{r}_c} u_m} \\ 
+		\Rightarrow \braket{u_n | \pa_{\bm{r}_c} \hat{H}_c | u_m} & = \p{\varepsilon_{cn} - \varepsilon_{cm}} \braket{\pa_{\bm{r}_c} u_m | u_n}
+	\end{split}
+\end{align}
+where \(\braket{u_n | \pa_{\bm{r}_c} u_m} = - \braket{\pa_{\bm{r}_c} u_n | u_m}\) is used in the last step. Thus, the overlap is 
+\begin{align}
+	\begin{split}
+		M & = i \sum_{m \neq n} \p{\varepsilon_{cn} - \varepsilon_{cm}} \braket{\pa_{\bm{r}_c} u_m | u_n} \braket{u_{m \bm{k}^\pr} | \pa_{\bm{k}^\pr} u_{n \bm{k}^\pr}} \delta \p{\bm{k} - \bm{k}^\pr}.
+	\end{split}
+\end{align}
+For \(m \neq n\), we have 
+\begin{align}
+	\begin{split}
+		E_{cn} - \hat{H}_c & = \sum_{m} \sum_{m^\pr} \ket{u_m}\bra{u_m} \p{\varepsilon_{cn} - \hat{H}_c} \ket{u_{m^\pr}} \bra{u_{m^\pr}} \\
+		& =  \sum_{m} \sum_{m^\pr} \ket{u_m} \p{\varepsilon_{cn} - \varepsilon_{cm^\pr}} \bra{u_{m^\pr}} \delta_{mm^\pr} \\
+		& = \sum_{m} \p{\varepsilon_{cn} - \varepsilon_{cm}}  \ket{u_m}\bra{u_m}.
+	\end{split}
+\end{align}
+The above relation contains \(n= m\). However, since \(\varepsilon_{cn} - \varepsilon_{cm} = 0\) when \(n = m\), the term is zero and does not contribute to the sum. Thus, we can write the overlap as
+\begin{align}
+	\braket{\psi_{n \bm{k}}| \frac{\pa \hat{H}_c}{\pa \bm{r}_c} \hat{\bm{r}} | \psi_{n \bm{k}^\pr}} & = i \braket{\pa_{\bm{r}_c} u_{n \bm{k}}| E_{cn} - \hat{H}_c | \pa_{\bm{k}^\pr} u_{n \bm{k}^\pr}} \delta \p{\bm{k} - \bm{k}^\pr}.
+\end{align}
+With a narrow wave packet in momentum space, we have \(\bv{a \p{\bm{k}}^2} = \delta\p{\bm{k} - \bm{k}_c}\). Thus, the energy correction is
+\begin{align}
+	\boxed{\Delta E = - \mr{Im} \braket{\frac{\pa u_{n \bm{k}}}{\pa \bm{r}_c} | \varepsilon_{cn} - \hat{H}_c | \frac{\pa u_{n \bm{k}}}{\pa \bm{k}}} \bigg|_{\bm{k} = \bm{k}_c}},
+\end{align}
+which is exactly the equation (2.17) in the paper. 
+
+In an electromagnetic field, the local Hamiltonian is 
+\begin{align}
+	\hat{H}_{c} = \hat{H}_0 \bb{\bm{p} + e \bm{A} \p{\bm{r}_c}} - e \phi \p{\bm{r}_c}.
+\end{align}
+Defined \(\bm{k} = \bm{p} + e \bm{A}\) and \(e > 0\), and we have \(\hat{H}_{c} = \hat{H}_0 \p{\bm{k}} - e \phi\) and the corresponding energy is \(\varepsilon_{cn} = \varepsilon_{0 n} \p{\bm{k}} - e \phi\). So we have the operator relation 
+\begin{align}
+	\varepsilon_{cn} - \hat{H}_c = \varepsilon_{0 n} - \hat{H}_0.
+\end{align}
+Now we need to consider the relation between the derivative on \(\bm{r}_c\) and the derivative on \(\bm{k}\) of different component, which is 
+\begin{align}
+	\frac{\pa}{\pa \bm{r}_{c,j}} \ket{u_n} = \frac{\pa \bm{k}_i}{\pa \bm{r}_{c,j}} \frac{\pa}{\pa \bm{k}_i} \ket{u_n} = e \frac{\pa \bm{A}_i}{\pa \bm{r}_{c,j}} \frac{\pa}{\pa \bm{k}_i} \ket{u_n}.
+\end{align} 
+Plugging the above relation into the energy correction, we have
+\begin{align}
+	\begin{split}
+		\Delta E & = - \mr{Im} \braket{e \frac{\pa \bm{A}_i}{\pa \bm{r}_{c,j}} \frac{\pa u_n}{\pa \bm{k}_i} u_{n \bm{k}} | \varepsilon_{cn} - \hat{H}_c | \frac{\pa u_{n \bm{k}}}{\pa \bm{k}_j}} \\
+		& = - e \p{\pa_{\bm{r}_j} \bm{A}_i} \mr{Im} \braket{\frac{\pa u_n}{\pa \bm{k}_i} | \varepsilon_{0 n} - \hat{H}_0 | \frac{\pa u_{n \bm{k}}}{\pa \bm{k}_j}}.
+	\end{split}
+\end{align}
+Defined \(T_{ij} = \mr{Im} \braket{\pa_{\bm{k}_i} u_n |  \varepsilon_{0 n} - \hat{H}_0  | \pa_{\bm{k}_j} u_n}\). Since \( E_{0 n} - \hat{H}_0\) is Hermitian, we have \(T_{ij} = - T_{ji}\) which means \(T_{ij}\) is an antisymmetric tensor. For  \(\p{\pa_{\bm{r}_j} \bm{A}_i} \), we rewrite it as the sum of symmetric part and antisymmetric part, which is
+\begin{align}
+	\p{\pa_{\bm{r}_j} \bm{A}_i} = \frac12 \p{\pa_j \bm{A_i} + \pa_i \bm{A_j} }+ \frac{1}{2} \p{\pa_j \bm{A}_i - \pa_i \bm{A}_j}.
+\end{align}
+The symmetric part does not contribute to the energy correction since \(T_{ij}\) is antisymmetric. (Any sum or contraction of a symmetric tensor with an antisymmetric tensor is zero like \(X = S_{ij} T_{ij} = S_{ji} T_{ji} = -S_{ij}T_{ij} = -X\)). Thus, the only contribution to the energy correction is 
+\begin{align}
+	\frac{1}{2} \p{\pa_j \bm{A}_i - \pa_i \bm{A}_j} T_{ij} =  - \frac12 \p{- \epsilon_{ijl} \bm{B}_l} T_{ij} = \p{- \frac12 \epsilon_{ijl} T_{ij}} \bm{B}_l.
+\end{align}
+The magnetization energy is \(- \bm{m} \cdot \bm{B}\). 
+
+The orbital magnetization moment of single wave-packet is \(\bm{m}_l = \frac12 \epsilon_{ijl} T_{ij} = \frac{e}{2} \mr{Im} \bb{\epsilon_{ijl} \braket{\pa_{\bm{k}_i} u_n |  \varepsilon_{0 n} - \hat{H}_0  | \pa_{\bm{k}_j} u_n}} \). We rewrite it as 
+\begin{align}
+	\begin{split}
+		\boxed{\bm{m} = - \frac{e}{2} \mr{Im} \bb{\braket{\nabla_{\bm{k}} u_n |  \times \p{ \varepsilon_{0 n} - \hat{H}_0 } | \nabla_{\bm{k}} u_n}}}.
+	\end{split}
+\end{align}
+
+It can be easily verified that the \(X_{l} = \epsilon_{ijl} \braket{\pa_{\bm{k}_i} u_n |  \varepsilon_{0 n} - \hat{H}_0  | \pa_{\bm{k}_j} u_n}\) is a pure imaginary number with \(X_{l} = - X_{l}^{*}\) and \(\epsilon_{ijl} = - \epsilon_{jil}\). Thus, we can rewrite the orbital magnetization moment as 
+\begin{align}
+	\boxed{\bm{m} = - \frac{i e}{2 \hbar} \braket{\nabla_{\bm{k}} u_n |  \times \p{ \hat{H}_0 - \varepsilon_{0 n}} | \nabla_{\bm{k}} u_n}},
+\end{align}
+where we add \(\hbar\). Again with the completeness relation \(\sum_{m} \ket{u_{m \bm{k}}} \bra{u_{m \bm{k}}} = \mathbb{I}\), we have the expression with band index
+\begin{align}
+	\begin{split}
+		\bm{m}_{n} \p{\bm{k}} & = - \frac{i e}{2 \hbar}  \sum_{m \neq n}  \p{ \varepsilon_{0 m} - \varepsilon_{0n} } \braket{\nabla_{\bm{k}} u_n | u_{m}} \times  \braket{u_{n} | \nabla_{\bm{k}} u_m} \\
+		& = - \frac{i e}{2 \hbar} \sum_{m \neq n} \frac{ \braket{u_n| \nabla_{\bm{k}} \hat H_0|u_m} \times \braket{u_m | \nabla_{\bm{k}} \hat H_0|u_n}}{E_{0n} - E_{0m}}, \quad m\neq n,
+	\end{split}
+\end{align}
+where 
+\begin{align}
+	\braket{u_m|\partial_{\bm{k}_i}u_n} = \frac{ \braket{u_m|\partial_{\bm{k}_i} \hat H_0|u_n} }{\varepsilon_{0n} - \varepsilon_{m}}, \quad m\neq n,
+\end{align}
+which is actually the Eq.71 in our note. It also means that the rate of change of the wave function with respect to momentum (i.e. the projection of  \(\ket{\pa_{\bm{k}_i} u_{n}}\) onto other bands \(m\)) is entirely determined by the interband velocity matrix elements and the interband energy gaps.
+
+\subsection{Correction from Phase-Space Density of States }
+Now we will follow the result of [Qian Niu PRL 95, 137204 (2005)] and give a brief derivation of the measure in phase space which is the other origin of orbital magnetization. Liouville's theorem comes from the conservation of particle number where \(\delta N = \rho\p{t} \delta V\p{t}\) and \(d \p{\delta N} / d t = 0\). The original Liouville's theorem is 
+\begin{align}
+	\frac{\pa \rho}{\pa t} + \nabla_{\bm{r}} \cdot \p{\rho \dot{\bm{r}}} + \nabla_{\bm{k}} \cdot \p{\rho \dot{\bm{k}}} = 0.
+\end{align}
+where \(\rho \p{t, \bm{r}, \bm{k}} \) is the distribution function in phase space where \(d N = \rho\p{t, \bm{r}, \bm{k}} d^3 r d^3 k\). Expanding the equation, we have 
+\begin{align}
+	\frac{\partial \rho}{\partial t} + \dot{\bm r}\cdot\nabla_{\bm r}\rho + \dot{\bm k}\cdot\nabla_{\bm k}\rho + \rho \left[ \nabla_{\bm r}\cdot\dot{\bm r} + \nabla_{\bm k}\cdot\dot{\bm k} \right] =0.
+\end{align}
+The first three terms is the total derivative of \(\rho\). Thus,
+\begin{align}
+	\frac{d \rho}{d t} + \rho \bb{\nabla_{\bm r}\cdot\dot{\bm r} + \nabla_{\bm k}\cdot\dot{\bm k}} = 0,
+\end{align}
+and if the current of phase space is incompressible which is \(\nabla_{\bm r}\cdot\dot{\bm r} + \nabla_{\bm k}\cdot\dot{\bm k} = 0\). The Liouville theorem is \(d \rho / d t = 0\). It means that if a small cluster of phase space points flows with time, its volume is conserved(\(\delta V/\delta t = 0\)) and the measure of general canonical ensemble is \(d^d r d^d k/\p{2 \pi}^{d} \) where \(2 \pi\) comes from the periodic boundary condition.
+
+The semiclassical EoM of Bloch electrons is 
+\begin{align}
+	\begin{split}
+		\dot{\bm{r}} &= \frac1\hbar \frac{\pa \epsilon}{\pa \bm{k}} - \dot{\bm{k}} \times \bm{\Omega} \\
+		\hbar \dot{\bm{k}} & =  - e \bm{E} - e \dot{\bm{r}} \times \bm{B},
+	\end{split}
+\end{align}
+It is clear that \(d \rho/d t = 0\) violates the Liouville theorem where  \(\nabla_{\bm r}\cdot\dot{\bm r} + \nabla_{\bm k}\cdot\dot{\bm k} \neq 0\). Plug the second equation into the first one, we have the explicit expression which is 
+\begin{align}
+	\begin{split}
+		\p{1 + \frac{e}{\hbar} \bm{B} \cdot \bm{\Omega} } \dot{\bm{r}} & = \bm{v} + \frac{e}{\hbar} \bm{E} \times \bm{\Omega} + \frac{e}{\hbar} \bm{B}\p{\bm{v} \cdot \bm{\Omega}} \\
+		 \p{1 + \frac{e}{\hbar}  \bm{B} \cdot \bm{\Omega} } \dot{\bm{k}} & = - \frac{e}{\hbar} \bm{E} - \frac{e}{\hbar} \bm{v} \times \bm{B} - \frac{e^2}{\hbar^2} \bm{\Omega} \p{\bm{E} \cdot \bm{B}}. 
+	\end{split}
+\end{align}
+Where we set \(\bm{v} =  \frac1\hbar \frac{\pa \epsilon}{\pa \bm{k}} \) for simplicity and algebra relation gives \(\p{\bm{A} \times \bm{B}} \times \bm{C} = \bm{B} \p{\bm{A} \cdot \bm{C}} - \bm{A} \p{\bm{B} \cdot \bm{C}}\). 
+
+Suppose we wish to find a new phase space density weight \(D \p{t,\bm{r}, \bm{k}}\) such that the true number of states can be written as
+\begin{align}
+	dN=f(\bm r,\bm k,t)D(\bm r,\bm k,t)d^3r d^3k.
+\end{align}
+It is clear that the distribution function \(f\) satisfies Boltzmann equation 
+\begin{align}
+	\frac{d f}{d t } = \frac{\partial f}{\partial t} + \dot{\bm r}\cdot\nabla_{\bm r}f + \dot{\bm k}\cdot\nabla_{\bm k}f =0.
+\end{align}
+However, what is truly conserved is the particle number density \(\rho = D f\). It should satisfy the continuity equation 
+\begin{align}
+	\frac{\pa \p{Df}}{\pa t} + \nabla_{\bm{r}} \p{Df \dot{\bm{r}}} + \nabla_{\bm{k}} \p{Df \dot{\bm{k}}} = 0.
+\end{align}
+Expanding it and we have
+\begin{align}
+	D \bb{\frac{\pa f}{\pa t} + \nabla_{\bm{r}} f + \nabla_{\bm{k}} f} + f \bb{\frac{\pa D}{\pa t} + \nabla_{\bm{r}} \cdot \p{D \dot{\bm{r}}} +  \nabla_{\bm{k}} \cdot \p{D \dot{\bm{k}}}} =0.
+\end{align}
+The first term is the total derivative of \(f\). So we have to ask 
+\begin{align}
+	\frac{\pa D}{\pa t} + \nabla_{\bm{r}} \cdot \p{D \dot{\bm{r}}} +  \nabla_{\bm{k}} \cdot \p{D \dot{\bm{k}}} = 0,
+\end{align}
+which is modified Liouville theorem. Substituting 
+\begin{align}
+	\boxed{\mathcal{D}\p{\bm{r}, \bm{k}, t}= 1 + \frac{e}{\hbar} \bm{B} \p{\bm{r}, t} \cdot \bm{\Omega}\p{\bm{k}} },
+\end{align}
+into the above equation. The differential \(\nabla_{\bm{r}} \cdot \p{D \dot{\bm{r}}} \) is 
+\begin{align}
+	\nabla_{\bm r}\cdot(\mathcal{D} \dot{\bm r}) = \nabla_{\bm r}\cdot\bm v + \frac{e}{\hbar} \nabla_{\bm r}\cdot(\bm E\times\bm\Omega) + \frac{e}{\hbar} \nabla_{\bm r}\cdot[\bm B (\bm v\cdot\bm\Omega)].
+\end{align}
+The first term is 
+\begin{align}
+	\frac{\partial \mathcal{D}}{\partial t} = \frac{e}{\hbar} \frac{\partial \bm B}{\partial t} \cdot\bm\Omega,
+\end{align}
+ and we assume that \(\bm{v}\) and \(\bm{\Omega}\) only depend on \(\bm{k}\) which leads to \(\nabla_{\bm r}\cdot\bm v = 0\). For the second term, we have the identity \(\nabla \cdot \p{\bm{E} \times \bm{\Omega}} = \bm{\Omega} \times \p{\nabla \times \bm{E}} - \bm{E} \cdot \p{\nabla \times \bm{\Omega}}\). With \(\nabla_{\bm{r}} \times \bm{\Omega} = 0\), it is \(\nabla \cdot \p{\bm{E} \times \bm{\Omega}} = \bm{\Omega} \cdot \p{\nabla \times \bm{E}}\). Similarily, the last term gives \(\nabla_{\bm r}\cdot[\bm B (\bm v\cdot\bm\Omega)] = \p{\nabla_{\bm{r}} \cdot \bm{B}} \p{\bm{v} \cdot \bm{\Omega}}\) which is also zero with Maxwell's equation \(\nabla \cdot \bm{B} = 0\). Thus,
+\begin{align}
+	\nabla_{\bm r}\cdot(\mathcal{D} \dot{\bm r}) = \frac{e}{\hbar} \bm\Omega\cdot(\nabla_{\bm r}\times\bm E).
+\end{align}
+Also, 
+\begin{align}
+	\nabla_{\bm{k}} \p{\mathcal{D} f \dot{\bm{k}}}  = - \frac{e}{\hbar} \nabla_{\bm{k}} \cdot \bm{E} - \frac{e}{\hbar}  \nabla_{\bm{k}} \cdot \p{\bm{v} \times \bm{B}} - \frac{e^2}{\hbar^2}  \nabla_{\bm{k}} \cdot \bb{\bm{\Omega} \p{\bm{E} \cdot \bm{B}}},
+\end{align}
+where \(\bm{E}\) and \(\bm{B}\) only depend on \(\bm{r}, t\) which leads to \(\nabla_{\bm{k}} \cdot \bm{E} = 0\). Also, \(\nabla_{\bm k}\cdot \p{\bm v\times\bm B} = \bm B\cdot \p{\nabla_{\bm k}\times\bm v} - \bm v\cdot \p{\nabla_{\bm k}\times\bm B}\) gives the \(\nabla_{\bm k}\times\bm B = 0\) and \(\nabla \times \bm{v} = 0\) where \(\bm{v}\) is the gradient of energy. The last term is \( \nabla_{\bm{k}} \cdot \bb{\bm{\Omega} \p{\bm{E} \cdot \bm{B}}} = \p{\nabla_{\bm{k}}  \cdot \bm{\Omega}}\p{\bm{E} \cdot \bm{B}}\). In the area without monopole, we have \(\nabla_{\bm{k}} \cdot \bm{\Omega} = 0\). Thus,
+\begin{align}
+	\nabla_{\bm{k}} \cdot \p{\mathcal{D} \dot{\bm{k}}} = 0.
+\end{align}
+The sum of these three terms is 
+\begin{align}
+	\frac{\pa D}{\pa t} + \nabla_{\bm{r}} \cdot \p{D \dot{\bm{r}}} +  \nabla_{\bm{k}} \cdot \p{D \dot{\bm{k}}} = \frac{e}{\hbar} \bm{\Omega} \cdot \bb{\frac{\partial \bm B}{\partial t} + \nabla_{\bm{r}} \times \bm{E}}.
+\end{align}
+Faraday's law gives \(\nabla_{\bm r}\times\bm E + \frac{\partial \bm B}{\partial t} =0\) and we verified the modified Liouville theorem. It means the real measure in phase space is \( \frac{d^d r\,d^d k}{\p{2 \pi}^{d}}\mathcal{D}\). 
+
+For a system with fixed chemical potential, we need to use grand canonical ensemble. The grand canonical partition function is 
+\begin{align}
+	\mathcal{Z} = \mr{Tr} e^{-\beta \p{\hat{H} - \mu \hat{N}}}.
+\end{align}
+For noninteracting fermions, if the single-particle energy is \(\varepsilon_\alpha\), then the many-body state is determined by the occupation number of each single-particle state, \(n_{\alpha} = 0,1\). Thus, \(\hat H-\mu \hat N = \sum_\alpha \p{\varepsilon_\alpha-\mu} \hat n_\alpha \) and the partition function is 
+\begin{align}
+	\mathcal Z = \prod_\alpha \left[ \sum_{n_\alpha=0,1} e^{-\beta(\varepsilon_\alpha-\mu)n_\alpha} \right] = \prod_{\alpha} \bb{1 + e^{-\beta \p{\varepsilon_{\alpha} - \mu}}}.
+\end{align}
+The grand potential is 
+\begin{align}
+	\Omega_\mr{grand} = - \frac{1}{\beta} \ln \mathcal{Z} =  - \frac{1}{\beta} \sum_{\alpha} \ln \bb{1 + e^{-\beta \p{\varepsilon_{\alpha} - \mu}}}.
+\end{align}
+With the correction to density of states 
+\begin{align}
+	\sum_{\alpha} \rightarrow \int \frac{d^d k}{\p{2 \pi}^{d}} \mathcal{D} \p{\bm{k}},
+\end{align}
+and the energy correction to single-wave packet
+\begin{align}
+	\tilde{\varepsilon} \p{\bm{k}} = \varepsilon_{0} \p{\bm{k} } - \bm{m} \p{\bm{k}} \cdot \bm{B},
+\end{align}
+Thus, the grand potential is 
+\begin{align}
+	\Omega_{\mr{grand}} =  -\frac{1}{\beta} \int \frac{d^d k}{\p{2 \pi}^{d}} \mathcal{D} \p{\bm{k}} \ln \left[ 1+ e^{-\beta(\tilde{\varepsilon}(\bm k)-\mu)} \right].
+\end{align}
+The number of particle number is \(N = - \pa \Omega_{\mr{grand}}/\pa \mu\), which is 
+\begin{align}
+	N = \int \frac{d^d k}{\p{2 \pi}^{d}} \mathcal{D}\p{\bm{k}}  f\p{\tilde{\varepsilon}},
+\end{align}
+where \(f \p{\tilde{\varepsilon}} = \frac{1}{e^{\beta \p{\tilde{\varepsilon}-\mu}}+1}\), Thus, 
+\begin{align}
+	N = \int \frac{d^d k}{\p{2 \pi}^{d}} \p{1+\frac{e}{\hbar}\bm B\cdot\bm\Omega} f \p{\varepsilon_0-\bm m\cdot\bm B}.
+\end{align}
+At \(T \rightarrow 0 \mr{K}\), \(f \p{\tilde{\varepsilon}} \rightarrow \theta \p{\mu - \tilde{\varepsilon}}\). The number of particle is 
+\begin{align}
+	N = \int^{\mu} \frac{d^d k}{\p{2 \pi}^{d}} \p{1+\frac{e}{\hbar}\bm B\cdot\bm\Omega}.
+\end{align}
+Similarily, the total energy is 
+\begin{align}
+	\boxed{ E = \int^\mu \frac{d^d k}{\p{2 \pi}^{d}} \p{1+\frac{e}{\hbar}\bm B\cdot\bm\Omega} \bb{\varepsilon_0(\bm k)-\bm m(\bm k)\cdot\bm B}}.
+\end{align}
+The defintion of magnetization is 
+\begin{align}
+	\bm{M} = - \p{\frac{\pa \Omega_{\mr{grand}}}{\pa \bm{B}}}_{\mu, T},
+\end{align}
+We rewrite the grand potential as \(\Omega_{\mr{grand}} = \int \frac{d^d k}{\p{2 \pi}^{d}} \mathcal{D} \p{\bm{k}} g\p{\tilde{\varepsilon}}\) where \(g\p{\tilde{\varepsilon}} = -\frac{1}{\beta} \ln \bb{1 + e^{-\beta \p{\tilde{\varepsilon} - \mu}}}\) and \(\pa g/ \pa \tilde{\varepsilon} = f \p{\varepsilon}\). Take differentiate with respect to \(\bm{B}\) and set \(\bm{B} = 0\) give the magnetization \(\bm{M}\). For the contribution from the correction of energy, we have \(\pa \tilde{\varepsilon} / \pa \bm{B} = - \bm{m}\). Thus,
+\begin{align}
+	\frac{\pa g}{\pa \tilde{\varepsilon}} \frac{\pa \tilde{\varepsilon}}{\pa \bm{B}} = -\bm{m} f \p{\tilde{\varepsilon}}.
+\end{align}
+With \(\bm{B} \rightarrow 0\), \(f \p{\tilde{\varepsilon}} \rightarrow f \p{\varepsilon_0}\). So the contribution is 
+\begin{align}
+	\bm{M}_{ce} = -\frac{\pa \Omega}{\pa \bm{B}} \bigg|_{\bm{B} = 0} = \int \frac{d^d k}{\p{2 \pi}^{d}} f\p{\epsilon_0} \bm{m},
+\end{align}
+Similarly, for the correction of measure, we have \(\pa \mathcal{D} / \pa \bm{B} = \frac{e}{\hbar} \bm{\Omega}\). Thus,
+\begin{align}
+	\bm{M}_{cm} =  -\int \frac{d^d k}{\p{2 \pi}^{d}} \frac{e}{\hbar}\bm\Omega g(\varepsilon_0) = \int \frac{d^d k}{\p{2 \pi}^{d}} \frac{e}{\hbar} \frac{1}{\beta} \ln \bb{1 + e^{-\beta \p{\tilde{\varepsilon} - \mu}}} \bm{\Omega}.
+\end{align}
+Combined 
+\begin{align}
+	\bm{M} =  \int \frac{d^d k}{\p{2 \pi}^{d}}  \bb{f\p{\epsilon_0} \bm{m} + \frac{e}{\hbar} \frac{1}{\beta} \ln \bb{1 + e^{-\beta \p{\tilde{\varepsilon} - \mu}}} \bm{\Omega}}.
+\end{align}
+Also, \(\frac{1}{\beta} \ln \bb{1+e^{-\beta(\varepsilon_0-\mu_0)}} \rightarrow \p{\mu_0-\varepsilon_0} \theta\p{\mu_0-\varepsilon_0}\) when \(T \rightarrow 0 \mr{K}\). Thus, 
+\begin{align}
+	\boxed{\bm{M} = \int^{\mu_0} \frac{d^d k}{\p{2 \pi}^{d}} \bb{\bm{m} \p{\bm{k}} + \frac{e}{\hbar}  \p{\mu_0 - \epsilon_0 } \bm{\Omega} \p{\bm{k}}}},
+\end{align}
+which is the first formula of (Eq.11) in the paper. The Berry curvature is \(\bm{\Omega} = i \braket{\nabla_{\bm{k}} u | \times | \nabla_{\bm{k}} u } \) and the last term of above formula is \(\frac{e}{\hbar}  \p{\mu_0 - \epsilon_0 } \bm{\Omega} = \frac{i e }{2 \hbar}  \braket{\nabla_{\bm{k}} u | \times \bb{2  \p{\mu_0 - \epsilon_0} }   | \nabla_{\bm{k}} u }  \) where the \(2\) in the factor \(\frac{i e }{2 \hbar}\) comes from the consistency of factor in \(\bm{m}\) and the magnetization changes into 
+\begin{align}
+	\boxed{\bm{M} = \frac{i e}{2 \hbar}\int^{\mu_0} \frac{d^d k}{\p{2 \pi}^{d}} \braket{\nabla_{\bm{k}} u | \times \bb{2 \mu_0 - \epsilon_0 \p{\bm{k}} - \hat{H}_0}| \nabla_{\bm{k}} u}},
+\end{align}
+which is the second formula of (Eq.11).
+
+We need to emphasize that it is important to distinguish the energy correction of a single wave packet from the phase-space measure correction in the statistical summation. When deriving \(\tilde{\varepsilon}_n(\bm{k})=\varepsilon_{0n}(\bm{k})-\bm{m}_n \p{\bm{k}} \cdot \bm{B}\), we are considering the energy expectation value of a normalized Bloch wave packet centered at \((\bm{r}_c,\bm{k}_c)\). Therefore, this is a single-state quantity and does not involve counting all wave-packet states in phase space. The completeness identity inserted in the derivation is only a Hilbert-space resolution of identity used to evaluate matrix elements; it is not a statistical phase-space counting formula. Hence, the modified measure factor does not enter the single wave-packet energy correction. The phase-space measure correction, \(\mathcal{D} \p{\bm{k}}=1+\frac{e}{\hbar} \bm{B} \cdot \bm\Omega_n \p{\bm{k}} \) appears only when one computes thermodynamic quantities such as the total energy, particle number, or grand potential, where one sums over all occupied wave-packet states. In particular, although \(\mathcal{D}_n=1\) at \(\bm{B}\to0\), its magnetic-field derivative maybe nonzero, i.e. \(\pa_{\bm{B}} \mathcal{D} = \frac{e}{\hbar} \bm{\Omega}\). Thus, the measure correction does not modify the single wave-packet energy, but it contributes to the orbital magnetization when the total energy or grand potential is differentiated with respect to the magnetic field.
+
+\section{Orbital Magnetization from Local Currents in the Wannier Representation}
+Now we will reproduce the results of [Thonhauser et al., PRL 95, 137205 (2005)] which give the expression for the orbital magnetization of a single band in Wannier representation and [Ceresoli et al., PRB 74, 024408 (2006)] which considering the system of multi-band.
+
+\subsection{Preliminaries}
+Before reproducing the results, we first review the Wannier functions and the definition of magnetic moment. A detailed discussion of the Fourier transform and Wannier function is provided in Appendix A. By treating the crystal momentum \(\bm{k}\) within the first Brillouin zone(FBZ) as a continuous variable, we can construct the Wannier functions  \(w \p{\bm{R}, \bm{r}}\) in real space by taking Fourier transform of the Bloch functions \(\psi \p{\bm{k}, \bm{r}}\).  
+\begin{align}
+	\boxed{
+		\ket{w_{n} \p{\bm{R}, \bm{r}}} = \frac{V_{\mr{cell}}}{\p{2 \pi}^{d}} \int_{\mr{BZ}} d^d k\, e^{-i \bm{k} \cdot \bm{R}} \ket{\psi_{n} \p{\bm{k}, \bm{r}}} = \frac{V_{\mr{cell}}}{\p{2 \pi}^{d}} \int_{\mr{BZ}} d^d k\, e^{i \bm{k} \cdot \p{\bm{r} - \bm{R}}} \ket{u_n \p{\bm{k}, \bm{r}}}.
+	}
+\end{align}
+where \(V_{\mr{cell}}\) is the volume or area of the unit cell. We note that the Fourier transform of \(\ket{\psi_n \p{\bm{k,\bm{r}}}}\) requires a sign change in the exponential kernel, i.e. \( e^{i \bm{k} \cdot \bm{R}} \rightarrow  e^{ - i \bm{k} \cdot \bm{\bm{R}}}\). This sign convention ensures that the Wannier function \(w_n \p{\bm{R}, \bm{r}}\) is localized at \(\bm{r} = \bm{R}\) in real space. Conversely, using a positive-exponent kernel \(e^{i \bm{k} \cdot \bm{R}}\) would yield a phase factor \(e^{i \bm{k} \cdot \p{\bm{r} + \bm{R}}}\) for the periodic part \(\ket{u_n \p{\bm{k},\bm{r}}}\), incorrectly shifting the wavepacket center to \(\bm{r} = -\bm{R}\).
+
+Additionally, The Fourier transform does not rely on the \(\bm{k}\)-space periodicity of the Bloch states, \(\ket{\psi \p{\bm{k}, \bm{r}}} = \ket{\psi_{n} \p{\bm{k} + \bm{G}, \bm{r}}} \) where \(\bm{G}\) is a reciprocal lattice vector. While assuming this identity defines the periodic gauge, i.e. \(e^{i \bm{G} \cdot \bm{r}} = 1\), it is generally invalid; the momenta \(\bm{k}\) and \(\bm{k} + \bm{G}\) only correspond to the same eigenvalues of the translation operator.
+
+Therefore, a Wannier function can be understood as a coherent interference pattern, or a real-space wavepacket, formed by the superposition of Bloch waves across the entire Brillouin zone.
+
+
+
+\subsection{Single-band Insulator}
+
+\subsection{Multi-band Insulator}
+
+
+\section{Hatree-Fock Approach Method}
+\subsection{Formalism}
+
+\subsection{TBG with electron-electron interaction}
+
+
+\section{Orbital Magnetization with Interaction}
+\subsection{TBG} 
+
+\subsection{Heterostrain}
+
+\appendix
+
+\section{Fourier Transformation}
+The general Fourier transform is 
+\begin{align}
+	\begin{split}
+		g \p{\bm{r}} & = \int \frac{d^d k}{\p{2 \pi}^{d/2}} e^{i \bm{k} \cdot \bm{r}} f \p{\bm{k}} \\
+		 f \p{\bm{k}} & = \int \frac{d^d r}{\p{2 \pi}^{d/2}} e^{ - i \bm{k} \cdot \bm{r}} g \p{\bm{r}}.
+	\end{split}
+\end{align}
+
+We now turn to the formal expression of Wannier functions. Consider a finite one-dimensional periodic atomic chain comprising \(N\) unit cell where the atomic positions are given by \(R_j = ja; \, j = 0 , \cdots ,N-1\). Under periodic boundary condition(PBC), the allowed crystal momenta are \(k_m = \frac{2 \pi m}{N a}, m = 0,\cdots,N-1\). The transformation between the Bloch and Wannier representations is governed by the standard discrete Fourier transform:
+\begin{align}
+	\begin{split}
+		\ket{w_n \p{R_j}} = \frac{1}{\sqrt{N}} \sum^{N-1}_{m = 0} e^{-i k_{m} R_{j}} \ket{\psi_n \p{k_m}}, \quad \ket{\psi_n \p{k_m}} = \frac{1}{\sqrt{N}} \sum^{N-1}_{j = 0} e^{i k_{m} R_{j}}\ket{w_n \p{R_j}}.
+	\end{split}
+\end{align}
+In the thermodynamic limit \(\p{N \rightarrow \infty,\, \Delta k = \frac{2 \pi}{N a} \rightarrow 0}\), the discrete summation transitions into a continuous integral over the First Brillouin zone(FBZ or BZ). The state-counting measure is
+\begin{align}
+	\frac{1}{N}\sum_{\bm{k}} \rightarrow \frac{V_{\mr{cell}}}{\p{2 \pi}^{d}} \int_{\mr{BZ}} d^{d} k.
+\end{align}
+Therefore, in the continuum Wannier convention used in the main text,
+\begin{align}
+	\ket{w_{n\bm R}}
+	= \frac{V_{\mr{cell}}}{\p{2 \pi}^{d}}
+	\int_{\mr{BZ}} d^d k\, e^{-i\bm{k}\cdot\bm R}
+	\ket{\psi_{n\bm k}}.
+\end{align}
+
+\begin{itemize}
+	\item Gauge Selection, Band Topology, and Wannier Localization
+\end{itemize} 
+
+The reference papers are [Marzari and Vanderbilt, PRB 56, 12847(1997)], [Vanderbilt et al., RMP 84, 1419(2012)] which show the development of Maximally localized Wannier function(MLMF) and [C. Brouder et al., PRL 98, 046402 (2007)] show that Chern insulators cannot display exponentially localized Wannier functions. The [J. Kang and O. Vafek, PRX, 8, 031088 (2018)] build the MLWF in TBG.	
+
+To rigorously establish the localized basis for our model, we must address the following four fundamental questions:
+\begin{enumerate}[label=(\roman*)]
+    \item How does smoothness in Fourier space correspond to localization in real space?
+    \item Why is the position operator \(\hat{\bm{r}}\) ill-defined  in the Bloch representation with Blount relation?
+    \item What exact role does the projection operator \(\mathcal{P} \p{\bm{k}}\) play?
+    \item What is the relation between the localization of Wannier function and gauge dependence? 
+\end{enumerate}
+
+\subsection{Smoothness and localization}
+
+Let's start from the first question. For a general Fourier transform \(g\p{x} = \int d k e^{i k x} f \p{k}\), there are two factors \(e^{i k x}\) and \(f \p{k}\) in the integral. When \(x = 0\), the phase factor becomes \(e^{i kx} = 1\) and the integral is \(g\p{0} = \int dk f \p{k}\). So there is no oscillatory phase in the integral. If \(f \p{k}\) does not strongly oscillate by itself, different \(k\)-components add almost coherently, and the integral is not strongly suppressed. However, when \(\bv{x}\) becomes large, the phase factor \(e^{i k x}\) oscillates rapidly as a function of \(k\). A small change \(\Delta k\) changes the phase by \(\Delta \te = x \Delta k\) and the oscillation period in \(k\)-space is \(\Delta k = \frac{2 \pi}{\bv{x}}\). For large \(\bv{x}\), this period is very small. If \(f \p{k}\) varies slowly, then the positive and negative phase contributions from neighboring \(k\) regions cancel each other efficiently. This destructive interference makes \(g\p{x}\) small at large \(\bv{x}\).
+
+\textit{Thus, strong cancellation occurs when the phase factor \(e^{i kx}\) oscillates much faster than the variation scale of \(f \p{k}\). The oscillation frequency of \(g \p{x}\) in real space depends on its position \(x\).}
+
+The connection between smoothness and decay can be seen from integration by parts. We use 
+\begin{align}
+	e^{i k x } = \frac{1}{i x} \frac{d}{dx} e^{i k x}.
+\end{align}
+Then, 
+\begin{align}
+	g\p{x} = \frac{1}{i x} \bb{e^{i k x} f \p{k}} \bigg|_{\mr{boundary}} - \frac{1}{i x} \int dk e^{i k x} f^{\prime} \p{k}.  
+\end{align}
+It shows two effects. Fist, if the boundary term \(\bb{e^{i k x} f \p{k}} \bigg|_{\mr{boundary}}\) does not vanish, then \(g \p{x}\) generally has a contribution of order \(1/x\). Second, if the boundary term vanishes and \(f^{\prime} \p{k}\) is well-behaved, then the decay of \(g \p{x}\) is controlled by the Fourier transform of \( f^{\prime} \p{k}\) with an extra factor \(1/x\). Furthermore, if \(f \p{k}\) is smoother, we can integrate by parts repeatedly. Each integration by parts gives another factor of \(1/x\). Therefore, a smoother \(f \p{k}\) gives a faster decay of \(g \p{x}\). Like 
+\begin{align}
+	g\p{x} \sim \frac{1}{x^m} \int dk e^{i kx} f^{\p{m}} \p{k}.
+\end{align}
+For example, consider a sharp cutoff in \(k\)-space
+\begin{align}
+	f(k)= \begin{cases} 
+		1, & |k|<K,\\
+		0, & |k|>K.
+	\end{cases}
+\end{align}
+Then the Fourier transform is 
+\begin{align}
+	g\p{x} = \int_{-K}^{K} dk e^{i k x} = \frac{2 \sin\p{Kx}}{x},
+\end{align}
+Thus the real-space function decays as \(g \p{x} \sim 1/x\). This is called algebraic decay or power-law decay. In general, algebraic decay means
+\begin{align}
+	g\p{x} \sim \frac{1}{\bv{x}^{\alpha}},
+\end{align}
+where \(\alpha > 0 \). This is much slower than exponential decay,
+\begin{align}
+	g \p{x} \sim e^{- \bv{x}/\xi}.
+\end{align}
+Therefore, when we say that a non-smooth function in k-space produces a long-range tail in real space, a more precise statement is that it produces a power-law tail.
+
+Boundary terms are especially important when the Fourier variable is defined on a periodic space, such as a Brillouin zone. In one dimension, the Brillouin zone can be represented as an interval, for example \(\bv{-\pi/a, \pi/a}\), but the two endpoints represent the same physical point in reciprocal space. Therefore, smoothness on the Brillouin zone means not only smoothness inside the interval, but also smooth matching across the boundary. For example, one needs \(f \p{-\pi/a} = f\p{\pi/a}\) and similarly for derivatives, \(f^{\prime} \p{-\pi/a} = f^{\prime} \p{\pi/a}\) and so on. If these boundary values do not match, then the function has a discontinuity when viewed as a function on the Brillouin-zone circle. This boundary mismatch leads to boundary terms in integration by parts and therefore to power-law decay in real space.
+
+However, the exponential decay requires the condition of analyticity. A function is analytic if it can be locally represented by a convergent Taylor series. Analytic continuation means that a function originally defined for real \(k\) can be extended to a complex variable \(z = k + i \eta\). Such that the extended function \(f\p{z}\) is analytics in some region in the complex plane and agrees with the original \(f \p{k}\) on the real axis. 
+
+For Fourier localization, the important case is when \(f \p{z}\) is analytic in a strip around the real axis, like \(\bv{\mr{Im} z} < \kappa\) which means that \(f \p{z}\) has no singularities in this strip. The  reason analyticity gives exponential decay is that the Fourier integration contour can be shifted into the complex plane.  For \(x >0\), if \(f \p{z}\) is analytic in the upper half-plane strip, we can shift \(k \rightarrow k + i \eta\). Then the phase factor becomes \(e^{ i \p{k + i \eta}x}\). The factor \(e^{- \eta x}\) directly gives exponential decay. The factor \(e^{- \eta x}\) directly gives exponential decay. y. The maximum allowed shift is limited by the nearest singularity of \(f\p{z}\) in the complex plane. If the nearest singularity is a distance \(\kappa\) away from the real axis, then the Fourier transform typically decays as
+\begin{align}
+	g \p{x} \sim e^{ - \kappa \bv{x}}.
+\end{align}
+
+\textit{Smoothness leads to efficient destructive interference at large distances, while analyticity is the condition that leads to exponential localization.}
+
+\vspace{1.5em}
+
+\subsection{\texorpdfstring{Ill-definedness of $\hat{\bm{r}}$}{ Ill-definedness of r}}
+
+For the second question, we will discuss why the position operator \(\hat{\bm{r}}\) is ill-defined in the Bloch representation, even though it can be formally written through the Blount relation. 
+
+The first point is that Bloch states are extended states. A Bloch wave function has the form \(\ket{\psi_{n}\p{\bm{k},\bm{r}}} = e^{i \bm{k}\cdot \bm{r}} \ket{u_{n} \p{\bm{k},\bm{r}}}\), where \(\ket{u_{n} \p{\bm{k},\bm{r}}}\) is periodic in real space. The full Bloch states \(\psi_{n}\) is not localized in a particular unit cell. It extends over the whole crystal, just like a plane wave extends over all real space. Therefore, the expectation value of the absolute position operator in a single Bloch state, i.e. \(\braket{\psi_{n} | \hat{\bm{r}} | \psi_{n}}\) is not a well-defined finite quantity. Physically, a completely extended Bloch state does not have a definite center in real space.
+
+The problem can already be seen for a free particle. For plane waves \(\ket{k}\), the position perator in momentum representation has the matrix element \(\braket{k | \hat{r} | k^\pr} = i \pa_k \delta \p{k - k^\pr}\). Thus, \(\hat{x}\) is not represented by an ordinary function of \(k\). Instead, it is represented by a derivative with respect to \(k\). This means that the position operator is not local in momentum space: it acts on the momentum-space wave function as a differential operator. 
+
+The same structure appears for Bloch states. Blount's relation gives the matrix element of the position operator between Bloch states as 
+\begin{align}
+	\braket{\psi_{m \bm{k}} | \hat{\bm{r}} | \psi_{n \bm{k}}} = - i \delta_{mn} \nabla_{\bm{k}} \delta\p{\bm{k} - \bm{k}^\pr} + \bm{A}_{mn} \p{\bm{k}} \delta \p{\bm{k} - \bm{k}^\pr}.
+\end{align}
+This expression must be interpreted carefully. It does not mean that \(\hat{\bm{r}}\) becomes an ordinary matrix at each fixed \(\bm{k}\). The term Berry connection is a matrix in band space, but the term \(\nabla_{\bm{k}}\) is a differential operator. It acts on the \(\bm{k}\)-space envelop of a wave packet. Therefore, the position operator cannot be represented as a regular matrix within the fixed-\(\bm{k}\) Hilbert space.
+
+It is different from operators such as the velocity operator. In band-structure calculations, we diagonalize the Bloch Hamiltonian \(H \p{\bm{k}} \ket{u_{n \bm{k}}} = \varepsilon_{n \bm{k}} \ket{u_{n \bm{k}}}\). For each fixed \(\bm{k}\), \(H \p{\bm{k}}\) acts within the cell-periodic Hilbert space. The velocity operator can also be represented as a fixed \(\bm{k}\) matrix, for example 
+\begin{align}
+	v_i \p{\bm{k}} = \frac{1}{\hbar} \pa_{\bm{k}_i} H \p{\bm{k}}.
+\end{align}
+Thus, one can compute matrix elements such as \(\braket{u_{m \bm{k}} | v_i \p{\bm{k}} | u_{n \bm{k}}}\) at a single \(\bm{k}\). The position operator is different. One cannot write a well-defined fixed \(\bm{k}\) matrix element \(\braket{u_{m \bm{k}} | \hat{\bm{r}} | u_{n \bm{k}}}\) in the same way. The reason is that \(\hat{\bm{r}}\) is not an operator acting purely inside the cell-periodic Hilbert space at fixed \(\bm{k}\). Therefore, \(\hat{\bm{r}}\) does not map periodic functions back to periodic functions. It is not a periodic operator compatible with the fixed \(\bm{k}\) cell-periodic Hilbert space.
+
+To see this more explicitly, consider a wave packet constructed from Bloch states and \(\hat{\bm{r}}\) acts as \(i \nabla_{\bm{k}} + \bm{A} \p{\bm{k}}\). The derivative term acts on the envelope function \(a \p{\bm{k}}\) in \(\bm{k}\)-space, while the Berry connection term comes from the \(\bm{k}\)-dependence of the cell-periodic functions. 
+
+\textit{Thus, the position expectation value is meaningful for a wave packet, because a wave packet contains a smooth distribution of \(\bm{k}\)-components. But a single Bloch state corresponds to a delta-function distribution in \(\bm{k}\)-space and therefore does not have a well-defined real-space center.}
+
+And for Wannier function where itself is a wavepacket. The Berry connection part gives the correction associated with the internal position of the Wannier center inside the unit cell. In this sense, the position of a Wannier function contains both the lattice label \(\bm{R}\) and the Berry-connection contribution. Therefore, Blount’s relation does not remove the subtlety of the position operator. Rather, it tells us the correct form of this subtlety. More precisely, \(\bm{r}\) is ill-defined as a fixed \(\bm{k}\) matrix operator only within the cell-periodic Hilbert space. It becomes well-defined when acting on localized wave packets, such as Wannier functions, because such states are built from a coherent superposition of Bloch states over the Brillouin zone.
+
+\vspace{1.5em}
+
+\subsection{Projecting operator}
+
+Let's start from the definition of Wannier functions again
+\begin{align}
+	\ket{w_{n \bm{R}}} = \frac{V_{\mr{cell}}}{\p{2 \pi}^d} \int_{\mr{BZ}} d^d k e^{-i \bm{k} \cdot 
+	\bm{R}} \ket{\psi_{n \bm{k}}},
+\end{align}
+where \(\ket{\psi_{n \bm{k}}}\) comes from a set of Bloch functions 
+\begin{align}
+	\br{\ket{\psi_{1 \bm{k}}} , \cdots , \ket{\psi_{N \bm{k}}}},
+\end{align}
+or equivalently, a set of cell-periodic functions
+\begin{align}
+	\br{\ket{u_{1 \bm{k}}} , \cdots , \ket{u_{N \bm{k}}}},
+\end{align}
+and we call it as Bloch frame. So WFs are obtained from a Bloch frame, not directly from a subspace. Then, the next question is what are the requirements for the Bloch frame?
+
+For each fixed \(\bm{k}\), assuming we choose an \(N\)-dimensional target subspace \(\mathcal{H}_\mr{tar} \p{\bm{k}}\). A Bloch frame is defined by choosing \(N\) orthonormal basis vectors in the subspace, denoted as 
+\begin{align}
+	\mathcal{F}\p{\bm{k}} = \br{\ket{u_{1 \bm{k}}}, \cdots, \ket{u_{n \bm{k}}}},
+\end{align}
+which satisfy the orthonormality condition
+\begin{align}
+	\braket{u_{m \bm{k}} | u_{n \bm{k}} } = \delta_{mn},
+\end{align}
+and span the target space \(\mathcal{H}_\mr{tar} \p{\bm{k}}\). i.e.
+\begin{align}
+	\mr{span} \br{\ket{u_{1 \bm{k}}}, \cdots, \ket{u_{n \bm{k}}}} = \mathcal{H}_\mr{tar} \p{\bm{k}}.
+\end{align}
+Therefore, the subspace specifies what is allowed, whereas the frame determines which basis we actually use for the Fourier transform.
+
+The same subspace can have lots of Bloch frames. If \(\br{\ket{u_{n \bm{k}}}}^{N}_{n = 1}\), then 
+\begin{align}
+	\ket{\tilde{u}_{n\bm{k}}}=\sum^{N}_{m=1}\ket{u_{m\bm{k}}}U_{mn}\p{\bm{k}},\quad U\p{\bm{k}}\in U\p{N},
+\end{align}
+where 
+\begin{align}
+	U \p{N} = \br{N \times N \, \text{complex matrices U} | U^\dagger U = U U^\dagger = I_{N \times N}}.
+\end{align}
+Here, \(U \p{\bm{k}}\) is not an operator acting on the full Hilbert space. It is an \(N \times N\) unitary matrix acting on the band/frame index inside the target subspace. The unitarity condition guarantees that the transformed frame remains orthonormal 
+\begin{align}
+	\braket{\tilde{u}_{n \bm{k}} | \tilde{u}_{m \bm{k}}} = \bb{U^\dagger \p{\bm{k}} U \p{\bm{k}}}_{mn} = \delta_{mn}.
+\end{align}
+Since \(U \p{\bm{k}}\) is invertible, the transformed vectors span the same subspace:
+\begin{align}
+	\mr{span} \br{\ket{\tilde{u}_{1 \bm{k}}}, \cdots, \ket{\tilde{u}_{n \bm{k}}}} = \mr{span} \br{\ket{u_{1 \bm{k}}}, \cdots, \ket{u_{n \bm{k}}}},
+\end{align}
+and
+\begin{align}
+	\sum_n \ket{\tilde{u}_{n\bm{k}}}\bra{\tilde{u}_{n\bm{k}}} = \sum_m \ket{u_{m \bm{k}}}\bra{u_{m \bm{k}}}.
+\end{align}
+Therefore, the unitary transformation changes the Bloch frame but not the target subspace. So the definition of projector operator is 
+\begin{align}
+	\boxed{
+		\mathcal{P} \p{\bm{k}} = \sum^{N}_{n = 1} \ket{u_{n \bm{k}}} \bra{u_{n \bm{k}}}
+	}.
+\end{align}
+It satisfies 
+\begin{align}
+	\begin{split}
+		\mathcal{P} \p{\bm{k}}^2 = \mathcal{P} \p{\bm{k}} \\
+		\mathcal{P} \p{\bm{k}}^{\dagger} = \mathcal{P} \p{\bm{k}},  
+	\end{split}
+\end{align}
+and \(\mr{Ran} \mathcal{P} \p{\bm{k}} = \mathcal{H}_{\mr{tar}} \p{\bm{k}}\). It is obvious that projector is gauge invariant
+\begin{align}
+	\tilde{\mathcal{P}}  \p{\bm{k}} = \mathcal{P} \p{\bm{k}},
+\end{align}
+but frame is gauge dependent which leads to that the Wannier function is gauge dependent. For example, a gauge transformation of single band is 
+\begin{align}
+	\ket{\psi_{\bm{k}} } \rightarrow \ket{\tilde{\psi}_{\bm{k}} } = e^{i \phi \p{k}}  \ket{\psi_{\bm{k}}}.
+\end{align}
+We obtain
+\begin{align}
+	\ket{\tilde{w}_{\bm{R}}} = \int_{\mr{BZ}} dk e^{-i \bm{k} \cdot \bm{R}} e^{i \phi\p{k}} \ket{\psi_{\bm{k}}}.
+\end{align}
+In general,
+\begin{align}
+	\ket{\tilde{w}_{\bm{R}}} \neq \ket{w_{\bm{R}}}.
+\end{align}
+The reason is that a WF is a coherent superposition of Bloch functions with different \(k\). The phase factor \(e^{i \phi\p{k}}\) changes the relative phases between different \(k\)-components. Since the localization of a Wannier function comes from constructive and destructive interference among these \(k\)-components, changing the relative phase leads to the change of Wannier functions.  i.e. A phase factor \(\phi\p{k} = ka\) results in a translation of WF. If \(\phi \p{k}\) has a jump, the Fourier transform will produce a power-law tail. 
+
+The WF localization is controlled by the regularity of the chosen Bloch frame. Roughly speaking: discontinuity of \(\ket{u_{n \bm{k}}}\) implies a power-law tail in \(\ket{w_{n \bm{R}}}\), smoothness of \(\ket{u_{n \bm{k}}}\) implies fast decay of \(\ket{w_{n \bm{R}}}\) and analyticity of \(\ket{u_{n \bm{k}}}\)  in complex \(\bm{k}\) implies exponential decay of \(\ket{w_{n \bm{R}}}\).
+
+\begin{itemize}
+	\item Smoothness of the projection operator
+\end{itemize}
+
+Now we discuss the smoothness of the projection operator. For each fixed \(\bm{k}\), \(\mathcal{P}\p{\bm{k}}\) is an operator which projects onto the target subspace \(\mathcal{H}_{\mr{tar}}\p{\bm{k}}\). Since \(\bm{k}\) varies over the BZ, \(\mathcal{P}\p{\bm{k}}\) is also an operator-valued function of \(\bm{k}\). Therefore, the smoothness of \(\mathcal{P}\p{\bm{k}}\) means the smoothness of this operator-valued function.
+
+To make this statement concrete, choose a fixed \(\bm{k}\)-independent basis \(\br{\ket{\alpha}}\) of the Hilbert space. For example, in a tight-binding model, \(\alpha\) may label orbitals, sublattices, spins, or layers. In a continuum model, \(\alpha\) may label plane waves, layers, and sublattices. In this fixed basis, the matrix elements of the projector are
+\begin{align}
+	\mathcal{P}_{\alpha\beta}\p{\bm{k}}=\bra{\alpha}\mathcal{P}\p{\bm{k}}\ket{\beta}.
+\end{align}
+We say that \(\mathcal{P}\p{\bm{k}}\) is smooth if each matrix element \(\mathcal{P}_{\alpha\beta}\p{\bm{k}}\) is a smooth function of \(\bm{k}\). In other words, \(\mathcal{P}\p{\bm{k}}\) is smooth if it changes smoothly as a matrix when \(\bm{k}\) moves in the BZ.
+
+Equivalently, the smoothness of \(\mathcal{P}\p{\bm{k}}\) means that the target subspace \(\mathcal{H}_{\mr{tar}}\p{\bm{k}}=\mr{Ran}\mathcal{P}\p{\bm{k}}\) varies smoothly as \(\bm{k}\) changes. This is a statement about the subspace as a whole, not about a particular choice of basis inside the subspace. Therefore, the smoothness of \(\mathcal{P}\p{\bm{k}}\) is gauge invariant, while the smoothness of a particular frame may depend on the gauge choice.
+
+A useful way to understand why \(\mathcal{P}\p{\bm{k}}\) is smooth for an isolated group of bands is through the resolvent formula. Suppose the Bloch Hamiltonian satisfies
+\begin{align}
+	H\p{\bm{k}}\ket{u_{n\bm{k}}}=\epsilon_{n\bm{k}}\ket{u_{n\bm{k}}}.
+\end{align}
+The spectral decomposition of \(H\p{\bm{k}}\) is
+\begin{align}
+	H\p{\bm{k}}=\sum_n\epsilon_{n\bm{k}}\ket{u_{n\bm{k}}}\bra{u_{n\bm{k}}}.
+\end{align}
+For complex \(z\) away from the spectrum of \(H\p{\bm{k}}\), the resolvent is
+\begin{align}
+	\frac{1}{z-H\p{\bm{k}}}=\sum_n\frac{\ket{u_{n\bm{k}}}\bra{u_{n\bm{k}}}}{z-\epsilon_{n\bm{k}}}.
+\end{align}
+Now choose a contour \(\mathcal{C}\) in the complex \(z\)-plane. We choose \(\mathcal{C}\) so that it encloses the target eigenvalues \(\epsilon_{n\bm{k}}\) with \(n\in\mr{tar}\), but does not enclose the other eigenvalues. Then
+\begin{align}
+	\boxed{
+		\mathcal{P}\p{\bm{k}}=\frac{1}{2\pi i}\oint_{\mathcal{C}}dz\,\frac{1}{z-H\p{\bm{k}}}
+	}.
+\end{align}
+To see why this gives the projector, substitute the spectral decomposition of the resolvent:
+\begin{align}
+	\frac{1}{2\pi i}\oint_{\mathcal{C}}dz\,\frac{1}{z-H\p{\bm{k}}}=\sum_n\ket{u_{n\bm{k}}}\bra{u_{n\bm{k}}}\frac{1}{2\pi i}\oint_{\mathcal{C}}dz\,\frac{1}{z-\epsilon_{n\bm{k}}}.
+\end{align}
+The contour integral is equal to \(1\) if \(\epsilon_{n\bm{k}}\) lies inside \(\mathcal{C}\), and equal to \(0\) if \(\epsilon_{n\bm{k}}\) lies outside \(\mathcal{C}\). Therefore, the contour integral selects precisely the target states, and we get
+\begin{align}
+	\mathcal{P}\p{\bm{k}}=\sum_{n\in\mr{tar}}\ket{u_{n\bm{k}}}\bra{u_{n\bm{k}}}.
+\end{align}
+
+This expression explains the role of the spectral gap. Define the separation between the target bands and the other bands as
+\begin{align}
+	\Delta_{\mr{sep}}\p{\bm{k}}=\min_{\substack{n\in\mr{tar}\\m\notin\mr{tar}}}\left|\epsilon_{m\bm{k}}-\epsilon_{n\bm{k}}\right|.
+\end{align}
+If \(\Delta_{\mr{sep}}\p{\bm{k}}>0\) for every \(\bm{k}\in\mr{BZ}\), then the target bands form an isolated band manifold. In this case, the contour \(\mathcal{C}\) can be chosen so that it always separates the target spectrum from the rest of the spectrum. Therefore, for \(z\in\mathcal{C}\), the operator \(z-H\p{\bm{k}}\) is always invertible.
+
+If \(H\p{\bm{k}}\) is smooth in \(\bm{k}\), then \(z-H\p{\bm{k}}\) is also smooth in \(\bm{k}\). Since the inverse of a smooth family of invertible matrices is also smooth, \(\p{z-H\p{\bm{k}}}^{-1}\) is smooth in \(\bm{k}\) for all \(z\in\mathcal{C}\). The contour integral over \(z\) then gives a smooth \(\mathcal{P}\p{\bm{k}}\). Thus, an isolated target band manifold gives a smooth projection operator.
+
+Notice that the gap required here is the gap between the target subspace and the outside subspace. We do not need the individual bands inside the target subspace to be separated from each other. For example, two target bands may cross or become degenerate at some \(\bm{k}_0\):
+\begin{align}
+	\epsilon_{n\bm{k}_0}=\epsilon_{m\bm{k}_0},\qquad n,m\in\mr{tar}.
+\end{align}
+This internal degeneracy may make the individual eigenvectors \(\ket{u_{n\bm{k}}}\) and \(\ket{u_{m\bm{k}}}\) difficult to define smoothly. However, the total projector onto the target subspace can still be smooth, because it does not depend on a particular basis inside the target subspace. It only depends on the subspace as a whole.
+
+Therefore, we should distinguish two different questions. The first question is whether the target subspace \(\mathcal{H}_{\mr{tar}}\p{\bm{k}}\) varies smoothly with \(\bm{k}\). This is measured by the smoothness of \(\mathcal{P}\p{\bm{k}}\). The second question is whether we can choose a smooth Bloch frame inside this subspace. This is a stronger question, because it asks for a smooth basis, not just a smooth subspace.
+
+\begin{itemize}
+	\item Smooth projector versus smooth Bloch frame
+\end{itemize}
+
+Now we distinguish the smoothness of \(\mathcal{P}\p{\bm{k}}\) from the existence of a global smooth periodic Bloch frame. If a global smooth Bloch frame \(\br{\ket{u_{n\bm{k}}}}_{n=1}^{N}\) exists, then the projector constructed from this frame is automatically smooth. However, the converse is not guaranteed. A smooth projector means that the target subspace varies smoothly as a subspace, but it does not necessarily mean that one can choose a global smooth periodic basis inside this subspace.
+
+The obstruction is global. Locally, if \(\mathcal{P}\p{\bm{k}}\) is smooth, one can choose a smooth frame in a small region of the BZ. Suppose the BZ is covered by several patches \(\br{U_a}\). On each patch \(U_a\), we may choose a local smooth frame
+\begin{align}
+	\br{\ket{u^{(a)}_{n\bm{k}}}}_{n=1}^{N},\qquad \bm{k}\in U_a.
+\end{align}
+On the overlap \(U_a\cap U_b\), these two local frames span the same subspace, so they must be related by a transition function
+\begin{align}
+	\ket{u^{(b)}_{n\bm{k}}}=\sum_{m=1}^{N}\ket{u^{(a)}_{m\bm{k}}}g^{ab}_{mn}\p{\bm{k}},\qquad g^{ab}\p{\bm{k}}\in U\p{N}.
+\end{align}
+The projector \(\mathcal{P}\p{\bm{k}}\) is insensitive to this transition function, because both frames describe the same subspace. However, a global smooth periodic frame exists only if these local frames can be glued together smoothly and periodically over the whole BZ. This is a stronger condition than the smoothness of \(\mathcal{P}\p{\bm{k}}\).
+
+For a single isolated band, the transition function is a \(U\p{1}\) phase:
+\begin{align}
+	\ket{u^{(b)}_{\bm{k}}}=e^{i\chi^{ab}\p{\bm{k}}}\ket{u^{(a)}_{\bm{k}}}.
+\end{align}
+The Berry connections on two patches are then related by
+\begin{align}
+	\bm{A}^{(b)}\p{\bm{k}}=\bm{A}^{(a)}\p{\bm{k}}-\nabla_{\bm{k}}\chi^{ab}\p{\bm{k}}.
+\end{align}
+The Berry curvature is gauge invariant:
+\begin{align}
+	\Omega^{(b)}\p{\bm{k}}=\Omega^{(a)}\p{\bm{k}}.
+\end{align}
+The Chern number measures the total Berry flux through the BZ:
+\begin{align}
+	C=\frac{1}{2\pi}\int_{\mr{BZ}}d^2k\,\Omega\p{\bm{k}}.
+\end{align}
+
+Now suppose that a global smooth periodic frame \(\ket{u_{\bm{k}}}\) exists. Then the Berry connection \(\bm{A}\p{\bm{k}}\) is also globally smooth and periodic on the BZ torus. In that case, the Berry curvature can be written globally as
+\begin{align}
+	\Omega\p{\bm{k}}=\partial_{k_x}A_y\p{\bm{k}}-\partial_{k_y}A_x\p{\bm{k}}.
+\end{align}
+Since the BZ torus has no boundary, the integral of a globally defined curl over the whole torus must vanish:
+\begin{align}
+	\int_{\mr{BZ}}d^2k\,\Omega\p{\bm{k}}=0.
+\end{align}
+Therefore, the existence of a global smooth periodic frame implies
+\begin{align}
+	C=0.
+\end{align}
+The contrapositive is the important statement:
+\begin{align*}
+	C\neq0 \quad \Longrightarrow \quad \text{no global smooth periodic frame}.
+\end{align*}
+
+This is the precise meaning of the Chern obstruction. It does not say that the projector \(\mathcal{P}\p{\bm{k}}\) is non-smooth. Instead, it says that although the subspace can be smooth locally everywhere, the local smooth frames cannot be glued into one global smooth periodic frame. The obstruction lies in the transition functions between patches.
+
+This is why a Chern band can have a smooth projector but no smooth global frame. If the band is separated from all other bands by a finite gap, then the corresponding projector \(\mathcal{P}\p{\bm{k}}\) can be smooth by the resolvent argument. However, if its Chern number is nonzero, the smooth subspace bundle defined by \(\mathcal{P}\p{\bm{k}}\) is topologically nontrivial. The projector describes the subspace as a whole and remains smooth, but any attempt to choose a single smooth periodic vector \(\ket{u_{\bm{k}}}\) over the whole BZ must fail.
+
+Equivalently, for \(C\neq0\), one may choose smooth frames locally on different patches, but there must be nontrivial phase winding in the transition functions. This winding cannot be removed by a gauge transformation. Therefore, the obstruction is not a local singularity of \(\mathcal{P}\p{\bm{k}}\), but a global obstruction to trivializing the smooth subspace bundle.
+
+Thus, the correct distinction is: \(\mathcal{P}\p{\bm{k}}\) means the target subspace is locally smooth, \(C \neq 0\) means the smooth subspace cannot be represented by one global smooth periodic frame.
+
+\subsection{Maximally localized Wannier functions}
+
+\begin{itemize}
+	\item Gauge dependence and MLWF
+\end{itemize}
+
+The gauge dependence of WFs is the reason why MLWF can be defined. For a fixed target subspace, the projector \(\mathcal{P}\p{\bm{k}}\) is fixed, but the Bloch frame is not unique. Different choices of gauge give different WFs.
+
+For a single isolated band, the gauge freedom is \(\ket{u_{\bm{k}}}\rightarrow e^{i\phi\p{\bm{k}}}\ket{u_{\bm{k}}}\). For a group of \(N\) bands, the gauge freedom is \(\ket{u_{n\bm{k}}}\rightarrow \sum_{m=1}^{N}\ket{u_{m\bm{k}}}U_{mn}\p{\bm{k}},\qquad U\p{\bm{k}}\in U\p{N}\). These transformations do not change \(\mathcal{P}\p{\bm{k}}\), but they change the WFs obtained by Fourier transform. Therefore, different gauges give WFs with different centers, shapes, and spreads.
+
+MLWF uses this gauge freedom to choose the most localized WFs. More precisely, it searches for the gauge that minimizes the spread functional
+\begin{align}
+	\boxed{
+		\Omega=\sum_n\left[\braket{w_{n\bm{0}}|r^2|w_{n\bm{0}}}-\left|\braket{w_{n\bm{0}}|\bm{r}|w_{n\bm{0}}}\right|^2\right]
+	}.
+\end{align}
+Thus, in MLWF, the target subspace is fixed, but the gauge is varied.
+
+
+\section{}
+
+\end{document}
