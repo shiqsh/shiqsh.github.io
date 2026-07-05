@@ -1,0 +1,701 @@
+\documentclass[10pt, oneside]{article}
+
+% =========================
+% Chinese font with ctex
+% Compile with XeLaTeX
+% =========================
+\usepackage[UTF8, scheme=plain, fontset=none]{ctex}
+
+\setCJKmainfont{Kai}     
+
+% =========================
+% Page geometry
+% =========================
+\usepackage[
+	letterpaper,
+	tmargin=1in,
+	bmargin=1in,
+	lmargin=1.1in,
+	rmargin=1.1in
+]{geometry}
+
+% =========================
+% Math
+% =========================
+\usepackage{amsmath, amsthm, amssymb, mathrsfs, verbatim, bbm, color, graphicx, authblk}
+\usepackage{booktabs, multirow, makecell,colortbl, enumitem}
+\usepackage{braket}
+\usepackage{caption, subcaption}
+\usepackage{framed}
+\usepackage{bm}
+
+% =========================
+% Author / affiliation
+% =========================
+\renewcommand\Authfont{\fontsize{12pt}{14pt}\selectfont}
+\renewcommand\Affilfont{\fontsize{12pt}{14pt}\selectfont\itshape}
+\setlength{\affilsep}{0.25em}
+
+% =========================
+% Contents / section control
+% =========================
+\usepackage{tocloft}
+\usepackage{titlesec}
+
+% =========================
+% Hyperref
+% =========================
+\usepackage{hyperref}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=blue,
+	urlcolor=blue,
+	citecolor=blue,
+}
+
+% =========================
+% Page number: bottom center
+% =========================
+\makeatletter
+\renewcommand{\ps@plain}{%
+	\renewcommand{\@oddhead}{}%
+	\renewcommand{\@evenhead}{}%
+	\renewcommand{\@oddfoot}{\hfil{\fontsize{12pt}{14pt}\selectfont\thepage}\hfil}%
+	\renewcommand{\@evenfoot}{\hfil{\fontsize{12pt}{14pt}\selectfont\thepage}\hfil}%
+}
+\makeatother
+
+\pagestyle{plain}
+
+% =========================
+% Main font size
+% 正文 12pt，正文行距 14pt
+% =========================
+\AtBeginDocument{\fontsize{12pt}{14pt}\selectfont}
+
+% =========================
+% Paragraph
+% =========================
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+
+% =========================
+% Section / subsection labels
+% section: I. II.
+% subsection: A. B.
+% =========================
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\Alph{subsection}}
+
+% section 标题：左对齐
+\titleformat{\section}
+	{\normalfont\bfseries\fontsize{12pt}{14pt}\selectfont}
+	{\thesection.}
+	{1.2em}
+	{}
+
+% subsection 标题：往后缩进一点
+\titleformat{\subsection}
+	{\normalfont\bfseries\fontsize{12pt}{14pt}\selectfont}
+	{\thesubsection.}
+	{1.2em}
+	{}
+
+% section 上下间距
+% {左缩进}{标题前距离}{标题后距离}
+\titlespacing*{\section}
+	{0pt}
+	{3.0ex plus 0.5ex minus 0.2ex}
+	{2.8ex plus 0.3ex}
+
+% subsection 上下间距
+% subsection 往右缩进 2em，并且标题后留出距离
+\titlespacing*{\subsection}
+	{2em}
+	{3.0ex plus 0.5ex minus 0.2ex}
+	{2.2ex plus 0.3ex}
+
+% =========================
+% Contents style
+% =========================
+\renewcommand{\contentsname}{CONTENTS}
+
+% CONTENTS 标题
+\renewcommand{\cfttoctitlefont}{\hspace*{1.4em}\fontsize{11pt}{12pt}\selectfont\bfseries}
+\renewcommand{\cftaftertoctitle}{}
+
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftaftertoctitleskip}{0.65em}
+
+% 目录无点线
+\renewcommand{\cftdotsep}{\cftnodots}
+
+% section / subsection 目录缩进
+\setlength{\cftsecindent}{0pt}
+\setlength{\cftsecnumwidth}{2.0em}
+
+\setlength{\cftsubsecindent}{2.0em}
+\setlength{\cftsubsecnumwidth}{2.0em}
+
+% 目录编号格式：
+\renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftsubsecaftersnum}{.}
+
+% 目录字体
+\renewcommand{\cftsecfont}{\fontsize{14pt}{16pt}\selectfont}
+\renewcommand{\cftsecpagefont}{\fontsize{14pt}{16pt}\selectfont}
+\renewcommand{\cftsubsecfont}{\fontsize{14pt}{16pt}\selectfont}
+\renewcommand{\cftsubsecpagefont}{\fontsize{14pt}{16pt}\selectfont}
+
+\setlength{\cftbeforesecskip}{0.8em}
+\setlength{\cftbeforesubsecskip}{0.2em}
+
+% \numberwithin{equation}{subsection}
+
+% =========================
+% Title information
+% =========================
+\title{\fontsize{15pt}{20pt}\selectfont\bfseries
+异质应力下转角石墨烯的面内轨道磁化强度}
+
+\author[1]{Qian-Sheng Shi}
+
+\affil[1]{
+School of Physical Science and Technology, ShanghaiTech University, \protect\\
+Shanghai 201210, China.
+}
+
+\newcommand{\notestartdate}{June 18, 2026}
+
+\date{\fontsize{11pt}{14pt}\selectfont
+(Dated: \notestartdate --\today)}
+
+% =========================
+% Custom maketitle style
+% 不让 \maketitle 自动换页
+% =========================
+\makeatletter
+
+\renewcommand{\@maketitle}{%
+	\begin{center}
+		{\@title \par}
+		\vspace{1em}
+		{\@author \par}
+		\vspace{0.15em}
+		{\@date \par}
+	\end{center}
+}
+
+\renewcommand{\maketitle}{%
+	\begingroup
+		\let\footnote\thanks
+		\@maketitle
+	\endgroup
+}
+
+\makeatother
+
+\newcommand{\te}{\theta}
+\newcommand{\ph}{\phi}
+\newcommand{\ps}{\psi}
+\newcommand{\vph}{\varphi}
+\newcommand{\vps}{\varpsi}
+\newcommand{\pr}{\prime}
+\newcommand{\pa}{\partial}
+\newcommand{\mr}[1]{\mathrm{#1}}
+\newcommand{\mb}[1]{\mathbf{#1}}
+\newcommand{\p}[1]{\left(#1\right)}
+\newcommand{\bb}[1]{\left[#1\right]}
+\newcommand{\br}[1]{\left\{#1\right\}}
+\newcommand{\bv}[1]{\left|#1\right|}
+
+% =========================
+% Document
+% =========================
+\begin{document}
+
+{\fontsize{12pt}{16pt}\selectfont
+\tableofcontents
+}
+
+\vspace{0.8em}
+
+\maketitle
+
+\thispagestyle{plain}
+
+\clearpage
+
+\section{面内磁化强度表达式}
+
+在Kang-Wang-Vafek的文章当中，关于面内磁化强度部分的描述应该是\textit{the Eq.14 does not rely on periodicity. When combined with the Eq.10, it allows for application to spatially inhomogeneous systems, including with disorder or open boundaries}.也就是说文中给出的磁化强度表达式虽然是适用于周期性体系的，但是其更基本的实空间格林函数并不要求在所有方向上都具有周期性。
+
+通常，\(z\)方向上的轨道磁化强度\(M_z\) 来自于实空间中\(xy\)平面内的局域轨道电流，即\(\bm{M} = -\frac{e}{2} \braket{\bm{r} \times \bm{v}}\)。对于类似石墨烯这类二维系统，\(xy\)方向上都具有平移周期性，因此平面内的轨道运动可以被Bloch函数在动量空间中的变化描述，最终在轨道磁化的表达式中出现\(\ket{\pa_{\bm{k}} u}\)。
+
+同理，面内磁化\(\bm{M}_{x}\)和\(\bm{M}_{y}\)对应的是\(yz\)和\(zx\)平面中的轨道电流，这必然涉及到\(z\)方向。对于严格的二维单层系统来说，电子没有在\(z\)方向上运动的自由度，显然也不会存在\(z\)方向上的轨道电流，因此面内的轨道磁化强度为零。但是对于转角石墨烯（TBG）来说，其在\(z\)方向上是有一定厚度的，不过在\(z\)方向上并不存在周期性。因此，\(\bm{k}_z\)并不是好量子数，也就自然不存在\(\ket{\pa_{\bm{k}_z} u}\)。所以，一个很简单的想法就是：\(z\) 方向上的状态应该由其坐标表示，而平面内用用动量进行表示。
+
+\subsection{Kang-Wang-Vafek文章回顾}
+文章中的Eq.9给出热力学下磁化强度的定义，
+\begin{align}
+    M &= - \frac{d \Omega}{d B}\bigg|_{B = 0} = - \frac{d \braket{\hat{H}}}{dB}\bigg|_{B = 0} + \mu \frac{d \braket{\hat{N}}}{dB}\bigg|_{B = 0}, 
+\end{align}
+其中\(\Omega\)是巨正则势。因此，轨道磁化是巨正则势在\(B = 0\)处对外磁场的一阶响应系数，形式上，其对应为\(\Omega\p{B} = \Omega \p{0} - M \p{0} B + O \p{B^2}\)的线性项系数。如果直接从有限磁场出发，需要求解有限磁场\(\bm{B}\)下的能谱并且对\(\Omega\)做微分。对于周期体系，磁场会破坏普通的平移对称性，能谱会形成朗道能级或者磁子带的情况，求解这样的能谱并且对\(\Omega\)做数值微分是很复杂的。现代理论通常不直接求解有限磁场下的完整能谱，而是把外磁场作为一个变量，只提取巨正则势中关于\(\bm{B}\)的一阶项。即。
+
+对于没有相互作用的体系，垂直方向的轨道磁化公式可以通过多种等价方式得到：波包半经典理论中弱磁场下波包能量和相空间态密度的一阶修正（牛谦），瓦尼尔表象下零场的占据态子空间中的局域环流和边界环流（范德堡），以及通过规范不变的格林函数对巨正则势做关于磁场的微绕展开(Raoux)得到。 也就是
+\begin{align}
+    \bm{M}_{z} = \frac{i e}{2 \hbar}\int^{\mu_0} \frac{d^d k}{\p{2 \pi}^{d}} \braket{\nabla_{\bm{k}} u | \times \bb{2 \mu_0 - \epsilon_0 \p{\bm{k}} - \hat{H}_0}| \nabla_{\bm{k}} u}.
+\end{align}  
+零场轨道磁化可以看作由零磁场波函数决定的内禀几何量，但这并不意味着有限磁场下的轨道磁化\(\bm{M} \p{\bm{B}}\)不随着\(\bm{B}\)变化。
+
+Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartree-Fock近似下的相互作用体系。对于非相互作用的单粒子系统，虽然要考虑朗道能级和磁子带，但我们只需要对角化一个单粒子哈密顿量。但是在HF近似下，哈密顿量本身还依赖于单粒子密度矩阵
+\begin{align}
+    H^{\mr{HF}} \p{B} = H^{0} \p{B} + V^{\mr{HF}} \bb{P \p{B}},
+\end{align}
+也就是说，在有限磁场下不仅要处理磁子带，还需要在这些磁子带空间中重新计算HF势并进行自洽迭代。问题从一个无相互作用下对大矩阵对角化的问题，变成了相互作用下的大矩阵对角化加自洽循环的问题。这无疑是困难的。
+
+而Kang-Wang-Vafek的文章的核心目的正式为了避免直接在有限磁场下求解自洽HF方程。对于零温轨道磁化强度，虽然其涉及巨正则势对外磁场的一阶导数。但是文章证明，这个导数最终可以只用零磁场下的自洽HF哈密顿量和波函数来进行表示。当然这需要我们得到完整的零磁场下HF的能谱，这也就是文章中说“more remote bands should be included” (也就是Pinzhuo Li的文章所讨论的内容)，但是这避免了我们去考虑复杂的有限磁场下的情况。
+
+总结就是，我们不需要真的去求解有限磁场下的\(H^{\mr{HF}} \p{B}\)， 而是可以从\(B = 0\)的自洽HF解出发，直接通过计算巨正则势对磁场的一阶导数得到轨道磁化强度。
+
+\vspace{1em}
+具体来说，在HF近似下，体系的能量期望可以看作单粒子密度矩阵\(P\)的泛函，而HF哈密顿量是能量对于\(P\)的一阶泛函导数。 因此，巨正则势在\(B = 0\)的一阶变化可以写成零磁场HF哈密顿量与密度矩阵一阶变化的相乘。引入去掉Peierls相位的密度矩阵\(\widetilde{P}\)，轨道磁化强度可以写成
+\begin{align}
+    M = - \int d \bm{r} \braket{\bm{r} | \p{\hat{H}^{\p{0} HF}- \mu}  \frac{d \widetilde P}{ d B} | \bm{r}}\bigg|_{B = 0},
+\end{align}
+也就是Eq.10，这里省略了其他内部自由度的下标\(a,b\)。\(\bm{r}\)则来自于最开始在实空间所写出的费米场算符(连续场算符)。进一步，单粒子密度算符可以通过复平面上格林函数围道积分所表示
+\begin{align}
+    \widetilde{P}\p{\bm{r},\bm{r}^\pr} = \oint_{\mathcal{C}} \frac{d \zeta}{ 2 \pi i} \widetilde{G}\p{\bm{r},\bm{r}^\pr; \zeta },
+\end{align}
+文中这里复平面用的指标是\(z\), 但是为了避免和后面所讨论的\(z\)方向出现指标上的混淆，这里用\(\zeta\)来表示复平面。磁化强度也可以写成
+\begin{align}
+    M = -\sum_n \oint_{\mathcal{C}} \frac{d z}{ 2 \pi i} \p{E_n - \mu} \braket{n | \frac{d \widetilde{G} \p{z}}{dB} |n} \bigg|_{B = 0}.
+\end{align}
+这里\(\ket{n}\)是HF哈密顿量的本征态，对应能量为\(E_n\)。因此，问题变成了如何求解格林函数对磁场强度导数的问题。为了得到去掉Peierls相位的格林函数\(\widetilde{G}\), 我们需要回到原始格林函数的定义\(\braket{\bm{r} | \p{\zeta - \hat{H}^{HF} } \hat{G} \p{\zeta} | \bm{r}^\pr } = \delta \p{\bm{r} - \bm{r}^\pr}\)。在这个式子的两端分别乘上\(e^{i \Phi \p{\bm{r}^\pr, \bm{r}}}\), 同时在左边插入完备关系 \(\mathbb{I} = \sum_{a^\pr} \int d\bm{x} \ket{\bm{x}, a^\pr} \bra{\bm{x}, a^\pr}\)。右边的\(\delta_{\alpha \alpha^\pr} \delta \p{\bm{r} - \bm{r}^\pr} e^{i \Phi \p{\bm{r}, \bm{r}^\pr}}\), 通过Peierls相位的定义可以看出，当\(\bm{r} = \bm{r}^\pr\), \(e^{i \Phi} = 1\)，所以这还是一个delta函数。因此对于去掉Peierls相位的格林函数有以下关系
+\begin{align}
+	\begin{split}
+		&\int d\bm{x} \bb{\zeta \delta \p{\bm{r} - \bm{x}} \delta_{ab} - \widetilde{V}^{HF} \p{\bm{r}, \bm{x}}} e^{i \vph \p{\bm{r}^\pr, \bm{r}, \bm{x}}} \widetilde{G}_{ba^\pr} \p{\bm{x},\bm{r}^\pr; \zeta}  \\
+		&- \hat{H}_{ab} \bb{p_\mu - \epsilon_{\mu \nu} \frac{eB}{2 c} \p{r_{\nu} - r_{\nu}^\pr}} \widetilde{G}_{b a^\pr} \p{\bm{r},\bm{r}^\pr; \zeta} = \delta_{a a^\pr} \delta \p{\bm{r}-\bm{r}^\pr}.
+	\end{split}
+\end{align}
+
+也就是Eq.12这里的求和采用了爱因斯坦指标求和方式，所以对其他自由度的求和省去了。同时，可以看到正是在左边乘上\(e^{i \Phi \p{\bm{r}^\pr, \bm{r}}}\)，让我们得到了一个干净的\(\widetilde{G}\)。这里新的相位因子是 \(e^{i \vph \p{\bm{r}^\pr, \bm{r},\bm{x}}} = e^{i \Phi \p{\bm{r}^\pr,\bm{r}}}  e^{i \Phi \p{\bm{r},\bm{x}}} e^{i \Phi \p{\bm{x},\bm{r}^\pr}}\), 这是一个规范不变的闭合磁通相位\(\bm{r}^\pr \rightarrow \bm{r} \rightarrow \bm{x} \rightarrow \bm{r}^\pr\). 因此可以改写成和面积有关的表达式为\(e^{i \vph \p{\bm{r}^\pr, \bm{r},\bm{x}}} = \exp \bb{i \frac{eB}{2 \hbar c}  \hat{\bm{z}} \cdot \p{\bm{x} - \bm{r}} \times \p{\bm{r}^\pr - \bm{x}}}  \). 在对Eq.12求导之前，我们可以先粗略地将其写成 \(\mathcal{L} \p{B} \widetilde{G} \p{B} = 1\), 对其求导得到
+\begin{align}
+	\frac{d\mathcal{L}}{dB} \widetilde{G} + \mathcal{L} \frac{d \widetilde{G}}{d B} = 0 \Rightarrow \mathcal{L} \frac{d \widetilde{G}}{d B} = - \frac{d \mathcal{L}}{d B} \widetilde{G}.
+\end{align}
+当\(B = 0\)时，\(\mathcal{L}\p{0} = \zeta - \hat{H}^{HF}\p{0}\), 它的逆也就是\(\mathcal{L}^{-1} \p{0} = G^{\p{0}} \p{\zeta}\), 同时 \(\widetilde{G} \p{0} = G^{\p{0}}\). 上式可以改写成
+\begin{align}
+	\frac{d \widetilde{G}}{d B} \Bigg|_{B = 0} = - G^{\p{0}} \frac{\mathcal{L}}{d B} \Bigg|_{B=0} G^{\p{0}}.
+\end{align}
+可以看到\(\mathcal{L}\)里面对\(B\)的依赖有三项，分别是\(- \widetilde{V}^{HF}, e^{i \vph}\)和 \(\hat{H}_{ab} \bb{p_\mu - \epsilon_{\mu \nu} \frac{eB}{2 c} \p{r_{\nu} - r_{\nu}^\pr}} \)。分别求导然后组合在一起便可以得到（详细过程见附录）
+\begin{align}
+	\frac{d \widetilde{G}}{d B} \Bigg|_{B = 0}  = \hat{G}^{\p{0}} \p{\zeta} \frac{d \widetilde{V}^{HF}}{d B}\Bigg|_{B = 0}  \hat{G}^{\p{0}}  + \frac{i e}{2 \hbar c} \epsilon_{\mu \nu} \hat{G}^{\p{0}} \bb{\hat{H}^{0, HF} , \hat{x}_{\mu}} \hat{G}^{\p{0}}  \bb{\hat{H}^{0, HF} , \hat{x}_{\nu}} \hat{G}^{\p{0}}.
+\end{align}
+这也正是Eq.14。但是Eq.14里面的\(\widetilde{V}^{HF}\)依赖于自洽方程得到，我们无法写出其具体形式。写出其在轨道磁化中所贡献部分的表达式
+\begin{align}
+	- M_{\widetilde{V}} = \sum_{n} \oint_{\mathcal{C}} \frac{d \zeta}{2 \pi i} \p{E_n - \mu} \frac{\braket{n | \frac{d \widetilde{V}^{HF}}{d B} | n}}{\p{\zeta - E_n}^2},
+\end{align}
+其中\(\ket{n}\)是零场HF哈密顿量的本征态，对应的本征方程为\(\hat{H}^{\p{0},  HF} \ket{n} = E_n \ket{n}\)。这里用到了
+\begin{align}
+	\hat{G}^{\p{0}} = \sum_n \frac{\ket{n}\bra{n}}{\zeta - E_n}.
+\end{align}
+可以证明的是，对于这样一个有这重合极点的表示，最后会给出\( \p{E_n - \mu} \delta \p{E_n - \mu} \)的形式，也就是说，只要费米面存在，那么这一项的贡献就为零。因此，我们只需要处理Eq.14中的第二项，有海森堡方程
+\begin{align}
+	- i \hbar \hat{v}^{HF}_{\alpha} = \bb{\hat{H}^{\p{0}, HF}, \hat{x}_\alpha},
+\end{align}
+代入到Eq.14，轨道磁化可以写成
+\begin{align}
+	M = \frac{i e \hbar}{2 c} \epsilon_{\alpha \beta} \sum_{n} \oint_{\mathcal{C}} \frac{d \zeta}{ 2 \pi i} \p{E_n - \mu} \braket{n | \hat {G}^{\p{0}}  \hat{v}^{HF}_{\alpha}  \hat{G}^{\p{0}}  \hat{v}^{HF}_{\beta} \hat{G}^{\p{0}}   | n}。
+\end{align}
+进一步将上面的格林函数关系代入，得到
+\begin{align}
+	M = \frac{i e \hbar}{2 c} \epsilon_{\alpha \beta} \sum_{n, n^\pr} \oint_{\mathcal{C}} \frac{d \zeta}{ 2 \pi i} \p{E_n - \mu} \frac{\braket{n |  \hat{v}^{HF}_{\alpha}  | n^\pr } \braket{n^\pr |  \hat{v}^{HF}_{\beta} |n }}{\p{\zeta - E_n}^2 \p{\zeta - E_{n^{\pr}}}},
+\end{align}
+当\(n = n^\pr\)时，有\(v_{\alpha, nn} v_{\beta, nn} = v_{\beta, nn} v_{\alpha, nn}\), 又因为前面有\(\epsilon_{\alpha \beta}\), 因此\(n = n^\pr\)对轨道磁化的贡献为零。而当\(n \neq n^\pr\)时，有如下关系\footnote{附录中同样会进行证明}
+\begin{align}
+	\oint_{\mathcal{C}} \frac{d \zeta}{2 \pi i} \frac{1}{\p{\zeta - E_n}^2 \p{\zeta - E_{n^{\pr}}}} = \frac{n_{F} \p{E_{n^\pr} } - n_F \p{E_n}}{ \p{E_{n^\pr} - E_{n}}}^2.
+\end{align}
+最后我们可以得到
+\begin{align}
+	M = \frac{i e \hbar}{2 c} \epsilon_{\alpha \beta} \sum_{n \neq n^\pr} \p{E_n - \mu} \braket{n |  \hat{v}^{HF}_{\alpha}  | n^\pr } \braket{n^\pr |  \hat{v}^{HF}_{\beta} |n } \frac{n_{F} \p{E_{n^\pr} } - n_F \p{E_n}}{ \p{E_{n^\pr} - E_{n}}^2}.
+\end{align}
+也就是Eq.17。
+
+在具有平移对称性的周期体系当中，本征态为Bloch函数。因此原先对所有单粒子本征态\(n\)的求和，变成了对动量\(\bm{k}\)和能带指标\(n,m\)的求和。当然由于速度算符在周期体系当中平移不变，因此其不会混合不同的\(\bm{k}\)，所以由\(\ket{n, \bm{k}}\)和\(\ket{m, \bm{k}^\pr}\)带来的对动量指标的求和会变成\(\sum_{\bm{k},\bm{k}^\pr} \rightarrow \sum_{\bm{k}}\)。具体形式为
+\begin{align}
+	\braket{n, \bm{k} | \hat{v}^{HF}_{\alpha}| m, \bm{k}^\pr} = \delta_{\bm{k\bm{k}^\pr}} \frac{1}{\hbar} \bb{E_m \p{\bm{k}} - E_n  \p{\bm{k}}} \braket{u_{n,\bm{k}} | \pa_{k_\alpha} u_{m,\bm{k}}}.
+\end{align}
+只有在这一步才依赖于\(x,y\)平面内的周期性。进而，轨道磁化强度可以写成
+\begin{align}
+	M = \frac{e}{2 i \hbar c} \epsilon_{\alpha \beta} \sum_{\bm{k}} \sum_{n \neq m} \bb{E_{n}\p{\bm{k}} - \mu} \braket{u_{n,\bm{k}} | \pa_{k_{\alpha}} u_{m,\bm{k}}} \braket{u_{m ,\bm{k}} | \pa_{k_{\beta}} u_{n, \bm{k}}} \bb{n_{F} \p{E_{m}} - n_{F} \p{E_n}} ,
+\end{align}
+注意到这里的\(\epsilon_{\alpha \beta}\braket{u_{n,\bm{k}} | \pa_{k_{\alpha}} u_{m,\bm{k}}} \braket{u_{m ,\bm{k}} | \pa_{k_{\beta}} u_{n, \bm{k}}} \)和\( \bb{n_{F} \p{E_{m}} - n_{F} \p{E_n}}\) 在交换\(n\)和\(m\)时会变号，因此两者结合在一起就是对称的。所以这里只有\(E_n - \mu\)是非对称的，将其写成对称的形式\(\frac{1}{2} \p{E_n + E_m - 2 \mu}\)，从而变成
+\begin{align}
+	M = \frac{e}{4 i \hbar c}\epsilon_{\alpha \beta} \sum_{\bm{k}} \sum_{n \neq m} \bb{E_{n}\p{\bm{k}} + E_m \p{\bm{k}} - 2 \mu} \braket{u_{n,\bm{k}} | \pa_{k_{\alpha}} u_{m,\bm{k}}} \braket{u_{m ,\bm{k}} | \pa_{k_{\beta}} u_{n, \bm{k}}} \bb{n_{F} \p{E_{m}} - n_{F} \p{E_n}}.
+\end{align}
+这里又有\(\epsilon_{\alpha \beta} \braket{u_{n,\bm{k}} | \pa_{k_{\alpha}} u_{m,\bm{k}}} \braket{u_{m ,\bm{k}} | \pa_{k_{\beta}} u_{n, \bm{k}}} = - \epsilon_{\alpha \beta} \braket{\pa_{k_\alpha} u_{n,\bm{k}} | u_{m,\bm{k}}} \braket{u_{m,\bm{k}} | \pa_{k_\beta} u_{n,\bm{k}}}\)。同时定义\(B_{nm} = \epsilon_{\alpha \beta} \bb{E_{n}\p{\bm{k}} + E_m \p{\bm{k}} - 2 \mu} \braket{\pa_{k_\alpha} u_{n,\bm{k}} | u_{m,\bm{k}}} \braket{u_{m,\bm{k}} | \pa_{k_\beta} u_{n,\bm{k}}}\)，有\(B_{nm} = - B_{mn}\)，进而有如下关系
+\begin{align}
+	\begin{split}
+		\sum_{n \neq m} B_{nm} \bb{n_{F} \p{E_{m}} - n_{F} \p{E_n}} &= \sum_{n \neq m} B_{nm} n_{F} \p{E_{m}} - B_{nm}n_{F} \p{E_{n}} = \sum_{m \neq n} B_{mn} n_{F} \p{E_{n}} - \sum_{n \neq m} B_{nm}n_{F} \p{E_{n}} \\
+		& = -  \sum_{m \neq n} B_{nm} n_{F} \p{E_n} - \sum_{n \neq m} B_{nm}n_{F} \p{E_{n}} = - 2 \sum_{n \neq m} B_{nm} n_{F} \p{E_n}. 
+	\end{split}
+\end{align}
+同时，由于\(n = m\)时，\(\epsilon_{\alpha \beta} \braket{u_{n,\bm{k}} | \pa_{k_{\alpha}} u_{n,\bm{k}}} \braket{u_{n ,\bm{k}} | \pa_{k_{\beta}} u_{n, \bm{k}}} = 0\)，利用完备性关系，\(\sum_{m} \ket{u_{m,\bm{k}}} \bra{u_{m,\bm{k}}} = \mathbb{I}\), 轨道磁化强度最终可以写成
+\begin{align}
+	M = \frac{e}{2 i \hbar c} \epsilon_{\alpha \beta} \sum_{\bm{k}} \sum_{n} \braket{\frac{\pa u_{n,\bm{k}}}{k_{\alpha}} \bigg| \hat{H}^{\p{0},HF} \p{\bm{k}} + E_{n}\p{ \bm{k}} - 2 \mu \bigg| \frac{\pa u_{n,\bm{k}}}{k_{\beta}}} n_{F} \p{E_n}.
+\end{align}
+也就是文章中最后的Eqs.20。
+
+这里我们进一步讨论规范的问题（To Be Continued...
+
+\subsection{面内情况}
+好了，有了前面所有的准备工作，我们可以来看面内轨道磁化的情况和\(z\)方向上轨道磁化在表达式上的区别。 由于\(z\)方向不存在平移对称性，所以我们需要回到引入Bloch 函数之前的公式，也就是Eqs.17。将Eqs.17写成三维形式
+\begin{align}
+	M_{\gamma} = \frac{i e \hbar}{2 c} \epsilon_{\alpha \beta \gamma} \sum_{n \neq m} \p{E_n - \mu} \braket{n |  \hat{v}^{HF}_{\alpha}  | m } \braket{m|  \hat{v}^{HF}_{\beta} |n } \frac{n_{F} \p{E_{m} } - n_F \p{E_n}}{ \p{E_{m} - E_{n}}^2}.
+\end{align}
+可以看到这里的\(\epsilon_{\alpha \beta}\)实际上来自于外加在某个平面的磁场所导致的动量的变化。所以对于\(xy\)平面内的轨道磁化强度，其表达式为
+\begin{align}
+	M_x = \frac{i e \hbar}{2 c} \sum_{n \neq m} \p{E_n - \mu} \frac{n_{F} \p{E_{m} } - n_F \p{E_n}}{ \p{E_{m} - E_{n}}^2} \bb{v^{y}_{nm} v^{z}_{mn} - v^{z}_{nm} v^{y}_{mn} },
+\end{align}
+以及
+\begin{align}
+	M_y = \frac{i e \hbar}{2 c} \sum_{n \neq m} \p{E_n - \mu} \frac{n_{F} \p{E_{m} } - n_F \p{E_n}}{ \p{E_{m} - E_{n}}^2} \bb{v^{z}_{nm} v^{x}_{mn} - v^{x}_{nm} v^{z}_{mn} }.
+\end{align}
+那么现在的问题就变成了，在Bloch表象下如何写出\(z\)方向上速度矩阵元\(v^{z}_{nm}\)。对于\(z\)方向上的速度矩阵元有
+\begin{align}
+	v^{z}_{nm} = \frac{i}{\hbar} \braket{n,\bm{k}|\bb{ \hat{H}^{\p{0}, HF}, \hat{z}} | m , \bm{k}^\pr} = \delta_{\bm{k}\bm{k}^\pr}  \frac{i}{\hbar} \bb{E_n \p{\bm{k}} - E_m \p{\bm{k}}} z_{nm} \p{\bm{k}},
+\end{align}
+这里
+\begin{align}
+	z_{nm} \p{\bm{k}} = \braket{n,\bm{k} | \hat{z} | m, \bm{k}} = \braket{u_{n, \bm{k}} | e^{- i \bm{k} \cdot \bm{r} } \hat{z} e^{i \bm{k} \cdot \bm{r}} | u_{m,\bm{k}} }.
+\end{align}
+定义二维平面内坐标为\(\bm{r} = \p{x,y}\), 得到\(\bb{\hat{z}, e^{i \bm{k} \cdot \hat{\bm{r}}}} = 0\), 因此
+\begin{align}
+	e^{-i \bm{k} \cdot \hat{ \bm{r}}} \hat{z} e^{i \bm{k} \cdot \hat{ \bm{r}}}  = \hat{z}.
+\end{align}
+所以有
+\begin{align}
+	\braket{u_{n, \bm{k}} | e^{- i \bm{k} \cdot \bm{r} } \hat{z} e^{i \bm{k} \cdot \bm{r}} | u_{m,\bm{k}} } = \braket{u_{n, \bm{k}} | \hat{z} | u_{m,\bm{k}} }.
+\end{align}
+记\(\Delta_{nm} = E_m - E_n\), 所以
+\begin{align}
+	v^{y}_{nm} v^{z}_{mn} = i \frac{\Delta^{2}_{nm}}{\hbar^2} \braket{u_n | \pa_{k_y} u_m} z_{mn},
+\end{align}
+同时，
+\begin{align}
+	v^{z}_{nm} v^{y}_{mn} =  i \frac{\Delta^{2}_{mn}}{\hbar^2} \braket{u_m | \pa_{k_y} u_n} z_{nm},
+\end{align}
+两者相减得到
+\begin{align}
+	\begin{split}
+		v^{y}_{nm} v^{z}_{mn} - v^{z}_{nm} v^{y}_{mn} &= i \frac{\Delta^{2}_{nm}}{\hbar^2} \bb{ \braket{u_n | \pa_{k_y} u_m} z_{mn} - \braket{u_m | \pa_{k_y} u_n} z_{nm} } \\
+		& = i \frac{\Delta^{2}_{nm}}{\hbar^2} \bb{ \braket{u_n | \pa_{k_y} u_m} z_{mn} + \braket{\pa_{k_y} u_m |  u_n} z_{nm} } \\
+		& = 2 i \frac{\Delta^{2}_{nm}}{\hbar^2} \mr{Re} \bb{\braket{u_n | \pa_{k_y} u_m} z_{mn}  }.
+	\end{split}
+\end{align}
+所以\(x\)方向上轨道磁化为
+\begin{align}
+		\boxed{
+			M_x = -\frac{e}{\hbar c} \sum_{n \neq m} \sum_{\bm{k}} \p{E_n \p{\bm{k}} - \mu} \bb{n_{F} \p{E_m \p{\bm{k}}   } - n_{F} \p{E_n \p{\bm{k}} }} \mr{Re} \bb{\braket{u_n | \pa_{k_y} u_m} z_{mn} \p{\bm{k}}  }
+		}.
+\end{align}
+同理，\(y\)方向上的轨道磁化为
+\begin{align}
+		\boxed{
+			M_y = \frac{e}{\hbar c} \sum_{n \neq m} \sum_{\bm{k}}  \p{E_n \p{\bm{k}}  - \mu} \bb{n_{F} \p{E_m \p{\bm{k}} } - n_{F} \p{E_n \p{\bm{k}} }} \mr{Re} \bb{\braket{u_n | \pa_{k_x} u_m} z_{mn} \p{\bm{k}}  }
+		}.
+\end{align}
+但是仅仅得到这两个式子是不够的，因为我们还是不知道\(z_{mn}\)是什么。对于求解BM model所得到的波函数，波函数在\(z\)方向上的信息反应在层指标上，也就是\(\ket{\bm{k}, \bm{G}, s, l}\)中的\(l\)上，其中\(\bm{G}\)是倒格矢，\(s \in \br{A,B}\)是子晶格指标，\(l \in \br{t, b}\)是层指标。在\(z\)方向上有
+\begin{align}
+	\hat{z} \ket{t} = \frac{d}{2} \ket{t}, \quad \hat{z} \ket{b} = - \frac{d}{2} \ket{b},
+\end{align}
+其中\(d\)是转角石墨烯的层间距离。因此\(\hat{z}\)在BM model对应的基底的投影算符应为
+\begin{align}
+	\hat{z} = \frac{d}{2} \mathcal{P}_{t} - \frac{d}{2} \mathcal{P}_{b}.
+\end{align}
+其中上/下层所对应的投影算符为
+\begin{align}
+	\begin{split}
+		\mathcal{P}_{t} \p{\bm{k}} & = \sum_{s, \bm{G}} \ket{\bm{k}, \bm{G}, s, t} \bra{\bm{k}, \bm{G}, s, t} \\
+		\mathcal{P}_{b} \p{\bm{k}} & = \sum_{s, \bm{G}} \ket{\bm{k}, \bm{G}, s, b} \bra{\bm{k}, \bm{G}, s, b},
+	\end{split}
+\end{align}
+所以\(z_{nm}\)可以写成
+\begin{align}
+	z_{nm} \p{\bm{k}} = \frac{d}{2} \braket{u_{n \bm{k}} | \mathcal{P}_t | u_{m \bm{k}}} - \frac{d}{2} \braket{u_{n \bm{k}} | \mathcal{P}_b | u_{m \bm{k}}}.
+\end{align}
+
+\section{规范不变的轨道磁化表达式}
+在实际计算过程中，由于计算机对角化哈密顿量矩阵得到的本征态会产生规范依赖，也就是\(\ket{u} \rightarrow e^{i \theta} \ket{u}\)(没有简并)，再偏导后左右两端的\(\pa_{\mu} u\)会导致规范模糊(gauge ambiguities)。在这一节中，我们首先会回顾Li-Jiang-Wang-Kang-Zhang(Jiang即蒋坤，Wang即汪自强)的文章中所提出的规范不变的轨道磁化强度表达式。然后写出规范不变的面内轨道磁化的表达式。
+
+\subsection{Li-Jiang-Wang-Kang-Zhang 文章回顾}
+在Kang-Zhang的文章中，规范不变的轨道磁化表达式是在补充材料的第三节提出的，回顾在Kang-Wang-Vafek的文章当中，\(z\)方向上轨道磁化的表达式为
+\begin{align}
+	M_{orb} = \frac{e}{2 i \hbar c} \epsilon_{\alpha \beta} \sum_{n} \sum_{\bm{k}} n_{F} \bb{E^{HF}_{n} \p{\bm{k}}  - \mu } \sum_{m} \braket{\pa_\alpha u_{n, \bm{k}} |u_{m , \bm{k}}} \bb{E^{HF}_{m}\p{\bm{k}} +E^{HF}_{n}\p{\bm{k}} - 2 \mu} \braket{u_{m, \bm{k}} | \pa_\beta u_{n, \bm{k}}}.
+\end{align}
+根据局域环流的观点，只有占据态才会对轨道磁化产生贡献，因此对于能带指标\(n\)而言，其要满足\(n \in \mr{occ}\),所以式子前面多了一项\(n_{F} \bb{E^{HF}_{n} \p{\bm{k} - \mu}}\)。但是对于\(m\)来说，这是通过插入完备性关系所得到的，因此对于\(m\)的求和既包括其占据态，也包括空态。所以要把\(m\)分成空态和占据态两部分进行求和。
+
+占据态贡献为零的证明是明显的，首先，由于\(n, m \in \mr{occ}\)即都在occupied subspace当中，所以有\(\braket{u_{n}|u_{m}} = \delta_{nm}\). 根据我们前面的讨论，对于形如
+\begin{align}
+	B_{nm} = \epsilon_{\alpha \beta} \bb{E_n + E_m - 2 \mu} \braket{\pa_{\alpha} u_n | u_m} \braket{u_m | \pa_{\beta} u_n},
+\end{align}
+这是反对称的，也就是说\(B_{nm} = - B_{mn}\). 而求和都是在同一个占据态子空间中求和，因此得到\(M^{\p{1}}_{orb} = - M^{\p{1}}_{orb} \Rightarrow M^{\p{1}}_{orb} = 0 \). 这意味着，占据态子空间内部的规范变化不应该贡献真实的轨道磁化强度。真正的物理的部分来自于\(n\)的占据态和\(m\)的空态之间的混合部分。首先写出空态部分贡献的轨道磁化为
+\begin{align}
+	\begin{split}
+		M^{\p{2}}_{orb} = \frac{e}{2 i \hbar c} \epsilon_{\alpha \beta} & \sum_{n} \sum_{\bm{k}} n_{F} \bb{E^{HF}_{n} \p{\bm{k}}  - \mu } \sum_{m} \bb{1 - n_{F} \p{E^{HF}_{m} \p{\bm{k}} - \mu}}  \\
+		&\braket{\pa_\alpha u_{n, \bm{k}} |u_{m , \bm{k}}} \bb{E^{HF}_{m}\p{\bm{k}} +E^{HF}_{n}\p{\bm{k}} - 2 \mu} \braket{u_{m, \bm{k}} | \pa_\beta u_{n, \bm{k}}},
+	\end{split}
+\end{align}
+我们需要引入占据态和空态子空间的投影算符\(\mathcal{P}\)和\(\mathcal{Q}\), 定义为
+\begin{align}
+	\mathcal{P} &= \sum_{n \in \mr{occ}} \ket{u_n} \bra{u_n}, \\
+	\mathcal{Q} &= \sum_{m \in \mr{emp}} \ket{u_m} \bra{u_m}.
+\end{align}
+对于哈密顿量\(\hat{H}^{HF}\)而言，\(\mathcal{P}\)和\(\mathcal{Q}\)是其本征投影算符，因此有\(\bb{\hat{H}^{HF}, \mathcal{P}} = \bb{\hat{H}^{HF}, \mathcal{Q}} = 0\)。 明显有\(\braket{u_n | u_m} =0\)，所以\(\mathcal{P} \mathcal{Q} = \mathcal{Q}\mathcal{P} = 0\)和\(\mr{Tr} \p{\mathcal{P}\mathcal{Q}} = 0\)，以及\(\mathcal{P} \p{\hat{H}^{HF} - \mu} \mathcal{Q} = 0\)和\(\mr{Tr}\bb{\mathcal{P} \p{\hat{H}^{HF} - \mu} \mathcal{Q}} = 0\)。同理，对于任意算符\(\hat{A}\)，有\(\mr{Tr} \p{\mathcal{P} \hat{A} \mathcal{Q}} = \mr{Tr} \p{\mathcal{Q} \mathcal{P} \hat{A}} = 0\)。但是仅仅有\(\mathcal{P}\)和\(\mathcal{Q}\)是不够的，因为轨道磁化需要的并不是占据态子空间和空态子空间本身，而是\(n\)的占据态子空间随\(\bm{k}\)的变化是如何进入\(m\)的空态子空间的(也就是interband的部分)，而这是需要\(\pa_{\alpha} \mathcal{P}\)和\(\pa_{\beta} \mathcal{Q}\)来进行刻画。对于\(\pa_{\alpha} \mathcal{P}\)有
+\begin{align}
+	\pa_{\alpha} \mathcal{P} &= \sum_{i \in \mr{occ}} \p{\ket{\pa_{\alpha} u_i} \bra{u_i} + \ket{u_i} \bra{\pa_{\alpha} u_i}} 
+\end{align}
+这里我们使用了新的能带指标\(i\)，我们申明\(n,i\)都是占据态子空间指标，而\(m,j\)是空态子空间指标。因此
+\begin{align}
+	\braket{u_n |\pa_{\alpha} \mathcal{P} | u_m} = \sum_{i \in \mr{occ}} \braket{u_n | \pa_{\alpha} u_i} \braket{u_i | u_m} + \braket{u_n | u_i} \braket{\pa_{\alpha} u_i | u_m} = \braket{\pa_{\alpha} u_n | u_m},
+\end{align}
+其中\(\braket{u_i | u_m} =0\) 和\(\braket{u_n | u_i} = \delta_{ni}\)。可以看到，这正是轨道磁化表达式中左边的\(\braket{\pa_{\alpha} u_n | u_m}\)。同理，接下来我们需要凑出表达式右边的\(\braket{u_m | \pa_{\beta} u_n}\)。对于\(\pa_{\beta} \mathcal{Q}\)有
+\begin{align}
+	\pa_{\beta} \mathcal{Q} = \sum_{j \in \mr{emp}} \p{\ket{\pa_{\beta} u_j} \bra{u_j} + \ket{u_j} \bra{\pa_{\beta} u_j}},
+\end{align}
+带入有
+\begin{align}
+	\braket{u_m | \pa_{\beta} \mathcal{Q} | u_n} = \sum_{j \in \mr{emp}} \braket{u_m | \pa_{\beta} u_j} \braket{u_j | u_n} + \braket{u_m | u_j} \braket{\pa_{\beta} u_j | u_n} = \braket{\pa_{\beta} u_m | u_n} = - \braket{u_m | \pa_{\beta} u_n}.
+\end{align}
+有了这些准备工作，再来看轨道磁化中还缺少的表达式，也就是\(E^{HF}_{m} \p{\bm{k}} + E^{HF}_{n} \p{\bm{k}} - 2 \mu\)。很明显这里要拆成两个部分，分别是\(E^{HF}_n - \mu\)和\(E^{HF}_m - \mu\)。所以除开上面引入的\(\pa_{\alpha} \mathcal{P}\)和\(\pa_{\beta} \mathcal{Q}\), 我们还需要分别引入\(\mathcal{P}\)和\(\mathcal{Q}\)。至此，我们大体上得到了新的规范不变量的表达式，也就是\(W_{\alpha \beta} \p{\bm{k}}\)和\(N_{\alpha \beta} \p{\bm{k}}\)。分别是
+\begin{align}
+	W_{\alpha \beta} \p{\bm{k}} = \mr{Tr} \bb{\mathcal{P} \p{\pa_{\alpha} \mathcal{P}} \p{\pa_{\beta} \mathcal{Q}} \p{H^{HF} - \mu }} \\
+	N_{\alpha \beta} \p{\bm{k}} = \mr{Tr} \bb{\mathcal{Q} \p{\pa_{\alpha} \mathcal{P}} \p{\pa_{\beta} \mathcal{Q}} \p{H^{HF} - \mu }}.
+\end{align}
+这里的求迹需要在完备的Hilbert空间中求迹，但是由于这里左端有占据态子空间的投影算符\(\mathcal{P}\), 也就是
+\begin{align}
+	\begin{split}
+		W_{\alpha \beta} \p{\bm{k}}  & = \sum_{n \in \mr{occ}} \braket{u_n | \p{\pa_{\alpha} \mathcal{P}} \p{\pa_{\beta} \mathcal{Q}} \p{H^{HF} - \mu} | u_n}, \\
+		& = \sum_{n \in \mr{occ}} \p{E_n - \mu} \braket{u_n | \p{\pa_{\alpha} \mathcal{P}} \p{\pa_{\beta} \mathcal{Q}} | u_n}, \\
+		& = \sum_{n \in \mr{occ}} \sum_{m \in \mr{emp}}\p{E_n - \mu} \braket{u_n |\pa_{\alpha} \mathcal{P} | u_m} \braket{u_{m} | \pa_{\beta} \mathcal{Q} | u_n}\\
+		& = - \sum_{n \in \mr{occ}} \sum_{m \in \mr{emp}}\p{E_n - \mu} \braket{\pa_{\alpha} u_n | u_m} \braket{u_{m} | \pa_{\beta} u_n} \\
+		& = - \sum_{n} \sum_{m} n_F \p{E_n - \mu} \bb{1 - n_F \p{E_m - \mu}} \braket{\pa_{\alpha} u_n | u_m} \braket{u_{m} | \pa_{\beta} u_n} \p{E_n - \mu}.
+	\end{split}
+\end{align}
+其中这里我们插入了完备性关系(注意，这里我们还没有引入截断这个概念)，也就是\(\mathcal{P} + \mathcal{Q} = \mathbb{I}\),其中对于\(\mathcal{P}\)有\(\mathcal{P} \p{\pa_{\alpha} \mathcal{P}} \mathcal{P} = 0\), 所以只留下了\(\mathcal{Q}\)，最后转换成了对\(m\)的求和。同理，对于\(N_{\alpha \beta} \p{\bm{k}}\)有
+\begin{align}
+	N_{\alpha \beta} \p{\bm{k}} = - \sum_{n} \sum_{m} n_F \p{E_n - \mu} \bb{1 - n_F \p{E_m - \mu}} \braket{\pa_{\beta} u_n | u_m} \braket{u_{m} | \pa_{\alpha} u_n} \p{E_m - \mu}.
+\end{align}
+而同时由于这两个规范不变量都满足\(W^{*}_{\alpha \beta} = W_{\beta \alpha}\)和\(N^{*}_{\alpha \beta} = N_{\beta \alpha}\)，所以对于轨道磁化强度表达式中的\(\epsilon_{\alpha \beta}\), 其应该与\(-W_{\alpha \beta}\)和\(N_{\beta \alpha}\)对应 ，有如下关系
+\begin{align}
+	\begin{split}
+		\epsilon_{\alpha \beta} \p{ - W_{\alpha \beta} - N_{\beta \alpha}} &= \p{-W_{xy} - N_{yx}} - \p{- W_{yx} - N_{xy}}=  \p{ - W_{xy} + W_{yx}} + \p{N_{xy}  - N_{yx}}\\
+		& =  - 2 i \mr{Im} \bb{W_{xy} - N_{xy}}.
+	\end{split}
+\end{align}
+所以轨道磁化的规范不变表达式为
+\begin{align}
+	M_{\mr{orb}} = - \frac{e}{\hbar c} \sum_{\bm{k}} \mr{Im} \bb{W_{xy} \p{\bm{k}} - N_{xy} \p{\bm{k}}}.
+\end{align}
+同理，自转的轨道磁化强度也可以写成规范不变的形式为
+\begin{align}
+	m_{\mr{SR}} = \frac{e}{\hbar c} \sum_{\bm{k}} \mr{Im} \bb{W_{xy} \p{\bm{k}} + N_{xy} \p{\bm{k}}}.
+\end{align}
+
+\subsection{面内轨道磁化的规范不变表达式}
+根据Eqs.33，\(x\)方向上的轨道磁化为
+\begin{align*}
+	M_x = -\frac{e}{\hbar c} \sum_{n \neq m} \sum_{\bm{k}} \p{E_n \p{\bm{k}} - \mu} \bb{n_{F} \p{E_m \p{\bm{k}}   } - n_{F} \p{E_n \p{\bm{k}} }} \mr{Re} \bb{\braket{u_n | \pa_{k_y} u_m} z_{mn} \p{\bm{k}}  }
+\end{align*}
+定义\(A_{nm} = \mr{Re} \bb{\braket{u_n | \pa_{k_y}u_m  }  \braket{u_m | \hat{z} |u_n}}\) 和\(X_{nm} = \braket{u_n | \pa_{k_y}u_m  }  \braket{u_m | \hat{z} |u_n}\)。容易得到\(X^{*}_{nm} = \braket{\pa_{k_y} u_m | u_n} \braket{u_n | \hat{z} | u_m} = - \braket{u_m | \pa_{k_y} u_n } \braket{u_n | \hat{z} | u_m}= - X_{mn}\)。所以\(A_{nm}\)是反对称的，将其改写成
+\begin{align}
+	A_{nm} = \frac{1}{2} \p{X_{nm} + X^{*}_{nm}} = \frac{1}{2} \p{X_{nm} - X_{mn}},
+\end{align}
+所以有\(A_{nm} = -A_{mn}\)。仿照前文引入的对称表达，这里再次引入，面内轨道磁化强度为
+\begin{align}
+	\begin{split}
+		M_x & = - \frac{e}{2 \hbar c} \sum_{n \neq m} \sum_{\bm{k}} \p{E_n +E_m - 2 \mu} \bb{n_{F} \p{E_m} - n_{F} \p{E_{n}}} A_{nm}.
+	\end{split}
+\end{align}
+同理，定义新的\(B_{nm} =  \p{E_n +E_m - 2 \mu} A_{nm}\)以及\(B_{nm} = - B_{mn}\)。继续改写有
+\begin{align}
+	\begin{split}
+		\sum_{n \neq m}  \bb{n_{F} \p{E_m} - n_{F} \p{E_{n}}} B_{nm} &= \sum_{n \neq m} n_{F} \p{E_m} B_{nm} - \sum_{n \neq m} n_{F} \p{E_n} B_{nm} \\
+		& = \sum_{m \neq n} n_{F} \p{E_n} B_{mn} - \sum_{n \neq m} n_{F} \p{E_n} B_{nm} \\
+		& = - \sum_{m \neq n} n_F \p{E_n} B_{nm} - \sum_{n \neq m} n_{F} \p{E_n} B_{nm}  \\
+		& = - 2 \sum_{n \neq m} n_F \p{E_n} B_{nm}.
+	\end{split}
+\end{align}
+同样当\(n = m\)时， \(A_{nn} = 0\)，所以求和指标\(\sum_{n \neq m} \rightarrow \sum_{n,m}\)。因此，将面内轨道磁化强度改写
+\begin{align}
+	M_{x} = \frac{e}{ \hbar c} \sum_{n \in \mr{occ}} \sum_{\bm{k} } \sum_{m \in \mr{emp}} \p{E_n +E_m - 2 \mu} A_{nm}.
+\end{align}
+将\(\braket{u_n | \pa_{k_y}u_m  }  \braket{u_m | \hat{z} |u_n}\)改写成
+\begin{align}
+	\begin{split}
+		\braket{u_n | \pa_{k_y} | u_m} \braket{u_m | \hat{z} |u_n} = -\braket{u_n | \pa_{k_y} \mathcal{P} |u_m} \braket{u_m | \hat{z} |u_n}.
+	\end{split}
+\end{align}
+因此可以定义新的规范不变量
+\begin{align}
+		\boxed{
+			W^{z}_{k_y} \p{\bm{k}} = \mr{Tr} \bb{\mathcal{P} \p{\pa_{k_y} \mathcal{P}} \mathcal{Q} \hat{z}  \p{\hat{H} - \mu}} 
+		}.
+\end{align}
+
+\begin{align}
+	\boxed{
+			N^{z}_{k_y} \p{\bm{k}} = \mr{Tr} \bb{\mathcal{Q} \hat{z} \mathcal{P}  \p{\pa_{k_y} \mathcal{P}} \p{\hat{H} - \mu} }
+	}.
+\end{align}
+展开\footnote{这里插入完备性关系\(\mathcal{P} + \mathcal{Q} = \mathbb{I}\)}
+\begin{align}
+	\begin{split}
+		N^{z}_{k_y} \p{\bm{k}} & = \sum_{m \in \mr{emp}} \braket{u_m |\hat{z} \mathcal{P} \p{\pa_{k_y} \mathcal{P}} \p{\hat{H} - \mu} | u_m} \\
+		& = \p{E_m - \mu} \sum_{m \in \mr{emp}} \braket{u_m |\hat{z} \mathcal{P} \p{\pa_{k_y} \mathcal{P}} | u_m} \\
+		& =  \sum_{m \in \mr{emp}}  \p{E_m - \mu}  \sum_{n \in \mr{occ}} \braket{u_m | \hat{z} | u_n} \braket{u_n | \pa_{k_y} \mathcal{P} | u_m} \\
+		& =  - \sum_{n \in \mr{occ}} \sum_{m \in \mr{emp}}  \p{E_m - \mu} \braket{u_n | \pa_{k_y} u_m} \braket{u_m |\hat{z} |u_n}.
+	\end{split}
+\end{align}
+同理，
+\begin{align}
+	\begin{split}
+		W^{z}_{k_y} \p{\bm{k}} & =\sum_{n \in \mr{occ}} \braket{u_n | \p{\pa_{k_y} \mathcal{P}} \mathcal{Q} \hat{z}  \p{\hat{H} - \mu} |u_n} \\
+		& = \sum_{n \in \mr{occ}} \p{E_n - \mu} \braket{u_n | \p{\pa_{k_y} \mathcal{P}} \mathcal{Q} \hat{z} |u_n}  \\
+		& = \sum_{n \in \mr{occ}} \p{E_n - \mu}  \sum_{m \in \mr{emp}}  \braket{u_n | \p{\pa_{k_y} \mathcal{P}} | u_m } \braket{u_m | \hat{z} | u_{n}} \\
+		& = - \sum_{n \in \mr{occ}} \p{E_n - \mu}  \sum_{m \in \mr{emp}}  \braket{u_n | \pa_{k_y}  u_m } \braket{u_m | \hat{z} | u_{n}} .
+	\end{split}
+\end{align}
+所以规范不变的面内轨道磁化强度的表达式为
+\begin{align}
+	\boxed{
+		M_{x} = - \frac{e}{\hbar c} \sum_{\bm{k}} \mr{Re} \bb{W^{z}_{k_y} \p{\bm{k}} + N^{z}_{k_y} \p{\bm{k}} }
+	}.
+\end{align}
+\begin{align}
+	\boxed{
+		M_{y} = \frac{e}{\hbar c} \sum_{\bm{k}} \mr{Re}  \bb{W^{z}_{k_x} \p{\bm{k}} + N^{z}_{k_x} \p{\bm{k}} }
+	}.
+\end{align}
+
+
+
+\section{附录}
+\subsection{一些具体计算}
+\begin{itemize}
+	\item The derivation of \(d \mathcal{L} / d B\) 
+\end{itemize}
+The derivative of single particle Hamiltonian \(\hat{H}_{ab}\) is 
+\begin{align}
+	\frac{d}{d B} - \hat{H}_{ab} \bb{p_\mu - \epsilon_{\mu \nu} \frac{e B}{2 c} \p{r_\nu - r^{\pr}_{\nu}} } \Bigg|_{B = 0}  = \epsilon_{\mu \nu} \frac{e}{2 c} \p{r_\nu - r^{\pr}_{\nu}} \frac{\pa \hat{H}_{ab}}{\pa p_{\mu}} = \frac{i}{\hbar} \bb{\hat{H}_{ab}, \hat{r}_{\mu}} \epsilon_{\mu\nu} \frac{e}{2c},
+\end{align}
+where the single particle Hamiltonian satisfies the basic canonical relation in a system which \(\bm{k}\) is a good quantum number
+\begin{align}
+	\bb{\hat{H}_{ab}, \hat{r}_{\mu}} = - i \hbar \frac{\pa \hat{H}}{\pa p_{\mu}},
+\end{align}
+where \(\mu \in \br{x,y}\).
+
+Since the phase factor can be written as 
+\begin{align}
+	e^{i \vph \p{\bm{r}^\pr, \bm{r},\bm{x}}} = \exp \bb{i \frac{eB}{2 \hbar c}  \hat{\bm{z}} \cdot \p{\bm{x} - \bm{r}} \times \p{\bm{r}^\pr - \bm{x}}},
+\end{align}
+We can define 
+\begin{align}
+	A =   \hat{\bm{z}} \cdot \p{\bm{x} - \bm{r}} \times \p{\bm{r}^\pr - \bm{x}}，
+\end{align}
+and the phase factor changes into 
+\begin{align}
+	e^{i \vph} = \exp\bb{i \frac{e B}{2 \hbar c} A},
+\end{align}
+taking the derivative respect to \(B\) leads 
+\begin{align}
+	\frac{d}{dB} e^{i \vph} = i \frac{e}{2 \hbar c} \exp \bb{i \frac{e B}{2 \hbar c} A}.
+\end{align}
+Setting \(B = 0\), and the exponential is \(1\). Thus, 
+\begin{align}
+	\frac{d}{d B} e^{i \vph} \Big|_{B=0}=i \frac{e}{2 \hbar c} A,
+\end{align}
+and similarly we set \(\bm{a} = \bm{x} - \bm{r},\, \bm{b} = \bm{r}^\pr - \bm{x}\). In 2D 
+\begin{align}
+	\hat{\bm{z}} \cdot \p{\bm{a} \times \bm{b} } = a_x b_y - a_y b_x = \epsilon_{\mu \nu} a_{\mu} b_{\nu},
+\end{align}
+and
+\begin{align}
+	A = \epsilon_{\mu \nu} \p{x_\mu - r_\mu} \p{r^{\pr}_{\nu} - x_{\nu}}.
+\end{align}
+The derivative is 
+\begin{align}
+	\frac{d}{dB}e^{i \vph} \Big|_{B = 0} = i \frac{e}{2 \hbar c} \epsilon_{\mu \nu} \p{x_\mu -r_\mu} \p{r^{\pr}_{\nu} - x_{\nu}}.
+\end{align}
+Now, we need to rewrite the difference of positions as the commutator. Attention that 
+\begin{align}
+	\braket{\bm{x} | \bb{\hat{x}_{\nu}, \tilde{G}} | \bm{r}^\pr} = x_{\nu} \widetilde{G}\p{\bm{x}, \bm{r}^\pr} - r^{\pr}_{\nu} \widetilde{G}\p{\bm{x}, \bm{r}^\pr} = \p{x_{\nu} - r^{\pr}_{\nu}} \widetilde{G}\p{\bm{x}, \bm{r}^\pr} ,
+\end{align}
+and 
+\begin{align}
+	\braket{\bm{r}| \bb{\widetilde{V}, \hat{x}_{\mu}} | \bm{x}} = \p{x_\mu - r_{\mu}} \widetilde{V} \p{\bm{r}, \bm{x}}，
+\end{align}
+
+To Be Continued...
+
+\subsection{投影算符的微分恒等式}
+For the projection operator in ouccpied space, its definition is 
+\begin{align}
+	\mathcal{P} = \sum_{n \in \mr{occ}} \ket{u_n}\bra{u_n}.
+\end{align}
+Obviously, it satisfies that \(\mathcal{P}^2 = \mathcal{P}\). Taking the derivative 
+\begin{align}
+	\pa_{\mu} \mathcal{P} = \pa_{\mu} \mathcal{P}^2 = \p{\pa_{\mu} \mathcal{P}} \mathcal{P} + \mathcal{P} \p{\pa_{\mu} \mathcal{P}},
+\end{align}
+left-multiply \(\mathcal{P}\)
+\begin{align}
+	\mathcal{P} \p{\pa_{\mu} \mathcal{P}} = \mathcal{P} \p{\pa_{\mu} \mathcal{P}} \mathcal{P} + \mathcal{P} \p{\pa_{\mu} \mathcal{P}} \Rightarrow \mathcal{P} \p{\pa_{\mu} \mathcal{P}} \mathcal{P} =0.
+\end{align}
+Similarly,
+\begin{align}
+	 \mathcal{Q} \p{\pa_{\mu} \mathcal{P}} \mathcal{Q} =0.
+\end{align}
+and the completeness relation is \(\mathcal{P} + \mathcal{Q} = \mathbb{I}\). Thus, 
+\begin{align}
+	\begin{split}
+		\pa_{\mu} \mathcal{P} & = \p{\mathcal{P} + \mathcal{Q} }  \pa_{\mu} \mathcal{P} \p{\mathcal{P} + \mathcal{Q} } \\
+		& = \mathcal{P} \p{\pa_{\mu} \mathcal{P}} \mathcal{P} + \mathcal{Q} \p{\pa_{\mu} \mathcal{P}} \mathcal{P} + \mathcal{P} \p{\pa_{\mu} \mathcal{P}} \mathcal{Q} + \mathcal{Q} \p{\pa_{\mu} \mathcal{P}} \mathcal{Q} \\
+		& = \mathcal{Q} \p{\pa_{\mu} \mathcal{P}} \mathcal{P} + \mathcal{P} \p{\pa_{\mu} \mathcal{P}} \mathcal{Q}.
+	\end{split}
+\end{align}
+Thus, \(\pa_{\mu}\mathcal{P}\) is purely off-diagonal in the
+\(\p{\mathcal{P},\mathcal{Q}}\) decomposition. In other words, it only describes the change of the occupied subspace into the empty subspace, and vice versa. The intra-occupied and intra-empty blocks vanish.
+
+It also means that only the interband blocks survive after inserting the completeness relation.
+For example, for an occupied state \(\ket{u_n}\),
+\begin{align}
+    \begin{split}
+    \bra{u_n}(\partial_i\mathcal P)\mathbb I\hat z\ket{u_n}
+    &=
+    \bra{u_n}(\partial_i\mathcal P)(\mathcal P+\mathcal Q)\hat z\ket{u_n} \\
+    &=
+    \bra{u_n}(\partial_i\mathcal P)\mathcal Q\hat z\ket{u_n},
+    \end{split}
+\end{align}
+where the \(\mathcal P\) part vanishes because
+\begin{align}
+    \bra{u_n}(\partial_i\mathcal P)\mathcal P  = \bra{u_n}\mathcal P(\partial_i\mathcal P)\mathcal P = 0.
+\end{align}
+Similarly, for an empty state \(\ket{u_m}\),
+\begin{align}
+    \begin{split}
+    \bra{u_m}\hat z\mathbb I(\partial_i\mathcal P)\ket{u_m}
+    &=
+    \bra{u_m}\hat z(\mathcal P+\mathcal Q)(\partial_i\mathcal P)\ket{u_m} \\
+    &=
+    \bra{u_m}\hat z\mathcal P(\partial_i\mathcal P)\ket{u_m},
+    \end{split}
+\end{align}
+where the \(\mathcal Q\) part vanishes because
+\begin{align}
+    \mathcal Q(\partial_i\mathcal P)\ket{u_m} = \mathcal Q(\partial_i\mathcal P)\mathcal Q\ket{u_m} =
+    0.
+\end{align}
+Therefore, although the inserted completeness relation is the full identity \(\mathbb I=\mathcal P+\mathcal Q\), only the occupied-empty part contributes.
+\end{document}
