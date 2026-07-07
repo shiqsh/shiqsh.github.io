@@ -1,4 +1,4 @@
-\documentclass[10pt, oneside]{article}
+\documentclass[11pt, oneside]{article}
 \usepackage{amsmath, amsthm, amssymb, mathrsfs, wasysym, verbatim, bbm, color, graphicx, geometry, authblk}
 \usepackage{booktabs, multirow, makecell,colortbl, enumitem}
 \usepackage{setspace}
@@ -621,7 +621,7 @@ Now we will follow the result of [Qian Niu PRL 95, 137204 (2005)] and give a bri
 \begin{align}
 	\frac{\pa \rho}{\pa t} + \nabla_{\bm{r}} \cdot \p{\rho \dot{\bm{r}}} + \nabla_{\bm{k}} \cdot \p{\rho \dot{\bm{k}}} = 0.
 \end{align}
-where \(\rho \p{t, \bm{r}, \bm{k}} \) is the distribution function in phase space where \(d N = \rho\p{t, \bm{r}, \bm{k}} d^3 r d^3 k\). Expanding the equation, we have 
+where, \(\rho \p{t, \bm{r}, \bm{k}} \) is the distribution function in phase space where \(d N = \rho\p{t, \bm{r}, \bm{k}} d^3 r d^3 k\). Expanding the equation, we have 
 \begin{align}
 	\frac{\partial \rho}{\partial t} + \dot{\bm r}\cdot\nabla_{\bm r}\rho + \dot{\bm k}\cdot\nabla_{\bm k}\rho + \rho \left[ \nabla_{\bm r}\cdot\dot{\bm r} + \nabla_{\bm k}\cdot\dot{\bm k} \right] =0.
 \end{align}
@@ -769,10 +769,13 @@ which is the second formula of (Eq.11).
 
 We need to emphasize that it is important to distinguish the energy correction of a single wave packet from the phase-space measure correction in the statistical summation. When deriving \(\tilde{\varepsilon}_n(\bm{k})=\varepsilon_{0n}(\bm{k})-\bm{m}_n \p{\bm{k}} \cdot \bm{B}\), we are considering the energy expectation value of a normalized Bloch wave packet centered at \((\bm{r}_c,\bm{k}_c)\). Therefore, this is a single-state quantity and does not involve counting all wave-packet states in phase space. The completeness identity inserted in the derivation is only a Hilbert-space resolution of identity used to evaluate matrix elements; it is not a statistical phase-space counting formula. Hence, the modified measure factor does not enter the single wave-packet energy correction. The phase-space measure correction, \(\mathcal{D} \p{\bm{k}}=1+\frac{e}{\hbar} \bm{B} \cdot \bm\Omega_n \p{\bm{k}} \) appears only when one computes thermodynamic quantities such as the total energy, particle number, or grand potential, where one sums over all occupied wave-packet states. In particular, although \(\mathcal{D}_n=1\) at \(\bm{B}\to0\), its magnetic-field derivative maybe nonzero, i.e. \(\pa_{\bm{B}} \mathcal{D} = \frac{e}{\hbar} \bm{\Omega}\). Thus, the measure correction does not modify the single wave-packet energy, but it contributes to the orbital magnetization when the total energy or grand potential is differentiated with respect to the magnetic field.
 
-\section{Orbital Magnetization from Local Currents in the Wannier Representation}
+\section{Orbital Magnetization in the Wannier Representation}
 Now we will reproduce the results of [Thonhauser et al., PRL 95, 137205 (2005)] which give the expression for the orbital magnetization of a single band in Wannier representation and [Ceresoli et al., PRB 74, 024408 (2006)] which considering the system of multi-band.
 
 \subsection{Preliminaries}
+\begin{itemize}
+	\item Wannier Functions
+\end{itemize}
 Before reproducing the results, we first review the Wannier functions and the definition of magnetic moment. A detailed discussion of the Fourier transform and Wannier function is provided in Appendix A. By treating the crystal momentum \(\bm{k}\) within the first Brillouin zone(FBZ) as a continuous variable, we can construct the Wannier functions  \(w \p{\bm{R}, \bm{r}}\) in real space by taking Fourier transform of the Bloch functions \(\psi \p{\bm{k}, \bm{r}}\).  
 \begin{align}
 	\boxed{
@@ -785,23 +788,93 @@ Additionally, The Fourier transform does not rely on the \(\bm{k}\)-space period
 
 Therefore, a Wannier function can be understood as a coherent interference pattern, or a real-space wavepacket, formed by the superposition of Bloch waves across the entire Brillouin zone.
 
+\vspace{2em}
+\begin{itemize}
+	\item Decomposition of Orbital Magnetization
+\end{itemize}
+Before going to the bulk formula, let us first recall the physical
+definition of orbital magnetization. For a localized current distribution,
+the magnetic moment is determined by the area enclosed by the circulation.
+For a closed current loop,
+\begin{equation}
+	\bm{m} = \frac{I}{c}\bm{S}, \qquad \bm{S} = \frac12 \oint \bm{r}\times d\bm{r}.
+\end{equation}
+For electrons in a finite sample, this gives the operator expression
+\begin{equation}
+	\boxed{
+		\bm{M} = -\frac{e}{2A_{\mr{samp}}c}\sum_{\alpha\in\mr{occ}}\braket{\phi_\alpha|\bm{r}\times\bm{v}|\phi_\alpha},
+	}
+\end{equation}
+where \(A_{\mr{samp}}\) is the total area of the finite sample and
+\(\ket{\phi_\alpha}\) are the occupied eigenstates of the finite
+Hamiltonian. This expression is well-defined for a finite sample with
+open boundary conditions, because the position operator \(\bm{r}\) is
+well-defined.
+
+This is the starting point of paper~[PRL 95, 137205(2005)]. There the total 
+orbital magnetization of finite Haldane-model samples is computed
+directly from the above finite-sample formula. Since this expression is
+a trace over the occupied subspace, one may equivalently replace the
+occupied eigenstates by localized Wannier-like orbitals. 
+
+Here we will discuss how to transform the occupied eigenstates to localized states. In this paper, the finite Haldane model is \(30 \times 30\) sample. There is no translation symmetry in a finite system with open boundary condition i.e. \(\bm{k}\) is note a good quantum number. More specificity, the eigenstates which satisfies \(\hat{H} \ket{\phi_{\alpha}} = E_{\alpha} \ket{\phi_{\alpha}}\) is not Bloch states \(\ket{\psi_{\alpha} } \neq \ket{\psi_{n \bm{k}}}\). For example, the eigenstates of 1-D tight-binding chain with open boundary is \(\psi_m \p{j} \sim \sin \p{m \pi j /N+1}\) which is obvious extended.(However, if there are edge states with topological phase, there may be some states localized at the edge)
+
+It means we cannot directly get the Wannier functions by Fourier transformation like 
+\begin{align}
+	\ket{w \p{\bm{R}}} = \int_{\mr{BZ}} d^{d} k e^{-i \bm{k} \cdot \bm{R} } \ket{\psi \p{\bm{k}}}.
+\end{align}
+However, the basis we use in tight-binding model is localized which localized at the lattice sites \(\braket{\delta_j | \delta_i} = \delta_{ij}\) or \(\braket{\delta_i | \p{\bm{r} - \bm{r}_i}^2 | \delta_{j}} \approx 0\) where \(\bm{r}_i\) is the center of \(\ket{\delta_i}\). The basis is not usually the Hamiltonian eigenstates since there are hopping between the lattice usually
+\begin{align}
+	\hat{H} \ket{\delta_i} = \epsilon_{i} \ket{\delta_i} + \sum_{j} t_{ij} \ket{\delta_j}.
+\end{align}
+So the basis or (corresponding delta function in real space) is a trivial-localized orbital like the atomic orbitals. It not necessarily entirely belonging to the occupied subspace where it usually contains unoccupied part like 
+\begin{align}
+	\ket{\delta_{i}} = \sum_{\alpha \in \mr{occ}} \ket{\phi_{\alpha}} \braket{\psi_{\alpha} | \delta_{i} } + \sum_{\beta \in \mr{emp}} \ket{\psi_{\beta}} \braket{\psi_{\beta} | \delta_{i}}.
+\end{align}
+It is clear that Wannier functions have to span the occupied subspace which means we only need the part in occupied subspace. Thus, 
+\begin{align}
+	\ket{\tilde{w}_i} = \sum_{\alpha \in \mr{occ}}  \ket{\phi_{\alpha}} \braket{\psi_{\alpha} | \delta_{i} } = \mathcal{P}_{\mr{occ}} \ket{\delta_i}.
+\end{align}
+Whether \(\mathcal{P}_{\mr{occ}} \ket{\delta_i}\) is localized or not depends on the occupied-subspace projector \(\mathcal{P}\). 
 
 
-\subsection{Single-band Insulator}
-
-\subsection{Multi-band Insulator}
 
 
-\section{Hatree-Fock Approach Method}
-\subsection{Formalism}
+\begin{equation}
+	\bm{M} = -\frac{e}{2A c}\sum_i\braket{w_i|\bm{r}\times\bm{v}|w_i}.
+\end{equation}
 
-\subsection{TBG with electron-electron interaction}
+
+For each localized orbital, we define its center by
+\begin{equation}
+	\bm{r}_i = \braket{w_i|\bm{r}|w_i},
+\end{equation}
+and decompose
+\begin{equation}
+	\bm{r} = \p{\bm{r}-\bm{r}_i}+\bm{r}_i.
+\end{equation}
+Therefore,
+\begin{equation}
+	\braket{w_i|\bm{r}\times\bm{v}|w_i} = \braket{w_i|\p{\bm{r}-\bm{r}_i}\times\bm{v}|w_i}+\bm{r}_i\times\braket{w_i|\bm{v}|w_i}.
+\end{equation}
+The first term is the internal self-rotation of a localized orbital and
+gives the local circulation. The second term is the circulation of the
+net current carried by the orbital center and gives the itinerant
+circulation. Hence, in the thermodynamic limit,
+\begin{equation}
+	\bm{M} = \bm{M}_{\mr{LC}}+\bm{M}_{\mr{IC}}.
+\end{equation}
+Here \(\bm{M}_{\mr{LC}}\) is the local circulation of bulk-like Wannier
+functions, while \(\bm{M}_{\mr{IC}}\) is the itinerant circulation
+associated with the net currents carried by surface Wannier-like
+orbitals.
+
+\subsection{Modern Theory of Orbital Magnetization}
+Now, we will discuss [D. Ceresoli PRB 74, 024408(2006)] carefully and we start from section B. As we mentioned before, \(\ket{\phi_{\alpha}}\) is the occupied eigenstates(or occupied KS orbitals) of finite sample and generally extended. By applying a unitary transformation which adopted localization criterion, the extended eigenstates can be transformed into localized orbitals(Wannier Functions) \(\ket{w_i}\).
 
 
-\section{Orbital Magnetization with Interaction}
-\subsection{TBG} 
 
-\subsection{Heterostrain}
+
 
 \appendix
 
