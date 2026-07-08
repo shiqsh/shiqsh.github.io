@@ -1,4 +1,4 @@
-\documentclass[11pt, oneside]{article}
+\documentclass[12pt, oneside]{article}
 \usepackage{amsmath, amsthm, amssymb, mathrsfs, wasysym, verbatim, bbm, color, graphicx, geometry, authblk}
 \usepackage{booktabs, multirow, makecell,colortbl, enumitem}
 \usepackage{setspace}
@@ -11,6 +11,7 @@
 \usepackage{framed}
 \usepackage{bm}
 \usepackage{tikz}
+\usepackage{varwidth}
 %\usepackage{mathptmx}
 \hypersetup{
 	colorlinks=true,
@@ -827,52 +828,122 @@ However, the basis we use in tight-binding model is localized which localized at
 \begin{align}
 	\hat{H} \ket{\delta_i} = \epsilon_{i} \ket{\delta_i} + \sum_{j} t_{ij} \ket{\delta_j}.
 \end{align}
-So the basis or (corresponding delta function in real space) is a trivial-localized orbital like the atomic orbitals. It not necessarily entirely belonging to the occupied subspace where it usually contains unoccupied part like 
+So the basis or (corresponding delta function in real space) is a trivial localized orbital like the localized atomic orbitals. It not necessarily entirely belonging to the occupied subspace where it usually contains unoccupied part like 
 \begin{align}
 	\ket{\delta_{i}} = \sum_{\alpha \in \mr{occ}} \ket{\phi_{\alpha}} \braket{\psi_{\alpha} | \delta_{i} } + \sum_{\beta \in \mr{emp}} \ket{\psi_{\beta}} \braket{\psi_{\beta} | \delta_{i}}.
 \end{align}
 It is clear that Wannier functions have to span the occupied subspace which means we only need the part in occupied subspace. Thus, 
 \begin{align}
-	\ket{\tilde{w}_i} = \sum_{\alpha \in \mr{occ}}  \ket{\phi_{\alpha}} \braket{\psi_{\alpha} | \delta_{i} } = \mathcal{P}_{\mr{occ}} \ket{\delta_i}.
+	\ket{w_i} = \sum_{\alpha \in \mr{occ}}  \ket{\phi_{\alpha}} \braket{\psi_{\alpha} | \delta_{i} } = \mathcal{P}_{\mr{occ}} \ket{\delta_i}.
 \end{align}
-Whether \(\mathcal{P}_{\mr{occ}} \ket{\delta_i}\) is localized or not depends on the occupied-subspace projector \(\mathcal{P}\). 
+Whether \(\mathcal{P}_{\mr{occ}} \ket{\delta_i}\) is localized or not depends on the occupied-subspace projector \(\mathcal{P}\). The real-space amplitude of the projected trial orbitals is 
+\begin{align}
+    w_{i} \p{\bm{r}} = \braket{\bm{r} | \mathcal{P}_{\mr{occ}} |\delta_{i}}
+\end{align}
+If the trial orbital \(\ket{\delta_i}\) is a delta function localized at \(\bm{r}_i\), then \(\braket{\bm{r} | \delta_i} = \delta \p{\bm{r} - \bm{r}_i}\). Therefore, the amplitude is \(w_i \p{\bm{r}} = \mathcal{P}_\mr{occ} \p{\bm{r}, \bm{r}_i}\). Thus, the projected state \(\mathcal{P}_\mathrm{occ} \ket{\delta_i}\) is literally one column of the occupied projector in real space. Consequently, whether \(\ket{w_i}\) is localized is equivalent to whether the projector kernel \(\mathcal{P}_{\mathrm{occ}}\)  decays as \(\left|\bm{r}-\bm{r}_{i}\right|\) increase.
 
+For a gapped insulator, the occupied projector is short-ranged in real space. More explicitly, the kernel satisfies an exponential decay 
+\begin{align}
+	\left|\mathcal{P}_{occ} \left(\bm{r}, \bm{r}_{i}\right)\right| \sim C e^{-\left|\bm{r}-\bm{r}_{i}\right|/\xi},
+\end{align}
+where \(\xi\) is the localization length. For example, in a periodic tight-binding system, using the localized orbital basis \(\ket{\bm{R},a}\), the real-space matrix element of the occupied projector is the Fourier coefficient of the Bloch space projector
+\begin{align}
+	\braket{\bm{R}^{\prime}, b | \mathcal{P}_{\mathrm{occ}} |\bm{R}, a} = \frac{1}{N_k} \sum_{\bm{k}} e^{i \bm{k}\cdot \left(\bm{R}^{\prime} - \bm{R}\right)} \left[P_{\mathrm{occ}} \left(\bm{k}\right)\right]_{ba},
+\end{align}
+where \(P_{\mathrm{occ}} \left(\bm{k}\right)\) is the matrix element. Thus, the spatial decay of \(\mathcal{P}_{\mathrm{occ}}\) in real space is controlled by the regularity of \(P_{\mathrm{occ}} \left(\bm{k}\right)\) in momentum space. If the system is a gapped insulator, the occupied bands are separated from the unoccupied bands by a finite gap. The occupied projector can then be written in the resolvent form 
+\begin{align}
+	\mathcal{P}_{\mathrm{occ}}\left(\bm{k}\right) = \frac{1}{2 \pi i} \oint_{\mathcal{C}}d z \frac{1}{z - H \left(k\right)},
+\end{align}
+where \(\mathcal{C}\) is a closed contour enclosing the occupied spectrum but not the unoccupied spectrum. Because the gap, this contour does not cross the energy spectrum, so \(\left[z - H \left(\bm{k}\right)\right]^{-1}\) is well-defined along \(\mathcal{C}\). If \(H \left(\bm{k}\right)\) is smooth in \(\bm{k}\), then \(P_{\mathrm{occ}}\) is also smooth. For a finite-range  tight-binding Hamiltonian, \(H \left(\bm{k}\right)\) can even be analytically continued into a strip of complex \(\bm{k}\), so \(P_{\mathrm{occ}}\) is analytic in that region. Thus, the Fourier coefficients of an analytic function decay exponentially.
 
+With \(\ket{w}_{i} = \mathcal{P}_{\mathrm{occ}} \ket{\delta_{i}}\) which is \(\ket{w}_{i} = \sum_{\alpha \in occ} \ket{\phi_{\alpha}} \braket{\phi_{\alpha} | \delta_{i}}\), here we define \(A_{\alpha i} = \braket{\phi_{\alpha} | \delta_{i}}\). Thus,  
+\begin{align}
+	\ket{w_{i} }=   \sum_{\alpha \in occ}  \ket{\delta_{i}} A_{\alpha i} ,
+\end{align}
+However, generally these \(\ket{w}_{i}\) are non-orthogonal. So we need to take symmetric orthonormalization 
+\begin{align}
+	\ket{w_{i}} = \sum_{j} \ket{w_{j}}\left(S^{-1/2}\right)_{ji}, 
+\end{align}
+where \(S\) is the overlap matrix 
+\begin{align}
+	S_{ij} = \braket{w_i|w_j} = \left(A^{\dagger} A\right)_{ij},
+\end{align}
+So if we use occupied eigenstates to express the localized Wannier states 
+\begin{align}
+	\ket{w_{i} }= \sum_{\alpha \in occ} \ket{\phi_{\alpha}} \left[A S^{-1/2}\right]_{\alpha i}.
+\end{align}
+Thus, the unitary transformation in finite sample is 
+\begin{align}
+	\boxed{
+		U = A \left(A^\dagger A\right)^{-1/2},
+	}
+\end{align}
+where \(U^\dagger U = \left(A^\dagger A\right)^{-1/2} A^\dagger A \left(A^\dagger A\right)^{-1/2} = 1\) which implies it is unitary.
 
+\vspace{1em}
 
+\fbox{%
+  \begin{varwidth}{0.8\linewidth}
+	\textbf{A localized orbital states can be projected into a localized Wannier states by a occupied-subspace projector. It equivalents to a unitary transformation on the occupied eigenstates.}
+  \end{varwidth}%
+}
+
+\vspace{1em}
+
+Finally, we can rewrite the orbital magnetization as 
 \begin{equation}
-	\bm{M} = -\frac{e}{2A c}\sum_i\braket{w_i|\bm{r}\times\bm{v}|w_i}.
+	\boxed{
+		\bm{M} = -\frac{e}{2A c}\sum_i\braket{w_i|\bm{r}\times\bm{v}|w_i}
+	}.
 \end{equation}
 
-
-For each localized orbital, we define its center by
-\begin{equation}
-	\bm{r}_i = \braket{w_i|\bm{r}|w_i},
-\end{equation}
-and decompose
-\begin{equation}
-	\bm{r} = \p{\bm{r}-\bm{r}_i}+\bm{r}_i.
-\end{equation}
-Therefore,
-\begin{equation}
-	\braket{w_i|\bm{r}\times\bm{v}|w_i} = \braket{w_i|\p{\bm{r}-\bm{r}_i}\times\bm{v}|w_i}+\bm{r}_i\times\braket{w_i|\bm{v}|w_i}.
-\end{equation}
-The first term is the internal self-rotation of a localized orbital and
-gives the local circulation. The second term is the circulation of the
-net current carried by the orbital center and gives the itinerant
-circulation. Hence, in the thermodynamic limit,
-\begin{equation}
-	\bm{M} = \bm{M}_{\mr{LC}}+\bm{M}_{\mr{IC}}.
-\end{equation}
-Here \(\bm{M}_{\mr{LC}}\) is the local circulation of bulk-like Wannier
-functions, while \(\bm{M}_{\mr{IC}}\) is the itinerant circulation
-associated with the net currents carried by surface Wannier-like
-orbitals.
 
 \subsection{Modern Theory of Orbital Magnetization}
 Now, we will discuss [D. Ceresoli PRB 74, 024408(2006)] carefully and we start from section B. As we mentioned before, \(\ket{\phi_{\alpha}}\) is the occupied eigenstates(or occupied KS orbitals) of finite sample and generally extended. By applying a unitary transformation which adopted localization criterion, the extended eigenstates can be transformed into localized orbitals(Wannier Functions) \(\ket{w_i}\).
 
+They divide the sample into interior and surface region. Obviously, the surface region can grow as the sample becomes larger, but its volume faction must tend to be zero(nonextensive). The bulk orbitals \(\ket{w_i}\) converges exponentially to the bulk WFs of the infinite periodic system where we denoted as \(\ket{n \bm{R }}\). It satisfies the translation symmetry \(\ket{n \bm{R }} = \hat{T}_{\bm{R}} \ket{n0}\). Surface orbitals do not satisfy the symmetry and we denoted it as \(\ket{w_s}\).
 
+For any localized orbital, we have 
+\begin{align}
+	\bm{r} = \left(\bm{r} - \bm{R }	\right) + \bm{R},
+\end{align}
+where \(\bm{R}\) is the real-space center of the localized orbital. Thus, the inner product can be rewritten as 
+\begin{align}
+	\braket{w_i|\bm{r}\times\bm{v}|w_i} = \braket{w_i |\left(\bm{r} - \bm{R }	\right) \times \bm{v} | w_i } + \bm{R} \times \braket{w_i | \bm{v} | w_i},
+\end{align}
+where \(\bm{R}\) is just a numerical vector. So for interior orbitals, \(\ket{w_i} \rightarrow \ket{n \bm{R}}\) and the orbital magnetization is 
+\begin{align}
+	\bm{M}_{\mathrm{int}} = - \frac{e}{2 \Omega c N_c} \sum_{\bm{R},n} \left(\braket{n \bm{R} | \left(\bm{r} - \bm{R }	\right) \times \bm{v} |n \bm{R} } - \bm{R}  \times \braket{n\bm{R} | \bm{v} | n\bm{R}}\right),
+\end{align}
+where \(N_c\) is the number of unit cells and \(\Omega\) is the volume/area of each unit cell. For the insulator which is full-filled, there is no net current in the bulk
+\begin{align}
+	\sum_{n} \braket{n\bm{R} | \bm{v} | n\bm{R}} = 0,
+\end{align} 
+and the interior orbital magnetization is the contribution from self-rotation
+\begin{align}
+	\bm{M}_{\mathrm{int}} = - \frac{e}{2c \Omega} \sum_n \braket{n0 | \bm{r} \times \bm{v} | n0},
+\end{align}
+where we used the translation symmetry
+\begin{align}
+	 \braket{n \bm{R} | \left(\bm{r} - \bm{R }	\right) \times \bm{v} |n \bm{R} } = \braket{n0 | \bm{r} \times \bm{v} | n0},
+\end{align}
+and \(\sum_{\bm{R}}/N_c = 1\).
+
+Similarly, the orbital magnetization from surface orbitals is 
+\begin{align}
+	\bm{M}_{\mathrm{suf}} = -\frac{e}{2c\Omega N_c} \sum_{s = 1}^{N_s} \braket{w_s |\bm{r} \times \bm{v} | w_s} =-\frac{e}{2c\Omega N_c} \sum_{s = 1}^{N_s} \left(\braket{w_s | \left(\bm{r} - \bm{r}_{s} \times \bm{v} \right)| w_s} + \bm{r}_{s} \times \braket{w_s | \bm{v} w_s} \right) .
+\end{align}
+The first term is local self-rotation and \(\braket{w_s | \left(\bm{r} - \bm{r}_{s} \times \bm{v} \right)| w_s} \sim O \left(1\right)\). Since the number of surface orbitals is nonextensive, i.e. \(N_s/N_c \sim L^2/L^3 = 1/L \rightarrow 0\). Thus,
+\begin{align}
+	\frac{1}{\Omega N_c}  \sum_{s = 1}^{N_s} \braket{w_s | \left(\bm{r} - \bm{r}_{s} \times \bm{v} \right)| w_s} \rightarrow 0.
+\end{align}
+So the first term vanishes in the thermodynamic limit. However, for the second term, the absolute coordinate \(\left|\bm{r}_s\right| \sim L\) for a large scale sample and similarly \(\braket{w_s | \bm{v} |w_s} \sim O \left(1\right)\). Thus, the scaling of numerator is 
+\begin{align}
+	\sum_{s = 1}^{N_s} \bm{r}_{s} \times \braket{w_s | \bm{v} | w_s} \sim N_s \times L \times O \left(1\right) \sim L^2 \times L = L^3.
+\end{align}
+The scaling of denominator is \(\Omega N_c \sim L^3\). So the last term \(\sim O \left(1\right)\) which is finite.
+
+They denoted the interior term as \(\bm{M}_{\mathrm{LC}}\) for local circulation and surface term as \(\bm{M}_{\mathrm{IC}}\) for itinerant circulation. Later, they proved that the itinerant circulation from surface is determined by the bulk properties where they write it as the matrix elements of bulk Wannier functions.
 
 
 

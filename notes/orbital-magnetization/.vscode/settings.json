@@ -3,5 +3,10 @@
         "eigenstates",
         "nonextensive",
         "Wannier"
-    ]
+    ],
+    "editor.fontSize": 16,
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "on",
+    "workbench.colorTheme": "Visual Studio Light - C++",
+    "editor.fontFamily": "'Inconsolata','霞鹜文楷等宽'"
 }
