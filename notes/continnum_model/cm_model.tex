@@ -1,0 +1,336 @@
+\documentclass[10pt, oneside]{article}
+
+% =========================
+% Chinese font with ctex
+% Compile with XeLaTeX
+% =========================
+\usepackage[UTF8, scheme=plain, fontset=none]{ctex}
+
+\setCJKmainfont{Kai}     
+
+% =========================
+% Page geometry
+% =========================
+\usepackage[
+	letterpaper,
+	tmargin=1in,
+	bmargin=1in,
+	lmargin=1.1in,
+	rmargin=1.1in
+]{geometry}
+
+% =========================
+% Math
+% =========================
+\usepackage{amsmath, amsthm, amssymb, mathrsfs, verbatim, bbm, color, graphicx, authblk}
+\usepackage{booktabs, multirow, makecell,colortbl, enumitem}
+\usepackage{braket}
+\usepackage{caption, subcaption}
+\usepackage{framed}
+\usepackage{bm}
+
+% =========================
+% Author / affiliation
+% =========================
+\renewcommand\Authfont{\fontsize{12pt}{14pt}\selectfont}
+\renewcommand\Affilfont{\fontsize{12pt}{14pt}\selectfont\itshape}
+\setlength{\affilsep}{0.25em}
+
+% =========================
+% Contents / section control
+% =========================
+\usepackage{tocloft}
+\usepackage{titlesec}
+
+% =========================
+% Hyperref
+% =========================
+\usepackage{hyperref}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=blue,
+	urlcolor=blue,
+	citecolor=blue,
+}
+
+% =========================
+% Page number: bottom center
+% =========================
+\makeatletter
+\renewcommand{\ps@plain}{%
+	\renewcommand{\@oddhead}{}%
+	\renewcommand{\@evenhead}{}%
+	\renewcommand{\@oddfoot}{\hfil{\fontsize{12pt}{14pt}\selectfont\thepage}\hfil}%
+	\renewcommand{\@evenfoot}{\hfil{\fontsize{12pt}{14pt}\selectfont\thepage}\hfil}%
+}
+\makeatother
+
+\pagestyle{plain}
+
+% =========================
+% Main font size
+% 正文 12pt，正文行距 14pt
+% =========================
+\AtBeginDocument{\fontsize{12pt}{14pt}\selectfont}
+
+% =========================
+% Paragraph
+% =========================
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+
+% =========================
+% Section / subsection labels
+% section: I. II.
+% subsection: A. B.
+% =========================
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\Alph{subsection}}
+
+% section 标题：左对齐
+\titleformat{\section}
+	{\normalfont\bfseries\fontsize{12pt}{14pt}\selectfont}
+	{\thesection.}
+	{1.2em}
+	{}
+
+% subsection 标题：往后缩进一点
+\titleformat{\subsection}
+	{\normalfont\bfseries\fontsize{12pt}{14pt}\selectfont}
+	{\thesubsection.}
+	{1.2em}
+	{}
+
+% section 上下间距
+% {左缩进}{标题前距离}{标题后距离}
+\titlespacing*{\section}
+	{0pt}
+	{3.0ex plus 0.5ex minus 0.2ex}
+	{2.8ex plus 0.3ex}
+
+% subsection 上下间距
+% subsection 往右缩进 2em，并且标题后留出距离
+\titlespacing*{\subsection}
+	{2em}
+	{3.0ex plus 0.5ex minus 0.2ex}
+	{2.2ex plus 0.3ex}
+
+% =========================
+% Contents style
+% =========================
+\renewcommand{\contentsname}{CONTENTS}
+
+% CONTENTS 标题
+\renewcommand{\cfttoctitlefont}{\hspace*{1.4em}\fontsize{11pt}{12pt}\selectfont\bfseries}
+\renewcommand{\cftaftertoctitle}{}
+
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftaftertoctitleskip}{0.65em}
+
+% 目录无点线
+\renewcommand{\cftdotsep}{\cftnodots}
+
+% section / subsection 目录缩进
+\setlength{\cftsecindent}{0pt}
+\setlength{\cftsecnumwidth}{2.0em}
+
+\setlength{\cftsubsecindent}{2.0em}
+\setlength{\cftsubsecnumwidth}{2.0em}
+
+% 目录编号格式：
+\renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftsubsecaftersnum}{.}
+
+% 目录字体
+\renewcommand{\cftsecfont}{\fontsize{14pt}{16pt}\selectfont}
+\renewcommand{\cftsecpagefont}{\fontsize{14pt}{16pt}\selectfont}
+\renewcommand{\cftsubsecfont}{\fontsize{14pt}{16pt}\selectfont}
+\renewcommand{\cftsubsecpagefont}{\fontsize{14pt}{16pt}\selectfont}
+
+\setlength{\cftbeforesecskip}{0.8em}
+\setlength{\cftbeforesubsecskip}{0.2em}
+
+% \numberwithin{equation}{subsection}
+
+% =========================
+% Title information
+% =========================
+\title{\fontsize{15pt}{20pt}\selectfont\bfseries
+转角石墨烯的连续模型}
+
+\author[1]{Qian-Sheng Shi}
+
+\affil[1]{
+School of Physical Science and Technology, ShanghaiTech University, \protect\\
+Shanghai 201210, China.
+}
+
+\newcommand{\notestartdate}{July 11, 2026}
+
+\date{\fontsize{11pt}{14pt}\selectfont
+(Dated: \notestartdate --\today)}
+
+% =========================
+% Custom maketitle style
+% 不让 \maketitle 自动换页
+% =========================
+\makeatletter
+
+\renewcommand{\@maketitle}{%
+	\begin{center}
+		{\@title \par}
+		\vspace{1em}
+		{\@author \par}
+		\vspace{0.15em}
+		{\@date \par}
+	\end{center}
+}
+
+\renewcommand{\maketitle}{%
+	\begingroup
+		\let\footnote\thanks
+		\@maketitle
+	\endgroup
+}
+
+\makeatother
+
+\newcommand{\te}{\theta}
+\newcommand{\ph}{\phi}
+\newcommand{\ps}{\psi}
+\newcommand{\vph}{\varphi}
+\newcommand{\vps}{\varpsi}
+\newcommand{\pr}{\prime}
+\newcommand{\pa}{\partial}
+\newcommand{\mr}[1]{\mathrm{#1}}
+\newcommand{\mb}[1]{\mathbf{#1}}
+\newcommand{\p}[1]{\left(#1\right)}
+\newcommand{\bb}[1]{\left[#1\right]}
+\newcommand{\br}[1]{\left\{#1\right\}}
+\newcommand{\bv}[1]{\left|#1\right|}
+
+% =========================
+% Document
+% =========================
+\begin{document}
+
+{\fontsize{12pt}{16pt}\selectfont
+\tableofcontents
+}
+
+\vspace{0.8em}
+
+\maketitle
+
+\thispagestyle{plain}
+
+\clearpage
+
+这里我们给出一个完全从连续模型的定义和对称性的角度出发来推导BM模型，同时理清BM模型中各种符号规范。
+
+\section{连续模型范式}
+紧束缚模型的哈密顿量通常表示为
+\begin{align}
+    \hat{H} = \sum_{\bm{R},\bm{R^{\prime}}} t \left(\bm{R}- \bm{R^{\prime}}\right) \hat{c}^{\dagger}_{\bm{R}} \hat{c}_{\bm{R}^{\prime}},
+\end{align}
+定义 \(\bm{\delta} = \bm{R} - \bm{R}^{\pr}\), 所以哈密顿量可以重新写成
+\begin{align}
+	\hat{H} = \sum_{\bm{R}, \bm{\delta}} t \left(\bm{\delta}\right) \hat{c}^{\dagger}_{\bm{R}} \hat{c}_{\bm{R} + \bm{\delta}}.
+\end{align}
+将费米子算符拆分成一个实空间的缓慢变化包络\(\hat{\psi  }\left(\bm{r}\right)\)与快速的相因子\(e^{i \bm{K} \cdot \bm{r}}\), 
+\begin{align}
+	 \hat{c}^{\dagger}_{\bm{R}}  \rightarrow e^{i \bm{K} \cdot \bm{r}} \hat{\psi } \left(\bm{r}\right),
+\end{align}
+同时对离散的格点\(R\)的求和变成了对连续变量\(\bm{r}\)的求和，\(\sum_{\bm{R}} \rightarrow \int d \bm{r}\)	也就是连续模型之所以称为连续的来源。哈密顿量改写成
+\begin{align}
+	\begin{split}
+		\hat{H} & \approx \int d \bm{r} \sum_{\bm{\delta}} t \left(\bm{\delta}\right) \left[e^{- i \bm{K} \cdot \bm{r}} \hat{\psi}^{\dagger} \left(\bm{r}\right) \right] \left[e^{i \bm{K} \cdot \left(\bm{r} + \bm{\delta}\right)} \hat{\psi}\left(\bm{r} - \bm{\delta}\right) \right] \\
+		& = \int d \bm{r} \sum_{\bm{\delta}} t \left(\bm{\delta}\right) e^{- i \bm{K} \cdot \bm{\delta} } \hat{\psi}^{\dagger} \left(\bm{r}\right) \hat{\psi}\left(\bm{r} - \bm{\delta}\right) .
+	\end{split}
+\end{align}
+当\(\bm{\delta}\)很小，可以对\(\hat{\psi}\left(\bm{r} - \bm{\delta}\right) \) 做梯度展开，也就是
+\begin{align}
+	\hat{\psi}\left(\bm{r} - \bm{\delta}\right)  = \psi \left(\bm{r}\right) + \left(- \bm{\delta} \right) \cdot \nabla_{\bm{r}} \hat{\psi} \left(\bm{r}\right) + \frac12 \left( \bm{\delta} \cdot \nabla_{\bm{r}} \right)^2\hat{\psi} \left(\bm{r}\right) + \cdots,
+\end{align}
+回代则有 
+\begin{align}
+	\hat{H} = \int d \bm{r} \hat{\psi}^{\dagger} \left(\bm{r}\right) \sum_{\bm{\delta}} t \left(\bm{\delta}\right) e^{-i \bm{K} \cdot \bm{\delta}} \left[1 - \bm{\delta} \cdot \nabla + \frac12 \left(\bm{\delta} \cdot \nabla\right)^2	\right]  \hat{\psi}.
+\end{align}
+分别定义零阶矩（局部势能）
+\begin{align}
+	\epsilon \left(\bm{K}\right) = \sum_{\bm{\delta}} t \left(\bm{\delta}\right) e^{-i \bm{K} \cdot \bm{\delta}} ,
+\end{align}
+一阶矩（费米速度）
+\begin{align}
+	\hbar v_F = i \sum_{\bm{\delta}} t \left(\bm{\delta}\right) e^{-i \bm{K} \cdot \bm{\delta}} \bm{\delta},
+\end{align}
+和二阶矩（有效质量倒数）
+\begin{align}
+	\frac{\hbar^2}{2 m^{*}} = - \frac{1}{2} \sum_{\bm{\delta}} t \left(\bm{\delta}\right) e^{-i \bm{K} \cdot \bm{\delta}} \bm{\delta}^2,
+\end{align}
+因此，实空间连续哈密顿量可以写成
+\begin{align}
+	\hat{H} = \int d \bm{r} \hat{\psi}^{\dagger} \left[ \epsilon \left(\bm{K}\right) - i \hbar v_F  \nabla - \frac{\hbar^2}{2 m^{*}} \nabla^2 \right]\hat{\psi}.
+\end{align}
+做傅里叶变换即可得到倒空间中的连续哈密顿量，其中
+\begin{align}
+	\hat{\psi} \left(\bm{r}\right) = \int \frac{d \bm{q}}{\left(2 \pi\right)^2} e^{i \bm{q} \cdot \bm{r}} \hat{\psi} \left(\bm{q}\right),
+\end{align}
+同时，\(\nabla_{\bm{r}} \rightarrow i \bm{q}\)和\(\nabla_{\bm{r}}^{2} \rightarrow - \bm{q}^2\), 哈密顿量为
+\begin{align}
+	\hat{H} = \int d \bm{q} \hat{\psi}^{\dagger} \left(\bm{q}\right) \left[\epsilon \left(\bm{K}\right) + \hbar v_F \bm{q} + \frac{\hbar^2}{2 m^{*}} \bm{q}^{2}\right] \hat{\psi}\left(\bm{q}\right) .
+\end{align}
+其中
+\begin{align}
+	E \left(\bm{q}\right) = \epsilon \left(\bm{K}\right) + \hbar v_F \bm{q} + \frac{\hbar^2}{2 m^{*}} \bm{q}^{2},
+\end{align}
+也就是色散关系。
+
+\section{转角石墨烯的连续模型}
+我们这里首先回顾布洛赫定理，布洛赫定理有
+\begin{align}
+	\psi_{n \bm{k}} \left(\bm{r} + \bm{R}\right) = e^{i \bm{k} \cdot  \bm{R}} \psi_{n \bm{k}} \left(\bm{r}\right).
+\end{align}
+这里\(\psi_{n \bm{k}} \left(\bm{r}\right) = \braket{\bm{r} |  \psi_{n \bm{k}}}\) ，其中\(\bm{R}\)是格矢，而\(\bm{k}\)是第一布里渊区中的动量（这里我们强调，\(\bm{k}\)只需要在布里渊区中就可以，而原点选取在哪里都可以）。布洛赫定理的等价于将布洛赫函数写成调幅平面波的形式，也就是
+\begin{align}
+	\psi_{n \bm{k}} \left(\bm{r}\right) = e^{i \bm{k} \cdot  \bm{r}} u_{n \bm{k}} \left(\bm{r}\right) ,
+\end{align}
+其中\(u_{n \bm{k}} \left(\bm{r}\right) \)是周期函数，其满足
+\begin{align}
+	u_{n \bm{k}} \left(\bm{r}\right)  = u_{n \bm{k}} \left(\bm{r} + \bm{R}		\right).
+\end{align}
+由于\(u_{n \bm{k}} \left(\bm{r}\right)\)是实空间中的周期函数，其可以被写成傅里叶求和的形式，也就是
+\begin{align}
+	u_{n \bm{k}} \left(\bm{r}\right) = \sum_{\bm{G}} e^{i \bm{G} \cdot \bm{r}}  \tilde{u}_{n \bm{k}} \left(\bm{G}\right).
+\end{align}
+其中\(\bm{G}\)是倒格矢。带入到布洛赫波函数的表达式中，将其改写成
+\begin{align}
+	\psi_{n \bm{k}} \left(\bm{r}\right) = \frac{1}{\sqrt{A}}  \sum_{\bm{G}} e^{i \bm{k} \cdot \bm{r}} e^{i \bm{G} \cdot \bm{r}}  \tilde{u}_{n \bm{k}} \left(\bm{G}\right) = \frac{1}{\sqrt{A}}  \sum_{\bm{G}} e^{i \left(\bm{k} + \bm{G}\right) \cdot \bm{r} } \tilde{u}_{n \bm{k}} \left(\bm{G}\right).
+\end{align}
+这里的\(e^{i  \left(\bm{k} + \bm{G}\right) \cdot \\bm{r}}\) 是平面波基底函数，而\(\tilde{u}_{n \bm{k}} \left(\bm{G}\right)\)复数系数。采用狄拉克符号，将上式改写成
+\begin{align}
+	\ket{\psi_{n \bm{k}} } =  \sum_{\bm{G}}  \tilde{u}_{n \bm{k}} \left(\bm{G}\right) \ket{\bm{k} + \bm{G}}.
+\end{align}
+其中\(\braket{\bm{r} | \bm{k} + \bm{G}} = \frac{1}{\sqrt{A}}  e^{i \left(\bm{k} + \bm{G}\right) \cdot \bm{r} }\)。对于动量算符\(\hat{\bm{k}}\), 其在实空间中的表示为\(\hat{\bm{k}} = - i \partial_{\bm{r}}\), 对于单个平面波基底，其满足
+\begin{align}
+	- i \partial_{\bm{r}} \ket{ \bm{k} + \bm{G}} = \left( \bm{k} + \bm{G}\right) \ket{ \bm{k} + \bm{G}}.
+\end{align}
+这意味着对于我们所选取的平面波基底\(\ket{\bm{k} + \bm{G}}\), 其对应动量算符的本征值为 \(\bm{k} + \bm{G}\). 这里我们再次强调\(\bm{k}\) 是布里渊区中的动量，而\(\bm{k} + \bm{G}\)是动量算符作用在平面波基底对应的动量算符的本征值。
+
+\vspace{2 em}
+在转角石墨烯当中，波函数还具有层和子晶格自由度，我们将这样一个多分量的波函数记为\(\Psi_{n \bm{k}} \left(\bm{r}\right)\)。按照上面的方法，这个多分量的波函r记为
+\begin{align}
+	\ket{\Psi_{n \bm{k}}} = \sum_{\bm{G}} \sum_{l, \alpha} \tilde{u}^{l \alpha}_{n \bm{k}} \left(\bm{G}\right) \ket{\bm{k} + \bm{G}} \otimes \ket{l , \alpha},
+\end{align}
+其中\(\ket{l , \alpha}\) 是内部子空间基底，这里\(l \in \left\{t, b\right\},\, \alpha \in \left\{A, B\right\}\)。只投影到实空间坐标中，得到
+\begin{align}
+	\ket{\Psi_{n \bm{k}} \left(\bm{r}\right)}_{\mathrm{int}} = \frac{1}{\sqrt{A}} \sum_{\bm{G}} \sum_{l, \alpha} \tilde{u}^{l \alpha}_{n \bm{k}} \left(\bm{G}\right) e^{i \left(\bm{k} + \bm{G}\right) \cdot \bm{r}} \ket{l, \alpha}
+\end{align}
+这里左边还是ket，只不过是内部空间中的向量。
+
+这里我们强调，在转角石墨烯当中，由于实空间晶格结构变成了超晶格，所以倒空间中周期性减小，动量\(\bm{k}\)的范围是莫尔布里渊区。在莫尔布里渊区中，通常为了更好地体现对称性，我们习惯上将原点设置在莫尔布里渊区的中心，也就是\(\bm{\Gamma}_{m}\)。但是在BM model当中，我们后面将看到进入到哈密顿量对角项中实际上是绝对动量和狄拉克点动量的差值，所以我们也会选取上层的某一个狄拉克点作为原点。
+
+
+\end{document}
