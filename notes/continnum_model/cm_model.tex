@@ -1,0 +1,552 @@
+\documentclass[10pt, oneside]{article}
+
+% =========================
+% Chinese font with ctex
+% Compile with XeLaTeX
+% =========================
+\usepackage[UTF8, scheme=plain, fontset=none]{ctex}
+
+\setCJKmainfont{Kai}     
+
+% =========================
+% Page geometry
+% =========================
+\usepackage[
+	letterpaper,
+	tmargin=1in,
+	bmargin=1in,
+	lmargin=1.1in,
+	rmargin=1.1in
+]{geometry}
+
+% =========================
+% Math
+% =========================
+\usepackage{amsmath, amsthm, amssymb, mathrsfs, verbatim, bbm, color, graphicx, authblk}
+\usepackage{booktabs, multirow, makecell,colortbl, enumitem}
+\usepackage{braket}
+\usepackage{caption, subcaption}
+\usepackage{framed}
+\usepackage{bm}
+
+% =========================
+% Author / affiliation
+% =========================
+\renewcommand\Authfont{\fontsize{12pt}{14pt}\selectfont}
+\renewcommand\Affilfont{\fontsize{12pt}{14pt}\selectfont\itshape}
+\setlength{\affilsep}{0.25em}
+
+% =========================
+% Contents / section control
+% =========================
+\usepackage{tocloft}
+\usepackage{titlesec}
+
+% =========================
+% Hyperref
+% =========================
+\usepackage{hyperref}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=blue,
+	urlcolor=blue,
+	citecolor=blue,
+}
+
+% =========================
+% Page number: bottom center
+% =========================
+\makeatletter
+\renewcommand{\ps@plain}{%
+	\renewcommand{\@oddhead}{}%
+	\renewcommand{\@evenhead}{}%
+	\renewcommand{\@oddfoot}{\hfil{\fontsize{12pt}{14pt}\selectfont\thepage}\hfil}%
+	\renewcommand{\@evenfoot}{\hfil{\fontsize{12pt}{14pt}\selectfont\thepage}\hfil}%
+}
+\makeatother
+
+\pagestyle{plain}
+
+% =========================
+% Main font size
+% 正文 12pt，正文行距 14pt
+% =========================
+\AtBeginDocument{\fontsize{12pt}{14pt}\selectfont}
+
+% =========================
+% Paragraph
+% =========================
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+
+% =========================
+% Section / subsection labels
+% section: I. II.
+% subsection: A. B.
+% =========================
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\Alph{subsection}}
+
+% section 标题：左对齐
+\titleformat{\section}
+	{\normalfont\bfseries\fontsize{12pt}{14pt}\selectfont}
+	{\thesection.}
+	{1.2em}
+	{}
+
+% subsection 标题：往后缩进一点
+\titleformat{\subsection}
+	{\normalfont\bfseries\fontsize{12pt}{14pt}\selectfont}
+	{\thesubsection.}
+	{1.2em}
+	{}
+
+% section 上下间距
+% {左缩进}{标题前距离}{标题后距离}
+\titlespacing*{\section}
+	{0pt}
+	{3.0ex plus 0.5ex minus 0.2ex}
+	{2.8ex plus 0.3ex}
+
+% subsection 上下间距
+% subsection 往右缩进 2em，并且标题后留出距离
+\titlespacing*{\subsection}
+	{2em}
+	{3.0ex plus 0.5ex minus 0.2ex}
+	{2.2ex plus 0.3ex}
+
+% =========================
+% Contents style
+% =========================
+\renewcommand{\contentsname}{CONTENTS}
+
+% CONTENTS 标题
+\renewcommand{\cfttoctitlefont}{\hspace*{1.4em}\fontsize{11pt}{12pt}\selectfont\bfseries}
+\renewcommand{\cftaftertoctitle}{}
+
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftaftertoctitleskip}{0.65em}
+
+% 目录无点线
+\renewcommand{\cftdotsep}{\cftnodots}
+
+% section / subsection 目录缩进
+\setlength{\cftsecindent}{0pt}
+\setlength{\cftsecnumwidth}{2.0em}
+
+\setlength{\cftsubsecindent}{2.0em}
+\setlength{\cftsubsecnumwidth}{2.0em}
+
+% 目录编号格式：
+\renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftsubsecaftersnum}{.}
+
+% 目录字体
+\renewcommand{\cftsecfont}{\fontsize{14pt}{16pt}\selectfont}
+\renewcommand{\cftsecpagefont}{\fontsize{14pt}{16pt}\selectfont}
+\renewcommand{\cftsubsecfont}{\fontsize{14pt}{16pt}\selectfont}
+\renewcommand{\cftsubsecpagefont}{\fontsize{14pt}{16pt}\selectfont}
+
+\setlength{\cftbeforesecskip}{0.8em}
+\setlength{\cftbeforesubsecskip}{0.2em}
+
+% \numberwithin{equation}{subsection}
+
+% =========================
+% Title information
+% =========================
+\title{\fontsize{15pt}{20pt}\selectfont\bfseries
+转角石墨烯的连续模型}
+
+\author[1]{Qian-Sheng Shi}
+
+\affil[1]{
+School of Physical Science and Technology, ShanghaiTech University, \protect\\
+Shanghai 201210, China.
+}
+
+\newcommand{\notestartdate}{July 11, 2026}
+
+\date{\fontsize{11pt}{14pt}\selectfont
+(Dated: \notestartdate --\today)}
+
+% =========================
+% Custom maketitle style
+% 不让 \maketitle 自动换页
+% =========================
+\makeatletter
+
+\renewcommand{\@maketitle}{%
+	\begin{center}
+		{\@title \par}
+		\vspace{1em}
+		{\@author \par}
+		\vspace{0.15em}
+		{\@date \par}
+	\end{center}
+}
+
+\renewcommand{\maketitle}{%
+	\begingroup
+		\let\footnote\thanks
+		\@maketitle
+	\endgroup
+}
+
+\makeatother
+
+\newcommand{\te}{\theta}
+\newcommand{\ph}{\phi}
+\newcommand{\ps}{\psi}
+\newcommand{\vph}{\varphi}
+\newcommand{\vps}{\varpsi}
+\newcommand{\pr}{\prime}
+\newcommand{\pa}{\partial}
+\newcommand{\mr}[1]{\mathrm{#1}}
+\newcommand{\mb}[1]{\mathbf{#1}}
+\newcommand{\p}[1]{\left(#1\right)}
+\newcommand{\bb}[1]{\left[#1\right]}
+\newcommand{\br}[1]{\left\{#1\right\}}
+\newcommand{\bv}[1]{\left|#1\right|}
+
+% =========================
+% Document
+% =========================
+\begin{document}
+
+{\fontsize{12pt}{16pt}\selectfont
+\tableofcontents
+}
+
+\vspace{0.8em}
+
+\maketitle
+
+\thispagestyle{plain}
+
+\clearpage
+
+这里我们给出一个完全从连续模型的定义和对称性的角度出发来推导BM模型，同时理清BM模型中各种符号规范。
+
+我们做如下规范：在本文中，统一将\(d\)维空间中的积分测度记为\(d \bm{r} \equiv d^{d} \bm{r}\)。在二维系统当中， \(d \bm{r} \equiv d^{2} \bm{r} = d x dy\)
+
+同时，对于任意矢量\(\bm{a} = \left(a_i, a_j, a_k\right)\)
+, 对于矢量其本身采用粗体，而对于矢量在各个方向上的分量不采用粗体进行标记。
+\section{连续模型范式}
+
+我们首先可以通过 Fourier 变换构造一个定义在连续空间上的插值场，使其在格点处重现格点算符。进一步投影到某个低能动量区域后，该插值场成为缓慢变化的包络场；在这一低能和长波条件下，格点求和可以近似为连续积分，并对包络场进行梯度展开，从而得到连续低能模型。
+
+紧束缚模型的哈密顿量通常表示为
+\begin{align}
+    \hat{H} = \sum_{\bm{R},\bm{R}^{\prime}} t \left(\bm{R}- \bm{R}^{\prime}\right) \hat{c}^{\dagger}_{\bm{R}} \hat{c}_{\bm{R}^{\prime}},
+\end{align}
+其中\(\bm{R}\)是格矢，可以被表示成\(\bm{R} = n_1 \bm{a}_{1} + n_2 \bm{a}_{2}\)。这里的格点的费米子算符满足反对易关系
+\begin{align}
+	\left\{\hat{c}_{\bm{R}}, \hat{c}^{\dagger}_{\bm{R}^{\prime}}\right\} = \delta_{\bm{R}, \bm{R}^{\prime}}.
+\end{align}
+定义 \(\bm{\delta} = \bm{R} - \bm{R}^{\pr}\), 则有\(\bm{R}^{\prime} = \bm{R} - \bm{\delta}\)。 所以哈密顿量可以重新写成
+\begin{align}
+	\hat{H} = \sum_{\bm{R}, \bm{\delta}} t \left(\bm{\delta}\right) \hat{c}^{\dagger}_{\bm{R}} \hat{c}_{\bm{R} - \bm{\delta}}. 
+\end{align} 
+现在我们需要将离散的格点算符转换成连续场算符，之所以需要连续场算符\(\hat{\psi}\), 是因为我们需要用一个定义在连续空间上的函数，来对离散的格点进行插值。格点的费米子算符的傅里叶变换为
+\begin{align}
+	\hat{c}_{\bm{R}} = \frac{1}{\sqrt{N}} \sum_{\bm{k} \in \mathrm{BZ}} e^{i \bm{k} \cdot \bm{R}} \hat{c}_{\bm{k}}.
+\end{align}
+现在定义一个作用在连续坐标\(\bm{r}\)上的插值场，
+\begin{align}
+	\hat{\Psi} \left(\bm{r}\right) = \frac{1}{\sqrt{\mathcal{A}}} \sum_{\bm{k} \in \mathrm{BZ}} e^{i \bm{k} \cdot \bm{r}} \hat{c}_{\bm{k}},
+\end{align}
+其中\(\mathcal{A}\)是体系的面积（这里仅讨论二维情况）。这里\(\bm{r}\)可以取任意连续值，而并不要求是格点，
+当取
+\begin{align}
+	\bm{r} = \bm{R},
+\end{align}
+时， 
+\begin{align}
+	\hat{\Psi} \left(\bm{R}\right) = \frac{1}{\sqrt{\mathcal{A}}} \sum_{\bm{k} \in \mathrm{BZ}} e^{i \bm{k} \cdot \bm{R}} \hat{c}_{\bm{k}},
+\end{align}
+对于周期体系的面积，有
+\begin{align}
+	\mathcal{A} = N A_{\mathrm{uc}},
+\end{align}
+这里\(N\)是原胞数量，\(A_{\mathrm{uc}}\)是单个原胞的面积。于是格点的费米子算符可以表示成连续函数在格点处的取值。
+\begin{align}
+	\boxed{
+		\hat{c}_{\bm{R}} = \left(A_{\mathrm{uc}}\right)^{1/2} \hat{\Psi} \left(\bm{r}\right) \bigg|_{\bm{r} = \bm{R}}. 
+	}
+\end{align}
+但是这里的连续场并不一定是慢变场。格点费米子算符需要用连续包络场在格点处的取值表示，而格点求和则在低能近似(慢变近似)下改写为连续积分。离散跃迁位移\(\bm{\delta}\)仍然保留，并在后续梯度展开中形成连续哈密顿量的各阶系数。而上式中对动量\(\bm{k}\)是在整个BZ中进行求和，因此如果存在很大的动量分量，那么连续场可能在晶格尺度上快速变化，并不一定适合做梯度展开。连续插值场的存在只是傅里叶变换的结果。
+
+现在引入低能动量截断，假设我们关注的低能态在某个动量\(\bm{K}\)附近，我们可以将原来位于布里渊区中的动量写成\(\bm{K}\)和一个小动量\(\bm{q}\)的求和，也就是
+\begin{align}
+	\bm{k} = \bm{K} + \bm{q},
+\end{align}
+其中我们对小动量的区域做一定的限制，取截断\(\Lambda\) 
+\begin{align}
+	\left|\bm{q}\right| < \Lambda, \quad \Lambda a \ll 1,
+\end{align}
+\(a\) 是周期性体系的晶格常数。在这个小区域内，格点算符可以近似成
+\begin{align}
+	\hat{c}_{\bm{R}}  \simeq \frac{1}{\sqrt{N}} \sum_{\left|\bm{q}\right|  < \Lambda} e^{i \left(\bm{K} + \bm{q} \right) \cdot \bm{R}} \hat{c}_{\bm{K} + \bm{q}}.
+\end{align}
+\(e^{i \bm{K} \cdot \bm{R}}\) 是一个实空间中快速振荡的相位因子（对于本文后续关心的非零低能动量中心，我们通常假设\(\bm{K} \sim a^{-1}\)），提出该相位，则有
+\begin{align}
+	\hat{c}_{\bm{R}}  \simeq \frac{1}{\sqrt{N}}   e^{i \bm{K} \cdot \bm{R}} \sum_{\left|\bm{q}\right|  < \Lambda}  e^{i \bm{q} \cdot \bm{R}} \hat{c}_{\bm{K} + \bm{q}},
+\end{align}
+定义低能慢变包络场
+\begin{align}
+	\boxed{
+		\hat{\psi}\left(\bm{r}\right) = \frac{1}{\sqrt{\mathcal{A}}} \sum_{\left|\bm{q}\right|  < \Lambda}  e^{i \bm{q} \cdot \bm{r}} \hat{c}_{\bm{K} + \bm{q}},
+	}
+\end{align}
+可以看到包络场的空间变化由\(\bm{q}\)控制。由于所选取的低能动量中心满足\(\left|\bm{K}\right| \sim a^{-1}\), 而包络动量\(\left|\bm{q}\right| \ll a^{-1}\), 载波相位\(e^{i \bm{K} \cdot \bm{R}}\)在相邻格点之间可以产生\(\mathcal{O}\left(1\right)\)的相位变化，因此在晶格尺度上快速振荡；相比之下，\(e^{i \bm{q} \cdot \bm{R}}\)在相邻格点之间的相位变化满足\( \left|\bm{q}\right| a \ll 1\), 从而构成缓慢变化的包络场。这也是后面我们将求和写成积分，以及梯度展开的基础。
+
+格点费米子算符变成
+\begin{align}
+	\boxed{
+		\hat{c}_{\bm{R}} \simeq \left(A_{\mathrm{uc}}\right)^{1/2}  e^{i \bm{K} \cdot \bm{R}} \hat{\psi}\left(\bm{R}\right)
+	}
+\end{align}
+带入到哈密顿量中有
+\begin{align}
+	\hat{H} = A_{\mathrm{uc}} \sum_{\bm{R}, \bm{\delta}} t \left(\bm{\delta}\right) e^{ - i \bm{K} \cdot \bm{\delta}} \hat{\psi}^{\dagger} \left(\bm{R}\right) \hat{\psi} \left(\bm{R} - \bm{\delta}\right),
+\end{align}
+利用前面的积分求和关系\(A_{\mathrm{uc}} \sum_{\bm{R}} \rightarrow \int d \bm{r}\), 由于\(\hat{\psi}\left(\bm{r}\right)\)是慢变的，其在一个原胞尺度内变化很小，所以在一个原胞内可以认为
+\begin{align}
+	A_{\mathrm{uc}} \sum_{\bm{R}} F \left(\bm{r}\right) \bigg|_{\bm{r} = \bm{R}} \simeq \int d \bm{r} F \left(\bm{r}\right),
+\end{align}
+其中定义
+\begin{align}
+	F \left(\bm{r}\right) = \sum_{\bm{\delta}} t \left(\bm{\delta}\right) e^{ - i \bm{K} \cdot \bm{\delta}} \hat{\psi}^{\dagger} \left(\bm{R}\right) \hat{\psi} \left(\bm{R} - \bm{\delta}\right).
+\end{align}
+更严格的写法是引入Poisson求和公式（Dirac comb formula），也就是
+\begin{align}
+	\boxed{
+		\sum_{\bm{R}}  \delta^{\left(2\right)} \left(\bm{r} - \bm{R}\right) = \frac{1}{A_{\mathrm{uc}}} \sum_{G} e^{i \bm{G} \cdot \bm{r}}
+	},
+\end{align}
+其中\(\bm{G}\)是倒格矢，于是
+\begin{align}
+	A_{\mathrm{uc}} \sum_{\bm{R}} F \left(\bm{R}\right) = A_{\mathrm{uc}} \int d \bm{r} F \left(\bm{r}\right) \sum_{\bm{R}} \delta^{\left(2\right)} \left(\bm{r} - \bm{R}\right) = \int d \bm{r} F \left(\bm{r}\right) \sum_{\bm{G}} e^{i \bm{G} \cdot \bm{r}}.
+\end{align}
+即
+\begin{align}
+	A_{\mathrm{uc}} \sum_{\bm{R}} F \left(\bm{R}\right) = \int d \bm{r} F \left(\bm{r}\right) + \sum_{\bm{G} \neq 0} \int d \bm{r} e^{i \bm{G} \cdot \bm{r}} F \left(\bm{r}\right).
+\end{align}
+由于\(\left|\bm{G}\right| \sim 1/a\), 而\(F \left(\bm{r}\right)\)只在远长于晶格常数的尺度上变化，所以\(e^{i \bm{G} \cdot \bm{r}}\) 会在原子尺度上快速振荡，积分中正负贡献互相抵消，所以我们可以只保留\(\bm{G} = 0\)这一项。所以求和变积分，本质上是忽略晶格Poisson求和公式中的非零谐波。
+
+那么在这个基础上，什么叫作“\(F \left(\bm{r}\right)\)是缓慢变化的呢”， 更仔细的来说，由于 \(\left|\bm{q}\right|  < \Lambda\)，\(F \left(\bm{r}\right)\)中的e指数类似为\(e^{i \left(\bm{q}^{\prime} - \bm{q}\right) \cdot \bm{r}}\), 而\(\bm{q}^{\prime} - \bm{q}\)大小最多为\(2 \Lambda\)。 只要\(2 \Lambda \ll \left|\bm{G}_{\mathrm{min}}\right|\)，意味着对所有的倒格矢\(\bm{G}\)来说，无法满足\(\bm{G} - \left(\bm{q}^{\prime} - \bm{q}\right) = 0\), 那么\(F \left(\bm{r}\right)\) 中没有接近非零原子倒格矢的傅里叶分量，所以\(\bm{G} \neq 0\)的项消失或者被强烈抑制。
+
+综上，连续模型的哈密顿量可以写成
+\begin{align}
+	\boxed{
+		\hat{H} \simeq \int d \bm{r} \sum_{ \bm{\delta}}  t \left(\bm{\delta}\right) e^{- i \bm{K} \cdot \bm{\delta}} \hat{\psi}^{\dagger} \left(\bm{r}\right) \hat{\psi} \left(\bm{r} - \bm{\delta}\right),
+	}
+\end{align}
+
+那么接下来我们的目标就是对\(\hat{\psi} \left(\bm{r} - \bm{\delta}\right)\)做梯度展开。在满足\(\Lambda \left|\bm{\delta}\right| \ll 1\)时，可以将\(\delta\)认为是一小量，做梯度展开
+\begin{align}
+	\hat{\psi} \left(\bm{r} - \bm{\delta}\right) = e^{- \bm{\delta} \cdot \nabla} \hat{\psi} \left(\bm{r}\right) =  \hat{\psi} \left(\bm{r}\right) - \delta_{i} \partial_{i} \hat{\psi} \left(\bm{r}\right) + \frac12 \delta_{i}  \delta_{j}  \partial_{i} \partial_{j} \hat{\psi} \left(\bm{r}\right) + \cdots,
+\end{align}
+这里用到了爱因斯坦求和约定，上面的展开等价于
+\begin{align}
+	\hat{\psi} \left(\bm{r} - \bm{\delta}\right) = \hat{\psi} \left(\bm{r}\right) - \bm{\delta} \cdot \nabla  \hat{\psi} \left(\bm{r}\right) + \frac12 \left(\bm{\delta} \cdot \nabla\right)^{2}  \hat{\psi} \left(\bm{r}\right) + \cdots,
+\end{align}
+二阶项中的\(i,j\)都是重复指标，因此分别求和就是
+\begin{align}
+	\delta_{i}  \delta_{j}  \partial_{i} \partial_{j} = \sum_{i,j = x,y} \delta_{i}  \delta_{j}  \partial_{i} \partial_{j}  = \delta^{2}_{x} \partial^{2}_{x} + 2 \delta_{x} \delta_{y} \partial_{x} \partial_{y} + \delta^{2}_{y} \partial^{2}_{y.}
+\end{align}
+
+代回到哈密顿量
+\begin{align}
+	\boxed{
+			\hat{H} \simeq \int d \bm{r} \hat{\psi}^{\dagger} \left(\bm{r}\right) \sum_{\bm{\delta}} t \left(\bm{\delta}\right) e^{-i \bm{K} \cdot \bm{\delta}} \left[1 -  \delta_{i} \partial_{i} +  \frac12 \delta_{i}  \delta_{j}  \partial_{i} \partial_{j} + \cdots \right] \hat{\psi} \left(\bm{r}\right) ,
+	}
+\end{align}
+定义零阶矩
+\begin{align}
+	\mathcal{M}^{\left(0\right)} \left(\bm{K}\right) = \sum_{\bm{\delta}} t \left(\bm{\delta}\right)  e^{-i \bm{K} \cdot \bm{\delta}} = \varepsilon \left(\bm{K}\right).
+\end{align}
+即零阶矩是低能中心\(\bm{K}\)处的能量项常数。哈密顿量的零阶项为
+\begin{align}
+	\hat{H}^{\left(0\right)} = \int d \bm{r} \hat{\psi}^{\dagger} \left(\bm{r}\right) \varepsilon \left(\bm{K}\right) \hat{\psi} \left(\bm{r}\right) ,
+\end{align}
+
+
+同理，定义一阶矩
+\begin{align}
+	\mathcal{M}^{\left(1\right)}_{i} \left(\bm{K}\right) = \sum_{\bm{\delta}} t \left(\bm{\delta}\right)  e^{-i \bm{K} \cdot \bm{\delta}} \delta_{i}.
+\end{align}
+对应到实空间中一阶项是
+\begin{align}
+	\hat{H}^{\left(1\right)} = - \int d \bm{r} \hat{\psi}^{\dagger} \left(\bm{r}\right) \mathcal{M}^{\left(1\right)}_{i} \left(\bm{K}\right) \partial_{i}  \hat{\psi} \left(\bm{r}\right) .
+\end{align}
+现在我们来看一阶矩和零阶矩的关系，将零阶矩对\(\bm{k}\)求导，
+\begin{align}
+	\frac{\partial \varepsilon \left(\bm{k}\right)}{\partial k_{i}} = -i \sum_{\bm{\delta}} t \left(\bm{\delta}\right) e^{-i \bm{k} \cdot \bm{\delta}} \delta_{i},
+\end{align}
+因此在\(\bm{k} = \bm{K}\)处，
+\begin{align}
+	\frac{\partial \varepsilon \left(\bm{k}\right)}{\partial k_{i}}  \bigg|_{\bm{k} = \bm{K}} = - i \mathcal{M}^{\left(1\right)}_{i} \left(\bm{K}\right),
+\end{align}
+定义群速度
+\begin{align}
+	v_i \left(\bm{K}\right) = \frac{1}{\hbar} \frac{\partial \varepsilon \left(\bm{k}\right)}{\partial k_{i}}  \bigg|_{\bm{k} = \bm{K}} ,
+\end{align}
+所以
+\begin{align}
+	v_i \left(\bm{K}\right) = - \frac{i}{\hbar} \mathcal{M}^{\left(1\right)}_{i} \left(\bm{K}\right), \quad \mathcal{M}^{\left(1\right)}_{i} \left(\bm{K}\right) = i \hbar v_i \left(\bm{K}\right),
+\end{align} 
+因此哈密顿量的一阶项为
+\begin{align}
+	\hat{H}^{\left(1\right)} = \int d \bm{r} \hat{\psi}^{\dagger} \left(\bm{r}\right) \left[- i \hbar v_i \left(\bm{K}\right) \partial_{i} \right]  \hat{\psi} \left(\bm{r}\right) .
+\end{align}
+如果\(\bm{K}\)是费米面上所选取的低能点，可以将\(\bm{v} \left(\bm{K}\right)\)称为费米速度
+\begin{align}
+	\bm{v}_F = \frac{1}{\hbar} \nabla_{\bm{k}} \varepsilon \left(\bm{k}\right) \bigg|_{\bm{k} = \bm{K}}.
+\end{align}
+定义二阶矩
+\begin{align}
+	\mathcal{M}^{\left(2\right)}_{ij} \left(\bm{K}\right) = \sum_{\bm{\delta}} t \left(\bm{\delta}\right)  e^{-i \bm{K} \cdot \bm{\delta}} \delta_{i} \delta_{j}
+\end{align}
+对应哈密顿量的二阶项为
+\begin{align}
+	\hat{H}^{\left(2\right)} = \frac{1}{2} \int d \bm{r} \hat{\psi}^{\dagger} \left(\bm{r}\right) \mathcal{M}^{\left(2\right)}_{ij} \left(\bm{K}\right) \partial_{i} \partial_{j} \hat{\psi} \left(\bm{r}\right),
+\end{align}
+另一方面，二阶矩和零阶矩有如下关系
+\begin{align}
+	\frac{\partial^{2} \varepsilon \left(\bm{k}\right)}{\partial k_i \partial k_j} = - \sum_{\bm{\delta}} t \left(\bm{\delta}\right)  e^{-i \bm{k} \cdot \bm{\delta}} \delta_{i} \delta_{j},
+\end{align}
+所以
+\begin{align}
+	\frac{\partial^{2} \varepsilon \left(\bm{k}\right)}{\partial k_i \partial k_j} \bigg|_{\bm{k} = \bm{K}} = - \mathcal{M}^{\left(2\right)}_{ij} \left(\bm{K}\right).
+\end{align}
+定义有效质量张量
+\begin{align}
+	\left(\frac{1}{m}\right)_{ij} = \frac{1}{\hbar^{2}} \frac{\partial^{2} \varepsilon \left(\bm{k}\right)}{\partial k_i \partial k_j} \bigg|_{\bm{k} = \bm{K}} = -  \frac{1}{\hbar^{2}} \mathcal{M}^{\left(2\right)}_{ij} \left(\bm{K}\right).
+\end{align}
+即
+\begin{align}
+	\mathcal{M}^{\left(2\right)}_{ij} \left(\bm{K}\right) = - \hbar^{2} \left(m^{-1}\right)_{ij}.
+\end{align}
+因此二阶项为
+\begin{align}
+	\hat{H}^{\left(2\right)} = - \frac{\hbar^{2}}{2} \int d \bm{r} \hat{\psi}^{\dagger} \left(\bm{r}\right) \left(m^{-1}\right)_{ij} \partial_{i} \partial_{j} \hat{\psi} \left(\bm{r}\right),
+\end{align}
+如果体系在\(\bm{K}\)附近各向同性， 则
+\begin{align}
+	\left(m^{-1}\right)_{ij} = \frac{1}{m^{*}} \delta_{ij},
+\end{align}
+从而
+\begin{align}
+	\hat{H}^{\left(2\right)} = - \frac{\hbar^{2}}{ 2 m^{*}} \int d \bm{r} \hat{\psi}^{\dagger} \left(\bm{r}\right) \nabla^{2} \hat{\psi} \left(\bm{r}\right).
+\end{align}
+将零阶项，一阶项和二阶项合并得到
+\begin{align}
+	\hat{H}_{\mathrm{c}} \simeq \int d \bm{r}  \hat{\psi}^{\dagger} \left(\bm{r}\right) \left[\varepsilon \left(\bm{K}\right) - i \hbar v_i \left(\bm{K}\right) \partial_{i} - \frac{\hbar^{2}}{2} \left(m^{-1}\right)_{ij} \partial_{i} \partial_{j} + \cdots \right] \hat{\psi} \left(\bm{r}\right),
+\end{align}
+采用矢量记号，一阶项可以写为\(- i \hbar \bm{v} \left(\bm{K}\right) \cdot \nabla\)。在各向同性情况下
+\begin{align}
+	\boxed{
+		\hat{H}_{\mathrm{c}} \simeq \int d \bm{r}  \hat{\psi}^{\dagger} \left(\bm{r}\right) \left[\varepsilon \left(\bm{K}\right) - i \hbar \bm{v} \left(\bm{K}\right) \cdot \nabla - \frac{\hbar^{2}}{2 m^{*}} \nabla^{2} + \cdots \right] \hat{\psi} \left(\bm{r}\right)
+	},
+\end{align}
+
+现在将实空间中的连续模型写到动量空间，包络场的傅里叶变换为
+\begin{align}
+	\hat{\psi} \left(\bm{r}\right)	= \int_{\left|\bm{q}\right| < \Lambda} \frac{d \bm{q}}{\left(2 \pi\right)^{2}}  e^{i \bm{q} \cdot \bm{r}} \hat{\psi} \left(\bm{q}\right).
+\end{align}
+同样约定动量空间中的测度为\(d \bm{q} \equiv d^{2} \bm{q}\)。对于上式求偏导有\(- i \partial_{i} e^{i \bm{q} \cdot \bm{r}}  = q_i e^{i \bm{q} \cdot \bm{r}}\)。所以傅里叶变换在动量空间中有\(-i \partial_{i} \rightarrow q_i\)以及\(- \partial_i \partial_j \rightarrow q_i q_j\)。因此，动量空间中的连续哈密顿量可以写成
+\begin{align}
+	\boxed{
+		\hat{H}_{c} \simeq \int_{\left|\bm{q}\right| < \Lambda} \frac{d \bm{q}}{\left(2 \pi\right)^{2}}  \hat{\psi}^{\dagger} \left(\bm{q}\right) \left[\varepsilon \left(\bm{K}\right) + \hbar v_i \left(\bm{K}\right) q_i + \frac{\hbar^2}{2} \left(m^{-1}\right)_{ij} q_i q_j + \cdots \right] \hat{\psi} \left(\bm{q}\right)
+	}.
+\end{align} 
+因此，低能色散关系为
+\begin{align}
+	E \left(\bm{q}\right) = \varepsilon \left(\bm{K}\right) + \hbar v_i \left(\bm{K}\right) q_i + \frac{\hbar^2}{2} \left(m^{-1}\right)_{ij} q_i q_j + \cdots
+\end{align}
+注意，这里的\(\bm{q}\)是相对于低能展开中心\(\bm{K}\)的小动量，完整的晶体动量是
+\begin{align}
+	\boxed{
+		\bm{k} = \bm{K} + \bm{q}	
+	}.
+\end{align}
+因此可以写成
+\begin{align}
+	\boxed{
+		E \left(\bm{q}\right) = \varepsilon \left(\bm{K} + \bm{q}\right)
+	}.
+\end{align}
+
+原始紧束缚模型给出的色散关系是
+\begin{align}
+	\varepsilon \left(\bm{k}\right) = \sum_{\bm{\delta}} t \left(\bm{\delta}\right) e^{-i \bm{k} \cdot \bm{\delta}}.
+\end{align}
+注意，这里的\(\bm{\delta}\)是两个格点之间的坐标差。将\(\bm{k} = \bm{K} + \bm{q}\)代入，得到
+\begin{align}
+	\varepsilon \left(\bm{K} + \bm{q}\right) = \sum_{\bm{\delta}} t \left(\bm{\delta}\right) e^{-i \bm{K} \cdot \bm{\delta}} e^{-i \bm{q} \cdot \bm{\delta}}
+\end{align}
+将\(e^{-i \bm{q} \cdot \bm{\delta}}\)展开得到
+\begin{align}
+	 e^{-i \bm{q} \cdot \bm{\delta}} = 1 - i q_i \delta_{i} - \frac{1}{2} q_i q_j \delta_i \delta_j + \cdots,
+\end{align}
+代入到色散关系中，便可得到
+\begin{align}
+	\varepsilon \left(\bm{K + \bm{q}}\right) = \varepsilon \left(\bm{K}\right) + \hbar v_i q_i + \frac{\hbar^{2}}{2} \left(m^{-1}\right)_{ij} q_i q_j + \cdots .
+\end{align}
+因此，在（\( \Lambda a \ll 1\)）的长波条件和保留相同的展开阶数下，实空间中对包络场的梯度展开，与动量空间中围绕低能动量中心对布洛赫哈密顿量所做的长波展开模型是逐项等价的。对于多分量体系，后者即构成通常所谓的\(\bm{k} \cdot \bm{p}\)有效模型。
+
+所以低能模型的有效性来自于两类截断，首先只保留低能动量中心\(\bm{K}\)附近满足\(\left|\bm{q}\right| < \Lambda\)的自由度；其次，在（\( \Lambda a \ll 1\)）的长波条件下，只保留梯度或者小动量展开的有限项。
+
+
+\section{转角石墨烯的连续模型}
+
+按照上面连续模型的范式，这里我们给出转角石墨烯连续模型的推导，还是首先从格点算符定义低能连续场算符，进而写出实空间的连续哈密顿量；在确认哈密顿量具有的莫尔周期性后，我们将哈密顿量在平面波基底下写出其矩阵表示。
+
+
+
+\section{附录}
+\subsection{其他体系中的紧束缚模型}
+如果是复式晶格，则格点的费米子算符就需要加入子晶格自由度，也就是
+\begin{align}
+	\hat{H} = \sum_{\bm{R}, \bm{\delta}} t_{s,s^{\prime}} \left(\bm{\delta}\right) \hat{c}^{\dagger}_{\bm{R}, s} \hat{c}_{\bm{R} - \bm{\delta}, s^{\prime}} + h.c.
+\end{align}
+这里我们通常会假定跃迁只与格点之间的相对位置有关，虽然我们这里加入了子晶格自由度\(s\)，但是\(\hat{c}^{\dagger}_{\bm{R}, s} \) 还是格点的费米子算符，只不过是\(s\) 子晶格上的格点的费米子算符。
+
+同时我们这里并没有像Kang的文章中对于晶格形变所讨论的那样，由于晶格形变改变了跃迁所依赖的实际原子位置，而不仅仅是格点位置，所以我们需要用原子费米子算符来写出紧束缚模型的哈密顿量，也就是
+\begin{align}
+	\hat{H} = \sum_{s s^{\prime}}\sum_{\bm{r}_{s}，\bm{r}^{\prime}_{s^{\prime}}} t\left(\bm{X}_{s} - \bm{X}^{\prime}_{s^{\prime}}\right) \hat{c}^{\dagger}_{s, \bm{r}_{s}}  \hat{c}_{s^{\prime}, \bm{r}^{\prime}_{s^{\prime}}}.
+\end{align}
+这里\(\bm{X}_{s}, \bm{X}^{\prime}_{s^{\prime}}\)是形变后的原子坐标，这里不多加赘述。
+
+\subsection{何为有效模型？}
+有效模型中的有效，指的是只保留所关心的低能自由度，忽略或积分掉高能自由度，从而近似描述某个有限能量和动量范围内的物理。
+
+假设完整的哈密顿量是\(\hat{H}\), 定义低能子空间的投影算符是\(\mathcal{P}\), 高能子空间的投影算符为\(\mathcal{Q} = 1 - 	\mathcal{P}\)。	有效哈密顿量只作用在低能子空间当中，最简单的投影形式是
+\begin{align}
+	\hat{H}_{\mathrm{eff}} \simeq \mathcal{P} \hat{H} \mathcal{P},
+\end{align}
+如果还考虑高能态对低能态的虚跃迁，则更一般地还会出现
+\begin{align}
+	\hat{H}_{\mathrm{eff}} \left(E\right) = \mathcal{P} \hat{H} \mathcal{P} + \mathcal{P} \hat{H} \mathcal{Q} \frac{1}{E - \mathcal{Q} \hat{H} \mathcal{Q}} \mathcal{Q} \hat{H} \mathcal{P} + \cdots,
+\end{align}
+因此，高能自由度虽然不再被显式求解，但是它们的影响可能被吸收到有效速度，有效质量，耦合常数等参数当中。因此，有效意味着Hilbert空间被缩小了，只保留低能自由度；同时哈密顿量只保留在小参数下最重要的有限阶项。
+
+对于\(\bm{k} \cdot \bm{p}\)模型。严格历史意义上的\(\bm{k} \cdot \bm{p}\)名称来源于连续晶体哈密顿量中的
+\begin{align}
+	\frac{\left(\hat{\bm{p}}+ \hbar \bm{k}\right)^{2}}{2 m} = \frac{\hat{\bm{p}}^{2}}{2m} + \frac{\hbar}{m} \bm{k} \cdot \hat{\bm{p}} + \frac{\hbar^{2} k^{2}} {2m},
+\end{align}
+这里出现了真正的\(\bm{k} \cdot \bm{p}\)项。但是，现在\(\bm{k} \cdot \bm{p}\)模型更宽泛地指在某个高对称动量点附近构造的低能哈密顿量矩阵。比如，假设只关心\(\bm{K}\)附近的状态，写成\(\bm{k} = \bm{K} + \bm{q}, \, \left|\bm{q}\right| a \ll 1\). 对布洛赫哈密顿量做长波展开有
+\begin{align}
+	h \left(\bm{K} + \bm{q}\right) = h \left(\bm{K}\right) + q_i \frac{\partial h}{\partial k_i} \bigg|_{\bm{k} = \bm{K}} + \frac{1}{2} q_i q_j \frac{\partial^{2} h}{\partial k_i \partial k_j} \bigg|_{\bm{k} = \bm{K}} ,
+\end{align}
+然后通常只保留有限阶项，得到有效布洛赫哈密顿量
+\begin{align}
+	h_{\mathrm{eff}} \left(\bm{q}\right) = h \left(\bm{K}\right) + q_i \frac{\partial h}{\partial k_i} \bigg|_{\bm{k} = \bm{K}}.
+\end{align}
+所以有效模型及意味着保留低能部分。
+
+\end{document}
