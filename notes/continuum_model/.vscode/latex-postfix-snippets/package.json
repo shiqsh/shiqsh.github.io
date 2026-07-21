@@ -1,0 +1,28 @@
+{
+    "name": "latex-postfix-snippets",
+    "displayName": "LaTeX Postfix Snippets",
+    "description": "Makes user LaTeX snippets available after adjacent text without requiring a space.",
+    "version": "0.0.1",
+    "publisher": "shiqsh-local",
+    "private": true,
+    "engines": {
+        "vscode": "^1.80.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "activationEvents": [
+        "onLanguage:latex",
+        "onLanguage:tex",
+        "onLanguage:doctex"
+    ],
+    "main": "./extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "latexPostfixSnippets.reload",
+                "title": "LaTeX Postfix Snippets: Reload User Snippets"
+            }
+        ]
+    }
+}

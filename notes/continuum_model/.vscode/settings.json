@@ -1,0 +1,14 @@
+{
+    "[latex]": {
+        "editor.quickSuggestions": {
+            "other": "on",
+            "comments": "on",
+            "strings": "on"
+        },
+        "editor.snippetSuggestions": "top",
+        "editor.suggestOnTriggerCharacters": true,
+        "editor.suggest.matchOnWordStartOnly": true
+    },
+    "editor.suggest.showSnippets": true,
+    "editor.tabCompletion": "on"
+}
