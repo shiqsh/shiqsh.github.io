@@ -501,56 +501,188 @@ Shanghai 201210, China.
 
 所以低能模型的有效性来自于两类截断，首先只保留低能动量中心\(\bm{K}\)附近满足\(\left|\bm{q}\right| < \Lambda\)的自由度；其次，在（\( \Lambda a \ll 1\)）的长波条件下，只保留梯度或者小动量展开的有限项。
 
- \section{转角石墨烯的连续模型}
-按照上面连续模型的范式，这里我们给出转角石墨烯连续模型的推导，还是首先从格点算符定义低能连续场算符，进而写出实空间的连续哈密顿量；在确认哈密顿量具有的莫尔周期性后，我们将哈密顿量在平面波基底下写出其矩阵表示。
+ \section{转角双层石墨烯的连续模型}
+按照上面连续模型的范式，这里我们给出转角双层石墨烯连续模型的推导。与前面不同的是，由于上下两层石墨烯不再共用同一套Bravais格子，我们需要用原子位置上的费米子算符写出紧束缚哈密顿量，再从原子位置上的费米子算符定义低能连续场算符，进而写出实空间的连续哈密顿量；在确认哈密顿量具有的莫尔周期性后，我们将哈密顿量在平面波基底下写出其矩阵表示。
 
-这里我们再次重新声明三种不同的面积，首先是对应上面公式中的原胞面积\(A_{\mathrm{uc}}\), 在下文中等价于单层石墨烯原胞面积\(A_{\mathrm{mlg}}\), 同时定义莫尔超晶格原胞面积\(A_{\mathrm{M}}\)， 而\(\mathcal{A}\)为整个有限体系的总面积。对于一个同时与原子晶格与莫尔晶格相容的有限体系，有
+\subsection{转角双层石墨烯的紧束缚哈密顿量}
+
+这里我们再次重新声明三种不同的面积，首先是对应上面公式中的原胞面积\(A_{\mathrm{uc}}\), 在下文中等价于单层石墨烯原胞面积\(A_{\mathrm{mlg}}\), 同时定义莫尔超晶格原胞面积\(A_{\mathrm{M}}\)， 而\(\mathcal{A}\)为单层样品的总面积。有如下关系
 \begin{align}
 	\mathcal{A} = N_{0} A_{\mathrm{mlg}} = N_{\mathrm{M}} A_{\mathrm{M}}.
 \end{align}
 其中\( N_{0}\) 是每一层包含的石墨烯原胞数，\(N_{\mathrm{M}} \) 是莫尔原胞数。
 
-首先，对于转角石墨烯，原始的格点算符应写成
+对于未旋转时的单层石墨烯，格点位置为
 \begin{align}
-	\hat{c}_{l,\alpha,\bm{R}},
+	\bm{R} = n_1 \bm{a}_{1} + n_{2} \bm{a}_{2},
 \end{align}
-其中\(l \in \left\{t, b\right\}\)是层指标，\(\alpha \in \left\{A, B\right\}\)是子晶格指标；同时，上下每一层石墨烯原胞位置表示为\(\bm{R} = n_1 \bm{a}_{1} + n_{2} \bm{a}_{2}\)。（这里我们忽略了自旋）我们记上层的转角为\(\theta_{t} = + \frac{\theta}{2}\), 下层的转角为\(\theta_{b} = -\frac{\theta}{2}\), 定义旋转矩阵 \(\mathcal{R} = R\left(\theta_{l}\right)\)。所以，第\(l\)层的实际格矢为\(\bm{R}_{l} = \mathcal{R}_{l} \bm{R}\)，实际原子位置为
+其中\(n_{1},n_{2} \in \mathbb{Z}\), \( \bm{a}_{1},  \bm{a}_{2}\)是单层石墨烯的基矢，具体为
 \begin{align}
-	\bm{r}_{l,\alpha,\bm{R}} = \mathcal{R}_{l} \left(\bm{R} + \bm{\tau}_{\alpha}\right) + z_{l} \hat{z}.
+	\bm{a}_{1} = a \left(\frac{1}{2}, \frac{\sqrt{3}}{2}\right),\quad \bm{a}_{2} = a \left(-\frac{1}{2}, \frac{\sqrt{3}}{2}\right),
 \end{align}
-对于刚性旋转，\(\det \mathcal{R}_{l} = 1\), 所以旋转前后单层石墨烯的面积均为\(A_{\mathrm{mlg}}\)。
+这里\(a = 2.46\)\AA 为石墨烯的晶格常数。原胞内部两个原子位置为
+\begin{align}
+	\bm{\tau}_{A} = \left(0,0\right),\quad \bm{\tau}_{B} = a \left(0, \frac{\sqrt{3}}{3}\right) = \frac{1}{3} \left(\bm{a}_{1} + \bm{a}_{2}\right).
+\end{align}
+因此，对于单层石墨烯的原子位置，我们一般记为
+\begin{align}
+	\bm{r}_{S} = \bm{R} + \bm{\tau}_{S}.
+\end{align}
+其中\(S \in \left\{A,B\right\}\)是子晶格指标。
+\vspace{2em}
 
-首先，对每一层的格点算符做傅立叶变换，
+
+对于转角双层石墨烯，我们引入层指标\(j \in \left\{t,b\right\}\), 记第\(j\)层的旋转角度为\(\theta_{j}\), 记上下两层的旋转角度分别为
 \begin{align}
-	\hat{c}_{l,\alpha, \bm{R}} = \frac{1}{\sqrt{N_0}} \sum_{\bm{p} \in \mathrm{BZ}_{l}} e^{i \bm{p} \cdot \bm{R}_{l}} \hat{c}_{l, \alpha, \bm{p}}.
+	\theta_{b} = - \frac{\theta}{2}, \quad \theta_{t} = \frac{\theta}{2}.
 \end{align}
-其中\(\bm{p}\)类似我们前文中所讨论的\(\bm{k}\)。低能态集中在两个谷附近，所以把动量写成
-\begin{align}
-	\bm{p} = \bm{K}_{l, \xi} + \bm{q}, \quad \xi  = \pm, \quad \left|\bm{q}\right| < \Lambda.
-\end{align}
-只保留两个谷附近的低能态
-\begin{align}
-	\hat{c}_{l, \alpha, \bm{R}} \simeq \frac{1}{\sqrt{N_0}} \sum_{xi = \pm} \sum_{\left|\bm{q}\right| < \Lambda} e^{i \left(\bm{K}_{l, \xi} + \bm{q}\right) \cdot \bm{R}_{l}} \hat{c}_{l, \alpha, \bm{K}_{l, \xi} + \bm{q}},
-\end{align}
-提出每个谷分别对应的载波相位
-\begin{align}
-	\hat{c}_{l, \alpha, \bm{R}} \simeq \frac{1}{\sqrt{N_0}} \sum_{xi = \pm}  e^{i \bm{K}_{l, \xi} \cdot \bm{R}_{l}} \sum_{\left|\bm{q}\right| < \Lambda} e^{i \bm{q} \cdot \bm{R}_{l} } \hat{c}_{l, \alpha, \bm{K}_{l, \xi} + \bm{q}}.
-\end{align}
-由此，我们可以定义连续包络场、
-\begin{align}
-	\hat{\psi}_{l, \alpha, \xi} \left(\bm{r}\right) = \frac{1}{\sqrt{\mathcal{A}}} \sum_{\left|\bm{q}\right| < \Lambda} e^{i \bm{q} \cdot \bm{r}} \hat{c}_{l, \alpha,  \bm{K}_{l, \xi} + \bm{q}}
-\end{align}	
-利用
-\begin{align}
-	\mathcal{A} = N_0 A_{\mathrm{mlg}}.
-\end{align}
-得到
+这里采用主动旋转规范，也就是正号表示逆时针旋转，负号表示顺时针旋转。所以实际每一层的原子位置写为
 \begin{align}
 	\boxed{
-			\hat{c}_{l, \alpha, \bm{R}} \simeq \sqrt{A_{\mathrm{mlg}}} \sum_{\xi = \pm} e^{i \bm{K}^{l , \xi} \cdot \bm{R}_{l}} \hat{\psi}_{l, \alpha, \xi} \left(\bm{R}_{l}\right). 
+		\bm{r}_{j,S} \left(\bm{R}\right) = \mathcal{R} \left(\theta_{j}\right) \left(\bm{R} + \bm{\tau}_{S}\right),
 	}
 \end{align}
-这里每一个完整的连续场\(\hat{\psi}_{l, \alpha, \xi} \left(\bm{r}\right)\)有八个分量。
+其中\(\mathcal{R} \left(\theta_{j}\right) = \begin{pmatrix}
+	\cos \theta_{j} & - \sin \theta_{j} \\ \sin  \theta_{j}  & \cos  \theta_{j} 
+\end{pmatrix}\)是逆时针旋转矩阵。
+
+紧束缚哈密顿量应写成
+\begin{align}
+	\hat{H}_{\mathrm{tb}} = \sum_{j,j^{\prime}} \sum_{S,S^{\prime}} \sum_{\bm{r}_{j,S},\bm{r}^{\prime}_{j^{\prime, S^{\prime}}}} t_{j j^{\prime}} \left(\bm{r}_{j,S} -\bm{r}^{\prime}_{j^{\prime, S^{\prime}}} \right) \hat{c}^{\dagger}_{j,S,\bm{r}_{j,S} } \hat{c}_{j^{\prime}, S^{\prime}, \bm{r}^{\prime}_{j^{\prime, S^{\prime}}} }.
+\end{align}
+其中\( \hat{c}_{j,S,\bm{r}_{j,S} }\)是原子位置上的费米子算符，其满足反对易关系
+\begin{align}
+	\left\{\bm{r}_{j,S}, \bm{r}^{\prime}_{j^{\prime, S^{\prime}}} \right\} = \delta_{j,j^{\prime}} \delta_{S,S^{\prime}} \delta_{\bm{r}_{j,S}, \bm{r}^{\prime}_{j^{\prime, S^{\prime}}}}.
+\end{align}
+对于跃迁项，更仔细地可以写成
+\begin{align}
+	t_{jj^{\prime}} \left(\bm{d}\right) = t \left[\bm{d} + \left(z_{j} - z_{j^{\prime}}\right) \hat{z} \right],
+\end{align}
+其中 
+\begin{align}
+	\bm{d} = \bm{r}_{j,S}-  \bm{r}^{\prime}_{j^{\prime, S^{\prime}}}.
+\end{align}
+当层指标相同时，哈密顿量描述的是intralayer coupling, 当层指标不同的时候，哈密顿量描述的是interlayer tunneling. 厄米性要求
+\begin{align}
+	t \left(\bm{d}\right) = t^{*} \left(-\bm{d}\right).
+\end{align}
+
+\subsection{连续场算符与有效哈密顿量}
+
+在转角双层石墨烯当中，低能展开中心也就是谷（valley），谷的位置为
+\begin{align}
+	\bm{K}_{j,\xi} = \mathcal{R}\left(\theta_{j}\right) \bm{K}_{\xi},
+\end{align}
+\(\bm{K}_{\xi}\)是未旋转的单层石墨烯的谷位置，\(\xi = \pm\) 是谷指标。对于我们所选取的convention，有
+\begin{align}
+	\bm{K}_{+} = \frac{4 \pi}{3 a} \left(1, 0\right), \quad \bm{K}_{-} = \frac{4 \pi}{3 a} \left(-1, 0\right),
+\end{align}
+在每个谷附近取阶段
+\begin{align}
+	\bm{p} = \bm{K}_{j, \xi} + \bm{k}, \quad \left|\bm{q}\right| < \Lambda, \quad \Lambda a \ll 1,
+\end{align}
+由此，定义连续场
+\begin{align}
+	\boxed{
+		\hat{\psi}_{j,S,\xi} \left(\bm{r}\right) = \frac{1}{\sqrt{\mathcal{A}}} \sum_{\left|\bm{k}\right| < \Lambda} e^{i \bm{k} \cdot \bm{r}} \hat{c}_{j,S, \bm{K}_{j, \xi} + \bm{k}}.
+	}
+\end{align}
+又 \(\mathcal{A} = N_{0} A_{\mathrm{mlg}}\), 原子位置费米子算符的低能展开为
+\begin{align}
+	\boxed{
+		\hat{c}_{j,S, \bm{r}_{j,S}} \simeq \sqrt{A_{\mathrm{mlg}}} \sum_{\xi = \pm} e^{i \bm{K}_{j, \xi} \cdot \bm{r}_{j,S}} \hat{\psi}_{j,S, \xi} \left(r\right) \bigg|_{\bm{r} = \bm{r}_{j,S}}.
+	}
+\end{align}
+(这里的近似来源于仅保留两个 valley 附近的低能 Fourier 模式，而不是来源于后续使用的 Dirac comb。对于固定子晶格的原子位置集合，Dirac comb 在保留全部原子倒格矢时是严格恒等式。) 得到有效哈密顿量为
+\begin{align}
+	\hat{H}_{\mathrm{eff}} = A_{\mathrm{mlg}} \sum_{j,j^{\prime}} \sum_{S,S^{\prime}} \sum_{\xi,\xi^{\prime}} \sum_{\bm{r}_{j,S}, \bm{r}^{\prime}_{j^{\prime}, S^{\prime}}} t_{j j^{\prime}} \left(\bm{r}_{j,S} - \bm{r}^{\prime}_{j^{\prime}, S^{\prime}}\right) e^{-i \bm{K}_{j, \xi} \cdot \bm{r}_{j,S}} e^{i \bm{K}_{j^{\prime, \xi^{\prime}}} \cdot \bm{r}^{\prime}_{j^{\prime, S^{\prime}}} } \hat{\psi}^{\dagger}_{j, S, \xi} \left(\bm{r}_{j,S}\right)  \hat{\psi}_{j^{\prime}, S^{\prime}, \xi^{\prime}} \left(\bm{r}_{j^{\prime}, S^{\prime}}\right).
+\end{align}
+这里我们将离散求和变成连续积分，Dirac comb为
+\begin{align}
+	\boxed{
+		\sum_{\bm{r}_{j,S}} \delta^{\left(2\right)} \left(\bm{r} - \bm{r}_{j,S}\right) = \frac{1}{A_{\mathrm{mlg}}} \sum_{\bm{G}_{j}}e^{i \bm{G}_{j} \cdot \left(\bm{r} - \bm{\tau}_{j,S}\right)},
+	}
+\end{align}
+这里\(\bm{G}_{j} = \mathcal{R} \left(\theta_{j}\right)\bm{G}\)是对应层的倒格矢。复式格子的Dirac comb 公式与格点的Dirac comb 公式略有不同，我们将在附录中给出证明。对于任意定义在第\(j\)层，\(S\)子晶格原子上的函数\(F\), 可以将求和\(\sum_{\bm{r}_{j,S}} F \left(\bm{r}_{j,S}\right)\)写成
+\begin{align}
+	\sum_{\bm{r}_{j,S}} F \left(\bm{r}_{j,S}\right) = \int d \bm{r} F \left(\bm{r}\right) \sum_{\bm{r}_{j,S}} \delta^{\left(2\right)} \left(\bm{r} - \bm{r}_{j,S}\right) = \frac{1}{A_{\mathrm{mlg}}} \sum_{\bm{G}_{j}} e^{-i \bm{G}_{j} \cdot \bm{\tau}_{j, S}} \int d \bm{r} e^{i \bm{G}_{j} \cdot \bm{r}} F \left(\bm{r}\right).
+\end{align}
+所以连续场算符可以表示成
+\begin{align}
+	\sum_{\bm{r}_{j,S}} \hat{\psi}_{j,S,\xi} \left(\bm{r}_{j,S}	\right) &\simeq \frac{1}{A_{\mathrm{mlg}}} \int d \bm{r} \sum_{\bm{G}_{j}} e^{i \bm{G}_{j} \cdot \left(\bm{r} - \bm{\tau}_{j,S}\right)} \hat{\psi}_{j,S,\xi} \left(\bm{r}\right) \\
+	\sum_{\bm{r}^{\prime}_{j^{\prime}, S^{\prime}}} \hat{\psi}_{j^{\prime}, S^{\prime}, \xi^{\prime}} \left(\bm{r}^{\prime}_{j^{\prime}, S^{\prime}}\right) & \simeq  \frac{1}{A_{\mathrm{mlg}}} \int d \bm{r}^{\prime} \sum_{\bm{G}^{\prime}_{j^{\prime}}} e^{-i \bm{G}^{\prime}_{j^{\prime}} \cdot \left(\bm{r}^{\prime} - \bm{\tau}^{\prime}_{j^{\prime}, S^{\prime}}\right)} \hat{\psi}_{j^{\prime}, S^{\prime}, \xi^{\prime}} \left(\bm{r}^{\prime}\right).
+\end{align}
+这里我们采用了convention，也就是对于湮灭算符\(\hat{\psi}\), 我们设定其前面\(e\)指数上的系数是负的，也就是\(e^{-i \bm{G}^{\prime}_{j^{\prime}} \cdot \left(\bm{r}^{\prime} - \bm{\tau}^{\prime}\right)  }\)；对于产生算符\(\hat{\psi}^{\dagger}\)，我们设定其前面\(e\)指数上的系数是正的，也就是\(e^{i \bm{G}_{j} \cdot \left(\bm{r} - \bm{\tau}\right)}\)。之所以这里可以改变符号，是因为这里倒格矢关于反演是封闭的，也就是
+\begin{align}
+	\sum_{\bm{G}} e^{i \bm{G} \cdot \left( \bm{r} - \bm{\tau}\right)} = \sum_{\bm{G}} e^{-i \bm{G} \cdot \left( \bm{r} - \bm{\tau}\right)}.
+\end{align}
+习惯上对于产生湮灭算符取“一正一负”，是因为这与狄拉克符号的ket与bra的傅立叶变换是一致的，也就是\(e^{i \bm{k} \cdot \bm{r}} \cdots e^{i \bm{k}^{\prime} \cdot \bm{r}}\)。实际上，这里完全可以反过来进行标记，最后的物理结果并不会改变，仅仅相当于重新标记倒格矢，并且最后的转移动量保持一致。
+
+由此，连续模型的哈密顿量是
+\begin{align}
+	\boxed{
+		\begin{aligned}
+			\begin{split}
+				\hat{H}_{\mathrm{eff}} \simeq \frac{1}{A_{\mathrm{mlg}}} \sum_{j,j^{\prime}} \sum_{S,S^{\prime}} &\sum_{\xi,\xi^{\prime}} \sum_{\bm{G}_{j}, \bm{G}^{\prime}_{j^{\prime}}} \int d \bm{r} \int d \bm{r}^{\prime} e^{i \bm{G}_{j} \cdot \left(\bm{r} - \bm{\tau}_{j,S}\right)} e^{-i \bm{G}^{\prime}_{j^{\prime}} \cdot \left(\bm{r}^{\prime} - \bm{\tau}^{\prime}_{j^{\prime}, S^{\prime}}\right)} \\
+				& t_{jj^{\prime}} \left(\bm{r} - \bm{r}^{\prime}\right) e^{-i \bm{K}_{j, \xi} \cdot \bm{r}} e^{i \bm{K}_{j^{\prime}, \xi^{\prime}} \cdot \bm{r}^{\prime}} \hat{\psi}^{\dagger}_{j,S,\xi} \left(\bm{r}\right) \hat{\psi}_{j^{\prime}, S^{\prime}, \xi^{\prime}} \left(\bm{r}^{\prime}\right).
+			\end{split}
+		\end{aligned}
+	}
+\end{align}
+
+\subsection{证明不同谷之间的解耦}
+将哈密顿量按照谷分块，
+\begin{align}
+	\hat{H}_{\mathrm{eff}} = \sum_{\xi,\xi^{\prime}} \hat{H}_{\xi \xi^{\prime}},
+\end{align}
+所以\(\xi = \xi^{\prime}\)对应intravalley的部分\(\hat{H}_{++}, \hat{H}_{--}\)，而\(\xi \neq \xi^{\prime}\)对应intravalley的部分\(\hat{H}_{+-}, \hat{H}_{-+}\)。接下来我们就要证明，在长波近似下，intravalley的部分是可以忽略的。为了分析积分中的空间振荡，定义两个原子位置之差
+\begin{align}
+	\bm{d} = \bm{r} - \bm{r}^{\prime},\quad \bm{r}^{\prime} = \bm{r} - \bm{d}.
+\end{align}
+将所有依赖\(\bm{r}, \bm{r}^{\prime}\)的指数相位整理起来
+\begin{align}
+	\begin{split}
+		e^{i \bm{G}_{j} \cdot \bm{r}} e^{-i \bm{G}^{\prime}_{j^{\prime}} \cdot \bm{r}^{\prime}} e^{-i \bm{K}_{j, \xi} \cdot \bm{r}} e^{i \bm{K}_{j^{\prime}, \xi^{\prime}} \cdot \bm{r}^{\prime}} & = e^{i \bm{G}_{j} \cdot \bm{r}} e^{-i \bm{G}^{\prime}_{j^{\prime}} \cdot \left(\bm{r} - \bm{d}\right)}  e^{-i \bm{K}_{j, \xi} \cdot \bm{r}}  e^{i \bm{K}_{j^{\prime}, \xi^{\prime}} \cdot \left(\bm{r} - \bm{d}\right)} \\
+		& = e^{i \bm{Q}_{\xi \xi^{\prime}}^{j j^{\prime}} \cdot \bm{r}} e^{i \left(\bm{G}^{\prime}_{j^{\prime}} - \bm{K}_{j^{\prime}, \xi^{\prime}} \right) \cdot \bm{d}},
+	\end{split}
+\end{align}
+其中
+\begin{align}
+	\boxed{
+		\bm{Q}_{\xi \xi^{\prime}}^{j j^{\prime}}  = \bm{G}_{j} - \bm{G}^{\prime}_{j^{\prime}} - \bm{K}_{j,\xi} + \bm{K}_{j^{\prime},\xi^{\prime}}. 
+	}
+\end{align}
+将子晶格相位提出，哈密顿量为
+\begin{align}
+	\begin{split}
+			\hat{H}_{\xi \xi^{\prime}} \simeq \frac{1}{A_{\mathrm{mlg}}} \sum_{j,j^{\prime}} \sum_{S,S^{\prime}} \sum_{\bm{G}_{j}, \bm{G}^{\prime}_{j^{\prime}}} e^{-i \bm{G}_{j} \cdot \bm{\tau}_{j,S}} e^{i \bm{G}^{\prime}_{j^{\prime}} \cdot \bm{\tau}^{\prime}_{j^{\prime}, S^{\prime}}} \int d \bm{r} & \int d \bm{d} \, e^{i \bm{Q}_{\xi \xi^{\prime}}^{j j^{\prime}}  \cdot \bm{r}} e^{i \left(\bm{G}^{\prime}_{j^{\prime}} - \bm{K}_{j^{\prime}, \xi^{\prime}} \right) \cdot \bm{d}} \\
+			& \hat{\psi}^{\dagger}_{j,S,\xi} \left(\bm{r}\right) \hat{\psi}_{j^{\prime}, S^{\prime}, \xi^{\prime}} \left(\bm{r} - \bm{d}\right).
+	\end{split}
+\end{align}
+这里\(t \left(\bm{d}\right)\)随着\(\left|\bm{d}\right|\)快速衰减，同时\(\hat{\psi}^{\dagger} \left(\bm{r}\right) \hat{\psi} \left(\bm{r} - \bm{d}\right)\)随\(\bm{r}\)慢变。因此，决定哈密顿量振荡行为的就是\(e^{i \bm{Q}_{\xi \xi^{\prime}}^{j j^{\prime}}  \cdot \bm{r}}\). 如果\(\left|\bm{Q}\right| \sim a^{-1}\), 它在原子尺度快速振荡，连续积分中被抑制；只有\(\left|\bm{Q}\right| \ll a^{-1}\)，才可以保留。
+
+对于层内的intravalley项，取\(j = j^{\prime},\, \xi = \xi^{\prime}\)，有
+\begin{align}
+	\bm{Q}_{\xi \xi^{\prime}}^{j j^{\prime}} = \bm{Q}_{\xi \xi}^{j j} = \bm{G}_{j} - \bm{G}^{\prime}_{j} - \bm{K}_{j,\xi} + \bm{K}_{j,\xi} = \bm{G}_{j} - \bm{G}^{\prime}_{j}
+\end{align}
+同样，对连续包络场做傅立叶变换
+\begin{align}
+	\boxed{
+		\begin{aligned}
+			\hat{\psi}^{\dagger}_{j,S,\xi} \left(\bm{r}\right) &= \int_{\left|\bm{k}\right| < \Lambda} \frac{d \bm{k}}{\left(2 \pi\right)^{2}} e^{-i \bm{k} \cdot \bm{r}} \hat{\psi}^{\dagger}_{j,S,\xi} \left(\bm{k}\right) , \\
+			\hat{\psi}_{j^{\prime}, S^{\prime}, \xi^{\prime}} \left(\bm{r} - \bm{d}\right) & = \int_{\left|\bm{k}^{\prime}\right| < \Lambda} \frac{d \bm{k}^{\prime}}{\left(2 \pi\right)^{2}} e^{i \bm{k}^{\prime} \cdot \left(\bm{r} - \bm{d}\right)} \hat{\psi}_{j^{\prime}, S^{\prime}, \xi^{\prime}} \left(\bm{k}^{\prime}\right). 
+		\end{aligned}
+	}
+\end{align}
+中心坐标\(\bm{r} \)中的完整指数为
+\begin{align}
+	e^{i \left(\bm{Q}_{\xi \xi^{\prime}}^{j j^{\prime}} - \bm{k} + \bm{k}^{\prime}\right) \cdot \bm{r}}
+\end{align}
+
+\subsection{梯度展开}
+
+\subsection{平面波表示}
+
 
 \section{附录}
 \subsection{其他体系中的紧束缚模型}
@@ -594,4 +726,34 @@ Shanghai 201210, China.
 \end{align}
 所以有效模型及意味着保留低能部分。
 
+\subsection{Possion 求和公式（Dirac comb forumla）的证明}
+考虑周期系统中的密度函数, 对于简单晶格的情况
+\begin{align}
+	\rho \left(\bm{r}\right) = \sum_{\bm{R}} \delta^{\left(2\right)}  \left(\bm{r} - \bm{R}\right).
+\end{align}
+这是一个与晶格具有相同周期性的函数，因此可以按倒格矢做傅立叶展开
+\begin{align}
+	\rho \left(\bm{r}\right) = \sum_{\bm{G}} c_{\bm{G}} e^{i \bm{G}\cdot\bm{r}}.
+\end{align}
+傅立叶系数为
+\begin{align}
+	c_{\bm{G}} = \frac{1}{A_{\mathrm{mlg}}} \int_{\mathrm{uc}} \rho \left(\bm{r}\right) e^{-i \bm{G} \cdot \bm{r}} = \frac{1}{A_{\mathrm{mlg}}},
+\end{align}
+因为一个原胞内只贡献一个delta峰。所以有Possion 求和公式
+\begin{align}
+	\boxed{
+		\sum_{\bm{R}} \delta^{\left(2\right)} \left(\bm{r} - \bm{R}\right)	= \frac{1}{A_{\mathrm{mlg}}} \sum_{\bm{G}} e^{i \bm{G} \cdot \bm{r}}.
+	}
+\end{align}
+对于复式晶格，原胞内子晶格\(S\)的位置为\(\bm{\tau}_{S}\), 密度函数需要改写成
+\begin{align}
+	\rho_{S} \left(\bm{r}\right) = \sum_{\bm{R}} \delta^{\left(2\right)} \left(\bm{r} - \bm{R} - \bm{\tau}_{S}\right) = \rho \left(\bm{r} - \bm{\tau}_{S}\right),
+\end{align}
+将上式中的\(\bm{r}\)替换成\(\bm{r} - \bm{\tau}_{S}\), 将\(\bm{R}\)替换成实际原子位置\(\bm{r}_{S}\)。得到
+\begin{align}
+	\boxed{
+		\sum_{\bm{r}_{S}} \delta^{\left(2\right)} \left(\bm{r} - \bm{r}_{S}\right) = \frac{1}{A_{\mathrm{mlg}}} \sum_{\bm{G}} e^{i \bm{G} \cdot \left(\bm{r} - \bm{\tau}_{S}\right)}.
+	}
+\end{align}
+即子晶格的平移等价于傅立叶展开中新增加的相位。
 \end{document}
