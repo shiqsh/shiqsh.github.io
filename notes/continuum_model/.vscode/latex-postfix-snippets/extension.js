@@ -7,6 +7,7 @@ const vscode = require('vscode');
 
 const DEFAULT_WORD_SEPARATORS = '`~!@#$%^&*()-=+[{]}\\|;:\'",.<>/?';
 const SUPPORTED_LANGUAGES = new Set(['latex', 'tex', 'doctex']);
+const SCRIPT_PREFIXES = new Set(['^', '_']);
 
 let snippetCache = [];
 let snippetCacheKey = '';
@@ -257,15 +258,42 @@ function provideCompletionItems(document, position) {
         item.filterText = snippet.prefix;
         item.insertText = new vscode.SnippetString(snippet.body);
         item.range = new vscode.Range(start, position);
-        item.sortText = `0${String(999 - snippet.prefix.length).padStart(3, '0')}`;
+        // Keep postfix matches available, but place them after normally scored
+        // exact matches when both candidates have the same fuzzy-match score.
+        item.sortText = `zzzz-postfix-${String(999 - snippet.prefix.length).padStart(3, '0')}`;
         items.push(item);
     }
 
-    if (items.length > 0) {
-        items[0].preselect = true;
+    return items;
+}
+
+async function expandScriptOrNextPlaceholder() {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor || !SUPPORTED_LANGUAGES.has(editor.document.languageId) || editor.selections.length !== 1) {
+        await vscode.commands.executeCommand('jumpToNextSnippetPlaceholder');
+        return;
     }
 
-    return items;
+    const selection = editor.selection;
+    if (!selection.isEmpty) {
+        await vscode.commands.executeCommand('jumpToNextSnippetPlaceholder');
+        return;
+    }
+
+    const position = selection.active;
+    const linePrefix = editor.document.lineAt(position.line).text.slice(0, position.character);
+    const snippet = loadSnippets().find(candidate =>
+        SCRIPT_PREFIXES.has(candidate.prefix) && linePrefix.endsWith(candidate.prefix)
+    );
+
+    if (!snippet) {
+        await vscode.commands.executeCommand('jumpToNextSnippetPlaceholder');
+        return;
+    }
+
+    const start = position.translate(0, -snippet.prefix.length);
+    const range = new vscode.Range(start, position);
+    await editor.insertSnippet(new vscode.SnippetString(snippet.body), range);
 }
 
 function activate(context) {
@@ -282,7 +310,12 @@ function activate(context) {
         vscode.window.showInformationMessage(`Reloaded ${count} LaTeX postfix snippet triggers.`);
     });
 
-    context.subscriptions.push(provider, reloadCommand);
+    const expandScriptCommand = vscode.commands.registerCommand(
+        'latexPostfixSnippets.expandScriptOrNextPlaceholder',
+        expandScriptOrNextPlaceholder
+    );
+
+    context.subscriptions.push(provider, reloadCommand, expandScriptCommand);
 }
 
 function deactivate() {}

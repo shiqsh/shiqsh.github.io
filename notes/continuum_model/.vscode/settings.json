@@ -5,7 +5,8 @@
             "comments": "on",
             "strings": "on"
         },
-        "editor.snippetSuggestions": "top",
+        "editor.snippetSuggestions": "inline",
+        "editor.suggestSelection": "first",
         "editor.suggestOnTriggerCharacters": true,
         "editor.suggest.matchOnWordStartOnly": true
     },

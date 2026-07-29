@@ -2,7 +2,7 @@
     "name": "latex-postfix-snippets",
     "displayName": "LaTeX Postfix Snippets",
     "description": "Makes user LaTeX snippets available after adjacent text without requiring a space.",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "publisher": "shiqsh-local",
     "private": true,
     "engines": {
@@ -22,6 +22,10 @@
             {
                 "command": "latexPostfixSnippets.reload",
                 "title": "LaTeX Postfix Snippets: Reload User Snippets"
+            },
+            {
+                "command": "latexPostfixSnippets.expandScriptOrNextPlaceholder",
+                "title": "LaTeX Postfix Snippets: Expand Script or Go to Next Placeholder"
             }
         ]
     }

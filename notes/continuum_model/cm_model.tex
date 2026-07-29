@@ -655,8 +655,8 @@ Shanghai 201210, China.
 将子晶格相位提出，哈密顿量为
 \begin{align}
 	\begin{split}
-			\hat{H}_{\xi \xi^{\prime}} \simeq \frac{1}{A_{\mathrm{mlg}}} \sum_{j,j^{\prime}} \sum_{S,S^{\prime}} \sum_{\bm{G}_{j}, \bm{G}^{\prime}_{j^{\prime}}} e^{-i \bm{G}_{j} \cdot \bm{\tau}_{j,S}} e^{i \bm{G}^{\prime}_{j^{\prime}} \cdot \bm{\tau}^{\prime}_{j^{\prime}, S^{\prime}}} \int d \bm{r} & \int d \bm{d} \, e^{i \bm{Q}_{\xi \xi^{\prime}}^{j j^{\prime}}  \cdot \bm{r}} e^{i \left(\bm{G}^{\prime}_{j^{\prime}} - \bm{K}_{j^{\prime}, \xi^{\prime}} \right) \cdot \bm{d}} \\
-			& \hat{\psi}^{\dagger}_{j,S,\xi} \left(\bm{r}\right) \hat{\psi}_{j^{\prime}, S^{\prime}, \xi^{\prime}} \left(\bm{r} - \bm{d}\right).
+			\hat{H}_{\xi \xi^{\prime}} \simeq \frac{1}{A_{\mathrm{mlg}}} \sum_{j,j^{\prime}} \sum_{S,S^{\prime}} \sum_{\bm{G}_{j}, \bm{G}^{\prime}_{j^{\prime}}} e^{-i \bm{G}_{j} \cdot \bm{\tau}_{j,S}} e^{i \bm{G}^{\prime}_{j^{\prime}} \cdot \bm{\tau}^{\prime}_{j^{\prime}, S^{\prime}}} & \int d \bm{r}  \int d \bm{d} \, e^{i \bm{Q}_{\xi \xi^{\prime}}^{j j^{\prime}}  \cdot \bm{r}} e^{i \left(\bm{G}^{\prime}_{j^{\prime}} - \bm{K}_{j^{\prime}, \xi^{\prime}} \right) \cdot \bm{d}} \\
+			& t_{jj^{\prime}} \left(\bm{d}\right) \hat{\psi}^{\dagger}_{j,S,\xi} \left(\bm{r}\right) \hat{\psi}_{j^{\prime}, S^{\prime}, \xi^{\prime}} \left(\bm{r} - \bm{d}\right).
 	\end{split}
 \end{align}
 这里\(t \left(\bm{d}\right)\)随着\(\left|\bm{d}\right|\)快速衰减，同时\(\hat{\psi}^{\dagger} \left(\bm{r}\right) \hat{\psi} \left(\bm{r} - \bm{d}\right)\)随\(\bm{r}\)慢变。因此，决定哈密顿量振荡行为的就是\(e^{i \bm{Q}_{\xi \xi^{\prime}}^{j j^{\prime}}  \cdot \bm{r}}\). 如果\(\left|\bm{Q}\right| \sim a^{-1}\), 它在原子尺度快速振荡，连续积分中被抑制；只有\(\left|\bm{Q}\right| \ll a^{-1}\)，才可以保留。
@@ -678,12 +678,137 @@ Shanghai 201210, China.
 		\end{aligned}
 	}
 \end{align}
-中心坐标\(\bm{r} \)中的完整指数为
+中心坐标\(\bm{r} \)的完整e指数为
 \begin{align}
-	e^{i \left(\bm{Q}_{\xi \xi^{\prime}}^{j j^{\prime}} - \bm{k} + \bm{k}^{\prime}\right) \cdot \bm{r}}
+	e^{i \left(\bm{Q}_{\xi \xi^{\prime}}^{j j^{\prime}} - \bm{k} + \bm{k}^{\prime}\right) \cdot \bm{r}}，
+\end{align}
+积分有
+\begin{align}
+	\int \mathrm{d} \bm{r} e^{i \left(\bm{Q}_{\xi \xi^{\prime}}^{j j^{\prime}} - \bm{k} + \bm{k}^{\prime}\right) \cdot \bm{r}} = \left(2 \pi\right)^{2} \delta \left(\bm{Q}_{\xi \xi^{\prime}}^{j j^{\prime}} - \bm{k} + \bm{k}^{\prime}\right).
+\end{align}
+由此得到动量匹配条件
+\begin{align}
+	\boxed{
+		\bm{Q} = \bm{k} - \bm{k}^{\prime}.
+	}
+\end{align}
+更一般的是
+\begin{align}
+	\boxed{
+		\bm{G}_{j} - \bm{G}^{\prime}_{j^{\prime}} - \bm{K}_{j,\xi} + \bm{K}_{j^{\prime},\xi^{\prime}} = \bm{k}_{j} - \bm{k}_{j^{\prime}}.
+	}
+\end{align}
+注意到
+\begin{align}
+	\left|\bm{k} - \bm{k}^{\prime}\right| < \left|\bm{k}\right| + \left|\bm{k}^{\prime}\right| < 2 \Lambda,
+\end{align}
+所以\(\left|\bm{Q}\right| < 2 \Lambda\)。而如果\(\bm{G}_{j} \neq \bm{G}^{\prime}_{j}\)，同样有
+\begin{align}
+	\left|\bm{Q}\right| = \left|\bm{G}_{j} - \bm{G}^{\prime}_{j}\right| \geq \frac{4 \pi}{\sqrt{3}a} > 2 \Lambda
+\end{align}
+所以只有
+\begin{align}
+	\bm{G}_{j} = \bm{G}^{\prime}_{j},
+\end{align}
+更进一步，
+\begin{align}
+	\bm{k} = \bm{k}^{\prime}.
+\end{align}
+对于层内的intervalley项，如果\(j^{\prime} = j, \quad \xi^{\prime} = - \xi\), 那么
+\begin{align}
+	\bm{Q}^{jj}_{\xi,-\xi} = \bm{G}_{j} - \bm{G}^{\prime}_{j} - \bm{K}_{j, \xi} + \bm{K}_{j, -\xi} = \bm{G}_{j} - \bm{G}^{\prime}_{j} - 2 \bm{K}_{j, \xi}.
+\end{align}
+长波条件要求
+\begin{align}
+	\bm{G}_{j} - \bm{G}^{\prime}_{j} \simeq 2 \bm{K}_{j, \xi},
+\end{align}
+但由于\(2 \bm{K}\)并不是倒格矢，而\(3 \bm{K}\)才是倒格矢，所以\(\left|\bm{Q}\right| \sim \frac{1}{a}\)。此项仍然在原子尺度快速振荡，层内的intervalley项被舍弃。
+
+对于层间的intravalley项，取\(j \neq j^{\prime}, \quad \xi^{\prime} = \xi\), 有
+\begin{align}
+	\bm{Q}^{jj^{\prime}}_{\xi \xi} = \bm{G}_{j} - \bm{G}^{\prime}_{j^{\prime}} - \bm{K}_{j,\xi} + \bm{K}_{j^{\prime,\xi}},
+\end{align}
+由于小转角会带来一个相对小的动量差，所以不必一定要求\(\bm{G}_{j} = \bm{G}^{\prime}_{j^{\prime}}\)。同时有以下关系
+\begin{align}
+	\left|\bm{K}_{j^{\prime},\xi} - \bm{K}_{j,\xi}\right| \sim K \theta = \frac{4 \pi}{3 a} \theta \ll \frac{1}{a}.
+\end{align}
+所以可以选取倒格矢组合\(\left( \bm{G}_{j},\, \bm{G}^{\prime}_{j^{\prime}}\right)\)使得
+\begin{align}
+	\left|\bm{Q}^{jj^{\prime}}_{\xi \xi}\right| = \left|\bm{G}_{j} - \bm{G}^{\prime}_{j^{\prime}} - \bm{K}_{j,\xi} + \bm{K}_{j^{\prime,\xi}}\right| \sim K \theta ,
+\end{align}
+最低阶有三个由\(C_{3z}\)对称性联系的组合，所产生的三个小的剩余动量也就是后面的三个转移动量\(\bm{q}_{1},\,\bm{q}_{2},\, \bm{q}_{3}\)。(这里省略了谷指标)
+
+对于层间的intervalley项，取\(j^{\prime} \neq j, \, \xi^{\prime} = -\xi \neq \xi \), 有
+\begin{align}\
+	\begin{split}
+			\bm{Q}^{jj^{\prime}}_{\xi,-\xi} & = \bm{G}_{j} - \bm{G}^{\prime}_{j^{\prime}} - \bm{K}_{j,\xi} + \bm{K}_{j^{\prime, - \xi}} = \bm{G}_{j} - \bm{G}^{\prime}_{j^{\prime}} - \bm{K}_{j,\xi} - \bm{K}_{j^{\prime},\xi} \\
+			& = \mathcal{R} \left(\theta_{j}\right) \left(\bm{G} - \bm{K}_{\xi}\right) - \mathcal{R}\left(\theta_{j^{\prime}}\right) \left(\bm{G}^{\prime} + \bm{K}_{\xi} \right),
+	\end{split}
+\end{align}
+对于小转角有
+\begin{align}
+	\mathcal{\theta} \bm{G} = \bm{G} + \theta \hat{z} \times \bm{G} + O \left(\theta^{2} \left|\bm{G}\right|\right),
+\end{align}
+因此
+\begin{align}
+	\bm{Q}^{jj^{\prime}}_{\xi,-\xi} = \left(\bm{G} - \bm{G}^{\prime} - 2 \bm{K}_{\xi}\right) + \theta_{j} \hat{z} \times \left(\bm{G} - \bm{K}_{\xi}\right)	- \theta_{j^{\prime}} \hat{\bm{z}} \times \left(\bm{G}^{\prime} + \bm{K}_{\xi}\right) + O \left(\theta^{2}\right),
+\end{align}
+如果只考虑低阶倒格矢，如\(\left|\bm{G}\right|, \left|\bm{G}^{\prime}\right| \sim a^{-1}\),因此转角带来的动量差只有\(\left|\delta \bm{Q}\right| \sim \theta/a\), 而零转角时的动量失配为\(\left|\bm{Q}_{0}\right| = \left|\bm{G} - \bm{G}^{\prime} - 2 \bm{K}_{\xi}\right| \sim a^{-1}\)。在小角度条件下，\(\theta \ll 1\), 因此，低阶倒格矢的旋转修正，不可能抵消原本\(O\left(a^{-1}\right)\)的动量失配。
+
+但是如果选取非常高阶的倒格矢，使得\(\left|\bm{G}\right|, \left|\bm{G}^{\prime}\right| \sim 1/a \theta\)。那么旋转造成的偏移即可达到\(\theta \left|\bm{G}\right| \sim 1/a\), 这就可以补偿原本\(O \left(1/a\right)\)的动量失配。因此在高阶情况下，原则上可能存在倒格矢对使得
+\begin{align}
+	\left|\mathcal{R}\left(\theta_{j}\right) \bm{G} - \mathcal{R} \left(\theta_{j^{\prime}}\right) \bm{G}^{\prime} - \bm{K}_{j,\xi} - \bm{K}_{j^{\prime},\xi}\right| < 2 \Lambda,
+\end{align}
+但是对于高阶情况下，\(t \left(\bm{d}\right)\) 傅里叶变换后的\(\tilde{t }\left(\bm{p }\right)\)随着\(\left|\bm{p }\right|\)的增大迅速衰减。因此，层间intervalley项在连续模型中可以忽略。谷解耦
+\begin{align}
+	\hat{H }_{\mathrm{eff}} \simeq \hat{H }_{+} \oplus \hat{H }_{-}.
+\end{align}
+两个谷由时间反演操作\(\mathcal{T }\)联系。因此，只需要固定一个谷， 我们一般选取\(\xi = +\)。固定谷后，哈密顿量可以写成
+\begin{align}
+	\begin{split}
+		\boxed{
+			\begin{aligned}
+				\hat{H}_{\xi \xi^{\prime}} \simeq \frac{1}{A_{\mathrm{mlg}}} \sum_{j,j^{\prime}} \sum_{S,S^{\prime}} \sum_{\bm{G}_{j}, \bm{G}^{\prime}_{j^{\prime}}} e^{-i \bm{G}_{j} \cdot \bm{\tau}_{j,S}} e^{i \bm{G}^{\prime}_{j^{\prime}} \cdot \bm{\tau}^{\prime}_{j^{\prime}, S^{\prime}}} & \int \mathrm{d} \bm{r} \int \mathrm{d} \bm{d} \, e^{i \bm{Q}_{\xi \xi^{\prime}}^{j j^{\prime}}  \cdot \bm{r}} e^{i \left(\bm{G}^{\prime}_{j^{\prime}} - \bm{K}_{j^{\prime}, \xi} \right) \cdot \bm{d}} \\
+				& t_{jj^{\prime}} \left(\bm{d}\right) \hat{\psi}^{\dagger}_{j,S,\xi} \left(\bm{r}\right) \hat{\psi}_{j^{\prime}, S^{\prime}, \xi} \left(\bm{r} - \bm{d}\right).
+			\end{aligned}
+		}
+	\end{split}
 \end{align}
 
 \subsection{梯度展开}
+接下来也就是对\(\hat{\psi}\left(\bm{r} - \bm{d }\right)\)做梯度展开，展开到一阶
+\begin{align}
+	\hat{\psi}_{j^{\prime}, S^{\prime}, \xi} \left(\bm{r} - \bm{d}\right) = e^{-\bm{d } \cdot \nabla_{\bm{r}}} \hat{\psi}_{j^{\prime}, S^{\prime}, \xi} \left(\bm{r}\right) \simeq  \hat{\psi}_{j^{\prime}, S^{\prime}, \xi} \left(\bm{r}\right)  - d_{\mu} \partial_{\mu}  \hat{\psi}_{j^{\prime}, S^{\prime}, \xi} \left(\bm{r}\right),
+\end{align}
+（这里当然也可以像Kang的文章中用对称坐标，对\(\psi^{\dagger} \left(\bm{r} + \bm{d}/2\right) \psi \left(\bm{r} - \bm{d}/2\right)\)）进行展开。首先对于层内项(interlayer coupling)\(j = j^{\prime}\), 有\(\bm{G}_{j} = \bm{G}^{\prime}_{j}\)，以及\(\bm{Q } = 0\), 哈密顿量可以写为
+\begin{align}
+	\hat{H}^{\mathrm{intra}}_{j,\xi} \simeq \frac{1}{A_\mathrm{mlg}} \sum_{S,S^{\prime}} \sum_{\bm{G}_{j}} e^{-i \bm{G}_{j} \cdot \left( \bm{\tau}_{j,S } - \bm{\tau}^{\prime}_{j, S^{\prime}}\right)} \int \mathrm{d} \bm{r} \mathrm{d} \bm{r} e^{i \left(\bm{G}_{j} - \bm{K }_{j,\xi}\right) \cdot \bm{d }} \, t_{jj} \left(\bm{d }\right) \hat{\psi}^{\dagger}_{j, S, \xi} \left(\bm{r}\right) \hat{\psi}_{j,S^{\prime}, \xi} \left(\bm{r} - \bm{d }\right).
+\end{align}
+将连续场展开到一阶，
+\begin{align}
+	\hat{H}^{\mathrm{intra}}_{j,\xi} \simeq \int \mathrm{d} \bm{r} \sum_{S,S^{\prime}} \hat{\psi}^{\dagger}_{j, S, \xi} \left(\bm{r}\right) \left[\mathcal{M }^{\left(0\right)}_{j,\xi;SS^{\prime}} - \mathcal{M }^{\left(1\right)}_{j,\xi;SS^{\prime}, \mu} \partial_{\mu}\right] \hat{\psi}_{j,S^{\prime},\xi} \left(\bm{r}\right),
+\end{align}
+其中
+\begin{align}
+	\mathcal{M }^{\left(0\right)}_{j,\xi;SS^{\prime}} = \frac{1}{A_{\mathrm{mlg}}} \sum_{\bm{G}_{j}}  e^{-i \bm{G}_{j} \cdot \left( \bm{\tau}_{j,S } - \bm{\tau}^{\prime}_{j, S^{\prime}}\right)} \int \mathrm{d} \bm{d} \, t_{jj} \left(\bm{d }\right) e^{i \left(\bm{G}_{j} - \bm{K }_{j,\xi}\right) \cdot \bm{d }},
+\end{align}
+以及
+\begin{align}
+	\mathcal{M }^{\left(1\right)}_{j,\xi;SS^{\prime}, \mu}  = \frac{1}{A_{\mathrm{mlg}}} \sum_{\bm{G}_{j}}  e^{-i \bm{G}_{j} \cdot \left( \bm{\tau}_{j,S } - \bm{\tau}^{\prime}_{j, S^{\prime}}\right)} \int \mathrm{d} \bm{d} \, d_{\mu} t_{jj} \left(\bm{d }\right) e^{i \left(\bm{G}_{j} - \bm{K }_{j,\xi}\right) \cdot \bm{d }}.
+\end{align}
+可以看到\(\mathcal{M }^{\left(0\right)}_{j,\xi}\)和\(\mathcal{M }^{\left(1\right)}_{j,\xi;\mu}\)都是作用在\(A,B\)子晶格空间的\(2 \times 2\)矩阵。我们这里需要强调梯度展开本身给出的并不是\(\bm{\sigma} \cdot \hat{\bm{p}},\quad \hat{\bm{p}} = - i \nabla_{\bm{r}}\), 梯度展开给出的一阶项必然具有以下形式
+\begin{align}
+	\hat{H}^{\mathrm{intra}, \left(1\right)}_{j,\xi} = \int \mathrm{d} \bm{r} \hat{\psi}^{\dagger}_{j, \xi} \left(\bm{r}\right) \left(\mathcal{M }^{\left(1\right)}_{j,\xi;x} \partial_{x } + \mathcal{M }^{\left(1\right)}_{j,\xi;y} \partial_{y}\right) \hat{\psi}_{j,\xi} \left(\bm{r}\right)
+\end{align}
+写成更一般的形式也就是
+\begin{align}
+	h^{\left(1\right)}_{j,\xi} = M_x \left(- i \partial_{x } \right) + M_{y} \left(-i \partial_{y}\right).
+\end{align}
+其中\(M_{x }, M_{y}\)是厄米矩阵。那么接下来也就是通过对称性来确定\(\mathcal{M}^{\left(0\right)}\)和\(\mathcal{M }^{\left(1\right)}\)的形式。\footnote{实在写不动了，以后有机会再写吧，2026年7月29日}
+
+
+balabla
+
 
 \subsection{平面波表示}
 
