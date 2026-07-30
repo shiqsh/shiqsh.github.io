@@ -798,7 +798,7 @@ Shanghai 201210, China.
 \end{align}
 可以看到\(\mathcal{M }^{\left(0\right)}_{j,\xi}\)和\(\mathcal{M }^{\left(1\right)}_{j,\xi;\mu}\)都是作用在\(A,B\)子晶格空间的\(2 \times 2\)矩阵。我们这里需要强调梯度展开本身给出的并不是\(\bm{\sigma} \cdot \hat{\bm{p}},\quad \hat{\bm{p}} = - i \nabla_{\bm{r}}\), 梯度展开给出的一阶项必然具有以下形式
 \begin{align}
-	\hat{H}^{\mathrm{intra}, \left(1\right)}_{j,\xi} = \int \mathrm{d} \bm{r} \hat{\psi}^{\dagger}_{j, \xi} \left(\bm{r}\right) \left(\mathcal{M }^{\left(1\right)}_{j,\xi;x} \partial_{x } + \mathcal{M }^{\left(1\right)}_{j,\xi;y} \partial_{y}\right) \hat{\psi}_{j,\xi} \left(\bm{r}\right)
+	\hat{H}^{\mathrm{intra}, \left(1\right)}_{j,\xi} = -\\int \mathrm{d} \bm{r} \hat{\psi}^{\dagger}_{j, \xi} \left(\bm{r}\right) \left(\mathcal{M }^{\left(1\right)}_{j,\xi;x} \partial_{x } + \mathcal{M }^{\left(1\right)}_{j,\xi;y} \partial_{y}\right) \hat{\psi}_{j,\xi} \left(\bm{r}\right)
 \end{align}
 写成更一般的形式也就是
 \begin{align}
@@ -806,9 +806,26 @@ Shanghai 201210, China.
 \end{align}
 其中\(M_{x }, M_{y}\)是厄米矩阵。那么接下来也就是通过对称性来确定\(\mathcal{M}^{\left(0\right)}\)和\(\mathcal{M }^{\left(1\right)}\)的形式。\footnote{实在写不动了，以后有机会再写吧，2026年7月29日}
 
+定义子晶格的两分量场，
+\begin{align}
+	\hat{\psi}_{j,\xi} \left(\bm{r}\right) = \begin{pmatrix}
+		\hat{\psi}_{j,A,\xi} \left(\bm{r}\right) \\ \hat{\psi}_{j,B,\xi} \left(\bm{r}\right)
+	\end{pmatrix}
+\end{align}
+层内的零阶项可以被泡利矩阵分解成
+\begin{align}
+	\mathcal{M }^{\left(0\right)}_{j,\xi} = a_0 \sigma_{0} + a_{1} \sigma_{1} + a_2 \sigma_{2} + a_3 \sigma_{3}.
+\end{align}
+对于仅考虑最近邻跃迁的单层石墨烯紧束缚模型, 哈密顿量只包含连接 A/B 两个子晶格的跃迁项。由于不存在同一子晶格内的跃迁，哈密顿量不含与 \(\sigma_{0}\) 成正比的动量依赖项；同时可将狄拉克点能量选为能量零点，从而略去常数形式的 \(\sigma_{0}\) 项。同时，由于A/B 子晶格等价，二者具有相同的在位能，因此也不存在\(\sigma_{3}\)质量项。另外，在谷中心\(\bm{K }_{\xi}\)处，三个由\(C_{3z}\)旋转互相关联的最近邻跃迁具有相同的跃迁振幅，而相应的相位依次相差\(e^{i 2 \pi/3}\)，从而有
+\begin{align}
+	1 + e^{i 2 \pi/3} + e^{ - i 2 \pi/3} = 0,
+\end{align}
+所以谷中心处哈密顿量的非对角矩阵元同样为零。综上
+\begin{align}
+	\mathcal{M }^{\left(0\right)}_{j,\xi} = 0.
+\end{align}
 
-balabla
-
+对于一阶项\(\mathcal{M }^{\left(1\right)}\),
 
 \subsection{平面波表示}
 
