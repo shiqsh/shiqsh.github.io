@@ -79,7 +79,7 @@
 % Paragraph
 % =========================
 \setlength{\parindent}{2em}
-\setlength{\parskip}{0pt}
+\setlength{\parskip}{0.2em}
 
 % =========================
 % Section / subsection labels
@@ -580,80 +580,156 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 \end{align}
 
 \section{面内轨道磁化强度对异质应力的响应}
-\subsection{异质应力下转角石墨烯的哈密顿量}
-对于施加异质应力的转角石墨烯，通过对紧束缚模型中波函数的慢变场与晶格形变场做实空间中的一阶梯度展开，得到有效连续模型。对于特定的谷（我们选取 \(\bm{\sigma} \cdot \bm{p}\)），哈密顿量为
+\subsection{异质应力下转角双层石墨烯的哈密顿量}
+我们首先给出几何约定，对于最开始没有应力也没有旋转的单层石墨烯，其基矢和倒格矢基矢为
 \begin{align}
-	H = \begin{pmatrix}
-			H_{t} & T \\  T^{\dagger} & H_{b}
-		\end{pmatrix}.
+	\bm{a }_{1} &= a \left(\frac{1}{2}, \frac{\sqrt{3}}{2}\right), \quad \bm{a }_{2}  = a \left(-\frac{1}{2}, \frac{\sqrt{3}}{2}\right) \\
+	\bm{G}_{1} &= \frac{4 \pi}{\sqrt{3} a } \left(\frac{\sqrt{3}}{2}, \frac{1}{2}\right),\quad \bm{G}_{2} = \frac{4 \pi}{\sqrt{3} a } \left(-\frac{\sqrt{3}}{2}, \frac{1}{2}\right).
 \end{align}
+\(a = 2.46\)\AA 为石墨烯的晶格常数。同时两个谷为
+\begin{align}
+	\bm{K }_{\xi} =  \frac{4 \pi}{3 a } \left(\xi , 0\right),\quad \xi = \pm
+\end{align}
+对于我们所考虑的施加应力下转角双层石墨烯的连续模型，两个谷是解耦的，我们一般选择\(\xi = +\)的谷。对应未旋转单层石墨烯在狄拉克点附近的低能哈密顿量表示为
+\begin{align}
+	h_{0} = \hbar v_{F} \bm{\sigma} \cdot \left(-i \bm{\nabla} \right),
+\end{align}
+其中\(\bm{\sigma} = \left(\sigma_{1}, \sigma_{2}\right)\)，作用在\(A/B\)子晶格空间。
 
-其中的层间耦合项(intralayer coupling)具体为
+应力通过应变张量进行\(\mathcal{S }\)进行描述，对于应力主轴与\(x \)轴呈\(\phi\)的单轴异质应力，应变张量的定义为
 \begin{align}
-	\begin{split}
-		H_{t, \left(n_1 n_2\right)} &= v_F \bm{p}^\pr_{t} \cdot \bm{\sigma} + \alpha \vph I_{\mr{2 \times 2}} + v_F \gamma \bm{A} \cdot \bm{\sigma}, \\
-		H_{b, \left(n_1 n_2\right)} &= v_F \bm{p}^\pr_{b} \cdot \bm{\sigma} - \alpha \vph I_{\mr{2 \times 2}} - v_F \gamma \bm{A} \cdot \bm{\sigma}.
-	\end{split}
+	\mathcal{S } \left(\epsilon, \phi\right) = \mathcal{R } \left(\phi\right) \begin{pmatrix}
+		\epsilon_1 & 0 \\ 0 &  \epsilon_2
+	\end{pmatrix} \mathcal{R }^{T} \left(\phi\right),
 \end{align}
-其中\(\bm{p}^{\prime}_{t/b}\)是上层和下层的动量，分别是
+其中\(\mathcal{R} \left(\phi\right)\)是旋转矩阵
 \begin{align}
-	\begin{split}
-		\bm{p}^{\prime}_{t} &= \bm{k} - \left(n_1 \bm{b}^{\prime}_{m;1} + n_2 \bm{b}^{\prime}_{m;2}\right) \\
-		\bm{p}^{\prime}_{b} &= \bm{k} - \left(\bm{q}^{\prime}_{1} + n_1 \bm{b}^{\prime}_{m;1} + n_2 \bm{b}^{\prime}_{m;2}\right). 
-	\end{split}
-\end{align}
-这里\(\bm{b}^{\prime}_{m;1} \)和\(\bm{b}^{\prime}_{m;2}\) 分别是施加异质应力后莫尔布里渊区中的倒格矢基矢，\(\bm{q}^{\prime}_{1}\)是施加异质应力后上下层的转移动量，三者的表达式分别为
-\begin{align}
-		\bm{b}^{\prime}_{m; 1/2}  = \p{\mathcal{S} + \mathcal{T}}^{T} \bm{b}_{1/2},
-	\quad
-	\bm{q}^{\prime}_{1} = \p{\mathcal{S} + \mathcal{T}}^{T} \bm{K}.
-\end{align}
-\(\bm{b}_{1}\)和\(\bm{b}_{2}\)分别是单层石墨烯中倒格矢基矢，\(\bm{K}\)是狄拉克点坐标，具体为
-\begin{align}
-		\bm{b}_{1} = \frac{4 \pi}{\sqrt{3} a} \p{\frac{\sqrt{3}}{2} , \frac12}, \quad \bm{b}_{2} = \frac{4 \pi}{\sqrt{3} a}  \p{\frac{\sqrt{3}}{2}, - \frac12},\quad \bm{K} = \p{\frac{4 \pi}{3a}, 0},
-\end{align}
-\(a = 2.46\)\AA 为单层石墨烯的晶格常数。上式中的\(\mathcal{S}\)和\(\mathcal{T}\)分别是应力张量与转动张量，在小角近似下可以写成
-\begin{align}
-	\mathcal{S} \p{\epsilon, \phi} = R \p{\phi} \begin{pmatrix}
-		\epsilon_1 & \\
-		& \epsilon_2
-	\end{pmatrix} R^{T} \p{\phi} = \begin{pmatrix}
-		\epsilon_1 \cos^{2} \phi + \epsilon_2 \sin^2 \phi  & \p{\epsilon_1 - \epsilon_2} \cos \phi \sin \phi\\
-		\p{\epsilon_1 - \epsilon_2} \cos \phi \sin \phi & \epsilon_1 \sin^2 \phi + \epsilon_2 \cos^2 \phi
+	\mathcal{R} \left(\phi\right) = \begin{pmatrix}
+		\cos{\phi} & - \sin{\phi} \\ \sin{\phi} & \cos{\phi}
 	\end{pmatrix},
 \end{align}
-其中\(R \left(\phi\right)\)是旋转矩阵，\(\phi\)是应力主轴与\(x\)轴的夹角。\(\epsilon_{1}\)和\(\epsilon_{2}\)分别是应力主轴与其垂直方向上的应变强度。通常取\(\epsilon_1 = \epsilon,\, \epsilon_2 = - \nu \epsilon\), \(\nu = 0.16\)是石墨烯的泊松比。
+这里\(\epsilon_{1}\)为上下层之间的相对主轴应力强度。通常我们取对称规范，取上层石墨烯的应力为\(\left(\frac{\epsilon_1}{2}, \phi\right)\), 下层石墨烯的应力为\(\left(-\frac{\epsilon_1}{2}, \phi \right)\)(这使得施加应力后的TBG还保留了\(C_{2z}\mathcal{T}\)对称性)。对于石墨烯而言\(\epsilon_2 = -\nu \epsilon_{1}, \quad \epsilon_{1} = \epsilon\)，其中\(\nu = 0.16\)为石墨烯的泊松比。显示地，
 \begin{align}
-	\mathcal{T} = \begin{pmatrix}
-		0 & - \theta \\ \theta & 0
+	\mathcal{S } \left(\epsilon, \phi\right) = \begin{pmatrix}
+		\epsilon_1 \cos^{2} \phi + \epsilon_2 \sin^2 \phi  & \p{\epsilon_1 - \epsilon_2} \cos \phi \sin \phi\\
+		\p{\epsilon_1 - \epsilon_2} \cos \phi \sin \phi & \epsilon_1 \sin^2 \phi + \epsilon_2 \cos^2 \phi
 	\end{pmatrix}.
 \end{align}
-\(\varphi\)是赝标量场，\(\bm{A}\)是赝矢量场，两者的定义为
-\begin{align}
-	\varphi & = \mathrm{Tr}\left(\mathcal{S}\right) = \epsilon_1  + \epsilon_2 ,\\
-	\bm{A} & = \left(\mathcal{S}_{xx} - \mathcal{S}_{yy}, \mathcal{S}_{xy} + \mathcal{S}_{yx}\right) = \left(\left(\epsilon_1 - \epsilon_2\right) \cos{2\phi}, \left(\epsilon_1 - \epsilon_2\right) \sin{2 \phi} \right).
-\end{align}
-这里我们忽略了转角对于层内耦合项中泡利矩阵的影响，也就是\(\bm{\sigma}^{\pm te} \rightarrow \\bm{\sigma}\)。在小角近似下，这样的处理是合理的。同时忽略掉转角对于泡利矩阵的影响，也使得我们所考虑的连续模型中具有粒子空穴对称性。
 
-对于层间跃迁项(interlayer tunneling)，本文不保留完整梯度展开中的非局域层间隧穿修正，而采用最小 BM 近似：仅保留第一壳层中的三个转移动量，并忽略梯度耦合项以及广义层间隧穿中的 \(\sigma_3\) 分量。于是层间项写为标准 BM 形式。
+同是考虑到转角后，晶格几何由应力和转角共同决定，定义形变张量
+\begin{align}
+	\mathcal{E} = \mathcal{T }  + \mathcal{S },
+\end{align}
+其中小转角对应的线性转动张量为
+\begin{align}
+	\mathcal{T }\left(\theta\right) = \begin{pmatrix}
+		0 & - \theta \\ \theta & 0
+	\end{pmatrix},
+\end{align}
+同样上层的几何参数为\(\left(\epsilon/2, \phi, \theta/2\right)\), 下层的几何参数为\(\left(-\epsilon/2, \phi, -\theta/2\right)\)。没有施加应力时的莫尔倒格矢基矢为
+\begin{align}
+	\bm{g}_{1} = \frac{8 \pi \sin{\left(\theta/2\right)}}{\sqrt{3} a  } \left(\frac{1}{2}, -\frac{\sqrt{3}}{2}\right), \quad \bm{g}_{2} = \frac{8 \pi \sin{\left(\theta/2\right)}}{\sqrt{3} a  } \left(  \frac{1}{2}, \frac{\sqrt{3}}{2}\right).
+\end{align}
+近似地可以表示成
+\begin{align}
+	\bm{g}_{1/2} \simeq \mathcal{T}^{T} \left(\theta\right) \bm{G }_{1/2}.
+\end{align}
+类似地，异质应力下的莫尔倒格矢基矢为
+\begin{align}
+	\bm{g}^{\prime}_{1/2} \eqsim \mathcal{E }^{T } \bm{G}_{1/2}
+\end{align}
+同时对于BM模型中的层间转移动量\(\bm{q}\)，同样可以得到
+\begin{align}
+	\bm{q}^{\prime}_{1} \eqsim \mathcal{E}^{T} \bm{K},
+\end{align}
+其余两个层间转移动量满足
+\begin{align}
+	\bm{q}^{\prime}_{2} = \bm{q}^{\prime}_{1} + \bm{g}^{\prime}_{2},\quad \bm{q}^{\prime}_{3} = \bm{q}^{\prime}_{1} - \bm{g}^{\prime}_{1}.
+\end{align}
 
-在实空间中，BM 层间隧穿项可以写为
+在实空间中，异质应力下转角双层石墨烯的连续哈密顿量可以写成
 \begin{align}
-	T \left(\bm{r}\right) = \sum_{i = 1}^{3} e^{i \bm{q}^{\prime}_{j} \cdot \bm{r}} \left\{ w_0 I_{2 \times 2} + w_1 \left[\sigma_{1} \cos{\frac{2 \pi}{3} \left(j - 1\right)} + \sigma_{2} \sin{\frac{2 \pi}{3} \left(j - 1\right)} \right]  \right\} 
+	\hat{H } = \int \mathrm{d}^{2 } \bm{r } \, \hat{\Psi}^{\dagger} \left(\bm{r }\right) \begin{pmatrix}
+		h_t & T \left(\bm{r }\right) \\ T^{\dagger} \left(\bm{r }\right) & h_b 
+	\end{pmatrix} \hat{\Psi} \left(\bm{r }\right).
 \end{align}
-由于本文实际采用的是平面波基矢，需要将上式做傅里叶变换到动量空间。定义倒格矢
+其中
 \begin{align}
-	\bm G_{\left(n_1 n_2\right)}^\prime = n_1\bm b_{m;1}^\prime+n_2\bm b_{m;2}^\prime,
+	\hat{\Psi} \left(\bm{r }\right) = \begin{pmatrix}
+		\hat{\psi}_{t } \left(\bm{r }\right) \\ \hat{\psi}_{b} \left(\bm{r }\right)
+	\end{pmatrix}, \quad \hat{\psi}_{l } \left(\bm{r }\right) = \begin{pmatrix}
+		\hat{\psi}_{j,A } \left(\bm{r }\right) \\ \hat{\psi}_{j,B} \left(\bm{r }\right)
+	\end{pmatrix},
 \end{align}
-则层间项的矩阵元为
+我们规定\(j = t,b\)是层指标，\(S = A,B\)是子晶格指标。对于所选定的谷，层内哈密顿量（intralayer coupling）可以写成
 \begin{align}
-	\begin{split}
-		T_{\left(n_1 n_2\right),\left(m_1 m_2\right)} &= \braket{t, \left(n_1 n_2\right) | b, \left(m_1 m_2\right) } \\ 
-		& = \sum_{j=1}^{3} T_j \delta_{\bm G_{\left(n_1 n_2\right)}^\prime,\bm G_{\left(m_1 m_2\right)}^\prime+\bm q_1^\prime-\bm q_j^\prime} \\
-		& = T_1 \delta_{n_1, m_1} \delta_{n_2,m_2} + T_2 \delta_{n_1, m_1} \delta_{n_2 , m_2 - 1} + T_3 \delta_{n_1, m_1 + 1} \delta_{n_2 , m_2}.
-	\end{split}
+	h_t & = \hbar v_{F} \bm{\sigma} \cdot  \left(-i \bm{\nabla} \right) + \alpha \varphi \sigma_{0} + v_{F}	\gamma \bm{A } \cdot \bm{\sigma}, \\
+	h_b & =  \hbar v_{F} \bm{\sigma} \cdot  \left(-i \bm{\nabla} \right) - \alpha \varphi \sigma_{0} - v_{F}	\gamma \bm{A } \cdot \bm{\sigma}.
 \end{align}
-其中三个转移动量之间的几何关系为 \(\bm{q}^{pr}_{2} =\bm{q}^{pr}_{1} + \bm{b}^{\prime}_{m;2}, \, \bm{q}^{pr}_{3} =\bm{q}^{pr}_{1} - \bm{b}^{\prime}_{m;1}\)。上述参数具体设置见下表
+这里\(\varphi\)是赝标量场，定义为
+\begin{align}
+	\varphi = \mathrm{Tr} \mathcal{S } = \epsilon_{1} + \epsilon_{2} = \left(1 - \nu\right) \epsilon,
+\end{align}
+\(\bm{A}\)是赝矢量场，定义为
+\begin{align}
+	\bm{A} = \left(\mathcal{S}_{xx} - \mathcal{S}_{yy}, \mathcal{S}_{xy} + \mathcal{S}_{yx}\right) = \left(\left(\epsilon_{1} - \epsilon_{2}\right) \cos{2 \phi} , \left(\epsilon_{1} - \epsilon_{2}\right) \sin{2 \phi}\right).
+\end{align}
+施加应力下的层间跃迁项(interlayer tunneling)与未施加应力时保持一致，为
+\begin{align}
+	T \left(\bm{r }\right) = \sum_{j = 1}^{3} e^{i \bm{q }^{\prime}_{j} \cdot \bm{r}} T_{j}, \quad j = 1,2,3
+\end{align}
+其中
+\begin{align}
+	T_{j} = w_0 \sigma_{0} + w_1 \left[\sigma_{1} \cos{\frac{2 \pi \left(j -1\right)}{3}} + \sigma_{2}  \sin{\frac{2 \pi \left(j -1\right)}{3}}  \right]，
+\end{align}
+这里的\(w_0\)和\(w_1\)分别代表AA和AB堆叠区域的层间跃迁强度。为了将连续模型在平面波下进行表示，定义莫尔倒格矢为
+\begin{align}
+	\bm{G}^{\prime}_{n_{1} n_{2}} = n_{1} \bm{g}^{\prime}_{1} + n_{2} \bm{g}^{\prime}_{2},
+\end{align}
+对于定义在莫尔布里渊区中的动量\(\bm{k}\)，选取上下两层的平面波基底为
+\begin{align}
+	\ket{t, n_{1} n_{2}} \equiv \ket{t, \bm{k } - \bm{G}^{\prime}_{n_{1} n_{2}}}, \quad \ket{b, m_{1} m_{2}} \equiv	\ket{b, \bm{k} - \bm{q}^{\prime}_{1} - \bm{G}^{\prime}_{m_{1} m_{2}}}.
+\end{align}
+这里，上层平面波选取上层狄拉克作为动量参考点，而下层狄拉克点相对于上层可以认为整体平移了\(\bm{q }_{1}\), 因此多出了一个\(\bm{q}_{1}\)。平面波的具体表示可以统一写成
+\begin{align}
+	\braket{\bm{r } | \bm{k}; j, n_{1} n_{2}} = \frac{1}{\sqrt{\mathcal{A }}} e^{i \left(\bm{k} - \bm{Q}_{j} - \bm{G}^{\prime}_{n_{1}, n_{2}}\right) \cdot \bm{r }}, \quad j = t,b，
+\end{align}
+这里\(\mathcal{A }\)为体系面积。这里
+\begin{align}
+	\bm{Q}_{t} = 0, \quad \bm{Q}_{b } = \bm{q }^{\prime}_{1}.
+\end{align}
+
+在这一基底中，固定\(\bm{k }\)下的哈密顿量矩阵可以写成(为了简化符号，这里我们令\(\bm{n } = \left(n_{1} n_{2}\right),\, \bm{m } = \left(m_{1} m_{2}\right)\))
+\begin{align}
+	H_{\bm{n}, \bm{m}} \left(\bm{k }\right) = \begin{pmatrix}
+		H_{t, \bm{n}} \left(\bm{k}\right) \delta_{\bm{n}, \bm{m}} & T_{\bm{n }, \bm{m }} \\
+		T^{\dagger}_{\bm{m }, \bm{n}} &  H_{b, \bm{n}} \left(\bm{k}\right) \delta_{\bm{n}, \bm{m}}，
+	\end{pmatrix}
+\end{align}
+层内矩阵对应为
+\begin{align}
+	H_{t, \bm{n}} \left(\bm{k}\right) & = \hbar v_{F} \left(\bm{k} - \bm{G}^{\prime}_{n_{1} n_{2}}\right)\cdot \bm{\sigma} + \alpha \varphi \sigma_{0} + v_{F} \gamma \bm{A } \cdot \bm{\sigma} \\
+	H_{b, \bm{n}} \left(\bm{k}\right) & = \hbar v_{F} \left(\bm{k} - \bm{q }^{\prime}_{1} - \bm{G}^{\prime}_{n_{1} n_{2}}\right)\cdot \bm{\sigma} - \alpha \varphi \sigma_{0} - v_{F} \gamma \bm{A } \cdot \bm{\sigma}
+\end{align}
+那么层间跃迁过程对应为
+\begin{align}
+	T_{\bm{n }, \bm{m }} = \braket{\bm{k }; t, \bm{n }  | T \left(\bm{r}\right) | \bm{k }; b, \bm{m}} = \sum_{j = 1}^{3} T_{j} \delta_{\bm{G}^{\prime}_{\bm{n }}, \bm{G }^{\prime}_{\bm{m}} + \bm{q }^{\prime}_{1} - \bm{q }^{\prime}_{j}}, \quad j = 1,2,3.
+\end{align}
+也就是层间跃迁矩阵\(T_j\)值连接满足
+\begin{align}
+	\bm{G}^{\prime}_{\bm{n }} - \bm{G }^{\prime}_{\bm{m}} = \bm{q }^{\prime}_{1} - \bm{q }^{\prime}_{j},
+\end{align}
+的两组平面波，分别对应 \(\bm{q }^{\prime}_{1} - \bm{q }^{\prime}_{j} \in \left\{0, - \bm{g }^{\prime}_{2}, \bm{g }^{\prime}_{1}\right\}\)。显示地写出也就是
+\begin{align}
+	T_{\bm{n }, \bm{m }}  = T_1 \delta_{n_{1}, m_{1}} \delta_{n_{2}, m_{2}} + T_2 \delta_{n_1, m_{1}} \delta_{n_{2}, m_{2} - 1} + T_{3} \delta_{n_{1}, m_{1} + 1} \delta_{n_{2}, m_{2}}.
+\end{align}
+可以看到层间跃迁项将一个上层的平面波连接到三个下层的平面波。因此，原则上我们的哈密顿量需要包含无穷多的平面波基底，但这在数值上显然是无法计算的，因此通常情况下，需要对倒格矢做截断。我们的截断条件为
+\begin{align}
+	n_{1}, n_{2}, m_{1}, m_{2} \subset \left[-4, 4\right]
+\end{align}
+这对应的哈密顿量矩阵大小也就是\(324 \times 324\)。
+
+上述参数具体设置见下表
 \begin{table*}[h!]
 	\centering
 	\begin{tabular}{c c c c c c c}
@@ -664,6 +740,10 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 		\bottomrule
 	\end{tabular}
 \end{table*}
+
+\subsection{面内轨道磁化强度对异质应力响应的表达式}
+
+
 
 \section{附录}
 \subsection{一些具体计算}
