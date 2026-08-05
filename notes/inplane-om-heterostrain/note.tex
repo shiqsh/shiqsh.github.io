@@ -579,6 +579,73 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 	}.
 \end{align}
 
+\subsection{面内轨道磁化强度的数值计算}
+数值上，我们可以通过将\(\partial_{k_y} \mathcal{P }	\)写成动量微扰的形式，对面内轨道磁化强度进行数值求解。
+
+对于本征方程
+\begin{align}
+	\hat{H} \ket{u_n} = E_{n } \ket{u_n}.
+\end{align}
+对\(k_y\)求导
+\begin{align}
+	\hat{H }_{\partial_{k_{y}}} \ket{u_{n }} + \hat{H } \ket{\partial_{k_{y}} u_n} = \left(\partial_{k_{y}} E_{n }\right) \ket{u_n} + E_n \ket{\partial_{k_{y}} u_n},
+\end{align}
+其中
+\begin{align}
+	\hat{H}_{y} \equiv \partial_{k_{y}} \hat{H}. 
+\end{align}
+左乘另一个本征态\(\ket{u_{m }}\)，当\(m \neq n  \)时，很容易得到
+\begin{align}
+	\boxed{
+		\braket{u_{m } | \partial_{k_{y}} u_{n }} = \frac{\braket{u_{m } | \partial_{k_{y}} \hat{H} | u_{n }}}{E_{n } - E_{m }}, \quad m \neq n.
+	}
+\end{align}
+投影算符的求导也是类似的，前面有
+\begin{align}
+	\partial_{k_{y}} \mathcal{P}  = \sum_{n \in \mathrm{occ }} \left(\ket{\partial_{k_{y}} u_{n }} \bra{u_{n }} + \ket{u_{n }} \bra{\partial_{k_{y}} u_{n }}\right).
+\end{align}
+接下来的问题变成如何表示\(\ket{\partial_{k_{y}} u_{n }} \)，在\(\ket{\partial_{k_{y}} u_{n }}\)中插入完备性关系\(\mathcal{P} + \mathcal{Q}\) 
+\begin{align}
+	\partial_{k_{y}} \mathcal{P} = \sum_{n \in \mathrm{occ}} \mathcal{P} \ket{\partial_{k_{y}} u_{n }} \bra{u_{n }} + \mathcal{Q} \ket{\partial_{k_{y}} u_{n }} \bra{u_{n }} + \ket{u_{n }} \bra{\partial_{k_{y}} u_{n }} \mathcal{P} + \ket{u_{n }} \bra{\partial_{k_{y}} u_{n }} \mathcal{Q}.
+\end{align}
+我们首先来看占据-占据的部分
+\begin{align}
+	\begin{split}
+		\sum_{n \in \mathrm{occ}} \mathcal{P} \ket{\partial_{k_{y}} u_{n }} \bra{u_{n }} + \ket{u_{n }} \bra{\partial_{k_{y}} u_{n }} \mathcal{P} & = \sum_{n \in \mathrm{occ}} \sum_{l \in \mathrm{occ}} \ket{u_{l }} \braket{u_{l } | \partial_{k_{y}} u_{n }} \bra{u_{n }} + \ket{u_{n }} \braket{\partial_{k_{y}} u_{n } | u_{l }} \bra{u_{l }} \\
+		& = \sum_{n \in \mathrm{occ}} \sum_{l \in \mathrm{occ}} \braket{u_{n } | u_{l }} \braket{u_l | \partial_{k_{y}} u_{n }} + \braket{u_{l } | u_{n }} \braket{\partial_{k_{y}} u_{n } | u_{l }} \\
+		& = \sum_{n \in \mathrm{occ}} \sum_{l \in \mathrm{occ}} \delta_{n l } \left(\braket{u_l | \partial_{k_{y}} u_{n }} + \braket{\partial_{k_{y}} u_{n } | u_{l }}\right) \\
+		& = \sum_{n \in \mathrm{occ}} \partial_{k_{y}} \braket{u_{n } | u_{n }} \\
+		& = 0.
+	\end{split}
+\end{align}
+所以占据-占据对\(\partial_{k_{y}} \mathcal{P}\)没有贡献，只剩下占据态-空态的部分
+\begin{align}
+	\partial_{k_{y}} \mathcal{P} = \sum_{n \in \mathrm{occ}} \mathcal{Q} \ket{\partial_{k_{y}} u_{n }} \bra{u_{n }}  + \ket{u_{n }} \bra{\partial_{k_{y}} u_{n }} \mathcal{Q}.
+\end{align}
+进一步改写也就是
+\begin{align}
+	\boxed{
+		\partial_{k_{y}} \mathcal{P} = \mathcal{Q} \left(\partial_{k_{y}} \mathcal{P}\right) \mathcal{P} + \mathcal{P} \left(\partial_{k_{y}} \mathcal{P}\right) \mathcal{P}.	
+	}
+\end{align}
+进一步把空态子空间的投影算符写出来，上式可以写成
+\begin{align}
+	\begin{split}
+		\partial_{k_{y}} \mathcal{P} & = \sum_{n \in \mathrm{occ}} \sum_{m \in \mathrm{emp}} \ket{u_{m }}\braket{u_{m} | \partial_{k_{y}} u_{n }} \bra{u_{n }} + \ket{u_{n }} \braket{\partial_{k_{y}} u_{n} | u_{m }} \bra{u_{m}} \\
+		& = \sum_{n \in \mathrm{occ}} \sum_{m \in \mathrm{emp}} \ket{u_{m }} \frac{\braket{u_{m } | \partial_{k_{y}} \hat{H} | u_{n }}}{E_{n } - E_{m }} \bra{u_{n }} + \ket{u_{n }} \frac{\braket{u_{n } | \partial_{k_{y}} \hat{H} | u_{m}}}{E_{n } - E_{m }} \bra{u_{m}}.
+	\end{split}
+\end{align}
+定义单带投影算符
+\begin{align}
+	P_{n } = \ket{u_{n }} \bra{u_{n }}, \quad P_{m } = \ket{u_{m }} \bra{u_{m }},
+\end{align}
+可以将上式改写成
+\begin{align}
+	\boxed{
+		\partial_{k_{y}} \mathcal{P} =  \sum_{n \in \mathrm{occ}} \sum_{m \in \mathrm{emp}} \frac{P_{m } \left(\partial_{k_{y}} \hat{H} \right)P_{n } + P_{n} \left(\partial_{k_{y}} \hat{H} \right) P_{m} }{E_{n } - E_{m }}.
+	}
+\end{align}
+
 \section{面内轨道磁化强度对异质应力的响应}
 \subsection{异质应力下转角双层石墨烯的哈密顿量}
 我们首先给出几何约定，对于最开始没有应力也没有旋转的单层石墨烯，其基矢和倒格矢基矢为
@@ -712,7 +779,7 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 	H_{b, \bm{n}} \left(\bm{k}\right) & = \hbar v_{F} \left(\bm{k} - \bm{q }^{\prime}_{1} - \bm{G}^{\prime}_{n_{1} n_{2}}\right)\cdot \bm{\sigma} - \alpha \varphi \sigma_{0} - v_{F} \gamma \bm{A } \cdot \bm{\sigma}
 \end{align}
 那么层间跃迁过程对应为
-\begin{align}
+\begin{align}zu
 	T_{\bm{n }, \bm{m }} = \braket{\bm{k }; t, \bm{n }  | T \left(\bm{r}\right) | \bm{k }; b, \bm{m}} = \sum_{j = 1}^{3} T_{j} \delta_{\bm{G}^{\prime}_{\bm{n }}, \bm{G }^{\prime}_{\bm{m}} + \bm{q }^{\prime}_{1} - \bm{q }^{\prime}_{j}}, \quad j = 1,2,3.
 \end{align}
 也就是层间跃迁矩阵\(T_j\)只连接满足
@@ -740,7 +807,6 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 		\bottomrule
 	\end{tabular}
 \end{table*}
-
 \subsection{面内轨道磁化强度对异质应力响应的表达式}
 
 
