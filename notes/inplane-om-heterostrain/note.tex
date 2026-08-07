@@ -951,4 +951,65 @@ where the \(\mathcal Q\) part vanishes because
     0.
 \end{align}
 Therefore, although the inserted completeness relation is the full identity \(\mathbb I=\mathcal P+\mathcal Q\), only the occupied-empty part contributes.
+
+\subsection{极化率中来自费米面贡献的部分}
+The expression of inplane orbital magnetization is 
+\begin{align}
+	\begin{split}
+		M_{\alpha} = -\frac{e }{\hbar c } \epsilon_{\alpha \beta} \sum_{n \in \mathrm{occ}} \sum_{m \in \mathrm{emp}} \sum_{\bm{k}} \left(E_{n } \left(\bm{k }\right) - \mu\right) & \left[n_{F } \left(E_{m } \left(\bm{k }\right)\right) - n_{F } \left(E_{n } \left(\bm{k }\right)\right)\right] \\
+		& \mathrm{Re} \left[\braket{u_{n } | \partial_{k_{\beta}} u_{m} } z_{mn } \left(\bm{k }\right)	 \right].
+	\end{split}
+\end{align}
+More simplify, we rewrite it as 
+\begin{align}
+	M_{\alpha} = -\frac{e }{\hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \sum_{\substack{n \in \mathrm{occ} \\ m \in \mathrm{emp}}} \left(E_{n } - \mu\right) \left(f_{m } - f_{n }\right) A^{\beta}_{nm },
+\end{align}
+where \(f_{n } \equiv n_{F } \left(E_{n } - \mu\right)\). For the fixed chemical potential which means 
+\begin{align}
+	\partial_{\lambda} \mu = 0,
+\end{align}
+where \(\lambda\) is an external parameter like \(\epsilon\) and \(\phi\). Taking the derivative respect to \(\lambda\) 
+\begin{align}
+	\begin{split}
+		\partial_{\lambda} \left[ \left(E_{n } - \mu\right) \left(f_{m } - f_{n }\right) A^{\beta}_{nm }\right] = \left(\partial_{\lambda} E_{n } \left(f_{m } - f_{n }\right) A^{\beta}_{nm } \right) & +  \left(E_{n } - \mu\right) \left( \partial_{\lambda} f_{m } - \partial_{\lambda} f_{n }\right) A^{\beta}_{nm } \\
+		& + \left(E_{n } - \mu\right)  \left(f_{m } - f_{n }\right) \partial_{\lambda} A^{\beta}_{nm }.
+	\end{split}
+\end{align}
+The second term comes from the change of occupied states and the first and third term can be further manipulated. Since \(f_{n } \equiv n_F \left(E_{n } - \mu\right) = f \left(E_{n } - \mu\right)\), we have 
+\begin{align}
+	\partial_{\lambda} f_{n } = f^{\prime} \left(E_{n } - \mu\right) \partial_{\lambda} E_{n }.
+\end{align}
+Feynman-Hellman theorem gives 
+\begin{align}
+	\partial_{\lambda} E_{n } = \braket{u_n |\hat{V }|u_n} \equiv V_{nn},
+\end{align}
+where \(\hat{V} = \partial_{\lambda} \hat{H}\). So 
+\begin{align}
+	\partial_{\lambda} f_{n} = f^{\prime} \left(E_{n } - \mu\right) V_{nn },
+\end{align}
+At \(T = 0\), the distribution function is \(f \left(E - \mu\right) = \Theta \left(\mu - E \right)\). Thus, 
+\begin{align}
+	f^{\prime} \left(E_{n } - \mu\right) = - \delta \left(E - \mu\right),
+\end{align}
+and 
+\begin{align}
+	\partial_{\lambda} f_{n } = - \delta \left(E - \mu\right) V_{nn},
+\end{align}
+which means only the \(E = \mu\) part can contribute on  the \(\partial_{\lambda} f_{n }\)  i.e. the Fermi surface. Thus, the susceptibility from Fermi surface is 
+\begin{align}
+	\chi^{\alpha}_{\mathrm{FS}} = - \frac{e}{\hbar c} \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \sum_{\substack{n \in \mathrm{occ} \\ m \in \mathrm{emp}}} \left(E_{n } - \mu\right) \left[ - \delta \left(E_{m } - \mu \right) V_{mm } + \delta  \left(E_{n } - \mu\right) V_{nn}\right] A^{\beta}_{nm}. 
+\end{align}
+Here
+\begin{align}
+	\left(E_{n } - \mu\right) \delta \left(E_{n } - \mu\right) = 0.
+\end{align}
+So 
+\begin{align}
+	\boxed{
+		\chi^{\alpha}_{\mathrm{FS}} = \frac{e}{\hbar c} \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \sum_{\substack{n \in \mathrm{occ} \\ m \in \mathrm{emp}}} \left(E_{n } - \mu\right) \delta \left(E_{m } - \mu \right) V_{mm } A^{\beta}_{nm}.
+	}
+\end{align}
+
+
+
 \end{document}
