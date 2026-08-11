@@ -1,2 +1,5 @@
 intralayer
 inplane
+piezomagnetic
+对于绝缘体，也就是Venderbos文章中所分析的情况，即
+anti-Hermitian

@@ -669,8 +669,7 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 	}
 \end{align}
 
-\section{面内轨道磁化强度对异质应力的响应}
-\subsection{异质应力下转角双层石墨烯的哈密顿量}
+\section{异质应力下转角双层石墨烯的哈密顿量}
 我们首先给出几何约定，对于最开始没有应力也没有旋转的单层石墨烯，其基矢和倒格矢基矢为
 \begin{align}
 	\bm{a }_{1} &= a \left(\frac{1}{2}, \frac{\sqrt{3}}{2}\right), \quad \bm{a }_{2}  = a \left(-\frac{1}{2}, \frac{\sqrt{3}}{2}\right) \\
@@ -830,7 +829,109 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 		\bottomrule
 	\end{tabular}
 \end{table*}
-\subsection{面内轨道磁化强度对异质应力响应的表达式}
+
+\section{面内轨道磁化强度对异质应力的响应}
+现在我们来看面内轨道磁化强度对异质应力的响应，也就是计算对于应力的极化率
+\begin{align}
+	\chi^{\alpha}_{\lambda} = \frac{\partial M^{\alpha} \left(\epsilon, \phi\right)}{\partial \lambda} \bigg|_{\lambda = 0}, \quad \lambda = \epsilon, \phi.
+\end{align}
+在Venderbos等人的文章当中[arXiv:2512.19380v1][arXiv:2602.10076v1]当中，也将此极化率称为轨道压磁极化率（orbital piezomagnetic polarizability）。下面将按照[arXiv:2512.19380v1]给出的理论体系，给出施加应力下面内轨道磁化强度的极化率。
+
+\subsection{面内轨道磁化强度的统一表达式}
+首先我们统一写出面内轨道磁化强度的表达式，前面有
+\begin{align}
+	\begin{split}
+		W^{z}_{\alpha} \left(\bm{k }\right) &= \mathrm{Tr} \left[\mathcal{P} \left(\partial_{k_{\alpha}} \mathcal{P}\right) \mathcal{Q} \hat{z} \left(\hat{H } - \mu\right)\right],\\
+		N^{z}_{\alpha} \left(\bm{k }\right) & = \mathrm{Tr} \left[\mathcal{Q} \hat{z} \mathcal{P} \left(\partial_{k_{\alpha}} \mathcal{P}\right)\left(\hat{H} - \mu\right)\right] .
+	\end{split}
+\end{align}
+定义
+\begin{align}
+	\mathcal{F}_{\alpha} \left(\bm{k }\right) = W^{z}_{k_{\alpha}} \left(\bm{k }\right) + N^{z}_{k_{\alpha}} \left(\bm{k }\right).
+\end{align}
+于是可以将面内轨道磁化强度的表达式统一写出，也就是
+\begin{align}
+	\boxed{
+		M_{\alpha} = -\frac{e }{\hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \mathrm{Re} \mathcal{F}_{\beta} \left(\bm{k }\right).
+	}
+\end{align}
+这里记\(\epsilon_{xy} = 1,\,\epsilon_{yx} = -1\)。更进一步，由于\(\left[\hat{H} - \mu, \mathcal{P}\right] = \left[\hat{H}-\mu, \mathcal{Q}\right] = 0\), 利用求迹的循环性质
+\begin{align}
+	N^{z}_{\alpha} \left(\bm{k }\right) = \mathrm{Tr} \left[\mathcal{Q} \hat{z} \mathcal{P} \left(\partial_{k_{\alpha}} \mathcal{P}\right)\left(\hat{H} - \mu\right)\right] =  \mathrm{Tr} \left[\mathcal{P} \left(\partial_{k_{\alpha}} \mathcal{P}\right)\left(\hat{H} - \mu\right) \mathcal{Q} \hat{z} \right] =  \mathrm{Tr} \left[\mathcal{P} \left(\partial_{k_{\alpha}} \mathcal{P}\right)  \mathcal{Q} \left(\hat{H} - \mu\right) \hat{z} \right] 
+\end{align}
+因此，可以将\(\mathcal{F}_{\alpha}\)写成
+\begin{align}
+	\begin{split}
+		\mathcal{F}_{\alpha} &=  W^{z}_{\alpha} + N^{z}_{\alpha} = \mathrm{Tr} \left[\mathcal{P} \left(\partial_{k_{\alpha}} \mathcal{P} \right) \mathcal{Q} \left[\hat{z} \left(\hat{H} - \mu\right) +  \left(\hat{H} - \mu\right) \hat{z}\right]\right] \\
+		& = \mathrm{Tr} \left[\mathcal{P} \left(\partial_{k_{\alpha}} \mathcal{P} \right) \mathcal{Q} \left\{\hat{H} - \mu, \hat{z}\right\}\right].
+	\end{split}
+\end{align}
+由此可以定义
+\begin{align}
+	\mathcal{Z} \equiv \left\{\hat{H} - \mu, \hat{z}\right\},
+\end{align}
+上式可以进一步改写成
+\begin{align}
+	\boxed{
+		\mathcal{F}_{\alpha} =  \mathrm{Tr} \left[\mathcal{P} \left(\partial_{k_{\alpha}} \mathcal{P} \right) \mathcal{Q} \mathcal{Z}\right].
+	}
+\end{align}
+
+\subsection{极化率的表达式}
+现在我们要将面内轨道磁化的表达式对应力参数\(\lambda\)进行求导。在此之前，首先说明我们考虑的是固定化学势的情况，即\(\partial_{\lambda} \mu = 0\)，同时应力也不改变上下层的层间距离，即\(\partial_{\lambda} \hat{z} = 0\)。为了符号简便，令\(\mathcal{P}_{\alpha} \equiv \partial_{k_{\alpha}} \mathcal{P }\)以及\(\mathcal{P}_{\lambda} \equiv \left(\partial \mathcal{P} / \partial \lambda \right)|_{\lambda = 0}\)。再次将面内轨道磁化强度的表达式写出
+\begin{align}
+		\boxed{
+		M_{\alpha} = -\frac{e }{\hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \mathrm{Re} \, \mathrm{Tr} \left[\mathcal{P} \left(\partial_{k_{\alpha}} \mathcal{P} \right) \mathcal{Q} \mathcal{Z}\right].
+	}
+\end{align}
+
+这里我们首先对投影算符做分析，占据态投影算符的表达式为
+\begin{align*}
+	\mathcal{P} \left(\bm{k}\right) = \sum_{n \in \mathrm{occ}} \ket{u_{n } \bm{k}} \bra{u_{n} \bm{k}},
+\end{align*}
+这里的\(n\)是能带指标。对于绝缘体，也就是 Venderbos 文章中所分析的情况，即存在能隙，化学势位于一个全局能隙当中。此时，整个布里渊区内都可以将能带划分为占据和空两组。换句话说，存在一个固定的占据态能带集合，使得对于任意\(\bm{k }\), 都有\(E_{n } \left(\bm{k }\right) < \mu, \, n \in \mathrm{occ}\)以及\(E_{m } \left(\bm{k }\right) > \mu, \, m \in \mathrm{emp}\)。因此，占据态投影算符在整个布里渊区中具有固定的秩，可以统一写成
+\begin{align*}
+	\mathcal{P} \left(\bm{k}\right) = \sum_{n = 1}^{N_{\mathrm{occ}}}  \ket{u_{n } \bm{k}} \bra{u_{n} \bm{k}}, \quad \mathrm{rank} \, \mathcal{P} \left(\bm{k}\right) = N_{\mathrm{occ}}.
+\end{align*}
+但是对于石墨烯和转角双层石墨烯，不存在有全局的能隙，所以必定有某一条能带穿过化学势，也就是对于同一条能带，存在某些\(\bm{k }\)点满足，\(E_{m } \left(\bm{k }\right) < \mu\), 而另外一些\(\bm{k}^{\prime}\)满足\(E_{m} \left(\bm{k}^{\prime}\right)> \mu\)。而对于施加异质应力的转角双层石墨烯，上下两层的狄拉克点具有了相反的能量，因此便会出现：对于狄拉克点能量附近的化学势，会存在\(\mathrm{rank} \, \mathcal{P} \left(\bm{k}_{1}\right) = N\), 而\(\mathrm{rank} \, \mathcal{P} \left(\bm{k}_{2}\right) = N + 1\)。这意味着，我们不能像之前在绝缘体中使用一个固定秩的占据态投影算符。
+
+因此，我们将（莫尔）布里渊区按照哪些能带被占据划分不同的区域，将这些区域记为
+\begin{align}
+	\Omega_{s} \subset \mathrm{mBZ},
+\end{align}
+而在每一个\(\Omega_{s}\)内，占据能带的集合保持不变。将该集合记为 \(\mathcal{O}_{s}\), 于是，在区域\(\Omega_{s}\)内可以定义
+\begin{align}
+	\mathcal{P}_{s } \left(\bm{k }\right) = \sum_{n \in \mathcal{O}_{s }} \ket{u_{n \bm{k}}} \bra{u_{n \bm{k}}}, \quad \bm{k} \in \Omega_{s},
+\end{align}
+这里要指出的是，\(s\)并不是能带指标，或者是占据的能带数，这仅仅只是一个区域的标记数。比如可能存在，\(\Omega_{1}\)和\(\Omega_{2}\)，他们对应有不能占据能带，但是占据能带数目相同。而费米面是这些不同的区域之间的一维边界。
+
+所以面内轨道磁化的表达式需要改写成
+\begin{align}
+	M_{\alpha} = -\frac{e }{\hbar c} \epsilon_{\alpha \beta} \sum_{s } \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \mathrm{Re} \, \mathcal{F}^{\left(s \right)}_{\beta} \left(\bm{k }\right),
+\end{align}
+其中
+\begin{align}
+	\mathcal{F}^{\left(s \right)}_{\beta} \left(\bm{k }\right) = \mathrm{Tr} \left[\mathcal{P}_{s} \left(\partial_{k_{\beta}} \mathcal{P}_{s} \right) \mathcal{Q}_{s } \mathcal{Z} \right].
+\end{align}
+
+而占据态区域\(\Omega_{s}\)是会随着应力改变的，因此对面内轨道磁化强度求导可以得到
+\begin{align}
+	\frac{\partial}{\partial \lambda} \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \mathcal{F} \left(\bm{k }\right) = \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \partial \lambda \mathcal{F}  \left(\bm{k }\right) + \oint_{\partial \Omega_{s }} d l v^{\perp}_{\lambda} \mathcal{F} \left(\bm{k}\right).
+\end{align}
+这里\(v^{\perp}_{\lambda}\) 是边界法向速度，或者说也就是费米面的变化速度。
+
+我们首先计算\(\partial \lambda \mathcal{F}  \left(\bm{k }\right)\)， 这里我们令\(\hat{H}_{\lambda} = \partial_{\lambda} \left(\hat{H} - \mu\right)\), 同时有\(\partial_{\lambda} \mathcal{Q} = - \partial_{\lambda} \mathcal{P}\), 于是有
+\begin{align}
+	\boxed{
+		\partial_{\lambda} \mathcal{F}_{\alpha} = \mathrm{Tr} \left[\mathcal{P}_{\lambda} P_{\alpha} \mathcal{Q} \mathcal{Z} + \mathcal{P} \left(\partial_{k_{\alpha}} \mathcal{P}_{\lambda}\right) \mathcal{Q} \mathcal{Z} - \mathcal{P} \mathcal{P}_{\alpha} \mathcal{P}_{\lambda} \mathcal{Z} + \mathcal{P} \mathcal{P}_{\alpha} \mathcal{Q} \left\{\hat{z}, \hat{H}_{\lambda}\right\} \right].
+	}
+\end{align}
+可以对第二项进行化简，具体过程请参考附录C。最后得到
+\begin{align}
+	\boxed{
+		\mathrm{Re} \, \partial_{\lambda} \mathcal{F}_{\alpha} = \partial_{k_{\alpha}} \mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] + \mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\alpha} \mathcal{Q} \left(\partial_{\lambda} \mathcal{Z}\right) - \mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \left(\partial_{k_{\alpha}} \mathcal{Z}\right) \right].
+	} 
+\end{align}
 
 
 
@@ -951,6 +1052,42 @@ where the \(\mathcal Q\) part vanishes because
     0.
 \end{align}
 Therefore, although the inserted completeness relation is the full identity \(\mathbb I=\mathcal P+\mathcal Q\), only the occupied-empty part contributes.
+
+\subsection{极化率的化简}
+Considering 
+\begin{align}
+	\partial_{k_{\alpha}} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] = \mathrm{Tr} \left[\mathcal{P}_{\alpha} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} + \mathcal{P} \left(\partial_{k_{\alpha}} \mathcal{P}_{\lambda}\right) \mathcal{Q} \mathcal{Z} - \mathcal{P} \mathcal{P}_{\lambda} \mathcal{P}_{\alpha} \mathcal{Z} + \mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \left( \partial_{k_{\alpha}} \mathcal{Z}\right) \right].
+\end{align}
+The second term is exactly what we need. Substitute it into \(\partial_{\lambda} \mathcal{F} \left(\bm{k }\right)\) 
+\begin{align}
+	\begin{split}
+		\partial_{\lambda} \mathcal{F} \left(\bm{k }\right)  = \partial_{k_{\alpha}} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] & + \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{P}_{\alpha} \mathcal{Z}  - \mathcal{P}_{\alpha} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} - \mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \left( \partial_{k_{\alpha}} \mathcal{Z}\right) \right] \\
+		& + \mathrm{Tr} \left[\mathcal{P}_{\lambda} \mathcal{P}_{\alpha} \mathcal{Q} \mathcal{Z} - \mathcal{P} \mathcal{P}_{\alpha} \mathcal{P}_{\lambda} \mathcal{Z} + \mathcal{P} \mathcal{P}_{\alpha} \mathcal{Q} \left(\partial_{\lambda} \mathcal{Z}\right)\right].
+	\end{split}
+\end{align}
+Here
+\begin{align}
+	\begin{split}
+		&\mathrm{Tr} \left[\mathcal{P}_{\lambda} \mathcal{P}_{\alpha} \mathcal{Q} \mathcal{Z} -\mathcal{P}_{\alpha} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} + \mathcal{P} \mathcal{P}_{\lambda} \mathcal{P}_{\alpha} \mathcal{Z} -  \mathcal{P} \mathcal{P}_{\alpha} \mathcal{P}_{\lambda} \mathcal{Z} \right] \\
+		= &\mathrm{Tr} \left[\left(\mathcal{P}_{\lambda} \mathcal{P}_{\alpha} \mathcal{Q}  -\mathcal{P}_{\alpha} \mathcal{P}_{\lambda} \mathcal{Q} + \mathcal{P} \mathcal{P}_{\lambda} \mathcal{P}_{\alpha}  -  \mathcal{P} \mathcal{P}_{\alpha} \mathcal{P}_{\lambda}\right)\mathcal{Z}\right] \\
+		= & \mathrm{Tr} \left[ \left( \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right] \mathcal{Q} + \mathcal{P} \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right]   \right)  \mathcal{Z}   \right] \\
+		= & \mathrm{Tr} \left[ \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right]  \mathcal{Z} \right].
+	\end{split}
+\end{align}
+Since \(\mathcal{P}_{\lambda}^{\dagger} = \mathcal{P}_{\lambda}, \quad \mathcal{P}_{\alpha}^{\dagger} = \mathcal{P}_{\alpha}\), 
+\begin{align}
+	\left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right]^{\dagger} = - \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right],
+\end{align}
+which means \(\left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right] \) is anti-Hermitian. Meanwhile, \(\mathcal{Z}^{\dagger} = \mathcal{Z}\), so \(\mathrm{Tr} \left[\left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right] \mathcal{Z}\right]\) is a pure imaginary number. It has no contribution to the inplane orbital magnetization which takes the real part of \(\partial_{\lambda} \mathcal{F}\), i.e.
+\begin{align}
+	\mathrm{Re} \, \mathrm{Tr} \left[ \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right]  \mathcal{Z} \right] = 0.
+\end{align}
+So
+\begin{align}
+	\boxed{
+		\mathrm{Re} \, \partial_{\lambda} \mathcal{F}_{\alpha} = \partial_{k_{\alpha}} \mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] + \mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\alpha} \mathcal{Q} \left(\partial_{\lambda} \mathcal{Z}\right) - \mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \left(\partial_{k_{\alpha}} \mathcal{Z}\right) \right].
+	} 
+\end{align}
 
 \subsection{极化率中来自费米面贡献的部分}
 The expression of inplane orbital magnetization is 
