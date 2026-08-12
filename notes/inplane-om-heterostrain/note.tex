@@ -23,7 +23,7 @@
 % Math
 % =========================
 \usepackage{amsmath, amsthm, amssymb, mathrsfs, verbatim, bbm, color, graphicx, authblk}
-\usepackage{booktabs, multirow, makecell,colortbl, enumitem}
+\usepackage{booktabs, multirow, makecell,colortbl, enumitem, mathrsfs}
 \usepackage{braket}
 \usepackage{caption, subcaption}
 \usepackage{framed}
@@ -916,7 +916,7 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 
 而占据态区域\(\Omega_{s}\)是会随着应力改变的，因此对面内轨道磁化强度求导可以得到
 \begin{align}
-	\frac{\partial}{\partial \lambda} \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \mathcal{F} \left(\bm{k }\right) = \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \partial \lambda \mathcal{F}  \left(\bm{k }\right) + \oint_{\partial \Omega_{s }} \frac{\mathrm{d} l}{\left(2 \pi\right)^{2}} v^{\perp}_{\lambda} \mathcal{F} \left(\bm{k}\right).
+	\frac{\partial}{\partial \lambda} \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \mathcal{F} \left(\bm{k }\right) = \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \partial \lambda \mathcal{F}  \left(\bm{k }\right) + \oint_{\partial \Omega_{s }} \frac{\mathrm{d} \ell}{\left(2 \pi\right)^{2}} v^{\perp}_{\lambda} \mathcal{F} \left(\bm{k}\right).
 \end{align}
 这里\(v^{\perp}_{\lambda}\) 是边界法向速度，或者说也就是费米面的变化速度。
 
@@ -946,7 +946,11 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 		= & \mathrm{Tr} \left[ \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right]  \mathcal{Z} \right].
 	\end{split}
 \end{align}
-由于 \(\mathcal{P}_{\lambda}^{\dagger} = \mathcal{P}_{\lambda}, \quad \mathcal{P}_{\alpha}^{\dagger} = \mathcal{P}_{\alpha}\), 所以
+这里由于投影算符的导数满足\(\mathcal{P} \mathcal{P}_{\lambda/\alpha} \mathcal{P} = \mathcal{Q} \mathcal{Q}_{\lambda/\alpha} \mathcal{Q} = 0\)，故\(\mathcal{P}_{\lambda/\alpha}\)和\(\mathcal{Q}_{\lambda/\alpha}\)仅含\(\mathcal{P}-\mathcal{Q}\)非对角分量，从而其对易子\(\left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right]\)在\(\mathcal{P}/\mathcal{Q}\)空间中是分块对角的，即与\(\mathcal{P}\)对易。因此
+\begin{align}
+	\left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right] \mathcal{Q} + \mathcal{P} \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right] = \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right] \left(\mathcal{Q} + \mathcal{P}\right) = \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right].
+\end{align}
+由于\(\mathcal{P}_{\lambda}^{\dagger} = \mathcal{P}_{\lambda}, \quad \mathcal{P}_{\alpha}^{\dagger} = \mathcal{P}_{\alpha}\), 所以
 \begin{align}
 	\left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right]^{\dagger} = - \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right],
 \end{align}
@@ -958,8 +962,63 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 \begin{align}
 	\mathrm{Re} \, \partial_{\lambda} \mathcal{F}_{\alpha} = \partial_{k_{\alpha}} \mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] + \mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\alpha} \mathcal{Q} \left(\partial_{\lambda} \mathcal{Z}\right) - \mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \left(\partial_{k_{\alpha}} \mathcal{Z}\right) \right].
 \end{align}
-我们首先处理第一项，二维高斯定理给出
-
+我们首先处理第一项，第一项的积分是
+\begin{align}
+	I_{1,\alpha} = \sum_{s} \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2}  \partial_{k_{\alpha}} \mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] 
+\end{align}
+二维高斯定理给出
+\begin{align}
+	\int_{\Omega_{s}} \mathrm{d}^{2} \bm{k}	\bm{\nabla}_{\bm{k}} \cdot \bm{A}_{s} = \oint_{\partial \Omega_{s}} \mathrm{d} l \hat{\bm{n}}_{s} \cdot \bm{A}_{s},
+\end{align}
+因此
+\begin{align}
+	\int_{\Omega_{s}} \mathrm{d}^{2} k \partial_{k_{\alpha}} A_{s } = \oint_{\partial \Omega_{s}} \mathrm{d} \ell \hat{\bm{n}}_{s} \cdot \left(A_{s } \hat{\bm{e}}_{\alpha}\right) =  \oint_{\partial \Omega_{s}} \mathrm{d} \ell n_{s, \alpha} A_{s}.
+\end{align}
+其中
+\begin{align}
+	n_{s,\alpha} \equiv \hat{\bm{n }}_{s } \cdot \hat{\bm{e}}_{\alpha},
+\end{align}
+是区域\(\Omega_{s }\)的边界\(\partial \Omega_{s}\)上，向外单位法向量的第\(\alpha\)个分量。为了简化符号，我们定义
+\begin{align}
+	\mathcal{A} = \mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] .
+\end{align}
+由此可以将第一项的求和积分写成
+\begin{align}
+	I_{1,\alpha} = \sum_{s } \oint_{\partial \Omega_{s }} \frac{\mathrm{d} \ell }{\left(2 \pi\right)^2} n_{s,\alpha} \mathcal{A}_{s}.
+\end{align}
+现在，假设某条费米面是由\(\mu\)穿过\(E_{m} \left(\bm{k}\right)\)所得到的，费米面的两侧分别是\(E_{l} < \mu\)和\(E_{l} > \mu\), 定义法向量
+\begin{align}
+	\hat{\bm{n }}_{l} = \frac{\nabla_{\bm{k }} E_{l}}{\left|\nabla_{\bm{k }} E_{l}\right|}
+\end{align}
+法向量的指向为从\(E_{l } < \mu\)一侧，指向\(E_{l} > \mu\)一侧。那么，法向量的分量为
+\begin{align}
+	n_{l, \alpha} = \frac{\partial_{k_{\alpha}} E_{l}}{\left|\nabla_{\bm{k }} E_{l}\right|}.
+\end{align}
+假设费米面两侧对应的两个区域分别为: \(\Omega_{-}: \, E_{l} < \mu\) 和\(\Omega_{+} : \, E_{l} > \mu\)，那么对于\(\Omega_{-}\)，其对应费米面上的法向量为\(\hat{\bm{n }}_{-} = \hat{\bm{n }}_{l}\)，对于\(\Omega_{+}\), 其对应费米面上的法向量为\(\hat{\bm{n}}_{+} = - \hat{\bm{n}}_{l}\)，由此积分变为
+\begin{align}
+	\oint_{\partial \Omega_{s }} \mathrm{d} \ell n_{-, \alpha} \mathcal{A}_{-} + \oint_{\partial \Omega_{s }} \mathrm{d} \ell n_{+, \alpha} \mathcal{A}_{+} = \oint_{\partial \Omega_{s }} \mathrm{d} \ell \, n_{l, \alpha} \left(\mathcal{A}_{-} - \mathcal{A}_{+}\right).
+\end{align}
+这里我们定义穿过第\(l\)条能带费米面的jump	
+\begin{align}
+	\Delta_{l } \mathcal{A} \equiv \mathcal{A}_{-} - \mathcal{A}_{+} = \mathcal{A}_{l}^{\mathrm{occ}} - \mathcal{A}_{l}^{\mathrm{emp}}.
+\end{align}
+所以对于固定秩投影算符的二维区域的求和，变成了对穿过化学势的能带求和（但是这里的积分任然是对费米面（或者是二维区域的边界进行线积分），将上式进行改写
+\begin{align}
+	\sum_{s} \oint_{\partial \Omega_{s}} \mathrm{d} \ell n_{s, \beta} \mathcal{A}_{s }	= \sum_{m} \oint_{E_{l} = \mu} \mathrm{d} \ell n_{l, \beta} \Delta_{l} \mathcal{A}.
+\end{align}
+于是第一项的积分可以重新写成
+\begin{align}
+	I_{1, \alpha} = \sum_{l} \oint_{E_{l} = \mu} \frac{\mathrm{d} \ell }{\left(2 \pi\right)^{2}} \frac{\partial_{k_{\alpha}} E_{l}}{\left|\nabla_{\bm{k }} E_{l }\right|} \Delta_{l} \mathcal{A}.
+\end{align}
+由此可以将线积分写成对（莫尔）布里渊区的面积分
+\begin{align}
+	\int_{\mathrm{mBZ}} \mathrm{d}^{2} \bm{k} \delta \left( E_{l} - \mu\right) \partial_{k_{\alpha}} E_{l}  \Delta_{l} \mathcal{A} = \oint_{E_{l} = \mu} \frac{\mathrm{d} \ell}{\left|\nabla_{\bm{k }} E_{l}\right|} \partial_{k_{\alpha}} E_{l}  \Delta_{l} \mathcal{A}.
+\end{align}
+就可以得到
+\begin{align}
+	I_{1,\alpha} = \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^{2}} \sum_{l} \delta \left( E_{l} - \mu\right)  \partial_{k_{\alpha}} E_{l}  \Delta_{l} \left\{\mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] \right\}.  
+\end{align}
+现在我们来处理\(\mathcal{P}_{\lambda}\)
 
 
 \section{附录}
