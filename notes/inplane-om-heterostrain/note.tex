@@ -916,7 +916,7 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 
 而占据态区域\(\Omega_{s}\)是会随着应力改变的，因此对面内轨道磁化强度求导可以得到
 \begin{align}
-	\frac{\partial}{\partial \lambda} \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \mathcal{F} \left(\bm{k }\right) = \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \partial \lambda \mathcal{F}  \left(\bm{k }\right) + \oint_{\partial \Omega_{s }} d l v^{\perp}_{\lambda} \mathcal{F} \left(\bm{k}\right).
+	\frac{\partial}{\partial \lambda} \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \mathcal{F} \left(\bm{k }\right) = \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \partial \lambda \mathcal{F}  \left(\bm{k }\right) + \oint_{\partial \Omega_{s }} \frac{\mathrm{d} l}{\left(2 \pi\right)^{2}} v^{\perp}_{\lambda} \mathcal{F} \left(\bm{k}\right).
 \end{align}
 这里\(v^{\perp}_{\lambda}\) 是边界法向速度，或者说也就是费米面的变化速度。
 
@@ -926,12 +926,39 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 		\partial_{\lambda} \mathcal{F}_{\alpha} = \mathrm{Tr} \left[\mathcal{P}_{\lambda} P_{\alpha} \mathcal{Q} \mathcal{Z} + \mathcal{P} \left(\partial_{k_{\alpha}} \mathcal{P}_{\lambda}\right) \mathcal{Q} \mathcal{Z} - \mathcal{P} \mathcal{P}_{\alpha} \mathcal{P}_{\lambda} \mathcal{Z} + \mathcal{P} \mathcal{P}_{\alpha} \mathcal{Q} \left\{\hat{z}, \hat{H}_{\lambda}\right\} \right].
 	}
 \end{align}
-可以对第二项进行化简，具体过程请参考附录C。最后得到
+可以对第二项进行化简，考虑到
 \begin{align}
-	\boxed{
-		\mathrm{Re} \, \partial_{\lambda} \mathcal{F}_{\alpha} = \partial_{k_{\alpha}} \mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] + \mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\alpha} \mathcal{Q} \left(\partial_{\lambda} \mathcal{Z}\right) - \mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \left(\partial_{k_{\alpha}} \mathcal{Z}\right) \right].
-	} 
+	\partial_{k_{\alpha}} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] = \mathrm{Tr} \left[\mathcal{P}_{\alpha} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} + \mathcal{P} \left(\partial_{k_{\alpha}} \mathcal{P}_{\lambda}\right) \mathcal{Q} \mathcal{Z} - \mathcal{P} \mathcal{P}_{\lambda} \mathcal{P}_{\alpha} \mathcal{Z} + \mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \left( \partial_{k_{\alpha}} \mathcal{Z}\right) \right].
 \end{align}
+展开的第二项正是我们所需要的，将起代入到 \(\partial_{\lambda} \mathcal{F} \left(\bm{k }\right)\) ，得到
+\begin{align}
+	\begin{split}
+		\partial_{\lambda} \mathcal{F} \left(\bm{k }\right)  = \partial_{k_{\alpha}} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] & + \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{P}_{\alpha} \mathcal{Z}  - \mathcal{P}_{\alpha} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} - \mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \left( \partial_{k_{\alpha}} \mathcal{Z}\right) \right] \\
+		& + \mathrm{Tr} \left[\mathcal{P}_{\lambda} \mathcal{P}_{\alpha} \mathcal{Q} \mathcal{Z} - \mathcal{P} \mathcal{P}_{\alpha} \mathcal{P}_{\lambda} \mathcal{Z} + \mathcal{P} \mathcal{P}_{\alpha} \mathcal{Q} \left(\partial_{\lambda} \mathcal{Z}\right)\right].
+	\end{split}
+\end{align}
+这里有
+\begin{align}
+	\begin{split}
+		&\mathrm{Tr} \left[\mathcal{P}_{\lambda} \mathcal{P}_{\alpha} \mathcal{Q} \mathcal{Z} -\mathcal{P}_{\alpha} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} + \mathcal{P} \mathcal{P}_{\lambda} \mathcal{P}_{\alpha} \mathcal{Z} -  \mathcal{P} \mathcal{P}_{\alpha} \mathcal{P}_{\lambda} \mathcal{Z} \right] \\
+		= &\mathrm{Tr} \left[\left(\mathcal{P}_{\lambda} \mathcal{P}_{\alpha} \mathcal{Q}  -\mathcal{P}_{\alpha} \mathcal{P}_{\lambda} \mathcal{Q} + \mathcal{P} \mathcal{P}_{\lambda} \mathcal{P}_{\alpha}  -  \mathcal{P} \mathcal{P}_{\alpha} \mathcal{P}_{\lambda}\right)\mathcal{Z}\right] \\
+		= & \mathrm{Tr} \left[ \left( \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right] \mathcal{Q} + \mathcal{P} \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right]   \right)  \mathcal{Z}   \right] \\
+		= & \mathrm{Tr} \left[ \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right]  \mathcal{Z} \right].
+	\end{split}
+\end{align}
+由于 \(\mathcal{P}_{\lambda}^{\dagger} = \mathcal{P}_{\lambda}, \quad \mathcal{P}_{\alpha}^{\dagger} = \mathcal{P}_{\alpha}\), 所以
+\begin{align}
+	\left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right]^{\dagger} = - \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right],
+\end{align}
+这意味着 \(\left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right] \)是反厄米的。同时 \(\mathcal{Z}^{\dagger} = \mathcal{Z}\), 所以 \(\mathrm{Tr} \left[\left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right] \mathcal{Z}\right]\)是纯虚数. 因为面内轨道磁化强度是取\(\partial_{\lambda} \mathcal{F}\)的实部，所以这一项对面内轨道磁化没有贡献。即,
+\begin{align}
+	\mathrm{Re} \, \mathrm{Tr} \left[ \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right]  \mathcal{Z} \right] = 0.
+\end{align}
+由此可以得到 
+\begin{align}
+	\mathrm{Re} \, \partial_{\lambda} \mathcal{F}_{\alpha} = \partial_{k_{\alpha}} \mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] + \mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\alpha} \mathcal{Q} \left(\partial_{\lambda} \mathcal{Z}\right) - \mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \left(\partial_{k_{\alpha}} \mathcal{Z}\right) \right].
+\end{align}
+我们首先处理第一项，二维高斯定理给出
 
 
 
@@ -1052,43 +1079,6 @@ where the \(\mathcal Q\) part vanishes because
     0.
 \end{align}
 Therefore, although the inserted completeness relation is the full identity \(\mathbb I=\mathcal P+\mathcal Q\), only the occupied-empty part contributes.
-
-\subsection{极化率的化简}
-Considering 
-\begin{align}
-	\partial_{k_{\alpha}} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] = \mathrm{Tr} \left[\mathcal{P}_{\alpha} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} + \mathcal{P} \left(\partial_{k_{\alpha}} \mathcal{P}_{\lambda}\right) \mathcal{Q} \mathcal{Z} - \mathcal{P} \mathcal{P}_{\lambda} \mathcal{P}_{\alpha} \mathcal{Z} + \mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \left( \partial_{k_{\alpha}} \mathcal{Z}\right) \right].
-\end{align}
-The second term is exactly what we need. Substitute it into \(\partial_{\lambda} \mathcal{F} \left(\bm{k }\right)\) 
-\begin{align}
-	\begin{split}
-		\partial_{\lambda} \mathcal{F} \left(\bm{k }\right)  = \partial_{k_{\alpha}} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] & + \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{P}_{\alpha} \mathcal{Z}  - \mathcal{P}_{\alpha} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} - \mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \left( \partial_{k_{\alpha}} \mathcal{Z}\right) \right] \\
-		& + \mathrm{Tr} \left[\mathcal{P}_{\lambda} \mathcal{P}_{\alpha} \mathcal{Q} \mathcal{Z} - \mathcal{P} \mathcal{P}_{\alpha} \mathcal{P}_{\lambda} \mathcal{Z} + \mathcal{P} \mathcal{P}_{\alpha} \mathcal{Q} \left(\partial_{\lambda} \mathcal{Z}\right)\right].
-	\end{split}
-\end{align}
-Here
-\begin{align}
-	\begin{split}
-		&\mathrm{Tr} \left[\mathcal{P}_{\lambda} \mathcal{P}_{\alpha} \mathcal{Q} \mathcal{Z} -\mathcal{P}_{\alpha} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} + \mathcal{P} \mathcal{P}_{\lambda} \mathcal{P}_{\alpha} \mathcal{Z} -  \mathcal{P} \mathcal{P}_{\alpha} \mathcal{P}_{\lambda} \mathcal{Z} \right] \\
-		= &\mathrm{Tr} \left[\left(\mathcal{P}_{\lambda} \mathcal{P}_{\alpha} \mathcal{Q}  -\mathcal{P}_{\alpha} \mathcal{P}_{\lambda} \mathcal{Q} + \mathcal{P} \mathcal{P}_{\lambda} \mathcal{P}_{\alpha}  -  \mathcal{P} \mathcal{P}_{\alpha} \mathcal{P}_{\lambda}\right)\mathcal{Z}\right] \\
-		= & \mathrm{Tr} \left[ \left( \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right] \mathcal{Q} + \mathcal{P} \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right]   \right)  \mathcal{Z}   \right] \\
-		= & \mathrm{Tr} \left[ \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right]  \mathcal{Z} \right].
-	\end{split}
-\end{align}
-Since \(\mathcal{P}_{\lambda}^{\dagger} = \mathcal{P}_{\lambda}, \quad \mathcal{P}_{\alpha}^{\dagger} = \mathcal{P}_{\alpha}\), 
-\begin{align}
-	\left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right]^{\dagger} = - \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right],
-\end{align}
-which means \(\left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right] \) is anti-Hermitian. Meanwhile, \(\mathcal{Z}^{\dagger} = \mathcal{Z}\), so \(\mathrm{Tr} \left[\left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right] \mathcal{Z}\right]\) is a pure imaginary number. It has no contribution to the inplane orbital magnetization which takes the real part of \(\partial_{\lambda} \mathcal{F}\), i.e.
-\begin{align}
-	\mathrm{Re} \, \mathrm{Tr} \left[ \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right]  \mathcal{Z} \right] = 0.
-\end{align}
-So
-\begin{align}
-	\boxed{
-		\mathrm{Re} \, \partial_{\lambda} \mathcal{F}_{\alpha} = \partial_{k_{\alpha}} \mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] + \mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\alpha} \mathcal{Q} \left(\partial_{\lambda} \mathcal{Z}\right) - \mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \left(\partial_{k_{\alpha}} \mathcal{Z}\right) \right].
-	} 
-\end{align}
-
 \subsection{极化率中来自费米面贡献的部分}
 The expression of inplane orbital magnetization is 
 \begin{align}
