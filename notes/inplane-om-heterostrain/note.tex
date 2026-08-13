@@ -625,47 +625,47 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 \vspace{2em}
 为了方便后面计算响应，我们这里给出对投影算符的求导
 \begin{align}
-	\partial_{k_{y}} \mathcal{P}  = \sum_{n \in \mathrm{occ }} \left(\ket{\partial_{k_{y}} u_{n }} \bra{u_{n }} + \ket{u_{n }} \bra{\partial_{k_{y}} u_{n }}\right).
+	\partial_{\lambda} \mathcal{P}  = \sum_{n \in \mathrm{occ }} \left(\ket{\partial_{\lambda} u_{n }} \bra{u_{n }} + \ket{u_{n }} \bra{\partial_{\lambda} u_{n }}\right).
 \end{align}
-接下来的问题变成如何表示\(\ket{\partial_{k_{y}} u_{n }} \)，在\(\ket{\partial_{k_{y}} u_{n }}\)中插入完备性关系\(\mathcal{P} + \mathcal{Q}\) 
+接下来的问题变成如何表示\(\ket{\partial_{\lambda} u_{n }} \)，在\(\ket{\partial_{\lambda} u_{n }}\)中插入完备性关系\(\mathcal{P} + \mathcal{Q}\) 
 \begin{align}
-	\partial_{k_{y}} \mathcal{P} = \sum_{n \in \mathrm{occ}} \mathcal{P} \ket{\partial_{k_{y}} u_{n }} \bra{u_{n }} + \mathcal{Q} \ket{\partial_{k_{y}} u_{n }} \bra{u_{n }} + \ket{u_{n }} \bra{\partial_{k_{y}} u_{n }} \mathcal{P} + \ket{u_{n }} \bra{\partial_{k_{y}} u_{n }} \mathcal{Q}.
+	\partial_{\lambda} \mathcal{P} = \sum_{n \in \mathrm{occ}} \mathcal{P} \ket{\partial_{\lambda} u_{n }} \bra{u_{n }} + \mathcal{Q} \ket{\partial_{\lambda} u_{n }} \bra{u_{n }} + \ket{u_{n }} \bra{\partial_{\lambda} u_{n }} \mathcal{P} + \ket{u_{n }} \bra{\partial_{\lambda} u_{n }} \mathcal{Q}.
 \end{align}
 我们首先来看占据-占据的部分
 \begin{align}
 	\begin{split}
-		\sum_{n \in \mathrm{occ}} \mathcal{P} \ket{\partial_{k_{y}} u_{n }} \bra{u_{n }} + \ket{u_{n }} \bra{\partial_{k_{y}} u_{n }} \mathcal{P} & = \sum_{n \in \mathrm{occ}} \sum_{l \in \mathrm{occ}} \ket{u_{l }} \braket{u_{l } | \partial_{k_{y}} u_{n }} \bra{u_{n }} + \ket{u_{n }} \braket{\partial_{k_{y}} u_{n } | u_{l }} \bra{u_{l }} \\
-		& = \sum_{n \in \mathrm{occ}} \sum_{l \in \mathrm{occ}} \braket{u_{n } | u_{l }} \braket{u_l | \partial_{k_{y}} u_{n }} + \braket{u_{l } | u_{n }} \braket{\partial_{k_{y}} u_{n } | u_{l }} \\
-		& = \sum_{n \in \mathrm{occ}} \sum_{l \in \mathrm{occ}} \delta_{n l } \left(\braket{u_l | \partial_{k_{y}} u_{n }} + \braket{\partial_{k_{y}} u_{n } | u_{l }}\right) \\
-		& = \sum_{n \in \mathrm{occ}} \partial_{k_{y}} \braket{u_{n } | u_{n }} \\
+		\sum_{n \in \mathrm{occ}} \mathcal{P} \ket{\partial_{\lambda} u_{n }} \bra{u_{n }} + \ket{u_{n }} \bra{\partial_{\lambda} u_{n }} \mathcal{P} & = \sum_{n \in \mathrm{occ}} \sum_{l \in \mathrm{occ}} \ket{u_{l }} \braket{u_{l } | \partial_{\lambda} u_{n }} \bra{u_{n }} + \ket{u_{n }} \braket{\partial_{\lambda} u_{n } | u_{l }} \bra{u_{l }} \\
+		& = \sum_{n \in \mathrm{occ}} \sum_{l \in \mathrm{occ}} \braket{u_{n } | u_{l }} \braket{u_l | \partial_{\lambda} u_{n }} + \braket{u_{l } | u_{n }} \braket{\partial_{\lambda} u_{n } | u_{l }} \\
+		& = \sum_{n \in \mathrm{occ}} \sum_{l \in \mathrm{occ}} \delta_{n l } \left(\braket{u_l | \partial_{\lambda} u_{n }} + \braket{\partial_{\lambda} u_{n } | u_{l }}\right) \\
+		& = \sum_{n \in \mathrm{occ}} \partial_{\lambda} \braket{u_{n } | u_{n }} \\
 		& = 0.
 	\end{split}
 \end{align}
-所以占据-占据对\(\partial_{k_{y}} \mathcal{P}\)没有贡献，只剩下占据态-空态的部分
+所以占据-占据对\(\partial_{\lambda} \mathcal{P}\)没有贡献，只剩下占据态-空态的部分
 \begin{align}
-	\partial_{k_{y}} \mathcal{P} = \sum_{n \in \mathrm{occ}} \mathcal{Q} \ket{\partial_{k_{y}} u_{n }} \bra{u_{n }}  + \ket{u_{n }} \bra{\partial_{k_{y}} u_{n }} \mathcal{Q}.
+	\partial_{\lambda} \mathcal{P} = \sum_{n \in \mathrm{occ}} \mathcal{Q} \ket{\partial_{\lambda} u_{n }} \bra{u_{n }}  + \ket{u_{n }} \bra{\partial_{\lambda} u_{n }} \mathcal{Q}.
 \end{align}
 进一步改写也就是
 \begin{align}
 	\boxed{
-		\partial_{k_{y}} \mathcal{P} = \mathcal{Q} \left(\partial_{k_{y}} \mathcal{P}\right) \mathcal{P} + \mathcal{P} \left(\partial_{k_{y}} \mathcal{P}\right) \mathcal{P}.	
+		\partial_{\lambda} \mathcal{P} = \mathcal{Q} \left(\partial_{\lambda} \mathcal{P}\right) \mathcal{P} + \mathcal{P} \left(\partial_{\lambda} \mathcal{P}\right) \mathcal{P}.	
 	}
 \end{align}
 进一步把空态子空间的投影算符写出来，上式可以写成
 \begin{align}
 	\begin{split}
-		\partial_{k_{y}} \mathcal{P} & = \sum_{n \in \mathrm{occ}} \sum_{m \in \mathrm{emp}} \ket{u_{m }}\braket{u_{m} | \partial_{k_{y}} u_{n }} \bra{u_{n }} + \ket{u_{n }} \braket{\partial_{k_{y}} u_{n} | u_{m }} \bra{u_{m}} \\
-		& = \sum_{n \in \mathrm{occ}} \sum_{m \in \mathrm{emp}} \ket{u_{m }} \frac{\braket{u_{m } | \partial_{k_{y}} \hat{H} | u_{n }}}{E_{n } - E_{m }} \bra{u_{n }} + \ket{u_{n }} \frac{\braket{u_{n } | \partial_{k_{y}} \hat{H} | u_{m}}}{E_{n } - E_{m }} \bra{u_{m}}.
+		\partial_{\lambda} \mathcal{P} & = \sum_{n \in \mathrm{occ}} \sum_{m \in \mathrm{emp}} \ket{u_{m }}\braket{u_{m} | \partial_{\lambda} u_{n }} \bra{u_{n }} + \ket{u_{n }} \braket{\partial_{\lambda} u_{n} | u_{m }} \bra{u_{m}} \\
+		& = \sum_{n \in \mathrm{occ}} \sum_{m \in \mathrm{emp}} \ket{u_{m }} \frac{\braket{u_{m } | \partial_{\lambda} \hat{H} | u_{n }}}{E_{n } - E_{m }} \bra{u_{n }} + \ket{u_{n }} \frac{\braket{u_{n } | \partial_{\lambda} \hat{H} | u_{m}}}{E_{n } - E_{m }} \bra{u_{m}}.
 	\end{split}
 \end{align}
 定义单带投影算符
 \begin{align}
-	P_{n } = \ket{u_{n }} \bra{u_{n }}, \quad P_{m } = \ket{u_{m }} \bra{u_{m }},
+	\Pi_{n } = \ket{u_{n }} \bra{u_{n }}, \quad \Pi_{m } = \ket{u_{m }} \bra{u_{m }},
 \end{align}
 可以将上式改写成
 \begin{align}
 	\boxed{
-		\partial_{k_{y}} \mathcal{P} =  \sum_{n \in \mathrm{occ}} \sum_{m \in \mathrm{emp}} \frac{P_{m } \left(\partial_{k_{y}} \hat{H} \right)P_{n } + P_{n} \left(\partial_{k_{y}} \hat{H} \right) P_{m} }{E_{n } - E_{m }}.
+		\partial_{\lambda} \mathcal{P} =  \sum_{n \in \mathrm{occ}} \sum_{m \in \mathrm{emp}} \frac{\Pi_{m } \left(\partial_{\lambda} \hat{H} \right)\Pi_{n } + \Pi_{n} \left(\partial_{\lambda} \hat{H} \right) \Pi_{m} }{E_{n } - E_{m }}.
 	}
 \end{align}
 
@@ -878,7 +878,7 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 \end{align}
 
 \subsection{极化率的表达式}
-现在我们要将面内轨道磁化的表达式对应力参数\(\lambda\)进行求导。在此之前，首先说明我们考虑的是固定化学势的情况，即\(\partial_{\lambda} \mu = 0\)，同时应力也不改变上下层的层间距离，即\(\partial_{\lambda} \hat{z} = 0\)。为了符号简便，令\(\mathcal{P}_{\alpha} \equiv \partial_{k_{\alpha}} \mathcal{P }\)以及\(\mathcal{P}_{\lambda} \equiv \left(\partial \mathcal{P} / \partial \lambda \right)|_{\lambda = 0}\)。再次将面内轨道磁化强度的表达式写出
+现在我们要将面内轨道磁化的表达式对应力参数\(\lambda\)进行求导。在此之前，首先说明我们考虑的是固定化学势的情况，即\(\partial_{\lambda} \mu = 0\)，同时应力也不改变上下层的层间距离，即\(\partial_{\lambda} \hat{z} = 0\)。为了符号简便，令\(\mathcal{P}_{\alpha} \equiv \partial_{k_{\alpha}} \mathcal{P }\)以及\(\mathcal{P}_{\lambda} \equiv \left(\partial \mathcal{P} / \partial \lambda \right)|_{\lambda = 0}\)。同时令\(\hat{H}_{\alpha} \equiv \partial \hat{H} / \partial_{k_{\alpha}}\)以及\(\hat{H}_{\lambda} \equiv \left(\partial \hat{H} / \partial \lambda\right)|_{\lambda = 0} \)。再次将面内轨道磁化强度的表达式写出
 \begin{align}
 		\boxed{
 		M_{\alpha} = -\frac{e }{\hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \mathrm{Re} \, \mathrm{Tr} \left[\mathcal{P} \left(\partial_{k_{\alpha}} \mathcal{P} \right) \mathcal{Q} \mathcal{Z}\right].
@@ -916,7 +916,7 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 
 而占据态区域\(\Omega_{s}\)是会随着应力改变的，因此对面内轨道磁化强度求导可以得到
 \begin{align}
-	\frac{\partial}{\partial \lambda} \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \mathcal{F} \left(\bm{k }\right) = \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \partial \lambda \mathcal{F}  \left(\bm{k }\right) + \oint_{\partial \Omega_{s }} \frac{\mathrm{d} \ell}{\left(2 \pi\right)^{2}} v^{\perp}_{\lambda} \mathcal{F} \left(\bm{k}\right).
+	\frac{\partial}{\partial \lambda} \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \mathcal{F} \left(\bm{k }\right) = \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \partial \lambda \mathcal{F}  \left(\bm{k }\right) + \oint_{\partial \Omega_{s }} \frac{\mathrm{d} \ell}{\left(2 \pi\right)^{2}} v_{\lambda} \mathcal{F} \left(\bm{k}\right).
 \end{align}
 这里\(v^{\perp}_{\lambda}\) 是边界法向速度，或者说也就是费米面的变化速度。
 
@@ -964,7 +964,7 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 \end{align}
 我们首先处理第一项，第一项的积分是
 \begin{align}
-	I_{1,\alpha} = \sum_{s} \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2}  \partial_{k_{\alpha}} \mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] 
+	I_{\alpha,1} = \sum_{s} \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2}  \partial_{k_{\alpha}} \mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] 
 \end{align}
 二维高斯定理给出
 \begin{align}
@@ -984,9 +984,9 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 \end{align}
 由此可以将第一项的求和积分写成
 \begin{align}
-	I_{1,\alpha} = \sum_{s } \oint_{\partial \Omega_{s }} \frac{\mathrm{d} \ell }{\left(2 \pi\right)^2} n_{s,\alpha} \mathcal{A}_{s}.
+	I_{\alpha,1} = \sum_{s } \oint_{\partial \Omega_{s }} \frac{\mathrm{d} \ell }{\left(2 \pi\right)^2} n_{s,\alpha} \mathcal{A}_{s}.
 \end{align}
-现在，假设某条费米面是由\(\mu\)穿过\(E_{m} \left(\bm{k}\right)\)所得到的，费米面的两侧分别是\(E_{l} < \mu\)和\(E_{l} > \mu\), 定义法向量
+现在，假设某条费米面是由\(\mu\)穿过\(E_{l} \left(\bm{k}\right)\)所得到的，费米面的两侧分别是\(E_{l} < \mu\)和\(E_{l} > \mu\), 定义法向量
 \begin{align}
 	\hat{\bm{n }}_{l} = \frac{\nabla_{\bm{k }} E_{l}}{\left|\nabla_{\bm{k }} E_{l}\right|}
 \end{align}
@@ -1012,13 +1012,191 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 \end{align}
 由此可以将线积分写成对（莫尔）布里渊区的面积分
 \begin{align}
-	\int_{\mathrm{mBZ}} \mathrm{d}^{2} \bm{k} \delta \left( E_{l} - \mu\right) \partial_{k_{\alpha}} E_{l}  \Delta_{l} \mathcal{A} = \oint_{E_{l} = \mu} \frac{\mathrm{d} \ell}{\left|\nabla_{\bm{k }} E_{l}\right|} \partial_{k_{\alpha}} E_{l}  \Delta_{l} \mathcal{A}.
+	\int_{\mathrm{mBZ}} \mathrm{d}^{2} \bm{k} \delta \left( E_{l} - \mu\right) \partial_{k_{\alpha}} E_{l}  \Delta_{l} \mathcal{A} = \oint_{E_{l} = \mu} \frac{\mathrm{d} \ell}{\left|\nabla_{\bm{k }} E_{l}\right|} \left(\partial_{k_{\alpha}} E_{l} \right) \Delta_{l} \mathcal{A}.
 \end{align}
 就可以得到
 \begin{align}
-	I_{1,\alpha} = \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^{2}} \sum_{l} \delta \left( E_{l} - \mu\right)  \partial_{k_{\alpha}} E_{l}  \Delta_{l} \left\{\mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] \right\}.  
+	I_{\alpha,1} = \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^{2}} \sum_{l} \delta \left( E_{l} - \mu\right) \left( \partial_{k_{\alpha}} E_{l} \right) \Delta_{l} \left\{\mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] \right\}.  
 \end{align}
-现在我们来处理\(\mathcal{P}_{\lambda}\)
+现在我们来处理\(\mathcal{P}_{\lambda}\)，前面有
+\begin{align}
+	\mathcal{P}_{\lambda} = \sum_{\substack{n \in \mathrm{occ} \\ m \in \mathrm{emp}}} \frac{\Pi_{n } \hat{H}_{\lambda} \Pi_{m } + \Pi_{m} \hat{H}_{\lambda} \Pi_{n}}{E_{n } - E_{m }},
+\end{align}
+显然有
+\begin{align}
+	\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} = \sum_{\substack{n \in \mathrm{occ} \\ m \in \mathrm{emp}}} \frac{\Pi_{n } \hat{H}_{\lambda} \Pi_{m }}{E_{n } - E_{m }}.
+\end{align}
+所以
+\begin{align}
+	\mathcal{A} = \mathrm{Re} \sum_{\substack{n \in \mathrm{occ} \\ m \in \mathrm{emp}}} \frac{\mathrm{Tr} \left[\Pi_{n } \hat{H}_{\lambda} \Pi_{m } \mathcal{Z}\right]}{E_{n} - E_{m}} = \mathrm{Re} \sum_{\substack{n \in \mathrm{occ} \\ m \in \mathrm{emp}}} \frac{H_{\lambda,nm} \mathcal{Z}_{mn} }{E_{n } - E_{m }}.
+\end{align}
+这里暂时不考虑\(E_{n} = E_{m }\)的情况。其中
+\begin{align}
+	H^{\lambda}_{nm} & \equiv \braket{u_{n} | \hat{H}_{\lambda} | u_{m }}, \\
+	\mathcal{Z}_{mn} & \equiv \braket{u_{m } | \mathcal{Z} | u_{n }} = \left(E_{n} + E_{m } - 2 \mu\right) \braket{u_{m } | \hat{z} | u_{n }} , \\
+	z_{mn}& = \braket{u_{m } | \hat{z} | u_{n }} .
+\end{align}
+进一步将\(\mathcal{A}\)写成
+\begin{align}
+	\mathcal{A} = \mathrm{Re} \sum_{\substack{n \in \mathrm{occ} \\ m \in \mathrm{emp}}} \frac{E_{n} + E_{m } - 2 \mu}{E_{n } - E_{m }} H^{\lambda}_{nm} z_{mn}.
+\end{align}
+现在再次考虑\(\Omega_{\pm}\)两个区域，定义\(O\)是全占据的能带集合，\(E\)是全空的能带集合。这意味着，对于区域\(\Omega_{-}\)中的\(\bm{k}\)点，其对应占据的能带集合是\(O \cup \left\{m\right\}\)，空能带集合是\(E\)；对于区域对于区域\(\Omega_{+}\)中的\(\bm{k}\)点，其对应占据的能带集合是\(O\)，空能带集合是\(E \cup \left\{m\right\}\)。由此，我们可以写出两个区域内的\(\mathcal{A}_{\pm}\). 首先, 在\(\Omega_{-}\)
+\begin{align}
+	\begin{split}
+		\mathcal{A}_{-}  = \mathrm{Re} \left[\sum_{n \in O} \sum_{m \in E} + \sum_{n =l} \sum_{m \in E}\right] = \mathcal{A}_{0} + \mathrm{Re} \sum_{m \in E} \frac{E_{l} + E_{m } - 2 \mu}{E_{l} - E_{m }} H^{\lambda}_{lm} z_{ml} ,
+	\end{split}
+\end{align}
+其中
+\begin{align}
+	\mathcal{A}_{0} = \mathrm{Re} \sum_{n \in O} \sum_{m \in E} \frac{E_{n} + E_{m } - 2 \mu}{E_{n } - E_{m }} H^{\lambda}_{nm} z_{mn}.
+\end{align}
+那么在\(\Omega_{+}\)中，则有
+\begin{align}
+	\begin{split}
+		\mathcal{A}_{+} =  \mathrm{Re} \left[\sum_{n \in O} \sum_{m \in E} + \sum_{n \in O} \sum_{m = l}\right] = \mathcal{A}_{0} + \mathrm{Re} \sum_{n \in O } \frac{E_{n} + E_{l} - 2 \mu}{E_{n } - E_{l}} H^{\lambda}_{nl} z_{ln}.
+	\end{split}
+\end{align}
+由于我们只是在\(\partial \Omega\)这样的费米面上考虑，所以取\(E_{l} = \mu\), 代入有
+\begin{align}
+	\frac{E_{m } + E_{l } - 2 \mu }{E_{l } - E_{m }} = \frac{ E_{m } + \mu - 2 \mu}{\mu - E_{m }} = \frac{E_{m } - \mu}{\mu - E_{m }} = -1,
+\end{align}
+所以
+\begin{align}
+	\mathcal{A}_{-} = \mathcal{A}_{0} - \mathrm{Re}  \sum_{m \in E } H^{\lambda}_{lm } z_{m l}.
+\end{align}
+同理对于\(\mathcal{A}_{- }\),
+\begin{align}
+	\frac{E_{l } + E_{n } - 2 \mu}{E_{n } - E_{l}} = \frac{\mu + E_{n } - 2 \mu}{E_{n } - \mu} = \frac{E_{n } - \mu}{E_{n } - \mu} = 1.
+\end{align}
+所以
+\begin{align}
+	\mathcal{A}_{+} = \mathcal{A}_{0} + \mathrm{Re} \sum_{n \in O } H^{\lambda}_{nl} z_{ln}.
+\end{align}
+两者的差为
+\begin{align}
+	\mathcal{A}_{-} - \mathcal{A}_{+} = - \mathrm{Re} \sum_{m \in E } H^{\lambda}_{lm } z_{m l} - \mathrm{Re} \sum_{n \in O } H^{\lambda}_{nl} z_{ln},
+\end{align}
+由于\(H^{\lambda}_{lm }\)和\( z_{m l} \)都是厄米的，所以有 \(H^{\lambda}_{ml} = \left(H^{\lambda}_{lm}\right)^{*}\)，同时\(z_{lm} = z^{*}_{lm }\), 所以
+\begin{align}
+	\mathrm{Re} H^{\lambda}_{lm} z_{ml} = \mathrm{Re} \left( H^{\lambda}_{ml} z_{lm} \right)^{*} = \mathrm{Re} H^{\lambda}_{ml} z_{lm},
+\end{align}
+此刻，可以将上式改写成
+\begin{align}
+	\mathcal{A}_{-} - \mathcal{A}_{+} = - \mathrm{Re} \sum_{m \in E}  H^{\lambda}_{lm} z_{ml} + \sum_{n \in O } H^{\lambda}_{ln} z_{nl}  = - \mathrm{Re} \sum_{r \neq l} H^{\lambda}_{lr} z_{rl}
+\end{align}
+这里我们使用了一个虚拟变量\(r\)，为了符合我们的使用习惯，我们做指标替换\(r \rightarrow n\)和\(l \rightarrow m\)。因此，积分为
+\begin{align}
+	I_{\alpha, 1} = - \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \sum_{m} \delta \left(E_{m} - \mu\right) \left(\partial_{k_{\alpha}} E_{m }\right) \sum_{n \neq m } \mathrm{Re} \left[H^{\lambda}_{mn} z_{nm}\right]，
+\end{align}
+这里\(\partial_{k_{\alpha}} E_{m } = \braket{u_{m } | \hat{H}_{\alpha} | u_{m}}\)。费米面对极化率的第一项贡献为
+\begin{align}
+	\boxed{
+		\chi^{\mathrm{FS}}_{\alpha,1} = \frac{e}{\hbar c} \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \sum_{m} \sum_{n \neq m} \delta \left(E_{m } - \mu\right) \braket{u_{m} | \hat{H}_{\beta} | u_{m}} \mathrm{Re} \left[ \braket{u_{m} | \hat{H}_{\lambda} | u_{n }} \braket{u_{n} | \hat{z} | u_{m }}\right].
+	}
+\end{align}
+这里\(m\)是与化学势相交的能带指标。第一项可以认为是因为应力导致费米面变化从而引起投影算符变化。
+
+\vspace{1em}
+
+现在，我们来看费米面对极化率的第二项贡献，也就是
+\begin{align}
+	\chi^{\mathrm{FS }}_{\alpha,2} = -\frac{e}{\hbar c} \epsilon_{\alpha \beta} \sum_{s } \oint_{\partial \Omega_{s }} \frac{ \mathrm{d} \ell}{\left(2 \pi\right)^{2} } \left(\frac{\partial \bm{k}_{\mathrm{FS}}}{\partial \lambda} \cdot \hat{\bm{n }}_{s}\right) \mathrm{Re} \mathcal{F}_{\beta}^{s}.
+\end{align}
+定义费米面移动速度
+\begin{align}
+	v_{\lambda} \equiv \frac{\partial \bm{k}_{\mathrm{FS}}}{\partial \lambda} \cdot \hat{\bm{n}},
+\end{align}
+同理，考虑\(E_{l} = \mu\)的费米面\(\partial \Omega\)两侧的\(\Omega_{\pm}\)，其在极化率中的贡献可以被类似的写出
+\begin{align}
+	\left(\frac{\partial \bm{k}_{\mathrm{FS}}}{\partial \lambda} \cdot \hat{\bm{n}}_{-}\right) \mathrm{Re} \mathcal{F}^{-}_{\beta} + \left(\frac{\partial \bm{k}_{\mathrm{FS}}}{\partial \lambda} \cdot \hat{\bm{n}}_{+}\right) \mathrm{Re} \mathcal{F}^{+}_{\beta} = v_{l,\lambda} \left[\mathrm{Re} \mathcal{F}^{-}_{\beta} - \mathrm{Re} \mathcal{F}^{+}_{\beta}\right].
+\end{align}
+现在的问题在于\(v_{l,\lambda}\)如何求解，考虑\(E_{l} \left(\bm{k}_{\mathrm{FS}} \left(\lambda\right), \lambda\right) = \mu\), 两边对\(\lambda\)求导得到
+\begin{align}
+	\begin{split}
+		\quad \partial_{\lambda} E_{\lambda} + \nabla_{\bm{k}} E_{l} \cdot \frac{\partial \bm{k}_{\mathrm{FS}}}{\partial \lambda} & = 0 \\
+		\Rightarrow \quad \nabla_{\bm{k}} E_{l } \cdot \frac{\partial \bm{k}_{\mathrm{FS}}}{\partial \lambda} & = - \partial_{\lambda} E_{l }	= - H^{\lambda}_{ll},
+	\end{split}
+\end{align}
+又有\(\nabla_{\bm{k }} E_{l } = \left|\nabla_{\bm{k }} E_{l } \right| \hat{\bm{n }}_{l, \lambda}\), 由此
+\begin{align}
+	\begin{split}
+		\left|\nabla_{\bm{k }} E_{l } \right| \hat{\bm{n }}_{l, \lambda} \cdot \frac{\partial \bm{k}_{\mathrm{FS}}}{\partial \lambda} &= - H^{\lambda}_{ll} \\
+		\Rightarrow \quad  v_{l,\lambda} &=  - \frac{H^{\lambda}_{ll}}{\left|\nabla_{\bm{k}} E_{l}\right|}.
+	\end{split}
+\end{align}
+定义
+\begin{align}
+	\Delta_{l} \mathrm{Re} \mathcal{F}_{\beta} \equiv \mathrm{Re} \left[\mathcal{F}^{-}_{\beta} - \mathcal{F}^{+}_{\beta}\right].
+\end{align}
+可以写出费米面对极化率的第二项贡献为
+\begin{align}
+	\chi^{\mathrm{FS}}_{\alpha,2} = - \frac{e }{\hbar c} \epsilon_{\alpha \beta} \sum_{s } \oint_{\partial \Omega_{s }} \frac{\mathrm{d} \ell}{ \left(2 \pi\right)^2} \frac{H^{\lambda}_{ll}}{\left|\nabla_{\bm{k}} E_{l }\right|} \Delta_{l } \mathrm{Re} \mathcal{F}_{\beta},
+\end{align}
+将线积分改写成面积分
+\begin{align}
+	\chi^{\mathrm{FS}}_{\alpha,2} = - \frac{e }{\hbar c} \epsilon_{\alpha \beta} \sum_{l} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \delta \left(E_{l} - \mu\right) H^{\lambda}_ll \Delta_{l} \mathrm{Re} \mathcal{F}_{\beta}.
+\end{align}
+现在来处理\(\Delta_{l} \mathrm{Re} \mathcal{F}_{\beta}\), 由于
+\begin{align}
+	\mathrm{Re} \mathcal{F}_{\beta} = -\sum_{\substack{n \in \mathrm{occ} \\ m \in \mathrm{emp}}} \left(E_{n } + E_{m } - 2\mu\right) \mathrm{Re} \braket{u_{n } | \partial_{k_{\beta}} u_{m }} \braket{u_{m } | \hat{z} | u_{n }}.
+\end{align}
+对\(\Omega_{-}\)这一侧区域有
+\begin{align}
+	\mathrm{Re} \mathcal{F}^{-}_{\beta} = \mathcal{F}_{\beta}^{0} - \sum_{m \in E} \left(E_{m} + E_{l} - 2\mu\right) \mathrm{Re} \braket{u_{l} | \partial_{k_{\beta}} u_{m }} \braket{u_{m } | \hat{z} | u_{l}}.
+\end{align}
+对\(\Omega_{+}\)有
+\begin{align}
+	\mathrm{Re} \mathcal{F}^{+}_{\beta} = \mathcal{F}_{\beta}^{0} - \sum_{n \in O} \left(E_{l} + E_{n} - 2\mu\right) \mathrm{Re} \braket{u_{n} | \partial_{k_{\beta}} u_{l}} \braket{u_{l } | \hat{z} | u_{n }}.
+\end{align}
+其中
+\begin{align}
+	\mathcal{F}_{\beta}^{0} = - \mathrm{Re} \sum_{\substack{n \in O \\ m \in E}} \left(E_{n } + E_{m } - 2 \mu\right) \mathrm{Re} \braket{u_{n } | \partial_{k_{\beta}} u_{m }} \braket{u_{m } | \hat{z} | u_{n }}.
+\end{align}
+所以
+\begin{align}
+	\begin{split}
+			\Delta_{l} \mathrm{Re} \mathcal{F}_{\beta} &= \mathrm{Re} \mathcal{F}^{-}_{\beta} - \mathrm{Re} \mathcal{F}^{+}_{\beta}	 \\
+			& = - \sum_{m \in E} \left(E_{m} + E_{l} - 2\mu\right) \mathrm{Re} \braket{u_{l} | \partial_{k_{\beta}} u_{m }} \braket{u_{m } | \hat{z} | u_{l}} \\
+			& \quad + \sum_{n \in O} \left(E_{l} + E_{n} - 2\mu\right) \mathrm{Re} \braket{u_{n} | \partial_{k_{\beta}} u_{l}} \braket{u_{l } | \hat{z} | u_{n }} .
+	\end{split}
+\end{align}
+又
+\begin{align}
+	\mathrm{Re} \braket{u_{l} | \partial_{k_{\beta}} u_{m }} \braket{u_{m } | \hat{z} | u_{l}} = - \mathrm{Re} \bra{u_m | \partial_{k_{\beta}} u_{l}} \braket{u_{l} | \hat{z} | u_{m}}.
+\end{align}
+所以
+\begin{align}
+	\begin{split}
+		\Delta_{l} \mathrm{Re} \mathcal{F}_{\beta} & = \sum_{n \in O} \left(E_n - \mu\right) \mathrm{Re} \braket{u_n | \partial_{k_{\beta}} u_{l }} \braket{u_{l} | \hat{z} | u_{n}} + \sum_{m \in E}  \left(E_m - \mu\right) \mathrm{Re} \braket{u_m | \partial_{k_{\beta}} u_{l }} \braket{u_{l} | \hat{z} | u_{m}}, \\
+		& = \sum_{r \neq l} \left(E_{r } - \mu\right) \mathrm{Re} \braket{u_{r } | \partial_{k_{\beta}} u_{l }} \braket{u_{l} | \hat{z} | u_{r}}, \\
+		& = - \sum_{r \neq l} \left(E_{r } - \mu\right) \mathrm{Re} \braket{u_{l} | \partial_{k_{\beta}} u_{r}} \braket{u_{r} | \hat{z} | u_{l}}
+	\end{split}
+\end{align}
+写出对极化率的贡献为
+\begin{align}
+	\chi^{\mathrm{FS}}_{\alpha,2} = \frac{e }{\hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \sum_{l} \sum_{r \neq l} \left(E_r - \mu\right) \delta \left(E_{l} - \mu\right) H^{\lambda}_{ll} \mathrm{Re} \left[\braket{u_{l} | \partial_{k_{\beta}} u_r} z_{rl}  \right],
+\end{align}
+将
+\begin{align}
+	\braket{u_{l} | \partial_{k_{\beta}} u_r} = \frac{\braket{u_l | \hat{H}_{\beta} | u_r }}{E_r - E_l} = \frac{\braket{u_l | \hat{H}_{\beta}| u_r}}{E_r - \mu}.
+\end{align}
+代入得到
+\begin{align}
+	\boxed{
+		\chi^{\mathrm{FS}}_{\alpha,2} = \frac{e }{\hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \sum_{m} \sum_{n \neq m} \delta \left(E_{l} - \mu\right) \braket{u_m | \hat{H}_{\lambda} | u_{m} } \mathrm{Re} \left[\braket{u_{m} | \hat{H}_{\beta} | u_n} \braket{u_{n} | \hat{z} | u_{m}} \right],
+	}
+\end{align}
+由此，极化率中来自费米面的贡献为
+\begin{align}
+	\begin{split}
+		\boxed{
+			\begin{aligned}
+				& \chi^{\mathrm{FS}}_{\alpha} = \frac{e }{\hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \sum_{m} \sum_{n \neq m} \delta \left(E_{l} - \mu\right) \\
+		&  \left[\braket{u_{m} | \hat{H}_{\beta} | u_{m}} \mathrm{Re} \left(\braket{u_{m} | \hat{H}_{\lambda} | u_{n }} \braket{u_{n} | \hat{z} | u_{m }}\right)+ \braket{u_m | \hat{H}_{\lambda} | u_{m} } \mathrm{Re} \left(\braket{u_{m} | \hat{H}_{\beta} | u_n} \braket{u_{n} | \hat{z} | u_{m}}\right) \right].
+			\end{aligned}
+		}
+	\end{split}
+\end{align}
 
 
 \section{附录}
