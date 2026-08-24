@@ -1,0 +1,528 @@
+\documentclass[11pt, oneside]{article}
+
+% =========================
+% Chinese font with ctex
+% Compile with XeLaTeX
+% =========================
+\usepackage[UTF8, scheme=plain, fontset=none]{ctex}
+
+% 正文字体：仿宋
+\setCJKmainfont{FandolFang-Regular.otf}
+% 标题字体：楷体
+\newCJKfontfamily\kaishu{Kai} 
+
+% =========================
+% Page geometry
+% =========================
+\usepackage[
+	letterpaper,
+	tmargin=1in,
+	bmargin=1in,
+	lmargin=1.1in,
+	rmargin=1.1in
+]{geometry}
+
+% =========================
+% Math
+% =========================
+\usepackage{amsmath,amsthm,amssymb,mathrsfs,verbatim,bbm,color,graphicx,authblk}
+\usepackage{booktabs,multirow,makecell,colortbl,enumitem}
+\usepackage{braket}
+\usepackage{caption, subcaption}
+\usepackage{framed}
+\usepackage{bm}
+
+% =========================
+% Tables
+% =========================
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+
+% 自动换行的表格列
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+% 固定宽度、左对齐
+\newcolumntype{L}[1]{%
+	>{\raggedright\arraybackslash}p{#1}
+}
+
+% 固定宽度、居中
+\newcolumntype{C}[1]{%
+	>{\centering\arraybackslash}p{#1}
+}
+
+% =========================
+% Author / affiliation
+% =========================
+\renewcommand\Authfont{
+	\fontsize{12pt}{14pt}\selectfont
+}
+
+\renewcommand\Affilfont{
+	\fontsize{12pt}{14pt}\selectfont\itshape
+}
+
+\setlength{\affilsep}{0.25em}
+
+% =========================
+% Contents / section control
+% =========================
+\usepackage{tocloft}
+\usepackage{titlesec}
+
+% =========================
+% Hyperref
+% =========================
+\usepackage{hyperref}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=blue,
+	urlcolor=blue,
+	citecolor=blue,
+}
+
+% =========================
+% Page number: bottom center
+% =========================
+\makeatletter
+
+\renewcommand{\ps@plain}{%
+	\renewcommand{\@oddhead}{}%
+	\renewcommand{\@evenhead}{}%
+	\renewcommand{\@oddfoot}{
+		\hfil
+		{\fontsize{12pt}{14pt}\selectfont\thepage}
+		\hfil
+	}%
+	\renewcommand{\@evenfoot}{
+		\hfil
+		{\fontsize{12pt}{14pt}\selectfont\thepage}
+		\hfil
+	}%
+}
+
+\makeatother
+
+\pagestyle{plain}
+
+% =========================
+% Main font size
+% 正文 12pt，正文行距 14pt
+% =========================
+\AtBeginDocument{
+	\fontsize{13pt}{20pt}\selectfont
+}
+
+% =========================
+% Paragraph
+% =========================
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+
+% =========================
+% Section / subsection labels
+% section: I. II. III.
+% subsection: 1. 2. 3.
+% =========================
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+% =========================
+% Section title
+% 楷体 + 粗体 + 14pt
+% 左顶格
+% =========================
+\titleformat{\section}
+    {\normalfont\kaishu\bfseries\fontsize{16pt}{17pt}\selectfont}
+    {\thesection.}
+    {1.0em}
+    {}
+
+\titlespacing*{\section}
+    {0pt}
+    {3.2ex plus 0.5ex minus 0.2ex}
+    {2.0ex plus 0.3ex}
+
+% =========================
+% Subsection title
+% 楷体 + 粗体 + 12pt
+% 向右缩进 2em
+% =========================
+\titleformat{\subsection}
+    {\normalfont\kaishu\bfseries\fontsize{15pt}{17pt}\selectfont}
+    {\thesubsection.}
+    {1.0em}
+    {}
+
+\titlespacing*{\subsection}
+    {2em}
+    {2.5ex plus 0.4ex minus 0.2ex}
+    {1.5ex plus 0.3ex}
+
+% =========================
+% Contents style
+% =========================
+\renewcommand{\contentsname}{CONTENTS}
+
+% CONTENTS 标题
+\renewcommand{\cfttoctitlefont}{
+	\hspace*{1.4em}
+	\fontsize{11pt}{12pt}\selectfont
+	\bfseries
+}
+
+\renewcommand{\cftaftertoctitle}{}
+
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftaftertoctitleskip}{0.65em}
+
+% 目录无点线
+\renewcommand{\cftdotsep}{\cftnodots}
+
+% =========================
+% Contents indentation
+%
+% Roman numeral 到 VIII / IX 较长，
+% 一级目录编号宽度不能只设 2em
+% =========================
+\setlength{\cftsecindent}{0pt}
+\setlength{\cftsecnumwidth}{3.2em}
+
+\setlength{\cftsubsecindent}{3.2em}
+\setlength{\cftsubsecnumwidth}{2.2em}
+
+% 目录编号后加 .
+\renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftsubsecaftersnum}{.}
+
+% =========================
+% Contents font
+% =========================
+\renewcommand{\cftsecfont}{
+	\fontsize{14pt}{16pt}\selectfont
+}
+
+\renewcommand{\cftsecpagefont}{
+	\fontsize{14pt}{16pt}\selectfont
+}
+
+\renewcommand{\cftsubsecfont}{
+	\fontsize{14pt}{16pt}\selectfont
+}
+
+\renewcommand{\cftsubsecpagefont}{
+	\fontsize{14pt}{16pt}\selectfont
+}
+
+\setlength{\cftbeforesecskip}{0.8em}
+\setlength{\cftbeforesubsecskip}{0.2em}
+
+% =========================
+% Title information
+% =========================
+\title{
+	\fontsize{15pt}{20pt}\selectfont
+	\bfseries
+	扭转双层石墨烯中的轨道磁化文献调研报告
+}
+
+\author[1]{Qian-Sheng Shi}
+
+\affil[1]{
+	School of Physical Science and Technology,
+	ShanghaiTech University, \protect\\
+	Shanghai 201210, China.
+}
+
+\newcommand{\notestartdate}{August 24, 2026}
+
+\date{
+	\fontsize{11pt}{14pt}\selectfont
+	(Dated: \notestartdate -- \today)
+}
+
+% =========================
+% Abstract style
+% =========================
+\renewcommand{\abstractname}{摘要}
+
+\renewenvironment{abstract}
+{%
+	\begin{center}
+		{\bfseries\fontsize{12pt}{14pt}\selectfont
+		\abstractname}
+	\end{center}
+	\vspace{-0.3em}
+	\begin{list}{}{%
+		\setlength{\leftmargin}{2em}
+		\setlength{\rightmargin}{2em}
+	}
+	\item\relax
+	\fontsize{12pt}{14pt}\selectfont
+}
+{%
+	\end{list}
+}
+
+% =========================
+% Custom maketitle style
+% =========================
+\makeatletter
+
+\renewcommand{\@maketitle}{%
+	\begin{center}
+		{\@title \par}
+		\vspace{1em}
+		{\@author \par}
+		\vspace{0.15em}
+		{\@date \par}
+	\end{center}
+}
+
+\renewcommand{\maketitle}{%
+	\begingroup
+		\let\footnote\thanks
+		\@maketitle
+	\endgroup
+}
+
+\makeatother
+
+% =========================
+% Abstract
+% =========================
+\renewcommand{\abstractname}{摘要}
+
+
+% ============================================================
+% DOCUMENT
+% ============================================================
+\begin{document}
+
+% ============================================================
+% TITLE
+% ============================================================
+\maketitle
+
+% ============================================================
+% ABSTRACT
+% ============================================================
+\begin{abstract}
+
+这里写整份调研报告的摘要。
+建议只回答四件事情：（1）调研对象是什；（2）为什么需要进行这次调研；（3）目前最重要的文献结论是什么；（4）这些结论如何影响后续研究设计。摘要不需要逐篇列举文献，也不需要展开公式推导。
+
+\end{abstract}
+
+\vspace{0.5em}
+
+% ============================================================
+% CONTENTS
+% ============================================================
+\tableofcontents
+
+\newpage
+
+% ============================================================
+% I. 调研范围与结论先行
+% ============================================================
+\section{调研范围与结论先行}
+
+本次调研的范围是什么
+
+
+重要的结论是
+\begin{enumerate}
+    \item {moire \kaishu 体系中抑制了自选对磁性的贡献。} 超晶格的增加对应的是什么？Jian-Peng Liu和戴希的文章当中
+    
+    \item {\kaishu 为什么之前没有什么工作来算\(B = 0\)时刻的轨道磁化强度}
+    \item {\kaishu 磁化率（极化率）计算的困难到底在哪里？}
+\end{enumerate}
+
+
+
+
+
+% ============================================================
+% II. 提出假设与问题
+% ============================================================
+\section{提出假设与问题}
+\begin{itemize}
+    \item 之前文章所提出的问题
+\end{itemize}
+
+
+
+
+% ------------------------------------------------------------
+\begin{itemize}
+    \item 工作假设
+\end{itemize}
+
+
+
+\begin{enumerate}
+	\item 假设 H1：……
+	\item 假设 H2：……
+	\item 假设 H3：……
+\end{enumerate}
+
+
+% ============================================================
+% III. 直接相关文献分层
+% ============================================================
+\section{直接相关文献分层}
+
+这一节的目的不是逐篇详细介绍，
+而是快速建立整个 literature landscape。
+
+建议根据“与当前问题的距离”进行分层，
+而不是简单按照年份排序。
+
+% ------------------------------------------------------------
+\subsection{A 层：直接回答核心问题的文献}
+
+\begin{longtable}{
+	L{2.8cm}
+	L{4.3cm}
+	L{3.2cm}
+	L{5.0cm}
+}
+
+\caption{与当前研究问题直接相关的核心文献比较}
+\label{tab:literature-summary}
+\\
+
+\toprule
+
+\textbf{文献} & \textbf{模型和参数} & \textbf{条件} & \textbf{与当前工作的启发} \\
+
+\midrule
+
+\endfirsthead
+
+\multicolumn{4}{c}{
+	\tablename~\thetable\ （续）
+}
+\\
+
+\toprule
+
+\textbf{文献} & \textbf{模型和参数} & \textbf{条件} & \textbf{与当前工作的启发} \\
+
+\midrule
+
+\endhead
+
+\midrule
+\multicolumn{4}{r}{续下页}
+\\
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+% ------------------------------------------------------------
+% Literature 1
+% ------------------------------------------------------------
+作者等，年份 & 这里写模型、Hamiltonian。
+&
+这里写该结论成立的具体条件：
+&
+而写该工作对当前项目有什么作用；
+哪些结果可以直接使用；
+\\
+\addlinespace[0.6em]
+% ------------------------------------------------------------
+% Literature 2
+% ------------------------------------------------------------
+作者等，年份 & 内容 & 内容 & 内容 \\
+\addlinespace[0.6em]
+% ------------------------------------------------------------
+% Literature 3
+% ------------------------------------------------------------
+作者等，年份 & 内容 & 内容 & 内容 \\
+\addlinespace[0.6em]
+% ------------------------------------------------------------
+% Literature 4
+% ------------------------------------------------------------
+作者等，年份 & 内容 & 内容 & 内容 \\
+
+\end{longtable}
+
+
+% ------------------------------------------------------------
+\subsection{B 层：理论和方法直接相关的文献}
+
+\begin{itemize}
+	\item 理论 formalism；
+	\item 数值方法；
+	\item 关键公式；
+	\item symmetry analysis；
+	\item benchmark model。
+\end{itemize}
+
+
+% ============================================================
+% IV. 逐篇读书笔记
+% ============================================================
+\section{逐篇读书笔记}
+
+这一节开始真正详细阅读核心文献。
+
+% ------------------------------------------------------------
+
+
+\noindent
+
+{\kaishu 刘建鹏，戴希的Nature Review Physics[doi number], 论证了为什么moire体系中的自旋磁性被抑制了}，judgement.并且描述
+\\
+\noindent
+
+{\kaishu 刘建鹏，戴希的Nature Review Physics[doi number], 论证了为什么moire体系中的自旋磁性被抑制了}，judgement.并且描述
+
+
+% ============================================================
+% V. 后续工作
+% ============================================================
+\section{后续工作}
+
+\begin{enumerate}
+	\item 需要继续寻找的文献方向；
+	\item 需要补充的关键 reference；
+	\item 目前存在矛盾、需要重新核对的文献；
+	\item 需要重复阅读的核心文章。
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\subsection{待讨论问题}
+
+这里单独保留目前没有结论、
+需要之后与导师或合作者讨论的问题。
+
+\begin{enumerate}
+	\item ……
+	\item ……
+	\item ……
+\end{enumerate}
+
+% ============================================================
+% VI. 当前项目判断与研究定位
+% ============================================================
+\section{当前项目判断与研究定位}
+
+% ============================================================
+% VII. 参考文献清单
+% ============================================================
+\section{参考文献清单}
+
+这一节先作为本地文献索引使用。
+
+以后如果使用 BibTeX / Biber，
+可以再将这里替换为正式 bibliography。
+
+\end{document}
