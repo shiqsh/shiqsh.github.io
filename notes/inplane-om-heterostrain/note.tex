@@ -852,7 +852,7 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 于是可以将面内轨道磁化强度的表达式统一写出，也就是
 \begin{align}
 	\boxed{
-		M_{\alpha} = -\frac{e }{\hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \mathrm{Re} \mathcal{F}_{\beta} \left(\bm{k }\right).
+		M_{\alpha} = -\frac{e }{\hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \operatorname{Re} \mathcal{F}_{\beta} \left(\bm{k }\right).
 	}
 \end{align}
 这里记\(\epsilon_{xy} = 1,\,\epsilon_{yx} = -1\)。更进一步，由于\(\left[\hat{H} - \mu, \mathcal{P}\right] = \left[\hat{H}-\mu, \mathcal{Q}\right] = 0\), 利用求迹的循环性质
@@ -881,7 +881,7 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 现在我们要将面内轨道磁化的表达式对应力参数\(\lambda\)进行求导。在此之前，首先说明我们考虑的是固定化学势的情况，即\(\partial_{\lambda} \mu = 0\)，同时应力也不改变上下层的层间距离，即\(\partial_{\lambda} \hat{z} = 0\)。为了符号简便，令\(\mathcal{P}_{\alpha} \equiv \partial_{k_{\alpha}} \mathcal{P }\)以及\(\mathcal{P}_{\lambda} \equiv \left(\partial \mathcal{P} / \partial \lambda \right)|_{\lambda = 0}\)。同时令\(\hat{H}_{\alpha} \equiv \partial \hat{H} / \partial_{k_{\alpha}}\)以及\(\hat{H}_{\lambda} \equiv \left(\partial \hat{H} / \partial \lambda\right)|_{\lambda = 0} \)。再次将面内轨道磁化强度的表达式写出
 \begin{align}
 		\boxed{
-		M_{\alpha} = -\frac{e }{\hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \mathrm{Re} \, \mathrm{Tr} \left[\mathcal{P} \left(\partial_{k_{\beta}} \mathcal{P} \right) \mathcal{Q} \mathcal{Z}\right].
+		M_{\alpha} = -\frac{e }{\hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \operatorname{Re} \, \mathrm{Tr} \left[\mathcal{P} \left(\partial_{k_{\beta}} \mathcal{P} \right) \mathcal{Q} \mathcal{Z}\right].
 	}
 \end{align}
 
@@ -907,7 +907,7 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 
 所以面内轨道磁化的表达式需要改写成
 \begin{align}
-	M_{\alpha} = -\frac{e }{\hbar c} \epsilon_{\alpha \beta} \sum_{s } \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \mathrm{Re} \, \mathcal{F}^{\left(s \right)}_{\beta} \left(\bm{k }\right),
+	M_{\alpha} = -\frac{e }{\hbar c} \epsilon_{\alpha \beta} \sum_{s } \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \operatorname{Re} \, \mathcal{F}^{\left(s \right)}_{\beta} \left(\bm{k }\right),
 \end{align}
 其中
 \begin{align}
@@ -956,17 +956,17 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 \end{align}
 这意味着 \(\left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right] \)是反厄米的。同时 \(\mathcal{Z}^{\dagger} = \mathcal{Z}\), 所以 \(\mathrm{Tr} \left[\left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right] \mathcal{Z}\right]\)是纯虚数. 因为面内轨道磁化强度是取\(\partial_{\lambda} \mathcal{F}\)的实部，所以这一项对面内轨道磁化没有贡献。即,
 \begin{align}
-	\mathrm{Re} \, \mathrm{Tr} \left[ \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right]  \mathcal{Z} \right] = 0.
+	\operatorname{Re} \, \mathrm{Tr} \left[ \left[\mathcal{P}_{\lambda}, \mathcal{P}_{\alpha}\right]  \mathcal{Z} \right] = 0.
 \end{align}
 由此可以得到 
 \begin{align}
 	\boxed{
-		\mathrm{Re} \, \partial_{\lambda} \mathcal{F}_{\alpha} = \partial_{k_{\alpha}} \mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] + \mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\alpha} \mathcal{Q} \left(\partial_{\lambda} \mathcal{Z}\right) - \mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \left(\partial_{k_{\alpha}} \mathcal{Z}\right) \right].
+		\operatorname{Re} \, \partial_{\lambda} \mathcal{F}_{\alpha} = \partial_{k_{\alpha}} \operatorname{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] + \operatorname{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\alpha} \mathcal{Q} \left(\partial_{\lambda} \mathcal{Z}\right) - \mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \left(\partial_{k_{\alpha}} \mathcal{Z}\right) \right].
 	}
 \end{align}
 我们首先处理第一项，第一项的积分是
 \begin{align}
-	I_{\alpha,1} = \sum_{s} \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2}  \partial_{k_{\alpha}} \mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] 
+	I^{1}_{\alpha}  = \sum_{s} \int_{\Omega_{s }} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2}  \partial_{k_{\alpha}} \operatorname{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] 
 \end{align}
 二维高斯定理给出
 \begin{align}
@@ -982,11 +982,11 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 \end{align}
 是区域\(\Omega_{s }\)的边界\(\partial \Omega_{s}\)上，向外单位法向量的第\(\alpha\)个分量。为了简化符号，我们定义
 \begin{align}
-	\mathcal{A} = \mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] .
+	\mathcal{A} = \operatorname{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] .
 \end{align}
 由此可以将第一项的求和积分写成
 \begin{align}
-	I_{\alpha,1} = \sum_{s } \oint_{\partial \Omega_{s }} \frac{\mathrm{d} \ell }{\left(2 \pi\right)^2} n_{s,\alpha} \mathcal{A}_{s}.
+	I^{1}_{\alpha}  = \sum_{s } \oint_{\partial \Omega_{s }} \frac{\mathrm{d} \ell }{\left(2 \pi\right)^2} n_{s,\alpha} \mathcal{A}_{s}.
 \end{align}
 现在，假设某条费米面是由\(\mu\)穿过\(E_{l} \left(\bm{k}\right)\)所得到的，费米面的两侧分别是\(E_{l} < \mu\)和\(E_{l} > \mu\), 定义法向量
 \begin{align}
@@ -1018,7 +1018,7 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 \end{align}
 就可以得到
 \begin{align}
-	I_{\alpha,1} = \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^{2}} \sum_{l} \delta \left( E_{l} - \mu\right) \left( \partial_{k_{\alpha}} E_{l} \right) \Delta_{l} \left\{\mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] \right\}.  
+	I^{1}_{\alpha}  = \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^{2}} \sum_{l} \delta \left( E_{l} - \mu\right) \left( \partial_{k_{\alpha}} E_{l} \right) \Delta_{l} \left\{\operatorname{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \mathcal{Z} \right] \right\}.  
 \end{align}
 现在我们来处理\(\mathcal{P}_{\lambda}\)，前面有
 \begin{align}
@@ -1030,7 +1030,7 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 \end{align}
 所以
 \begin{align}
-	\mathcal{A} = \mathrm{Re} \sum_{\substack{n \in \mathrm{occ} \\ m \in \mathrm{emp}}} \frac{\mathrm{Tr} \left[\Pi_{n } \hat{H}_{\lambda} \Pi_{m } \mathcal{Z}\right]}{E_{n} - E_{m}} = \mathrm{Re} \sum_{\substack{n \in \mathrm{occ} \\ m \in \mathrm{emp}}} \frac{H_{\lambda,nm} \mathcal{Z}_{mn} }{E_{n } - E_{m }}.
+	\mathcal{A} = \operatorname{Re} \sum_{\substack{n \in \mathrm{occ} \\ m \in \mathrm{emp}}} \frac{\mathrm{Tr} \left[\Pi_{n } \hat{H}_{\lambda} \Pi_{m } \mathcal{Z}\right]}{E_{n} - E_{m}} = \operatorname{Re} \sum_{\substack{n \in \mathrm{occ} \\ m \in \mathrm{emp}}} \frac{H_{\lambda,nm} \mathcal{Z}_{mn} }{E_{n } - E_{m }}.
 \end{align}
 这里暂时不考虑\(E_{n} = E_{m }\)的情况。其中
 \begin{align}
@@ -1040,22 +1040,22 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 \end{align}
 进一步将\(\mathcal{A}\)写成
 \begin{align}
-	\mathcal{A} = \mathrm{Re} \sum_{\substack{n \in \mathrm{occ} \\ m \in \mathrm{emp}}} \frac{E_{n} + E_{m } - 2 \mu}{E_{n } - E_{m }} H_{\lambda, nm} z_{mn}.
+	\mathcal{A} = \operatorname{Re} \sum_{\substack{n \in \mathrm{occ} \\ m \in \mathrm{emp}}} \frac{E_{n} + E_{m } - 2 \mu}{E_{n } - E_{m }} H_{\lambda, nm} z_{mn}.
 \end{align}
-现在再次考虑\(\Omega_{\pm}\)两个区域，定义\(O\)是完全占据的能带集合，\(E\)是完全空的能带集合。这意味着，对于区域\(\Omega_{-}\)中的\(\bm{k}\)点，其对应占据的能带集合是\(O \cup \left\{m\right\}\)，空能带集合是\(E\)；对于区域对于区域\(\Omega_{+}\)中的\(\bm{k}\)点，其对应占据的能带集合是\(O\)，空能带集合是\(E \cup \left\{m\right\}\)。由此，我们可以写出两个区域内的\(\mathcal{A}_{\pm}\). 首先, 在\(\Omega_{-}\)
+现在再次考虑\(\Omega_{\pm}\)两个区域，定义\(O\)是完全占据的能带集合，\(E\)是完全空的能带集合。这意味着，对于区域\(\Omega_{-}\)中的\(\bm{k}\)点，其对应占据的能带集合是\(O \cup \left\{l\right\}\)，空能带集合是\(E\)；对于区域对于区域\(\Omega_{+}\)中的\(\bm{k}\)点，其对应占据的能带集合是\(O\)，空能带集合是\(E \cup \left\{l\right\}\)。由此，我们可以写出两个区域内的\(\mathcal{A}_{\pm}\). 首先, 在\(\Omega_{-}\)
 \begin{align}
 	\begin{split}
-		\mathcal{A}_{-}  = \mathrm{Re} \left[\sum_{n \in O} \sum_{m \in E} + \sum_{n =l} \sum_{m \in E}\right] = \mathcal{A}_{0} + \mathrm{Re} \sum_{m \in E} \frac{E_{l} + E_{m } - 2 \mu}{E_{l} - E_{m }} H_{\lambda,lm} z_{ml} ,
+		\mathcal{A}_{-}  = \operatorname{Re} \left[\sum_{n \in O} \sum_{m \in E} + \sum_{n =l} \sum_{m \in E}\right] = \mathcal{A}_{0} + \operatorname{Re} \sum_{m \in E} \frac{E_{l} + E_{m } - 2 \mu}{E_{l} - E_{m }} H_{\lambda,lm} z_{ml} ,
 	\end{split}
 \end{align}
 其中
 \begin{align}
-	\mathcal{A}_{0} = \mathrm{Re} \sum_{n \in O} \sum_{m \in E} \frac{E_{n} + E_{m } - 2 \mu}{E_{n } - E_{m }} H_{\lambda, nm} z_{mn}.
+	\mathcal{A}_{0} = \operatorname{Re} \sum_{n \in O} \sum_{m \in E} \frac{E_{n} + E_{m } - 2 \mu}{E_{n } - E_{m }} H_{\lambda, nm} z_{mn}.
 \end{align}
 那么在\(\Omega_{+}\)中，则有
 \begin{align}
 	\begin{split}
-		\mathcal{A}_{+} =  \mathrm{Re} \left[\sum_{n \in O} \sum_{m \in E} + \sum_{n \in O} \sum_{m = l}\right] = \mathcal{A}_{0} + \mathrm{Re} \sum_{n \in O } \frac{E_{n} + E_{l} - 2 \mu}{E_{n } - E_{l}} H_{\lambda,nl} z_{ln}.
+		\mathcal{A}_{+} =  \operatorname{Re} \left[\sum_{n \in O} \sum_{m \in E} + \sum_{n \in O} \sum_{m = l}\right] = \mathcal{A}_{0} + \operatorname{Re} \sum_{n \in O } \frac{E_{n} + E_{l} - 2 \mu}{E_{n } - E_{l}} H_{\lambda,nl} z_{ln}.
 	\end{split}
 \end{align}
 由于我们只是在\(\partial \Omega\)这样的费米面上考虑，所以取\(E_{l} = \mu\), 代入有
@@ -1064,36 +1064,36 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 \end{align}
 所以
 \begin{align}
-	\mathcal{A}_{-} = \mathcal{A}_{0} - \mathrm{Re}  \sum_{m \in E } H^{\lambda}_{lm } z_{m l}.
+	\mathcal{A}_{-} = \mathcal{A}_{0} - \operatorname{Re}  \sum_{m \in E } H^{\lambda}_{lm } z_{m l}.
 \end{align}
 同理对于\(\mathcal{A}_{- }\),
-\begin{align}
+\begin{align} 
 	\frac{E_{l } + E_{n } - 2 \mu}{E_{n } - E_{l}} = \frac{\mu + E_{n } - 2 \mu}{E_{n } - \mu} = \frac{E_{n } - \mu}{E_{n } - \mu} = 1.
 \end{align}
 所以
 \begin{align}
-	\mathcal{A}_{+} = \mathcal{A}_{0} + \mathrm{Re} \sum_{n \in O } H_{\lambda,nl} z_{ln}.
+	\mathcal{A}_{+} = \mathcal{A}_{0} + \operatorname{Re} \sum_{n \in O } H_{\lambda,nl} z_{ln}.
 \end{align}
 两者的差为
 \begin{align}
-	\mathcal{A}_{-} - \mathcal{A}_{+} = - \mathrm{Re} \sum_{m \in E } H_{\lambda,lm} z_{m l} - \mathrm{Re} \sum_{n \in O } H_{\lambda,nl} z_{ln},
+	\mathcal{A}_{-} - \mathcal{A}_{+} = - \operatorname{Re} \sum_{m \in E } H_{\lambda,lm} z_{m l} - \operatorname{Re} \sum_{n \in O } H_{\lambda,nl} z_{ln},
 \end{align}
-由于\(\hat{H}_{\lambda}\)和\( \hat{z} \)都是厄米的，所以有 \(H_{\lambda,ml} = \left(H_{\lambda,lm}\right)^{*}\)，同时\(z_{lm} = z^{*}_{lm }\), 所以
+由于\(\hat{H}_{\lambda}\)和\( \hat{z} \)都是厄米的，所以有 \(H_{\lambda,nl} = \left(H_{\lambda,ln}\right)^{*}\)，同时\(z_{ln} = z^{*}_{nl}\), 所以
 \begin{align}
-	\mathrm{Re} H_{\lambda,lm} z_{ml} = \mathrm{Re} \left( H_{\lambda,ml} z_{lm} \right)^{*} = \mathrm{Re} H^{\lambda}_{ml} z_{lm},
+	\operatorname{Re} H_{\lambda,nl} z_{ln} = \operatorname{Re} \left( H_{\lambda,ln} z_{nl} \right)^{*} = \operatorname{Re} H^{\lambda}_{ln} z_{nl},
 \end{align}
 可以将上式改写成
 \begin{align}
-	\mathcal{A}_{-} - \mathcal{A}_{+} = - \mathrm{Re} \sum_{m \in E}  H_{\lambda,lm} z_{ml} - \mathrm{Re} \sum_{n \in O } H_{\lambda, ln} z_{nl}  = - \mathrm{Re} \sum_{r \neq l} H_{\lambda, lr} z_{rl}
+	\mathcal{A}_{-} - \mathcal{A}_{+} = - \operatorname{Re} \sum_{m \in E}  H_{\lambda,lm} z_{ml} - \operatorname{Re} \sum_{n \in O } H_{\lambda, ln} z_{nl}  = - \operatorname{Re} \sum_{r \neq l} H_{\lambda, lr} z_{rl}
 \end{align}
-这里我们使用了一个虚拟变量\(r\)，为了符合我们的使用习惯，我们做指标替换\(r \rightarrow n\)和\(l \rightarrow m\)。因此，积分为
+这里我们使用了一个虚拟变量\(r\)，为了符合我们的使用习惯，我们做指标替换\(r \rightarrow n\)和\(l \rightarrow m\)。再次说明的是，\(m\)与费米面相交的能带指标，而\(n\)是其他能带指标。因此，积分为
 \begin{align}
-	I_{\alpha, 1} = - \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \sum_{m} \delta \left(E_{m} - \mu\right) \left(\partial_{k_{\alpha}} E_{m }\right) \sum_{n \neq m } \mathrm{Re} \left[H_{\lambda,mn} z_{nm}\right]，
+	I^{1}_{\alpha} = - \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \sum_{m} \delta \left(E_{m} - \mu\right) \left(\partial_{k_{\alpha}} E_{m }\right) \sum_{n \neq m } \operatorname{Re} \left[H_{\lambda,mn} z_{nm}\right]，
 \end{align}
 这里\(\partial_{k_{\alpha}} E_{m } = \braket{u_{m } | \hat{H}_{\alpha} | u_{m}}\)。费米面对极化率的第一项贡献为
 \begin{align}
 	\boxed{
-		\chi^{\mathrm{FS}}_{\alpha,1} = \frac{e}{\hbar c} \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \sum_{m} \sum_{n \neq m} \delta \left(E_{m } - \mu\right) \braket{u_{m} | \hat{H}_{\beta} | u_{m}} \mathrm{Re} \left[ \braket{u_{m} | \hat{H}_{\lambda} | u_{n }} \braket{u_{n} | \hat{z} | u_{m }}\right].
+		\chi^{\mathrm{FS}, 1}_{\alpha} = \frac{e}{\hbar c} \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \sum_{m} \delta \left(E_{m } - \mu\right) \braket{u_{m} | \hat{H}_{\beta} | u_{m}} \sum_{n \neq m} \operatorname{Re} \left[ \braket{u_{m} | \hat{H}_{\lambda} | u_{n }} \braket{u_{n} | \hat{z} | u_{m }}\right].
 	}
 \end{align}
 这里\(m\)是与化学势相交的能带指标。
@@ -1102,7 +1102,7 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 
 现在，我们来看费米面对极化率的第二项贡献，也就是
 \begin{align}
-	\chi^{\mathrm{FS }}_{\alpha,2} = -\frac{e}{\hbar c} \epsilon_{\alpha \beta} \sum_{s } \oint_{\partial \Omega_{s }} \frac{ \mathrm{d} \ell}{\left(2 \pi\right)^{2} } \left(\frac{\partial \bm{k}_{\mathrm{FS}}}{\partial \lambda} \cdot \hat{\bm{n }}_{s}\right) \mathrm{Re} \mathcal{F}_{\beta}^{s}.
+	\chi^{\mathrm{FS},2}_{\alpha} = -\frac{e}{\hbar c} \epsilon_{\alpha \beta} \sum_{s } \oint_{\partial \Omega_{s }} \frac{ \mathrm{d} \ell}{\left(2 \pi\right)^{2} } \left(\frac{\partial \bm{k}_{\mathrm{FS}}}{\partial \lambda} \cdot \hat{\bm{n }}_{s}\right) \operatorname{Re} \mathcal{F}_{\beta}^{s}.
 \end{align}
 定义费米面移动速度
 \begin{align}
@@ -1110,7 +1110,7 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 \end{align}
 同理，考虑\(E_{l} = \mu\)的费米面\(\partial \Omega\)两侧的\(\Omega_{\pm}\)，其在极化率中的贡献可以被类似的写出
 \begin{align}
-	\left(\frac{\partial \bm{k}_{\mathrm{FS}}}{\partial \lambda} \cdot \hat{\bm{n}}_{-}\right) \mathrm{Re} \mathcal{F}^{-}_{\beta} + \left(\frac{\partial \bm{k}_{\mathrm{FS}}}{\partial \lambda} \cdot \hat{\bm{n}}_{+}\right) \mathrm{Re} \mathcal{F}^{+}_{\beta} = v_{l,\lambda} \left[\mathrm{Re} \mathcal{F}^{-}_{\beta} - \mathrm{Re} \mathcal{F}^{+}_{\beta}\right].
+	\left(\frac{\partial \bm{k}_{\mathrm{FS}}}{\partial \lambda} \cdot \hat{\bm{n}}_{-}\right) \operatorname{Re} \mathcal{F}^{-}_{\beta} + \left(\frac{\partial \bm{k}_{\mathrm{FS}}}{\partial \lambda} \cdot \hat{\bm{n}}_{+}\right) \operatorname{Re} \mathcal{F}^{+}_{\beta} = v_{l,\lambda} \left[\operatorname{Re} \mathcal{F}^{-}_{\beta} - \operatorname{Re} \mathcal{F}^{+}_{\beta}\right].
 \end{align}
 现在的问题在于\(v_{l,\lambda}\)如何求解，考虑\(E_{l} \left(\bm{k}_{\mathrm{FS}} \left(\lambda\right), \lambda\right) = \mu\), 两边对\(\lambda\)求导得到
 \begin{align}
@@ -1128,55 +1128,55 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 \end{align}
 定义
 \begin{align}
-	\Delta_{l} \mathrm{Re} \mathcal{F}_{\beta} \equiv \mathrm{Re} \left[\mathcal{F}^{-}_{\beta} - \mathcal{F}^{+}_{\beta}\right].
+	\Delta_{l} \operatorname{Re} \mathcal{F}_{\beta} \equiv \operatorname{Re} \left[\mathcal{F}^{-}_{\beta} - \mathcal{F}^{+}_{\beta}\right].
 \end{align}
 可以写出费米面对极化率的第二项贡献为
 \begin{align}
-	\chi^{\mathrm{FS}}_{\alpha,2} =  \frac{e }{\hbar c} \epsilon_{\alpha \beta} \sum_{l} \oint_{E_{l} = \mu} \frac{\mathrm{d} \ell}{ \left(2 \pi\right)^2} \frac{ H_{\lambda,ll}}{\left|\nabla_{\bm{k}} E_{l }\right|} \Delta_{l } \mathrm{Re} \mathcal{F}_{\beta},
+	\chi^{\mathrm{FS},2}_{\alpha} =  \frac{e }{\hbar c} \epsilon_{\alpha \beta} \sum_{l} \oint_{E_{l} = \mu} \frac{\mathrm{d} \ell}{ \left(2 \pi\right)^2} \frac{ H_{\lambda,ll}}{\left|\nabla_{\bm{k}} E_{l }\right|} \Delta_{l } \operatorname{Re} \mathcal{F}_{\beta},
 \end{align}
 将线积分改写成面积分
 \begin{align}
-	\chi^{\mathrm{FS}}_{\alpha,2} =  \frac{e }{\hbar c} \epsilon_{\alpha \beta} \sum_{l} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \delta \left(E_{l} - \mu\right) H_{\lambda,ll} \Delta_{l} \mathrm{Re} \mathcal{F}_{\beta}.
+	\chi^{\mathrm{FS},2}_{\alpha} =  \frac{e }{\hbar c} \epsilon_{\alpha \beta} \sum_{l} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \delta \left(E_{l} - \mu\right) H_{\lambda,ll} \Delta_{l} \operatorname{Re} \mathcal{F}_{\beta}.
 \end{align}
-现在来处理\(\Delta_{l} \mathrm{Re} \mathcal{F}_{\beta}\), 由于
+现在来处理\(\Delta_{l} \operatorname{Re} \mathcal{F}_{\beta}\), 由于
 \begin{align}
-	\mathrm{Re} \mathcal{F}_{\beta} = -\sum_{\substack{n \in \mathrm{occ} \\ m \in \mathrm{emp}}} \left(E_{n } + E_{m } - 2\mu\right) \mathrm{Re} \left[\braket{u_{n } | \partial_{k_{\beta}} u_{m }} \braket{u_{m } | \hat{z} | u_{n }}\right].
+	\operatorname{Re} \mathcal{F}_{\beta} = -\sum_{\substack{n \in \mathrm{occ} \\ m \in \mathrm{emp}}} \left(E_{n } + E_{m } - 2\mu\right) \operatorname{Re} \left[\braket{u_{n } | \partial_{k_{\beta}} u_{m }} \braket{u_{m } | \hat{z} | u_{n }}\right].
 \end{align}
 对\(\Omega_{-}\)这一侧区域有
 \begin{align}
-	\mathrm{Re} \mathcal{F}^{-}_{\beta} = \mathcal{F}_{\beta}^{0} - \sum_{m \in E} \left(E_{m} + E_{l} - 2\mu\right) \mathrm{Re} \left[\braket{u_{l} | \partial_{k_{\beta}} u_{m }} \braket{u_{m } | \hat{z} | u_{l}}\right].
+	\operatorname{Re} \mathcal{F}^{-}_{\beta} = \mathcal{F}_{\beta}^{0} - \sum_{m \in E} \left(E_{m} + E_{l} - 2\mu\right) \operatorname{Re} \left[\braket{u_{l} | \partial_{k_{\beta}} u_{m }} \braket{u_{m } | \hat{z} | u_{l}}\right].
 \end{align}
 对\(\Omega_{+}\)有
 \begin{align}
-	\mathrm{Re} \mathcal{F}^{+}_{\beta} = \mathcal{F}_{\beta}^{0} - \sum_{n \in O} \left(E_{l} + E_{n} - 2\mu\right) \mathrm{Re} \left[\braket{u_{n} | \partial_{k_{\beta}} u_{l}} \braket{u_{l } | \hat{z} | u_{n }}\right].
+	\operatorname{Re} \mathcal{F}^{+}_{\beta} = \mathcal{F}_{\beta}^{0} - \sum_{n \in O} \left(E_{l} + E_{n} - 2\mu\right) \operatorname{Re} \left[\braket{u_{n} | \partial_{k_{\beta}} u_{l}} \braket{u_{l } | \hat{z} | u_{n }}\right].
 \end{align}
 其中
 \begin{align}
-	\mathcal{F}_{\beta}^{0} = - \mathrm{Re} \sum_{\substack{n \in O \\ m \in E}} \left(E_{n } + E_{m } - 2 \mu\right) \mathrm{Re} \left[\braket{u_{n } | \partial_{k_{\beta}} u_{m }} \braket{u_{m } | \hat{z} | u_{n }}\right].
+	\mathcal{F}_{\beta}^{0} = - \operatorname{Re} \sum_{\substack{n \in O \\ m \in E}} \left(E_{n } + E_{m } - 2 \mu\right) \operatorname{Re} \left[\braket{u_{n } | \partial_{k_{\beta}} u_{m }} \braket{u_{m } | \hat{z} | u_{n }}\right].
 \end{align}
 所以
 \begin{align}
 	\begin{split}
-			\Delta_{l} \mathrm{Re} \mathcal{F}_{\beta} &= \mathrm{Re} \mathcal{F}^{-}_{\beta} - \mathrm{Re} \mathcal{F}^{+}_{\beta}	 \\
-			& = - \sum_{m \in E} \left(E_{m} + E_{l} - 2\mu\right) \mathrm{Re} \left[\braket{u_{l} | \partial_{k_{\beta}} u_{m }} \braket{u_{m } | \hat{z} | u_{l}}\right] \\
-			& \quad + \sum_{n \in O} \left(E_{l} + E_{n} - 2\mu\right) \mathrm{Re} \left[\braket{u_{n} | \partial_{k_{\beta}} u_{l}} \braket{u_{l } | \hat{z} | u_{n }}\right] .
+			\Delta_{l} \operatorname{Re} \mathcal{F}_{\beta} &= \operatorname{Re} \mathcal{F}^{-}_{\beta} - \operatorname{Re} \mathcal{F}^{+}_{\beta}	 \\
+			& = - \sum_{m \in E} \left(E_{m} + E_{l} - 2\mu\right) \operatorname{Re} \left[\braket{u_{l} | \partial_{k_{\beta}} u_{m }} \braket{u_{m } | \hat{z} | u_{l}}\right] \\
+			& \quad + \sum_{n \in O} \left(E_{l} + E_{n} - 2\mu\right) \operatorname{Re} \left[\braket{u_{n} | \partial_{k_{\beta}} u_{l}} \braket{u_{l } | \hat{z} | u_{n }}\right] .
 	\end{split}
 \end{align}
 又
 \begin{align}
-	\mathrm{Re}\left[ \braket{u_{l} | \partial_{k_{\beta}} u_{m }} \braket{u_{m } | \hat{z} | u_{l}}\right] = - \mathrm{Re} \left[\bra{u_m | \partial_{k_{\beta}} u_{l}} \braket{u_{l} | \hat{z} | u_{m}}\right].
+	\operatorname{Re}\left[ \braket{u_{l} | \partial_{k_{\beta}} u_{m }} \braket{u_{m } | \hat{z} | u_{l}}\right] = - \operatorname{Re} \left[\bra{u_m | \partial_{k_{\beta}} u_{l}} \braket{u_{l} | \hat{z} | u_{m}}\right].
 \end{align}
 所以
 \begin{align}
 	\begin{split}
-		\Delta_{l} \mathrm{Re} \mathcal{F}_{\beta} & = \sum_{n \in O} \left(E_n - \mu\right) \mathrm{Re} \left[\braket{u_n | \partial_{k_{\beta}} u_{l }} \braket{u_{l} | \hat{z} | u_{n}}\right] + \sum_{m \in E}  \left(E_m - \mu\right) \mathrm{Re} \left[\braket{u_m | \partial_{k_{\beta}} u_{l }} \braket{u_{l} | \hat{z} | u_{m}}\right], \\
-		& = \sum_{r \neq l} \left(E_{r } - \mu\right) \mathrm{Re} \left[\braket{u_{r } | \partial_{k_{\beta}} u_{l }} \braket{u_{l} | \hat{z} | u_{r}}\right], \\
-		& = - \sum_{r \neq l} \left(E_{r } - \mu\right) \mathrm{Re} \left[\braket{u_{l} | \partial_{k_{\beta}} u_{r}} \braket{u_{r} | \hat{z} | u_{l}}\right].
+		\Delta_{l} \operatorname{Re} \mathcal{F}_{\beta} & = \sum_{n \in O} \left(E_n - \mu\right) \operatorname{Re} \left[\braket{u_n | \partial_{k_{\beta}} u_{l }} \braket{u_{l} | \hat{z} | u_{n}}\right] + \sum_{m \in E}  \left(E_m - \mu\right) \operatorname{Re} \left[\braket{u_m | \partial_{k_{\beta}} u_{l }} \braket{u_{l} | \hat{z} | u_{m}}\right], \\
+		& = \sum_{r \neq l} \left(E_{r } - \mu\right) \operatorname{Re} \left[\braket{u_{r } | \partial_{k_{\beta}} u_{l }} \braket{u_{l} | \hat{z} | u_{r}}\right], \\
+		& = - \sum_{r \neq l} \left(E_{r } - \mu\right) \operatorname{Re} \left[\braket{u_{l} | \partial_{k_{\beta}} u_{r}} \braket{u_{r} | \hat{z} | u_{l}}\right].
 	\end{split}
 \end{align}
 写出对极化率的贡献为
 \begin{align}
-	\chi^{\mathrm{FS}}_{\alpha,2} = - \frac{e }{\hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \sum_{l} \sum_{r \neq l} \left(E_r - \mu\right) \delta \left(E_{l} - \mu\right) H_{\lambda,ll} \mathrm{Re} \left[\braket{u_{l} | \partial_{k_{\beta}} u_r} z_{rl}  \right],
+	\chi^{\mathrm{FS},2}_{\alpha} = - \frac{e }{\hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \sum_{l} \left(E_r - \mu\right) \delta \left(E_{l} - \mu\right) H_{\lambda,ll} \sum_{r \neq l}  \operatorname{Re} \left[\braket{u_{l} | \partial_{k_{\beta}} u_r} z_{rl}  \right],
 \end{align}
 将
 \begin{align}
@@ -1185,7 +1185,7 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 代入得到
 \begin{align}
 	\boxed{
-		\chi^{\mathrm{FS}}_{\alpha,2} = - \frac{e }{\hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \sum_{m} \sum_{n \neq m} \delta \left(E_{m} - \mu\right) \braket{u_m | \hat{H}_{\lambda} | u_{m} } \mathrm{Re} \left[\braket{u_{m} | \hat{H}_{\beta} | u_n} \braket{u_{n} | \hat{z} | u_{m}} \right],
+		\chi^{\mathrm{FS},2}_{\alpha} = - \frac{e }{\hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \sum_{m} \delta \left(E_{m} - \mu\right) \braket{u_m | \hat{H}_{\lambda} | u_{m} } \sum_{n \neq m} \operatorname{Re} \left[\braket{u_{m} | \hat{H}_{\beta} | u_n} \braket{u_{n} | \hat{z} | u_{m}} \right],
 	}
 \end{align}
 由此，极化率中来自费米面的贡献为
@@ -1193,8 +1193,8 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 	\begin{split}
 		\boxed{
 			\begin{aligned}
-				& \chi^{\mathrm{FS}}_{\lambda, \alpha} = \frac{e }{\hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \sum_{m} \sum_{n \neq m} \delta \left(E_{m} - \mu\right) \\
-		&  \left[\braket{u_{m} | \hat{H}_{\beta} | u_{m}} \mathrm{Re} \left(\braket{u_{m} | \hat{H}_{\lambda} | u_{n }} \braket{u_{n} | \hat{z} | u_{m }}\right) - \braket{u_m | \hat{H}_{\lambda} | u_{m} } \mathrm{Re} \left(\braket{u_{m} | \hat{H}_{\beta} | u_n} \braket{u_{n} | \hat{z} | u_{m}}\right) \right].
+				& \chi^{\mathrm{FS}}_{\lambda, \alpha} = \frac{e }{\hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \sum_{m} \delta \left(E_{m} - \mu\right) \\
+		& \sum_{n \neq m} \left[\braket{u_{m} | \hat{H}_{\beta} | u_{m}} \operatorname{Re} \left(\braket{u_{m} | \hat{H}_{\lambda} | u_{n }} \braket{u_{n} | \hat{z} | u_{m }}\right) - \braket{u_m | \hat{H}_{\lambda} | u_{m} } \operatorname{Re} \left(\braket{u_{m} | \hat{H}_{\beta} | u_n} \braket{u_{n} | \hat{z} | u_{m}}\right) \right].
 			\end{aligned}
 		}
 	\end{split}
@@ -1202,7 +1202,7 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 
 \vspace{2em}
 
-对于占据态固定的两项\(\mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\alpha} \mathcal{Q} \left( \partial_{\lambda} \mathcal{Z}\right) - \mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \left(\partial_{k_{\alpha}} \mathcal{Z}\right)\right]\), 前面有
+对于占据态固定的两项\(\operatorname{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\alpha} \mathcal{Q} \left( \partial_{\lambda} \mathcal{Z}\right) - \mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \left(\partial_{k_{\alpha}} \mathcal{Z}\right)\right]\), 前面有
 \begin{align}
 	\mathcal{P} \mathcal{P}_{\lambda/\alpha} \mathcal{Q} = \sum_{\substack{n \in \mathcal{O}_s \\ m \notin \mathcal{O}_s}} \frac{\Pi_{n} \hat{H}_{\lambda/\alpha} \Pi_{m }}{E_{n } - E_{m }}.
 \end{align}
@@ -1212,8 +1212,8 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 \end{align}
 由此
 \begin{align}
-	\mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\alpha} \mathcal{Q} \left( \partial_{\lambda} \mathcal{Z}\right)\right]  &= \mathrm{Re} \sum_{\substack{n \in \mathcal{O}_s \\ m \notin \mathcal{O}_s}} \frac{H_{\alpha,nm } \left(\partial_{\lambda} \mathcal{Z}\right)_{mn}}{E_{n } - E_{m }}, \\
-	-\mathrm{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \left(\partial_{k_{\alpha}} \mathcal{Z}\right)\right] &= -\mathrm{Re}  \sum_{\substack{n \in \mathcal{O}_s \\ m \notin \mathcal{O}_s}} \frac{H_{\lambda,nm } \left(\partial_{\alpha} \mathcal{Z}\right)_{mn}}{E_{n } - E_{m }},
+	\operatorname{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\alpha} \mathcal{Q} \left( \partial_{\lambda} \mathcal{Z}\right)\right]  &= \operatorname{Re} \sum_{\substack{n \in \mathcal{O}_s \\ m \notin \mathcal{O}_s}} \frac{H_{\alpha,nm } \left(\partial_{\lambda} \mathcal{Z}\right)_{mn}}{E_{n } - E_{m }}, \\
+	-\operatorname{Re} \mathrm{Tr} \left[\mathcal{P} \mathcal{P}_{\lambda} \mathcal{Q} \left(\partial_{k_{\alpha}} \mathcal{Z}\right)\right] &= -\operatorname{Re}  \sum_{\substack{n \in \mathcal{O}_s \\ m \notin \mathcal{O}_s}} \frac{H_{\lambda,nm } \left(\partial_{\alpha} \mathcal{Z}\right)_{mn}}{E_{n } - E_{m }},
 \end{align}
 \(T = 0\)时，用分布函数\(f_{n} = \Theta \left(\mu - E_{n}\right)\)对求和做替换，同时对所有的\(\Omega_{s }\)做求和，等价于对（莫尔）布里渊区做积分
 \begin{align}
@@ -1221,14 +1221,16 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 \end{align}
 于是这一项的极化率贡献为
 \begin{align}
-	\chi^{\mathrm{FIX}}_{\lambda, \alpha} = - \frac{e}{ \hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \mathrm{Re} \sum_{n, m} \sum_{l} \frac{f_{n} \left(1 - f_{m }\right)}{E_{n } - E_{m }} \left[H_{\beta, nm} \mathcal{Z}_{\lambda,mn} - H_{\lambda, nm} \mathcal{Z}_{\beta,mn} \right]
+	\boxed{
+		\chi^{\mathrm{FIX}}_{\lambda, \alpha} = - \frac{e}{ \hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \operatorname{Re} \sum_{n, m} \frac{f_{n} \left(1 - f_{m }\right)}{E_{n } - E_{m }} \left[H_{\beta, nm} \mathcal{Z}_{\lambda,mn} - H_{\lambda, nm} \mathcal{Z}_{\beta,mn} \right]
+	}
 \end{align}
 全部写出
 \begin{align}
 	\begin{split}
 		\boxed{
 			\begin{aligned}
-				\chi^{\mathrm{FIX}}_{\lambda, \alpha} &= - \frac{e}{ \hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \mathrm{Re} \sum_{n, m} \sum_{l} \frac{f_{n} \left(1 - f_{m }\right)}{E_{n } - E_{m }} \\
+				\chi^{\mathrm{FIX}}_{\lambda, \alpha} &= - \frac{e}{ \hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \operatorname{Re} \sum_{n, m} \sum_{l} \frac{f_{n} \left(1 - f_{m }\right)}{E_{n } - E_{m }} \\
 				& \quad \left[ \braket{u_{n} | \hat{H}_{\beta} | u_{m }} \left(\braket{u_{m} | \hat{z} | u_{l}} \braket{u_{l} | \hat{H}_{\lambda} | u_{n }} + \braket{u_{m} | \hat{H}_{\lambda}| u_{l}} \braket{u_{l} | \hat{z} | u_{n }}\right) \right. \\
 				& \left. \quad - \braket{u_{n} | \hat{H}_{\lambda} | u_{m }} \left(\braket{u_{m} | \hat{z} | u_{l}} \braket{u_{l} | \hat{H}_{\beta} | u_{n }} + \braket{u_{m} | \hat{H}_{\beta}| u_{l}} \braket{u_{l} | \hat{z} | u_{n }}\right)
 				\right].
@@ -1365,7 +1367,7 @@ The expression of inplane orbital magnetization is
 \begin{align}
 	\begin{split}
 		M_{\alpha} = -\frac{e }{\hbar c } \epsilon_{\alpha \beta} \sum_{n \in \mathrm{occ}} \sum_{m \in \mathrm{emp}} \sum_{\bm{k}} \left(E_{n } \left(\bm{k }\right) - \mu\right) & \left[n_{F } \left(E_{m } \left(\bm{k }\right)\right) - n_{F } \left(E_{n } \left(\bm{k }\right)\right)\right] \\
-		& \mathrm{Re} \left[\braket{u_{n } | \partial_{k_{\beta}} u_{m} } z_{mn } \left(\bm{k }\right)	 \right].
+		& \operatorname{Re} \left[\braket{u_{n } | \partial_{k_{\beta}} u_{m} } z_{mn } \left(\bm{k }\right)	 \right].
 	\end{split}
 \end{align}
 More simplify, we rewrite it as 
