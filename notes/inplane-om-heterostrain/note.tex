@@ -1222,7 +1222,7 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 于是这一项的极化率贡献为
 \begin{align}
 	\boxed{
-		\chi^{\mathrm{FIX}}_{\lambda, \alpha} = - \frac{e}{ \hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \operatorname{Re} \sum_{n, m} \frac{f_{n} \left(1 - f_{m }\right)}{E_{n } - E_{m }} \left[H_{\beta, nm} \mathcal{Z}_{\lambda,mn} - H_{\lambda, nm} \mathcal{Z}_{\beta,mn} \right]
+		\chi^{\mathrm{FIX}}_{\lambda, \alpha} = - \frac{e}{ \hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \operatorname{Re} \sum_{n \neq m} \frac{f_{n} \left(1 - f_{m }\right)}{E_{n } - E_{m}} \left[H_{\beta, nm} \mathcal{Z}_{\lambda,mn} - H_{\lambda, nm} \mathcal{Z}_{\beta,mn} \right]
 	}
 \end{align}
 全部写出
@@ -1230,9 +1230,9 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 	\begin{split}
 		\boxed{
 			\begin{aligned}
-				\chi^{\mathrm{FIX}}_{\lambda, \alpha} &= - \frac{e}{ \hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \operatorname{Re} \sum_{n, m} \sum_{l} \frac{f_{n} \left(1 - f_{m }\right)}{E_{n } - E_{m }} \\
+				\chi^{\mathrm{FIX}}_{\lambda, \alpha} &= - \frac{e}{ \hbar c } \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \operatorname{Re} \sum_{n \neq m} \sum_{l} \frac{f_{n} \left(1 - f_{m }\right)}{E_{n } - E_{m }} \\
 				& \quad \left[ \braket{u_{n} | \hat{H}_{\beta} | u_{m }} \left(\braket{u_{m} | \hat{z} | u_{l}} \braket{u_{l} | \hat{H}_{\lambda} | u_{n }} + \braket{u_{m} | \hat{H}_{\lambda}| u_{l}} \braket{u_{l} | \hat{z} | u_{n }}\right) \right. \\
-				& \left. \quad - \braket{u_{n} | \hat{H}_{\lambda} | u_{m }} \left(\braket{u_{m} | \hat{z} | u_{l}} \braket{u_{l} | \hat{H}_{\beta} | u_{n }} + \braket{u_{m} | \hat{H}_{\beta}| u_{l}} \braket{u_{l} | \hat{z} | u_{n }}\right)
+				& \left. \quad - \braket{u_{n} | \hat{H}_{\lambda} | u_{m }} \left(\braket{u_{m} | \hat{z} | u_{l}} \braket{u_{l} | \hat{H}_{\beta} | u_{n}} + \braket{u_{m} | \hat{H}_{\beta}| u_{l}} \braket{u_{l} | \hat{z} | u_{n }}\right)
 				\right].
 			\end{aligned}
 		}
