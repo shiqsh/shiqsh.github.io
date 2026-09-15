@@ -1245,6 +1245,257 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 这里面的问题在于，公式的适用条件为\(E_{n } \neq E_{m }\)和\(\left|\nabla_{\bm{k}} E_{m}\right| \neq 0\), 对于狄拉克点这样的简并点，非简并微扰公式失效了，这通常对应\(n \neq m, \, E_{n} = E_{m}\)。但通常来说，狄拉克点并不会对积分有贡献，因此可以忽略掉。但是，对于范霍夫奇点，并不能这么简单的忽略。
 
 
+\section{Toy Model 数值检验}
+在具体阐述toy model的数值结果之前，首先申明我们的数值计算工作流程：在我们的程序当中，我们使用了python 和 fortran 两种语言来对轨道磁化强度和极化率进行计算。python 负责快速计算出结果，对于每一个model都会有一个脚本进行计算，输出和绘图流程，不采用并行优化；fortran 负责写出一般性的能带结构、轨道磁化、极化率的计算模块，并采用并行优化。当两者的结果一致，才对结果进一步分析。原始数据请见github对应仓库。
+
+\subsection{Bilayer QWZ model}
+对于我们的toy model, 我们选择bilayer QWZ model。首先，如果需要产生面内轨道磁化，需要时间反演对称性破缺。而当陈数不为零时，时间反演对称性一定破缺。因此，最简单的选择，就是陈绝缘体。考虑一个单层的 QWZ model, 其哈密顿量为
+\begin{align} 
+	h_{\mathrm{QWZ}} \left(\bm{k}\right) = \sin{k_{x}} \sigma_{1} + \sin{k_{y}} \sigma_{2} + \left(m + \cos{ k_{x} } + \cos{ k_{y}}\right) \sigma_{3},
+\end{align}
+QWZ 模型中拓扑相变只可能发生在能隙关闭的四个狄拉克点，因此陈数的变化可以写成chirality和mass sign的组合，也就是
+\begin{align}
+	\Delta C = -\frac{1}{2} \sum_{i} \chi_{i} \operatorname{sgn}(M_i),
+\end{align}
+其中手性\(\chi_{i} = \operatorname{sgn}(v_x v_y)\), \(M_i\)是狄拉克点对应的质量项。在QWZ model中，\(m < -2\)时其陈数为\(0\), 因此可以写出总陈数：
+\begin{align}
+	C_{\mathrm{tot}} = \frac{1}{2} \left[-\operatorname{sgn}\left(m+2\right) + 2 \operatorname{sgn}\left(m\right) - \operatorname{sgn} \left(m-2\right)\right],
+\end{align}
+所以，我们选择\(m = 1\)， 其对应的陈数为\(C = 1\), 这保证了时间反演对称性破缺。
+
+但是仅仅有时间反演对称性破缺是不够的，对于面内轨道磁化\(M_x, M_y\)来说，我们需要体系以\(z\)轴为旋转轴的对称性，如\(C_{2z}, C_{3z}\)对称性破坏掉；当然镜面对称\(\sigma_{xy}\) 也是需要破坏掉。对于面外轨道磁化\(M_{z}\)来说，我们需要体系以\(x,y\)轴为旋转轴的对称性，如\(C_{2x}\) 破坏掉。
+
+具体来说，单层QWZ model中，其具有\(C_{4z}\)对称性和\(C_{2z}\)对称性。\(C_{4z}\)对称性也就是\(\left(k_{x},k_{y}\right) \rightarrow \left(-k_{y}, k_{x}\right) \), 对于这样一个二分量赝自旋空间中，\(C_{4z}\)对称性的表示可以写成 \(U_{C_{4z}} = e^{-i \frac{\pi}{4} \sigma_{3}} \)， 其满足
+\begin{align}
+	U_{C_{4z}} h_{\mathrm{QWZ}} \left(\bm{k }\right) U^{\dagger}_{C_{4z}} =  h_{\mathrm{QWZ}} \left( C_{4z} \bm{k }\right),
+\end{align}
+同理，\(C_{2z}\)对称性的表示为\(U_{C_{2z}} = e^{-i \frac{\pi}{2}\sigma_{3}}\)。也就是说，在我们构建的模型中，这两个对称性必须要破坏掉。
+
+但是这还是不够，如果需要出现面内轨道磁化，也就以为着模型不能是单层的。所以我们需要构建双层的模型，也就是bilayer QWZ model。如果没有interlayer tunneling，哈密顿量可以写成
+\begin{align}
+	H_{0} \left(\bm{k }\right) = \tau_{0} \otimes h_{\mathrm{QWZ}} \left(\bm{k }\right),
+\end{align}
+但这仍然无法产生轨道磁化。引入layer Pauli matrices \(\tau_{x,y,z}\)，可以将bilayer QWZ model的z方向位置矩阵写出
+\begin{align}
+	z = \frac{d}{2} \tau_{z} \otimes \sigma_{0} = \begin{pmatrix}
+		\frac{d}{2} & & & \\ & \frac{d}{2} & & \\ & & -\frac{d}{2} & \\ & & & -\frac{d}{2}
+	\end{pmatrix},
+\end{align}
+其中\(d \)是层间距。很明显可以得到\(\left[H,z\right] = 0\), 进而有\(\left[\mathcal{P}, z\right] =0,\, \left[\mathcal{Q}, z\right] = 0\)。 所以\(\mathcal{Z} = \left\{H -\mu ,z\right\} = 2 \left(H - \mu\right) z\)。 而面内轨道磁化有
+\begin{align}
+	\begin{split}
+		\mathcal{F}_{\alpha} &= \operatorname{Tr} \left[\mathcal{P} \left(\partial_{k_{\alpha}} \mathcal{P}\right) \mathcal{Q} \mathcal{Z} \right] = 2 \operatorname{Tr}\left[\mathcal{P} \left(\partial_{k_{\alpha}} \mathcal{P}\right)  \mathcal{Q} \left(H - \mu\right) z \right] \\
+		& =  2 \operatorname{Tr}\left[\mathcal{P} \left(\partial_{k_{\alpha}} \mathcal{P}\right)  \left(H - \mu\right) z  \mathcal{Q} \right] \\
+		& = 2 \operatorname{Tr}\left[  \mathcal{Q} \mathcal{P} \left(\partial_{k_{\alpha}} \mathcal{P}\right)  \left(H - \mu\right) z  \right] = 0,
+	\end{split}
+\end{align}
+这里最后一步利用求迹的轮换性质，同时\(\mathcal{Q}\mathcal{P} = 0\)， 倒数第二步则利用了\(\left[H - \mu, \mathcal{Q}\right] = 0\)。所以我们必须要引入层间跃迁，那么最简单的层间跃迁也就是\(\tau_{x } \otimes \sigma_{0}\), 合在一起也就是
+\begin{align}
+	H_{0} \left(\bm{k }\right) = \tau_{0} \otimes h_{\mathrm{QWZ}} \left(\bm{k}\right) + t_{\perp} \tau_{x } \otimes \sigma_{0},
+\end{align}
+但是这样上下两层是相同的，还存在一个交换上下层的对称性，即\(\ket{t} \rightarrow \ket{b},	\, \ket{b } \rightarrow \ket{t }	\)。记这个对称性为\(L\), \(L \)的表示为\(U_{L } = \tau_{x } \otimes \sigma_{0}\)。这个对称性同样会禁止面内轨道磁化，首先同样有\(\left[H, L\right] = 0\), 因此\(\left[\mathcal{P}, L \right] = \left[\mathcal{Q}, L\right] = 0\), 而对于z方向上坐标算符，上下层交换对称性作用后得到
+\begin{align}
+	L z L^{-1 } = \frac{d }{2 } \tau_{x } \tau_{z } \tau_{x }^{-1 } \otimes \sigma_{0} = \frac{d }{ 2 } \left(- \tau_{z } \right) \otimes \sigma_{0} = -z,
+\end{align}
+很容易就可以得到
+\begin{align}
+	L \mathcal{F}_{\alpha} L^{-1} = - \mathcal{F}_{\alpha}.
+\end{align}
+也就是\(-\mathcal{F}_{\alpha} = \mathcal{F}_{\alpha} \, \Rightarrow \mathcal{F}_{\alpha} = 0\)。所以我们的目标变成了构造两层不同的QWZ model，在此基础上需要同时破坏掉\(C_{4z}\)和\(C_{2z}\)对称性。那么一种合理的做法是对于上下两层的\(k_{x}\)反向地施加一个动量位移\(\lambda\)， 也就是
+\begin{align}
+	\boxed{
+		\begin{aligned}
+			H_\mathrm{BQWZ} \left(\bm{k}, \lambda\right) = \begin{pmatrix}
+				h_{\mathrm{QWZ}}\left(k_{x}+\lambda, k_{y}\right) & t_{\perp} \sigma_{0} \\
+				t_{\perp} \sigma_{0 } & h_{\mathrm{QWZ}} \left(k_{x} - \lambda , k_{y}\right)
+			\end{pmatrix}.
+		\end{aligned}
+	}
+\end{align}
+对于正方晶格的倒格矢基矢\(\bm{b}_{1} = \left(2 \pi, 0\right)\) 和 \(\bm{b }_{2} = \left(0, 2 \pi\right)\)，通常选取\(\lambda \ll \left|\bm{b}_{1}\right|\)，这样可以很好地破坏掉两个对称性。
+
+特别地，采用这样的哈密顿量，由于在面内轨道磁化的公式中需要取实部，会导致\(x \)方向上的轨道磁化\(M_{x } = 0\)。 对于没有施加动量位移的单层QWZ 哈密顿量，其满足\(h_{\mathrm{QWZ}}^{* } \left(k_{x},k_{y}\right) = h_{\mathrm{QWZ}} \left(k_{x},-k_{y}\right)\)。加入动量位移后，上下层的哈密顿量同样满足这个关系\(h^{*}\left(k_{x} \pm \lambda , k_{y}\right) = h \left(k_{x} \pm \lambda, -k_{y}\right) \)。由此，双层QWZ模型的哈密顿量和其对应的占据态算符\(\mathcal{P}\)也满足这个关系，即
+\begin{align}
+	\begin{split}
+		H^{*} \left(k_{x},k_{y}\right) &= H \left(k_{x}, -k_{y}\right) \\
+		\mathcal{P}^{*} \left(k_{x},k_{y}\right) &= \mathcal{P} \left(k_{x}, -k_{y}\right), 
+	\end{split}
+\end{align}
+对\(\mathcal{P}\)求导有
+\begin{align}
+	\begin{split}
+		\frac{\operatorname{d}}{\operatorname{d} k_{y}} \mathcal{P}^{*} \left(k_{x},k_{y}\right) & = \left[\frac{\operatorname{d}}{\operatorname{d} k_{y}} \mathcal{P} \left(k_{x},k_{y}\right) \right]^{*} = \left[\partial_{k_{y}} \mathcal{P} \left(k_{x},k_{y}\right)\right]^{*} \\
+		&  = \frac{\operatorname{d}}{\operatorname{d} k_{y}} \mathcal{P} \left(k_{x}, -k_{y}\right) = - \partial_{k_{y}} \mathcal{P} \left(k_{x}, - k_{y}\right)，
+	\end{split}
+\end{align}
+也就是
+\begin{align}
+	\partial_{k_{y}} \mathcal{P} \left(k_{x}, - k_{y}\right) = - \left[\partial_{k_{y}} \mathcal{P} \left(k_{x},k_{y}\right)\right]^{*},
+\end{align}
+取实部的情况下 \(\operatorname{Re} \partial_{k_{y}} \mathcal{P} \left(k_{x}, - k_{y}\right)  = - \operatorname{Re} \partial_{k_{y}} \mathcal{P} \left(k_{x},k_{y}\right)\)。因此\(\mathcal{F}_{y} \left(k_{x}, - k_{y}\right) = - \mathcal{F}_{y} \left(k_{x},  k_{y}\right) \), 而由于布里渊区是关于\(x\)轴对称的，所以积分后\(M_{x } = 0\)。而\(M_{y} \neq 0\)。
+
+\subsection{数值计算结果}
+由于我们这里计算的是toy model，所以就直接计算\(\bm{M }\)，也就是热力学极限下单位面积的轨道磁化强度。而不是有限体系中每个晶胞的轨道磁矩\(m_{\mathrm{cell}}\)。
+
+对于我们具体的数值计算，我们所选取的参数如下
+\begin{table*}[h!]
+	\centering
+	\begin{tabular}{c c c c c }
+		\toprule
+		Parameter & \(m\) & \(t_{\perp}\) & \(\eta\) & \(n_{k}\)  \\
+		\midrule
+		value & \(1\) & \(0.02\) & \(0.03\)  & \(251\)  \\
+		\bottomrule
+	\end{tabular}
+\end{table*}
+其中，我们使用高斯函数来对delta函数进行近似，\(\eta\)是高斯函数的展宽，
+\begin{align}
+	\delta_{\eta} \left(E - \mu\right) = \frac{1}{\sqrt{\pi} \eta} e^{- \left(E -\mu\right)^2/\eta^{2}},
+\end{align}
+通常来说我们希望\(\eta \gtrsim \Delta E_{\mathrm{mesh}} = v_{F} \left|\bm{b}_{1}\right|/n_{k}\), 这样可以有效地进行采样。对于QWZ模型，\(v_{F} = 1\), 取\(n_k = 251\), \(\left|\bm{b}_{1}\right|/n_{k} \approx 0.025\), 因此我们取\(\eta = 0.03\)。动量位移取值范围为\(\lambda \in \left[0, 0.2\right]\)。
+
+\begin{itemize}
+	\item 能带结构
+\end{itemize}
+\begin{figure}[h!]
+	\captionsetup{list=false}
+	\centering
+	\begin{tabular}{cc}
+		\includegraphics[width=0.45\textwidth]{figure/qwz/band/qwz_band_lambda_0.000_m_1.000_tperp_0.200.pdf}
+		&
+		\includegraphics[width=0.45\textwidth]{figure/qwz/band/qwz_band_lambda_0.200_m_1.000_tperp_0.200.pdf}
+	\end{tabular}
+	\caption{
+		Bilayer QWZ模型能带结构图，其中\(\lambda\)分别为\(0\)和\(0.2\)
+	}
+	\label{fig1}
+\end{figure}
+
+\begin{itemize}
+	\item 面内轨道磁化强度
+\end{itemize}
+
+\begin{figure}[h!]
+	\captionsetup{list=false}
+	\centering
+	\begin{tabular}{cc}
+		\includegraphics[width=0.45\textwidth]{figure/qwz/om/qwz_om_fortran_m_1.000_tperp_0.200_mu_0.000.pdf}
+		&
+		\includegraphics[width=0.45\textwidth]{figure/qwz/om/qwz_om_fortran_m_1.000_tperp_0.200_mu_-1.000.pdf}
+	\end{tabular}
+	\caption{
+		Bilayer QWZ模型轨道磁化\(M_y\)示意图，其中化学势\(\mu\)分别取\(0\)和\(-1\)
+	}
+	\label{fig2}
+\end{figure}
+
+这里通过计算还可以得到\(M_{y}\left(\mu\right) = M_{y} \left(- \mu\right)\), 这是由于particle-hole 对称性得到的结果。对于没有动量位移的单层QWZ模型，很容易可以看出
+\begin{align}
+	\sigma_{1} h^{*} \left(k_{x}, k_{y}\right) \sigma_{1} = - h\left(-k_{x}, -k_{y}\right),
+\end{align}
+由此就可以定义单层QWZ模型对应的反幺正算符，定义
+\begin{align}
+	\mathcal{C}_{0} = \sigma_{1} K,
+\end{align}
+即可得到
+\begin{align}
+	\mathcal{C}_{0} h \left(\bm{k}\right) \mathcal{C}_{0}^{-1} = -h \left(- \bm{k}\right).
+\end{align}
+但是对于双层QWZ模型来说，考虑到存在动量位移和层间跃迁，不可以简单地使用\(\mathcal{C}_{0} = \sigma_{1} K\)。更准确地说，如果继续对每一层还是采用\(\sigma_{1}K\)，得到的是
+\begin{align}
+	\begin{split}
+		\sigma_{1} K h\left(k_{x} + \lambda , k_{y}\right) \left(\sigma_{1} K \right)^{-1} &= - h \left(- k_{x} -\lambda, -k_{y}\right) \\
+		\sigma_{1} K h\left(k_{x} - \lambda , k_{y}\right) \left(\sigma_{1} K \right)^{-1} &= - h \left(- k_{x} + \lambda, -k_{y}\right).
+	\end{split}
+\end{align}
+而粒子空穴对称性所要求的则是
+\begin{align}
+	\mathcal{C} H \left(\bm{k}, \lambda\right) \mathcal{C }^{-1} = - H \left(-\bm{k }, \lambda\right),
+\end{align}
+具体把每一层写出则是
+\begin{align}
+	\begin{split}
+		- h_{t } \left( -\bm{k }, \lambda\right) &= - h \left( -k_{x} + \lambda, -k_{y}\right) \\
+		- h_{b} \left( -\bm{k }, \lambda\right) &= - h \left( -k_{x} - \lambda, -k_{y}\right)
+	\end{split}
+\end{align}
+这意味着我们在对每一层做完\(\sigma_{1} K\)操作后，还需要交换上下层。而首先交换上下层可以想到的就是\(\tau_{x}\)，但是对于层间跃迁来说\(\left(\tau_{x } \otimes \sigma_{1} K\right) \tau_{x } \otimes \sigma_{0} \left(\tau_{x } \otimes \sigma_{1} K \right)^{-1} = \tau_{x } \otimes \sigma_{0}\), 并不会产生一个负号。所以需要使用\(\tau_{y }\), 因此粒子空穴对称性可以写为
+\begin{align}
+	\mathcal{C} = \tau_{y } \otimes \sigma_{1} K.
+\end{align}
+进一步，粒子空穴对称性将占据态算符和空态算符进行了互换，具体来说
+\begin{align}
+	\boxed{
+		\begin{aligned}
+			\mathcal{C} \mathcal{P}_{\mu} \left(\bm{k}\right) \mathcal{C}^{-1} = \mathcal{Q}_{- \mu} \left(- \bm{k}\right) \\
+			\mathcal{C} \mathcal{Q}_{\mu} \left(\bm{k}\right) \mathcal{C}^{-1} = \mathcal{P}_{- \mu} \left(- \bm{k}\right)
+		\end{aligned}
+	}
+\end{align}
+而对于\(z\)方向上坐标算符有
+\begin{align}
+	\mathcal{C} z \mathcal{C}^{-1} = -z,
+\end{align}
+对于\(\mathcal{Z}\)则有，
+\begin{align}
+	\mathcal{C} Z_{\mu} \left(\bm{k }\right) \mathcal{C}^{-1} = \left\{-z, - H \left(- \bm{k }  \right) - \mu\right\} = \left\{z, H \left(- \bm{k} \right) + \mu \right\} = \mathcal{Z}_{-\mu} \left(- \bm{k }\right).
+\end{align}
+由此可以得到
+\begin{align}
+	\boxed{
+		M_{\alpha} \left(\mu, \lambda\right) = M_{\alpha} \left(-\mu, \lambda\right).
+	}
+\end{align}
+
+而\(\mu = \pm 1\)和\(\mu = 0\)的\(M_{y}\)的符号变号，则应该和填充有关，通过后续的极化率计算，可以看出这一项主要是费米面的变化所导致的。更仔细地说，是对于\(\mu = -1\)时，是价带的一部分从占据态变成空态，而对于\(\mu = 1\), 则是导带的一部分从空态变成占据态。
+
+\vspace{10em}
+
+\begin{itemize}
+	\item 极化率
+\end{itemize}
+计划率的计算过程中，我们比较的是通过直接计算的轨道磁化\(\bm{M}\left(\lambda\right)\)与首先选取直接计算轨道磁化的\(\bm{M} \left(0\right) + \int \chi \left(\lambda\right)\operatorname{d} \lambda\), 结果如下
+\begin{figure}[h!]
+	\captionsetup{list=false}
+	\centering
+	\begin{tabular}{cc}
+		\includegraphics[width=0.5\textwidth]{figure/qwz/susceptibility/m_1.000_tperp_0.200_mu_0.000_eta_0.030_nk_251/chi_y.pdf}
+		&
+		\includegraphics[width=0.5\textwidth]{figure/qwz/susceptibility/m_1.000_tperp_0.200_mu_0.000_eta_0.030_nk_251/benchmark_My.pdf}
+	\end{tabular}
+	\caption{
+		\(\mu = 0\) 时的\(My\)示意图
+	}
+	\label{fig3}
+\end{figure}
+
+可以看在没有费米面对轨道磁化强度的贡献下，两者基本上是严格相等。同时\(M_{x}\)的量级大概在\(10^{-18}\)可以认为是零。费米面不为零的贡献如下
+
+\begin{figure}[h!]
+	\captionsetup{list=false}
+	\centering
+	\begin{tabular}{cc}
+		\includegraphics[width=0.5\textwidth]{figure/qwz/susceptibility/m_1.000_tperp_0.200_mu_-1.000_eta_0.030_nk_251/chi_y.pdf}
+		&
+		\includegraphics[width=0.5\textwidth]{figure/qwz/susceptibility/m_1.000_tperp_0.200_mu_-1.000_eta_0.030_nk_251/benchmark_My.pdf}
+	\end{tabular}
+	\caption{
+		\(\mu = -1\) 时的\(My\)示意图
+	}
+	\label{fig4}
+\end{figure}
+
+可以看到费米面的贡献为主导，同时直接计算\(M_{y}\)和通过极化率重构出来的\(M^{\chi}_{y}\)符合的相当好。通过误差分析可以得到，最大差值约为\(5.6 \times 10^{-5}\), 均方根误差为\(3.27 \times 10^{-5}\), 归一化最大差值为\(6.35 \times 10^{-3}\)，可以认为两者相当的接近。
+
+为什么双层QWZ模型吻合的较好，可能是因为我们引入的扰动\(\lambda\)是一个相对动量平移。
+
+
+
+
+
+
+
+
 \section{附录}
 \subsection{一些具体计算}
 \begin{itemize}
@@ -1418,7 +1669,7 @@ So
 	\boxed{
 		\chi^{\alpha}_{\mathrm{FS}} = \frac{e}{\hbar c} \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \sum_{\substack{n \in \mathrm{occ} \\ m \in \mathrm{emp}}} \left(E_{n } - \mu\right) \delta \left(E_{m } - \mu \right) V_{mm } A^{\beta}_{nm}.
 	}
-\end{align}
+\end{align}、
 
 
 
