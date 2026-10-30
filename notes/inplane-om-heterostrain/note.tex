@@ -134,9 +134,9 @@
 
 % section / subsection 目录缩进
 \setlength{\cftsecindent}{0pt}
-\setlength{\cftsecnumwidth}{2.0em}
+\setlength{\cftsecnumwidth}{3.0em}
 
-\setlength{\cftsubsecindent}{2.0em}
+\setlength{\cftsubsecindent}{3.0em}
 \setlength{\cftsubsecnumwidth}{2.0em}
 
 % 目录编号格式：
@@ -255,7 +255,7 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 \end{align}
 也就是说，在有限磁场下不仅要处理磁子带，还需要在这些磁子带空间中重新计算HF势并进行自洽迭代。问题从一个无相互作用下对大矩阵对角化的问题，变成了相互作用下的大矩阵对角化加自洽循环的问题。这无疑是困难的。
 
-而Kang-Wang-Vafek的文章的核心目的正式为了避免直接在有限磁场下求解自洽HF方程。对于零温轨道磁化强度，虽然其涉及巨正则势对外磁场的一阶导数。但是文章证明，这个导数最终可以只用零磁场下的自洽HF哈密顿量和波函数来进行表示。当然这需要我们得到完整的零磁场下HF的能谱，这也就是文章中说“more remote bands should be included” (也就是Pinzhuo Li的文章所讨论的内容)，但是这避免了我们去考虑复杂的有限磁场下的情况。
+而Kang-Wang-Vafek文章的核心目的正是为了避免直接在有限磁场下求解自洽HF方程。对于零温轨道磁化强度，虽然其涉及巨正则势对外磁场的一阶导数。但是文章证明，这个导数最终可以只用零磁场下的自洽HF哈密顿量和波函数来进行表示。当然这需要我们得到完整的零磁场下HF的能谱，这也就是文章中说“more remote bands should be included” (也就是Pinzhuo Li文章所讨论的内容)，但是这避免了我们去考虑复杂的有限磁场下的情况。
 
 总结就是，我们不需要真的去求解有限磁场下的\(H^{\mr{HF}} \p{B}\)， 而是可以从\(B = 0\)的自洽HF解出发，直接通过计算巨正则势对磁场的一阶导数得到轨道磁化强度。
 
@@ -264,23 +264,27 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 \begin{align}
     M = - \int d \bm{r} \braket{\bm{r} | \p{\hat{H}^{\p{0} HF}- \mu}  \frac{d \widetilde P}{ d B} | \bm{r}}\bigg|_{B = 0},
 \end{align}
-也就是Eq.10，这里省略了其他内部自由度的下标\(a,b\)。\(\bm{r}\)则来自于最开始在实空间所写出的费米场算符(连续场算符)。进一步，单粒子密度算符可以通过复平面上格林函数围道积分所表示
+也就是Kang文章中的Eq.10，这里省略了其他内部自由度的下标\(a,b\)。另外为了避免和化学势的\(\mu\)符号混淆，文章中的方向通过希腊字母\(\alpha,\beta\)来表示，同时下文均采用了爱因斯坦指标求和方式。\(\bm{r}\)则来自于最开始在实空间所写出的费米场算符(连续场算符)。进一步单粒子密度算符可以通过复平面上格林函数围道积分所表示
 \begin{align}
     \widetilde{P}\p{\bm{r},\bm{r}^\pr} = \oint_{\mathcal{C}} \frac{d \zeta}{ 2 \pi i} \widetilde{G}\p{\bm{r},\bm{r}^\pr; \zeta },
 \end{align}
-文中这里复平面用的指标是\(z\), 但是为了避免和后面所讨论的\(z\)方向出现指标上的混淆，这里用\(\zeta\)来表示复平面。磁化强度也可以写成
+文中复平面的指标是\(z\), 但是这里为了避免和后面所讨论的\(z\)方向出现指标上的混淆，这里用\(\zeta\)来表示复平面。磁化强度也可以写成
 \begin{align}
     M = -\sum_n \oint_{\mathcal{C}} \frac{d z}{ 2 \pi i} \p{E_n - \mu} \braket{n | \frac{d \widetilde{G} \p{z}}{dB} |n} \bigg|_{B = 0}.
 \end{align}
-这里\(\ket{n}\)是HF哈密顿量的本征态，对应能量为\(E_n\)。因此，问题变成了如何求解格林函数对磁场强度导数的问题。为了得到去掉Peierls相位的格林函数\(\widetilde{G}\), 我们需要回到原始格林函数的定义\(\braket{\bm{r} | \p{\zeta - \hat{H}^{HF} } \hat{G} \p{\zeta} | \bm{r}^\pr } = \delta \p{\bm{r} - \bm{r}^\pr}\)。在这个式子的两端分别乘上\(e^{i \Phi \p{\bm{r}^\pr, \bm{r}}}\), 同时在左边插入完备关系 \(\mathbb{I} = \sum_{a^\pr} \int d\bm{x} \ket{\bm{x}, a^\pr} \bra{\bm{x}, a^\pr}\)。右边的\(\delta_{\alpha \alpha^\pr} \delta \p{\bm{r} - \bm{r}^\pr} e^{i \Phi \p{\bm{r}, \bm{r}^\pr}}\), 通过Peierls相位的定义可以看出，当\(\bm{r} = \bm{r}^\pr\), \(e^{i \Phi} = 1\)，所以这还是一个delta函数。因此对于去掉Peierls相位的格林函数有以下关系
+这里\(\ket{n}\)是HF哈密顿量的本征态，对应能量为\(E_n\)。因此，问题变成了如何求解格林函数对磁场强度导数的问题。为了得到去掉Peierls相位的格林函数\(\widetilde{G}\), 我们需要回到原始格林函数的定义
+\begin{align}
+	\braket{\bm{r} | \p{\zeta - \hat{H}^{HF} } \hat{G} \p{\zeta} | \bm{r}^\pr } = \delta \p{\bm{r} - \bm{r}^\pr},
+\end{align}
+在这个式子的两端分别乘上\(e^{i \Phi \p{\bm{r}^\pr, \bm{r}}}\), 同时在左边插入完备关系 \(\mathbb{I} = \sum_{a^\pr} \int d\bm{x} \ket{\bm{x}, a^\pr} \bra{\bm{x}, a^\pr}\)。右边得到\(\delta_{\alpha \alpha^\pr} \delta \p{\bm{r} - \bm{r}^\pr} e^{i \Phi \p{\bm{r}, \bm{r}^\pr}}\), 通过Peierls相位的定义可以看出，当\(\bm{r} = \bm{r}^\pr\), \(e^{i \Phi} = 1\)，所以这还是一个delta函数。因此对于去掉Peierls相位的格林函数有以下关系
 \begin{align}
 	\begin{split}
 		&\int d\bm{x} \bb{\zeta \delta \p{\bm{r} - \bm{x}} \delta_{ab} - \widetilde{V}^{HF} \p{\bm{r}, \bm{x}}} e^{i \vph \p{\bm{r}^\pr, \bm{r}, \bm{x}}} \widetilde{G}_{ba^\pr} \p{\bm{x},\bm{r}^\pr; \zeta}  \\
-		&- \hat{H}_{ab} \bb{p_\mu - \epsilon_{\mu \nu} \frac{eB}{2 c} \p{r_{\nu} - r_{\nu}^\pr}} \widetilde{G}_{b a^\pr} \p{\bm{r},\bm{r}^\pr; \zeta} = \delta_{a a^\pr} \delta \p{\bm{r}-\bm{r}^\pr}.
+		&- \hat{H}_{ab} \bb{p_\alpha - \epsilon_{\alpha \beta} \frac{eB}{2 c} \p{r_{\beta} - r_{\beta}^\pr}} \widetilde{G}_{b a^\pr} \p{\bm{r},\bm{r}^\pr; \zeta} = \delta_{a a^\pr} \delta \p{\bm{r}-\bm{r}^\pr}.
 	\end{split}
 \end{align}
 
-也就是Eq.12这里的求和采用了爱因斯坦指标求和方式，所以对其他自由度的求和省去了。同时，可以看到正是在左边乘上\(e^{i \Phi \p{\bm{r}^\pr, \bm{r}}}\)，让我们得到了一个干净的\(\widetilde{G}\)。这里新的相位因子是 \(e^{i \vph \p{\bm{r}^\pr, \bm{r},\bm{x}}} = e^{i \Phi \p{\bm{r}^\pr,\bm{r}}}  e^{i \Phi \p{\bm{r},\bm{x}}} e^{i \Phi \p{\bm{x},\bm{r}^\pr}}\), 这是一个规范不变的闭合磁通相位\(\bm{r}^\pr \rightarrow \bm{r} \rightarrow \bm{x} \rightarrow \bm{r}^\pr\). 因此可以改写成和面积有关的表达式为\(e^{i \vph \p{\bm{r}^\pr, \bm{r},\bm{x}}} = \exp \bb{i \frac{eB}{2 \hbar c}  \hat{\bm{z}} \cdot \p{\bm{x} - \bm{r}} \times \p{\bm{r}^\pr - \bm{x}}}  \). 在对Eq.12求导之前，我们可以先粗略地将其写成 \(\mathcal{L} \p{B} \widetilde{G} \p{B} = 1\), 对其求导得到
+也就是Kang文章当中的Eq.12, 这里省去了其他自由度的求和。同时，可以看到正是在左边乘上\(e^{i \Phi \p{\bm{r}^\pr, \bm{r}}}\)，让我们得到了一个干净的\(\widetilde{G}\)。这里新的相位因子是 \(e^{i \vph \p{\bm{r}^\pr, \bm{r},\bm{x}}} = e^{i \Phi \p{\bm{r}^\pr,\bm{r}}}  e^{i \Phi \p{\bm{r},\bm{x}}} e^{i \Phi \p{\bm{x},\bm{r}^\pr}}\), 这是一个规范不变的闭合磁通相位\(\bm{r}^\pr \rightarrow \bm{r} \rightarrow \bm{x} \rightarrow \bm{r}^\pr\). 因此可以改写成和面积有关的表达式为\(e^{i \vph \p{\bm{r}^\pr, \bm{r},\bm{x}}} = \exp \bb{i \frac{eB}{2 \hbar c}  \hat{\bm{z}} \cdot \p{\bm{x} - \bm{r}} \times \p{\bm{r}^\pr - \bm{x}}}  \). 在对Eq.12求导之前，我们可以先粗略地将其写成 \(\mathcal{L} \p{B} \widetilde{G} \p{B} = 1\), 对其求导得到
 \begin{align}
 	\frac{d\mathcal{L}}{dB} \widetilde{G} + \mathcal{L} \frac{d \widetilde{G}}{d B} = 0 \Rightarrow \mathcal{L} \frac{d \widetilde{G}}{d B} = - \frac{d \mathcal{L}}{d B} \widetilde{G}.
 \end{align}
@@ -341,9 +345,26 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 		& = -  \sum_{m \neq n} B_{nm} n_{F} \p{E_n} - \sum_{n \neq m} B_{nm}n_{F} \p{E_{n}} = - 2 \sum_{n \neq m} B_{nm} n_{F} \p{E_n}. 
 	\end{split}
 \end{align}
-同时，由于\(n = m\)时，\(\epsilon_{\alpha \beta} \braket{u_{n,\bm{k}} | \pa_{k_{\alpha}} u_{n,\bm{k}}} \braket{u_{n ,\bm{k}} | \pa_{k_{\beta}} u_{n, \bm{k}}} = 0\)，利用完备性关系，\(\sum_{m} \ket{u_{m,\bm{k}}} \bra{u_{m,\bm{k}}} = \mathbb{I}\), 轨道磁化强度最终可以写成
+由于\(\braket{u_{n,\bm{k}} | \pa_{k_{\alpha}} u_{m,\bm{k}}} \braket{u_{n ,\bm{k}} | \pa_{k_{\beta}} u_{m, \bm{k}}}  = - \braket{\partial_{k_{\alpha}} u_{n, \bm{k}}| u_{m, \bm{k}} } \braket{u_{m, \bm{k}} | \partial_{k_{\beta}} u_{n, \bm{k}}}\)，这里的负号刚好和上面\(B_{nm}\)的负号相抵消，轨道磁化强度的表达式可以写成
 \begin{align}
-	M = \frac{e}{2 i \hbar c} \epsilon_{\alpha \beta} \sum_{\bm{k}} \sum_{n} \braket{\frac{\pa u_{n,\bm{k}}}{k_{\alpha}} \bigg| \hat{H}^{\p{0},HF} \p{\bm{k}} + E_{n}\p{ \bm{k}} - 2 \mu \bigg| \frac{\pa u_{n,\bm{k}}}{k_{\beta}}} n_{F} \p{E_n}.
+	M = \frac{e }{2 i \hbar c} \epsilon_{\alpha \beta} \sum_{\bm{k}} \sum_{n } n_{F}\left(E_{n }\right) \sum_{m \neq n } \left[E_{n} + E_{m } - 2 \mu\right] \braket{\partial_{k_{\alpha}} u_{n, \bm{k}}| u_{m, \bm{k}} } \braket{u_{m, \bm{k}} | \partial_{k_{\beta}} u_{n, \bm{k}}},
+\end{align}
+由于\(n = m\)时，\(\epsilon_{\alpha \beta} \braket{u_{n,\bm{k}} | \pa_{k_{\alpha}} u_{n,\bm{k}}} \braket{u_{n ,\bm{k}} | \pa_{k_{\beta}} u_{n, \bm{k}}} = 0\)，可以将对\(m \)的求和从\(\sum_{m \neq n}\)变成\(\sum_{m }\)。可以得到
+\begin{align}
+	\begin{split}
+		\sum_{m} \left[E_{m} + E_{n} - 2 \mu\right]  \ket{u_{m, \bm{k}}} \bra{u_{m, \bm{k}}} &= \sum_{m} E_{m } \ket{u_{m, \bm{k}}} \bra{u_{m, \bm{k}}} + \sum_{m} \left(E_{n } - 2 \mu\right) \ket{u_{m, \bm{k}}} \bra{u_{m, \bm{k}}} \\
+		& = \hat{H} \left(\bm{k }\right) + E_{n} - 2\mu.
+	\end{split}
+\end{align}
+这里利用完备性关系:\(\sum_{m} \ket{u_{m,\bm{k}}} \bra{u_{m,\bm{k}}} = \mathbb{I}\)与
+\begin{align}
+	\sum_{m } E_{m} \left(\bm{k}\right) \ket{u_{m, \bm{k}}} \bra{u_{m, \bm{k}}} = \hat{H}^{\left(0\right), HF} \left(\bm{k}\right),
+\end{align}
+其中\(\hat{H}^{\left(0\right), HF}  = e^{-i \bm{k}\cdot \bm{r}} \hat{H}^{\left(0\right), HF} e^{i \bm{k} \cdot \bm{r}}\)。严格来说，后面一项应该是\(\left(E_{n} - 2\mu\right) \mathbb{I}\), 但是通常我们省略\(\mathbb{I}\)。
+
+轨道磁化强度最终可以写成
+\begin{align}
+	M = \frac{e}{2 i \hbar c} \epsilon_{\alpha \beta} \sum_{\bm{k}} \sum_{n} \braket{\frac{\pa u_{n,\bm{k}}}{\partial k_{\alpha}} \bigg| \hat{H}^{\p{0},HF} \p{\bm{k}} + E_{n}\p{ \bm{k}} - 2 \mu \bigg| \frac{\pa u_{n,\bm{k}}}{\partial k_{\beta}}} n_{F} \p{E_n}.
 \end{align}
 也就是文章中最后的Eqs.20。
 
@@ -761,7 +782,11 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 \end{align}
 \(\bm{A}\)是赝矢量场，定义为
 \begin{align}
-	\bm{A} = \left(\mathcal{S}_{xx} - \mathcal{S}_{yy}, \mathcal{S}_{xy} + \mathcal{S}_{yx}\right) = \left(\left(\epsilon_{1} - \epsilon_{2}\right) \cos{2 \phi} , \left(\epsilon_{1} - \epsilon_{2}\right) \sin{2 \phi}\right).
+	\bm{A} = \begin{pmatrix}
+		\mathcal{S}_{xx} - \mathcal{S}_{yy} \\  \mathcal{S}_{xy} + \mathcal{S}_{yx}
+	\end{pmatrix} = \left(\epsilon_{1} - \epsilon_{2}\right) \begin{pmatrix}
+		 \cos{2 \phi} \\  \sin{2 \phi}
+	\end{pmatrix}
 \end{align}
 施加应力下的层间跃迁项(interlayer tunneling)与未施加应力时保持一致，为
 \begin{align}
@@ -801,7 +826,7 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 	H_{b, \bm{n}} \left(\bm{k}\right) & = \hbar v_{F} \left(\bm{k} - \bm{q }^{\prime}_{1} - \bm{G}^{\prime}_{n_{1} n_{2}}\right)\cdot \bm{\sigma} - \alpha \varphi \sigma_{0} - v_{F} \gamma \bm{A } \cdot \bm{\sigma}
 \end{align}
 那么层间跃迁过程对应为
-\begin{align}zu
+\begin{align}
 	T_{\bm{n }, \bm{m }} = \braket{\bm{k }; t, \bm{n }  | T \left(\bm{r}\right) | \bm{k }; b, \bm{m}} = \sum_{j = 1}^{3} T_{j} \delta_{\bm{G}^{\prime}_{\bm{n }}, \bm{G }^{\prime}_{\bm{m}} + \bm{q }^{\prime}_{1} - \bm{q }^{\prime}_{j}}, \quad j = 1,2,3.
 \end{align}
 也就是层间跃迁矩阵\(T_j\)只连接满足
@@ -829,6 +854,54 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 		\bottomrule
 	\end{tabular}
 \end{table*}
+
+\subsection{哈密顿量对应力强度和角度的导数}
+通过简单的计算可以得到赝标量场和赝矢量场对应力强度和应力角度的导数， 分别为
+\begin{align}
+	\frac{\partial \varphi}{\partial \epsilon} = 1 - \nu,
+\end{align}
+以及
+\begin{align}
+	\frac{\partial \bm{A }}{\partial \epsilon} = \left(1 + \nu \right) \begin{pmatrix}
+		\cos{2 \phi} \\ \sin{2 \phi}
+	\end{pmatrix}, \quad \frac{\partial \bm{A }}{\partial \phi} = 2 \left(1 + \nu\right)  \epsilon\begin{pmatrix}
+		- \sin{2 \phi} \\ \cos{2 \phi}		
+	\end{pmatrix} .
+\end{align}
+应力张量对应力强度和角度的导数分别为
+\begin{align}
+	\frac{\partial S}{\partial \epsilon} = \begin{pmatrix}
+		\cos^{2}{\phi}- \nu \sin^{2}{\phi} & - \left(1+ \nu\right) \cos{\phi} \sin{\phi} \\
+		- \left(1+\nu\right) \cos{\phi} \sin{\phi} & \sin^{2}{\phi} - \nu \cos^{2}{\phi}		
+	\end{pmatrix},
+\end{align}
+和
+\begin{align}
+	\frac{\partial S }{\partial \phi} = \left(1 + \nu\right) \epsilon \begin{pmatrix}
+		- \sin{2 \phi} & - \cos{2 \phi} \\ - \cos{2 \phi} & \sin{2 \phi}
+	\end{pmatrix}.
+\end{align}
+对于上层来说，其对应的导数分别为
+\begin{align}
+	\frac{\partial H_{\mathrm{t }}}{\partial \epsilon} = - \hbar v_{F} \frac{\partial S}{\partial \epsilon} \left(n_1 \bm{b }_1 + n_2 \bm{b }_2\right) \cdot \bm{\sigma} + \alpha \left(1 - \nu\right) I_{2 \times 2} + v_{F} \gamma \frac{\partial \bm{A }}{\partial \epsilon} \cdot \bm{\sigma}
+\end{align}
+这里利用了\(S^{T} = S\)，以及
+\begin{align}
+	\frac{\partial H_{\mathrm{t }}}{\partial \phi} = - \hbar v_{F} \frac{\partial S }{\partial \phi} \left(n_1 \bm{b }_1 + n_2 \bm{b }_2\right) \cdot \bm{\sigma} + v_{F} \gamma \frac{\partial \bm{A }}{\partial \phi} \cdot \bm{\sigma}.
+\end{align}
+同理，下层对应的导数为
+\begin{align}
+	\frac{\partial H_{\mathrm{b }}}{\partial \epsilon} = - \hbar v_{F} \frac{\partial S}{\partial \epsilon} \left(\bm{K} + n_1 \bm{b }_1 + n_2 \bm{b }_2\right) \cdot \bm{\sigma} - \alpha \left(1 - \nu\right) I_{2 \times 2} - v_{F} \gamma \frac{\partial \bm{A }}{\partial \epsilon} \cdot \bm{\sigma}
+\end{align}
+以及
+\begin{align}
+	\frac{\partial H_{\mathrm{b}}}{\partial \phi} = - \hbar v_{F} \frac{\partial S }{\partial \phi} \left(\bm{K} + n_1 \bm{b }_1 + n_2 \bm{b }_2\right) \cdot \bm{\sigma} - v_{F} \gamma \frac{\partial \bm{A }}{\partial \phi} \cdot \bm{\sigma}.	
+\end{align}
+同时，对于\(k_{x}, k_{y}\)方向有
+\begin{align}
+	\frac{\partial H_{\mathrm{t/b }}}{\partial {k_{x}}} = \hbar v_{F} \sigma_{1}, \quad \frac{\partial H_{\mathrm{t/b }}}{\partial k_{y}} = \hbar v_{F} \sigma_{2}.
+\end{align}
+
 
 \section{面内轨道磁化强度对异质应力的响应}
 现在我们来看面内轨道磁化强度对异质应力的响应，也就是计算对于应力的极化率
@@ -1449,8 +1522,6 @@ QWZ 模型中拓扑相变只可能发生在能隙关闭的四个狄拉克点，�
 
 而\(\mu = \pm 1\)和\(\mu = 0\)的\(M_{y}\)的符号变号，则应该和填充有关，通过后续的极化率计算，可以看出这一项主要是费米面的变化所导致的。更仔细地说，是对于\(\mu = -1\)时，是价带的一部分从占据态变成空态，而对于\(\mu = 1\), 则是导带的一部分从空态变成占据态。
 
-\vspace{10em}
-
 \begin{itemize}
 	\item 极化率
 \end{itemize}
@@ -1488,6 +1559,138 @@ QWZ 模型中拓扑相变只可能发生在能隙关闭的四个狄拉克点，�
 可以看到费米面的贡献为主导，同时直接计算\(M_{y}\)和通过极化率重构出来的\(M^{\chi}_{y}\)符合的相当好。通过误差分析可以得到，最大差值约为\(5.6 \times 10^{-5}\), 均方根误差为\(3.27 \times 10^{-5}\), 归一化最大差值为\(6.35 \times 10^{-3}\)，可以认为两者相当的接近。
 
 为什么双层QWZ模型吻合的较好，可能是因为我们引入的扰动\(\lambda\)是一个相对动量平移。
+
+
+\section{Self-rotation磁性的讨论}
+
+\subsection{Self-rotation部分磁化的给出}
+我们从Li文章中的(Eq.S18)出发，也就是
+\begin{align}
+	M_{\mathrm{orb}} = \frac{e}{2 i \hbar c } \epsilon_{\alpha \beta} \sum_{\bm{k}} \sum_{n} n_F \left(E_n - \mu\right)\sum_{m } \left(E_{m } + E_{n } - 2\mu\right) \braket{\partial_{k_{\alpha}} u_{n \bm{k}} | u_{m \bm{k}}} \braket{u_{m \bm{k}} | \partial_{k_{\beta}} u_{n \bm{k}}}.
+\end{align}
+这里对能带指标\(m\)的求和包含空态和占据态。如果去掉\(n_{F } \left(E_{n } - \mu\right)\)，将对\(n \)的求和变成\(n \in \mathrm{occ}\), 上面的式子可以改写成
+
+
+
+
+
+\section{面内轨道磁化的数值计算结果}
+对于异质应力下转角石墨烯中的面内轨道磁化，我们这里仿照Li-Jiang-Wang-Kang-Zhang中对BM model中的谷磁性的讨论，首先截断，然后给出施加应力下单个谷的磁化。
+
+\subsection{引入截断}
+在Li的文章当中，为了提高计算的效率，文章中引入了截断\(n_{\mathrm{cut}}\), 其含义是除开两条平带（也就是文中的active bands）以外，占据和空带（也就是remote bands）分别的数量。也就是说，这里有三个能带集合，分别是\(R-\), 表示占据态的\(n_{\mathrm{cut}}\)条能带；\(A \)表示active valence band 和 active conduction band 以及 \(R+\)，表示空态的\(n_{\mathrm{cut}}\)条能带。由此，新的占据态投影算符和空态投影算符可以写成
+\begin{align}
+	\mathcal{P}_{n_{\mathrm{cut}}} \left(\bm{k}\right) &= \sum_{n \in \mathrm{occ} } \ket{u_{n }^{\mathrm{A }} \left(\bm{k}\right)} \bra{u_{n }^{\mathrm{A }} \left(\bm{k}\right)} + \sum_{n \leq n_{\mathrm{cut}}} \ket{u_{n }^{\mathrm{R- }} \left(\bm{k}\right)} \bra{u_{n }^{\mathrm{R-}} \left(\bm{k}\right)},\\
+	\mathcal{Q}_{n_{\mathrm{cut}}} \left(\bm{k}\right) &= \sum_{n \in \mathrm{emp} } \ket{u_{n }^{\mathrm{A }} \left(\bm{k}\right)} \bra{u_{n }^{\mathrm{A }} \left(\bm{k}\right)} + \sum_{n \leq n_{\mathrm{cut}}} \ket{u_{n }^{\mathrm{R+}} \left(\bm{k}\right)} \bra{u_{n }^{\mathrm{R+}} \left(\bm{k}\right)}.
+\end{align}
+在Li的文章当中， 他们将\(n_{\mathrm{cut}} = 30\)。(同时莫尔布里渊区的分割也设为了\(30 \times 30\))。这里占据态和空态投影算符的关系也变成了
+\begin{align}
+	\mathcal{P}_{n_{\mathrm{cut}}} \left(\bm{k}\right) + \mathcal{Q}_{n_{\mathrm{cut}}} \left(\bm{k}\right) = I, \, \mathrm{only} \, n \rightarrow \infty
+\end{align}
+这意味着对于之前toy model中所采取的\( \partial_{\alpha} \mathcal{Q}_{n_{\mathrm{cut}}} \left(\bm{k}\right) = - \partial_{\alpha} \mathcal{P}_{n_{\mathrm{cut}}} \left(\bm{k}\right)\)关系也不再成立。
+
+对应地，面内轨道磁化的表达式变为
+\begin{align}
+	M_{\alpha} = - \frac{e }{\hbar c} \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\operatorname{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \operatorname{Re} \operatorname{Tr} \left[ \mathcal{P}_{n_{\mathrm{cut}}} \left(\partial_{k_{\beta}} \mathcal{P}_{n_{\mathrm{cut}}}\right) \mathcal{Q}_{n_{\mathrm{cut}}} \mathcal{Z} \right] ,
+\end{align}
+
+
+这里需要特别指出对于\(\partial_{k_{\beta}} \mathcal{P}_{n_{\mathrm{cut}}}\)的计算。在Toy model中，这里采用的是中心差分的方法，优点是计算比较直观，但是需要对中心点附近的四个点做对角化。对于\(\mu\) 穿过 active bands的情况，这里对于微分会出现一个费米面的贡献。具体来说, 截断后的占据态投影算符可以写成
+\begin{align}
+	\mathcal{P} \left(\bm{k}\right) = \mathcal{P}_{R-} \left(\bm{k}\right) + \sum_{n \in A} f_{n } \left(\bm{k} \right) \Pi_{n } \left(\bm{k}\right),
+\end{align}
+其中零温下分布函数为\(f_{n} = \Theta \left(\mu - E_{n}\right)\), \(\Pi_{n} = \ket{u_n} \bra{u_{n }}\) 为单带的投影算符。求导可以得到
+\begin{align}
+	\partial_{k_{\beta}} \mathcal{P} = \partial_{k_{\beta}} \mathcal{P}_{R } + \sum_{n \in A } f_{n } \partial_{k_{\beta}} \Pi_{n } + \sum_{n \in A } \left(\partial_{k_{\beta}} f_{n }\right) \Pi_{n }.
+\end{align}
+前两项为几何项，而后一项为费米面项(因为\(\partial_{k_{\beta}} f_{n} \left(\bm{k}\right) = - \delta \left( \mu - E_{n }\right) \partial_{k_{\beta}} E_{n } \left(\bm{k}\right)\))。如果单纯讨论投影算符的微分，费米面是存在贡献的。但是如果我们讨论的是轨道磁化，也就是\(\mathcal{P} \left(\partial_{k_{\beta}} \mathcal{P}\right)\mathcal{Q}\), 则有
+\begin{align}
+	\mathcal{P} \left(\partial_{k_{\beta}} \mathcal{P}\right)\mathcal{Q} = \mathcal{P} \left(\partial_{k_{\beta}} \mathcal{P}\right)_{\mathrm{gemo}}  \mathcal{Q} + \mathcal{P} \left(\partial_{k_{\beta}} \mathcal{P}\right)_{\mathrm{FS}}  \mathcal{Q},
+\end{align}
+对于第二项有
+\begin{align}
+	\mathcal{P} \Pi_{n } \mathcal{Q} = 0,
+\end{align}
+所以
+\begin{align}
+	\mathcal{P} \left(\partial_{k_{\beta}} \mathcal{P}\right)\mathcal{Q} = \mathcal{P} \left(\partial_{k_{\beta}} \mathcal{P}\right)_{\mathrm{geom}}  \mathcal{Q}.
+\end{align}
+
+如果一定要对投影算符的微分进行计算，在具体的计算当中，如果直接采用中心差分计算\(\partial_{k_{\beta}} \mathcal{P}\), 即
+\begin{align}
+	\partial_{k_{\beta}} \mathcal{P} = \frac{\mathcal{P} \left(\bm{k} + h \hat{\bm{e }}_{\beta}\right) - \mathcal{P} \left(\bm{k} - h \hat{\bm{e }}_{\beta}\right)}{2h}.
+\end{align}
+当差分区间跨越费米面时，两个端点的能带占据情况可能不同。需要注意的是，尽管在上述表达式中费米面项并不贡献，但是这不意味着直接采用中心差分就能准确得到几何项。这是因为\(\mathcal{P} \Pi_{n} \mathcal{Q} = 0\)只对相同动量点的投影算符成立，对于不同动量点，一般有
+\begin{align}
+	\mathcal{P} \left(\bm{k}\right) \Pi_n \left(\bm k\pm h\hat{\bm e}_\beta\right) \mathcal{Q} \left( \bm{k}\right) \neq0.
+\end{align}
+对\(\Pi_n \left(\bm k\pm h\hat{\bm e}_\beta\right)\) 展开有
+\begin{align}
+	\Pi_n \left(\bm k\pm h\hat{\bm e}_\beta\right) = \Pi_{n } \left(\bm{k}\right) \pm h \partial_{k_{\beta}} \Pi_{n } \left(\bm{k}\right) + O \left(h^{2}\right).
+\end{align}
+所以有
+\begin{align}
+	\begin{split}
+		\mathcal{P} \left(\bm{k}\right) \Pi_n \left(\bm k\pm h\hat{\bm e}_\beta\right) \mathcal{Q} \left(\bm{k}\right) & = \mathcal{P} \Pi_n \mathcal{Q} \pm h \mathcal{P} \left(\partial_{k_{\beta}} \Pi_{n } \mathcal{Q}\right) + O\left(h^{2}\right) \\
+	& = \pm h \mathcal{P} \left(\partial_{k_{\beta}} \Pi_{n } \mathcal{Q}\right) + O\left(h^{2}\right),
+	\end{split}
+\end{align}
+这部分一般不等于零。这意味我们不能机械地使用原本的中心差分公式。
+
+为进一步说明这一问题，记 \( \bm{k}_{\pm} = \bm{k} \pm h \hat{\bm{e }_{\beta}}, \, f_n^\pm=f_n \left(\bm{k}_{\pm}\right)\)。将占据态投影算符的展开式代入中心差分，并在左右分别乘上中心点的 \(\mathcal P,\mathcal Q\)，可以得到
+\begin{align}
+	\mathcal{P} \frac{\mathcal{P} \left(\bm{k}_{+} \right) - \mathcal{P} \left( \bm{k}_{-}\right)}{2 h } \mathcal{Q} = \mathcal{P} \left(\partial_{k_{\beta}} \mathcal{P}_{R-}\right) \mathcal{Q} + \sum_{n \in A } \frac{f^{+}_{n } + f^{-}_{n }}{2} \mathcal{P} \left(\partial_{k_{\beta}} \Pi_{n } \mathcal{Q}\right) + O \left(h \right).
+\end{align}
+而前面几何项的结果是
+\begin{align}
+	\mathcal{P} \left(\partial_{k_{\beta}} \mathcal{P}\right)_{\mathrm{geom } } \mathcal{Q} = \mathcal{P} \left(\partial_{k_{\beta}} \mathcal{P}_{R-}\right) \mathcal{Q} + \sum_{n \in A } f_n \left(\bm{k}_{0}\right) \mathcal{P} \left(\partial_{k_{\beta}} \Pi_{n } \mathcal{Q}\right).
+\end{align}
+可以看到普通中心差分的系数和真正几何项的系数并不相同，而只有在差分两端全为占据态或者空态两者才相等，一旦中心差分跨过费米面两者就可能不相等。比较两者系数后，如果要得到正确的几何项，我们只需要在差分时让\(f_{n}\)固定在\(\bm{k}_{0 }\), 而只对\(\Pi_{n }\)进行差分，定义
+\begin{align}
+	\boxed{
+		\widetilde{\mathcal{P}}_{\bm{k}_{0}} \left(\bm{k}\right) = \mathcal{P}_{R-} \left(\bm{k}^{\prime}\right) + \sum_{n \in A } f_{n} \left(\bm{k}_{0}\right) \Pi_{n } \left(\bm{k}^{\prime}\right),	
+	}	
+\end{align}
+对应有
+\begin{align}
+	\boxed{
+		\left(\partial_{k_{\beta}} \mathcal{P}\right)_{\mathrm{geom }} \simeq \frac{\widetilde{\mathcal{P}}_{\bm{k}_{0}} \left(\bm{k}_0 + h \hat{\bm{e }}_{\beta}\right) - \widetilde{\mathcal{P}}_{\bm{k}_{0}} \left(\bm{k}_0 - h \hat{\bm{e }}_{\beta}\right) }{2 h}.
+	}
+\end{align}
+
+\subsection{具体计算结果与问题}
+在实际的计算过程中，我们实际上计算的是每一个莫尔布里渊区中的平均磁矩。我们首先将上面波函数和投影算符的两套计算面内轨道磁化强度的公式写出，讨论其单位（采用高斯单位制
+\begin{align}
+	M_{\alpha} &= - \frac{e}{\hbar} \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\operatorname{d}^{2} \bm{k}}{\left(2\pi\right)^2} \operatorname{Re} \operatorname{Tr} \left[\mathcal{P} \left(\partial_{k_{\beta}} \mathcal{P}\right) \mathcal{Q} \mathcal{Z}\right] ,\\
+	M_{\alpha} &= - \frac{e }{\hbar} \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\operatorname{d}^{2} \bm{k}}{\left(2\pi\right)^2} \operatorname{Re} \left[\sum_{\substack{n \in \mathrm{occ} \\ m \in \mathrm{emp}}} \frac{E_{n} + E_{m } - 2 \mu }{E_n - E_{m}} \braket{u_{n }| \partial_{k_{\beta}} \hat{H } | u_{m }} \braket{u_{m } | \hat{z} | u_{n }} \right].
+\end{align}
+从第二个式子做量纲检查，首先中间的\(\frac{E_{n} + E_{m } - 2 \mu }{E_n - E_{m}}\)是无量纲的，而\(\left[k \right] = \operatorname{m}^{-1}\), 意味着\(\left[\partial_{k }\right] = \operatorname{m}\), 因此\(\left[\partial_{k_{\beta}} \hat{H}\right] = \operatorname{J } \cdot \operatorname{m} \)。（这里就不再把\(\operatorname{J} = \operatorname{kg \, m^2 \, s^{-2}}\)代入），同时\(\left[z\right] = \operatorname{m }\), 而前面对布里渊区的积分\(\left[\operatorname{d} \bm{k}\right] = \operatorname{m}^{-2} \), 由此积分内部的量纲是\(\operatorname{J} \cdot \operatorname{m } \cdot \operatorname{m } \cdot \operatorname{m }^{-2} = \operatorname{J }\)。而前面电子电量和普朗克常数的单位是\(\left[e \right] = \operatorname{C}, \, \left[\hbar\right] = \operatorname{J} \cdot \operatorname{s}\)，所以最后磁化强度的单位是\(\left[M_{\alpha}\right] = \operatorname{C}/\operatorname{s}  = \operatorname{A}\)， 也就是安培。
+
+但是通常来说，我们需要计算的是每一个超晶格原胞平均磁矩，则意味着需要乘上超晶格原胞的面积\(A_{\mathrm{M}}\)，代入到上面的对莫尔布里渊区的积分当中，将积分改成求和有
+\begin{align}
+	\int_{\mathrm{mBZ}} \frac{\operatorname{d}^{2} \bm{k}}{ \left( 2 \pi\right)^2} = \frac{A_{\mathrm{mBZ}}}{\left( 2 \pi\right)^{2}} \int^{1}_{0} \operatorname{d} u \int_{0}^{1} \operatorname{d} v = \frac{1}{A_{\mathrm{M}}} \int_{0}^{1}  \operatorname{d} u \int_{0}^{1} \operatorname{d} v = \frac{1}{A_{\mathrm{M}}} \frac{1}{n_{k}^{2}} \sum_{\bm{k}},
+\end{align}
+这里\(n_{k}\)是对莫尔布里渊区的分割数，所以轨道磁化强度又可以写成
+\begin{align}
+	M_{\alpha} = - \frac{e}{\hbar} \frac{1}{A_{\mathrm{M }}} \frac{1}{n_{k }^{2}} \epsilon_{\alpha \beta} \sum_{\bm{k}} \operatorname{Re} \operatorname{Tr} \left[\mathcal{P} \left(\partial_{k_{\beta}} \mathcal{P}\right) \mathcal{Q} \mathcal{Z}\right].
+\end{align}
+乘上超晶格原胞的面积\(A_{\mathrm{M }}\)则有
+\begin{align}
+	\boxed{
+		m_{\alpha} =  - \frac{e}{\hbar} \frac{1}{n_{k}^{2}} \epsilon_{\alpha \beta} \sum_{\bm{k}} \operatorname{Re} \operatorname{Tr} \left[\mathcal{P} \left(\partial_{k_{\beta}} \mathcal{P}\right) \mathcal{Q} \mathcal{Z}\right].
+	}
+\end{align}
+磁矩的单位则是\(\left[m_{\alpha}\right] = \operatorname{C} \cdot \operatorname{m }^{2} /\operatorname{s} = \operatorname{A } \cdot \operatorname{m}^{2}\)。玻尔磁子的定义为
+\begin{align}
+	\mu_{\mathrm{B }} = \frac{e \hbar}{ 2 m_{e}}，
+\end{align}
+\(m_{e }\)是电子质量，快速地计算一下玻尔磁子的单位则有\(\left[\mu_{\mathrm{B }}\right] = \operatorname{C } \cdot \operatorname{J} \cdot \operatorname{s} / \operatorname{ kg} = \operatorname{C} \cdot \operatorname{m }^{2} /\operatorname{s}\). 以玻尔磁子为单位的原胞磁矩则是
+\begin{align}
+	\boxed{
+		\frac{M_{\mathrm{tot}}}{N_{\mathrm{cell}}} / \mu_{\mathrm{B }} =  m_{\alpha}/\mu_{\mathrm{B}} = - \frac{2 m_{e }}{\hbar^{2}} \frac{1}{n_{k }^{2}} \epsilon_{\alpha \beta} \sum_{\bm{k}} \operatorname{Re} \operatorname{Tr} \left[\mathcal{P} \left(\partial_{k_{\beta}} \mathcal{P}\right) \mathcal{Q} \mathcal{Z}\right].
+	}
+\end{align}
+其中\(M_{\mathrm{tot}}\)是样品的总的磁化强度，\(N_{\mathrm{cell}}\)是样品的总的原胞数。这也将是我们计算的主要公式。
 
 
 
@@ -1669,7 +1872,9 @@ So
 	\boxed{
 		\chi^{\alpha}_{\mathrm{FS}} = \frac{e}{\hbar c} \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\mathrm{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \sum_{\substack{n \in \mathrm{occ} \\ m \in \mathrm{emp}}} \left(E_{n } - \mu\right) \delta \left(E_{m } - \mu \right) V_{mm } A^{\beta}_{nm}.
 	}
-\end{align}、
+\end{align}
+
+\subsection{粒子空穴对称性}
 
 
 
