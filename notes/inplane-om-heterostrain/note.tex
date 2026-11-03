@@ -1693,7 +1693,7 @@ QWZ 模型中拓扑相变只可能发生在能隙关闭的四个狄拉克点，�
 其中\(M_{\mathrm{tot}}\)是样品的总的磁化强度，\(N_{\mathrm{cell}}\)是样品的总的原胞数。这也将是我们计算的主要公式。
 
 \begin{itemize}
-	\item 数值计算参数说明
+	\item 数值计算代码说明
 \end{itemize}	
 在展示具体的计算结果之前，这里首先说明，我们是如何在对对轨道磁矩的计算中对莫尔布里渊区进行分割，对应的代码片段是（fortran）
 \begin{verbatim}
@@ -1706,14 +1706,98 @@ QWZ 模型中拓扑相变只可能发生在能隙关闭的四个狄拉克点，�
 \end{verbatim}
 也就是说\(\bm{k} = u \bm{g }_{1} + v \bm{g}_{2}\)，其中\(u, v \in [-0.5, 0.5)\)。值得注意的是，这里并不能取到\(+0.5\)， 因为计算轨道磁矩实际上是对布里渊区进行积分，如果取到了\(+0.5\)则以为着布里渊区的边界有两条边被重复计算了。
 
-同时，对\(nk\)做benchmark后，这里的分割数我们取为\(nk = 40\)。同样，这里为了保证
+同时，这里的分割数我们取为\(nk = 40\)。这是为了保证\(C_{3z}\)对称性，我们需要将\(nk\)取为偶数。具体而言，在\(C_{3z}\)下，有\(C_{3z} \bm{g}_{1} = \bm{g}_{2}, \, C_{3z} \bm{g}_{2} = - \left(\bm{g}_{1} + \bm{g}_{2}\right)\)。因此，对于一个我们所分割的点\(\bm{k} = u \bm{g}_{1} + v \bm{g}_{2}\)，\(C_{3z}\)下有\(C_{3z} \bm{k} = - v \bm{g}_{1}	 + \left( u - v \right) \bm{g}_{2}\)。对于我们所取的约化坐标范围\(\left[-1/2, 1/2\right)\), 取其中\(\left(u,v \right) = \left(-1/2, -1/2\right)\)这个点，\(C_{3z}\)会变成\(\left(-1/2, -1/2\right) \rightarrow  \left(1/2, 0\right)\)。由周期性可以得到\(\left(1/2, 0\right) \equiv \left(-1/2, 0\right)\)，这意味着我们的约化坐标必须要取到零这个点，也就是\(-1/2 + i/n_k = 0\), 即\(i = n_k / 2\)。所以只有\(nk\)为偶数的情况下，\(C_{3z}\)下网格封闭。
+
 
 \begin{itemize}
 	\item 具体计算结果与问题
 \end{itemize}
+首先的问题是轨道磁矩在\(\mathrm{ncut}\)的变化下没有收敛，这里我们取转角\(\theta = 1.4^{\circ}\), 层间距\(d = 3.35\)\AA, 应力角度\(\phi = 20^{\circ}\), 应力强度\(\epsilon = 0.1\%\), 化学势\(\mu = 0.5 \operatorname{meV}\), 在极化率的计算中高斯展宽取为\(\eta = 0.25 \operatorname{meV}\)。
 
+\begin{figure}[h!]
+	\captionsetup{list=false}
+	\centering
+	\begin{tabular}{cc}
+		\includegraphics[width=0.5\textwidth]{figure/tbg/temp/tr4/om.pdf}
+		&
+		\includegraphics[width=0.5\textwidth]{figure/tbg/temp/tr4/chi_tot.pdf}
+		\\
+		\includegraphics[width=0.5\textwidth]{figure/tbg/temp/tr4/chi_fix.pdf}
+		&
+		\includegraphics[width=0.5\textwidth]{figure/tbg/temp/tr4/chi_fs.pdf}
+	\end{tabular}
+	\caption{
+		\(\mathrm{tr} = 4\) 时的轨道磁矩和极化率的结果示意图，其中横坐标是\(\mathrm{ncut}\)，左上第一张图的纵坐标是\(\bm{m}\), 单位是\(\mu_B\)； 其他三幅图的纵坐标是对应力强度的极化率\(\bm{\chi}_{\mathrm{tot/fix/fs}}\), 单位是\(\mu_B\)。
+	}
+	\label{5}
+\end{figure}
 
+这里我们首先在倒格矢截断\(tr = 4\), 也就是哈密顿量维度为\(324 \times 324\)的情况下，取分割\(\mathrm{nk} = 40\), 然后每隔\(10\)取\(\mathrm{ncut} = 20\)一直到\(160\)，计算轨道磁矩的情况（ps1, 这里轨道磁矩的计算使用的是波函数的公式，波函数和投影算符的计算公式的计算结果已经做过检查，是一致的。ps2, 这里我展示的使用gnuplot的绘图，因此在计算最后结果的时候会采用python脚本进行绘图）
 
+可以看到，\(m_x\)随着\(\mathrm{ncut}\)的增加在持续地减小，\(m_y\)随着\(\mathrm{ncut}\)的增加在持续地增加（绝对值其实也在持续地减小），虽然\(\mathrm{ncut}\)在\(80 \sim 120\)的时候，\(\bm{m}\)的变化不是特别显著，但整体趋势是在减小的。 \(\mathrm{ncut} > 120\)，轨道磁矩出现了明显的变化，可能是引入了更多的高能态，高能态计算的不准确带来了误差。具体数值如下
+\begin{verbatim}
+    80    1.7317996789800877E-001   -2.0017328306265675E-001   
+    90    1.7190488158959052E-001   -1.9913153491168956E-001    
+   100    1.7062621523157490E-001   -1.9874194954938154E-001    
+   110    1.6873837248464721E-001   -1.9825732611281438E-001    
+   120    1.6611799484712134E-001   -1.9777787309554526E-001    
+   130    1.6217446622146089E-001   -1.9760950063032670E-001    
+   140    1.5932308808856838E-001   -1.9728766086199040E-001    
+   150    1.5747273041407114E-001   -1.9764379551009317E-001    
+   160    1.5563361128971634E-001   -1.9807508599032422E-001  
+\end{verbatim}
+
+同时，我们还计算了轨道磁矩对应力强度的线性响应，具体来说计算了
+\begin{align}
+	\boxed{
+		\bm{m}_{\mathrm{rec}} = \bm{m }\left(\epsilon = 0\right) + \epsilon \bm{\chi}\left(\epsilon =  0 \right) 
+	}
+\end{align}
+这里的\(\mathrm{rec}\)表示这是重构出的轨道磁矩。在\(\mathrm{ncut} = 100\)和\(160\)的情况下, 直接计算的轨道磁矩\(\bm{m}\)和重构出的轨道磁矩的关系为
+\begin{figure}[h!]
+	\captionsetup{list=false}
+	\centering
+	\begin{tabular}{cc}
+		\includegraphics[width=0.5\textwidth]{figure/tbg/temp/tr4/compare_mx_ncut100.pdf}
+		&
+		\includegraphics[width=0.5\textwidth]{figure/tbg/temp/tr4/compare_mx_ncut160.pdf}
+	\end{tabular}
+	\caption{
+		\(\mathrm{tr} = 4\) 时的重构出的磁矩和直接计算的磁矩比较，横坐标是应力强度，左侧是\(\mathrm{ncut} = 100\), 右侧是\(\mathrm{ncut} = 160\)。
+	}
+	\label{6}
+\end{figure}
+
+可以看到的\(\mathrm{ncut} = 100\)时候，\(\bm{m }\)和\(\bm{m }_{\mathrm{rec}}\)在\(\epsilon = 0\)处是(\(10^{-3}\))量级，但是随着\(\mathrm{ncut}\)的增加两者吻合的并不是很好。在\(\mathrm{ncut} = 160\)时，\(\epsilon = 0\)处，\(\bm{m }\)和\(\bm{m }_{\mathrm{rec}}\)和零出现了较大偏差((\(10^{-2}\))量级), 但是后面在\(\epsilon\)较小的时候，两者吻合地比较好了。 这里的问题在于，那这样如何对\(\mathrm{ncut}\)取值呢。
+
+\vspace{2em}
+
+回到轨道磁化对于\(\mathrm{ncut}\)的收敛问题上来，后面我们取倒格矢截断\(\mathrm{tr } = 5\)， 对应的哈密顿量矩阵大小为\(484 \times 484\), 同时\(\mathrm{ncut}\)对应的截断上限为\(241\)。我们还是每隔\(10\)取\(\mathrm{ncut} = 20\)一直到\(240\), 计算结果如下
+
+\begin{figure}[h!]
+	\captionsetup{list=false}
+	\centering
+	\begin{tabular}{cc}
+		\includegraphics[width=0.5\textwidth]{figure/tbg/temp/tr5/om.pdf}
+		&
+		\includegraphics[width=0.5\textwidth]{figure/tbg/temp/tr5/chi_tot.pdf}
+		\\
+		\includegraphics[width=0.5\textwidth]{figure/tbg/temp/tr5/chi_fix.pdf}
+		&
+		\includegraphics[width=0.5\textwidth]{figure/tbg/temp/tr5/chi_fs.pdf}
+	\end{tabular}
+	\caption{
+		\(\mathrm{tr} = 5\) 时的轨道磁矩和极化率的结果示意图，其中横坐标是\(\mathrm{ncut}\)，左上第一张图的纵坐标是\(\bm{m}\), 单位是\(\mu_B\)； 其他三幅图的纵坐标是对应力强度的极化率\(\bm{\chi}_{\mathrm{tot/fix/fs}}\), 单位是\(\mu_B\)。
+	}
+	\label{7}
+\end{figure}
+
+可以看到\(\mathrm{tr } = 5\)时，\(m_x\)还是整体有个减小的趋势， 还是不能判断收敛。后续我们还计算了\(\mathrm{tr} = 6\), 也就是哈密顿量大小为\(676 \times 676\)，同样整体有减小的趋势。值得注意的是，对于\(\mathrm{tr} = 4,5,6\)三个值的时候，\(\mathrm{nk } = 20, 30, 40\)对应的轨道磁矩的计算结果完全相同（\(10^{-5}\)量级），此后每个\(\mathrm{ncut}\)对应的轨道磁矩并不相同，并且对于所取到的最大的\(\mathrm{ncut}\)，其对应的轨道磁化强度也是在变化的, 具体来说
+\begin{verbatim}
+	tr = 4, nk = 160    1.5563361128971634E-001   -1.9807508599032422E-001
+	tr = 5, nk = 240    1.6010139997375489E-001   -1.9689600999314005E-001
+	tr = 6, nk = 330    1.6272594386978503E-001   -1.9604435904871487E-001
+\end{verbatim}
 
 
 
