@@ -672,7 +672,7 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 		\partial_{\lambda} \mathcal{P} = \mathcal{Q} \left(\partial_{\lambda} \mathcal{P}\right) \mathcal{P} + \mathcal{P} \left(\partial_{\lambda} \mathcal{P}\right) \mathcal{P}.	
 	}
 \end{align}
-进一步把空态子空间的投影算符写出来，上式可以写成
+进一步把空态子空间的投影算符写出来，上式可以写成 
 \begin{align}
 	\begin{split}
 		\partial_{\lambda} \mathcal{P} & = \sum_{n \in \mathrm{occ}} \sum_{m \in \mathrm{emp}} \ket{u_{m }}\braket{u_{m} | \partial_{\lambda} u_{n }} \bra{u_{n }} + \ket{u_{n }} \braket{\partial_{\lambda} u_{n} | u_{m }} \bra{u_{m}} \\
@@ -1317,6 +1317,72 @@ Kang-Wang-Vafek的文章也就是将该表达式推广到了\(B = 0\)时的Hartr
 \end{align}
 这里面的问题在于，公式的适用条件为\(E_{n } \neq E_{m }\)和\(\left|\nabla_{\bm{k}} E_{m}\right| \neq 0\), 对于狄拉克点这样的简并点，非简并微扰公式失效了，这通常对应\(n \neq m, \, E_{n} = E_{m}\)。但通常来说，狄拉克点并不会对积分有贡献，因此可以忽略掉。但是，对于范霍夫奇点，并不能这么简单的忽略。
 
+\subsection{从微扰角度来看极化率}
+首先写出面内轨道磁化的表达式
+\begin{align}
+	M_{\alpha} = - \frac{e }{\hbar} \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\operatorname{d}^{2} \bm{k}}{\left(2 \pi\right)^2} \operatorname{Re} \operatorname{Tr} \left[\mathcal{P} \left(\partial_{k_{\beta}} \mathcal{P}\right) \mathcal{Q} \mathcal{Z}\right].
+\end{align}
+或者简写成
+\begin{align}
+	M_{\alpha} = -\frac{ e }{\hbar} \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{ \operatorname{d}^{2} \bm{k} }{ \left( 2 \pi\right)^{2}} \operatorname{Re} \mathcal{F}_{\beta},		
+\end{align}
+其中
+\begin{align}
+	\mathcal{F}_{\beta} = \operatorname{Tr} \left[\mathcal{P} \left(\partial_{k_{\beta}} \mathcal{P}\right)\mathcal{Q} \mathcal{Z}\right].
+\end{align}
+所以有
+\begin{align}
+	\operatorname{Re} \operatorname{Tr} \left[\mathcal{P} \left( \partial_{k_{\beta}} \mathcal{P}\right)\mathcal{Q} \mathcal{Z}\right] \operatorname{Re} \mathcal{F}_{\beta} = \frac{1}{2} \left[\mathcal{F}_{\beta} + \mathcal{F}^{*}_{\beta} \right] 
+\end{align}
+对于\(\mathcal{F}^{*}_{\beta}\)利用，\(\left(\operatorname{Tr} \mathcal{O}\right)^{*} = \operatorname{Tr} \mathcal{O}^{\dagger}\)， 有
+\begin{align}
+	\begin{split}
+		\mathcal{F}^{*}_{\beta} & = \operatorname{Tr} \left[\left(\mathcal{P} \mathcal{P}_{\beta} \mathcal{Q} \mathcal{Z}\right)^{\dagger}\right] = \operatorname{Tr} \left[\mathcal{Z}^{\dagger} \mathcal{Q}^{\dagger} \mathcal{P}_{\beta}^{\dagger} \mathcal{P}^{\dagger}\right] = \operatorname{Tr} \left[\mathcal{Z} \mathcal{Q} \mathcal{P}_{\beta} \mathcal{P}\right] \\
+		& = \operatorname{Tr} \left[\mathcal{Q} \left(\partial_{k_{\beta}} \mathcal{P}\right) \mathcal{P}  \mathcal{Z}\right],
+	\end{split}
+\end{align}
+这里在第一行的公式中\(\mathcal{P}_{\beta} = \partial_{k_{\beta}} \mathcal{P}\)。进而有
+\begin{align}
+	\begin{split}
+		\operatorname{Re} \operatorname{Tr} \left[\mathcal{P} \left(\partial_{k_{\beta}} \mathcal{P} \right) \mathcal{Q} \mathcal{Z}\right] &= \frac{1}{2} \operatorname{Tr} \left[\mathcal{P} \left(\partial_{k_{\beta}} \mathcal{P} \right) \mathcal{Q} \mathcal{Z} + \mathcal{Q} \left(\partial_{k_{\beta}} \mathcal{P}\right) \mathcal{P} \mathcal{Z}\right] \\
+		& = \frac{1}{2} \operatorname{Tr} \left[\left(\mathcal{P} \mathcal{P}_{\beta} \mathcal{Q} + \mathcal{Q} \mathcal{P}_{\beta} \mathcal{P}\right) \mathcal{Z}\right] \\
+		& = \frac{1}{2}\operatorname{Tr} \left[\left(\partial_{k_{\beta}} \mathcal{P}\right) \mathcal{Z} \right] .
+	\end{split}
+\end{align}
+由此面内轨道磁化强度公式等价于
+\begin{align}
+	\boxed{
+		M_{\alpha} = - \frac{e }{2\hbar} \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}}  \frac{\operatorname{d}^{2} \bm{k}}{\left(2 \pi\right)^{2}} \operatorname{Tr} \left[\left(\partial_{k_{\beta}} \mathcal{P}\right) \mathcal{Z} \right].
+	}
+\end{align}
+考虑线性微扰
+\begin{align}
+	\hat{H} \left(\lambda\right) = \hat{H}_0 + \lambda \hat{H}_{\lambda},
+\end{align}
+在固定化学势\(\mu\)与\(\hat{z}\)的条件下， 将反对易算符写出
+\begin{align}
+	\mathcal{Z}\left(\lambda\right) = \mathcal{Z}_{0} + \lambda \mathcal{Z}_{\lambda},	
+\end{align}
+其中\(\mathcal{Z}_{\lambda} = \left\{\hat{H}_{\lambda} , \hat{z}\right\}\)。展开投影算符
+\begin{align}
+	\mathcal{P} \left(\lambda\right) = \mathcal{P}_{0} + \lambda \mathcal{P}_{\lambda} + \lambda^{2} \mathcal{P}^{\left(2\right)}_{\lambda} + \cdots,
+\end{align}
+代入有
+\begin{align}
+	\begin{split}
+		\operatorname{Re} \mathcal{F}_{\beta} \left(\lambda\right) &= \frac{1}{2} \operatorname{Tr} \left[\left(\partial_{k_{\beta}} \mathcal{P}_{0} + \lambda \partial_{k_{\beta}} \mathcal{P}_{\lambda}\right) \cdot \left(\mathcal{Z}_{0} + \lambda \mathcal{Z}_{\lambda}\right)\right] + O \left(\lambda^{2}\right) \\
+		&= \frac{1}{2} \operatorname{Tr} \left[\left(\partial_{k_{\beta}} \mathcal{P}_{0}\right) \mathcal{Z}_{0} \right] + \frac{\lambda}{2} \operatorname{Tr} \left[\left(\partial_{k_{\beta}} \mathcal{P}_{\lambda} \right) \mathcal{Z}_{0} + \left(\partial_{k_{\beta}} \mathcal{P}_{0}\right) \mathcal{Z}_{\lambda} \right] + O \left(\lambda^{2}\right).
+	\end{split}
+\end{align}
+由此极化率可以写成
+\begin{align}
+	\boxed{
+		\chi_{\alpha, \lambda} = - \frac{e }{2 \hbar} \epsilon_{\alpha \beta} \int_{\mathrm{mBZ}} \frac{\operatorname{d}^{2} \bm{k}}{\left(2 \pi\right)^{2}} \operatorname{Tr}\left[\left(\partial_{k_{\beta}} \mathcal{P}_{\lambda}\right) \left\{\hat{H}_{0} - \mu , \hat{z}\right\} + \left(\partial_{k_{\beta}} \mathcal{P}_{0}\right) \left\{\hat{H}_{\lambda}, \hat{z}\right\} \right].
+	}
+\end{align}
+
+
+
 
 \section{Toy Model 数值检验}
 在具体阐述toy model的数值结果之前，首先申明我们的数值计算工作流程：在我们的程序当中，我们使用了python 和 fortran 两种语言来对轨道磁化强度和极化率进行计算。python 负责快速计算出结果，对于每一个model都会有一个脚本进行计算，输出和绘图流程，不采用并行优化；fortran 负责写出一般性的能带结构、轨道磁化、极化率的计算模块，并采用并行优化。当两者的结果一致，才对结果进一步分析。原始数据请见github对应仓库。
@@ -1794,10 +1860,87 @@ QWZ 模型中拓扑相变只可能发生在能隙关闭的四个狄拉克点，�
 
 可以看到\(\mathrm{tr } = 5\)时，\(m_x\)还是整体有个减小的趋势， 还是不能判断收敛。后续我们还计算了\(\mathrm{tr} = 6\), 也就是哈密顿量大小为\(676 \times 676\)，同样整体有减小的趋势。值得注意的是，对于\(\mathrm{tr} = 4,5,6\)三个值的时候，\(\mathrm{nk } = 20, 30, 40\)对应的轨道磁矩的计算结果完全相同（\(10^{-5}\)量级），此后每个\(\mathrm{ncut}\)对应的轨道磁矩并不相同，并且对于所取到的最大的\(\mathrm{ncut}\)，其对应的轨道磁化强度也是在变化的, 具体来说
 \begin{verbatim}
-	tr = 4, nk = 160    1.5563361128971634E-001   -1.9807508599032422E-001
-	tr = 5, nk = 240    1.6010139997375489E-001   -1.9689600999314005E-001
-	tr = 6, nk = 330    1.6272594386978503E-001   -1.9604435904871487E-001
+	tr = 4, ncut = 160    1.5563361128971634E-001   -1.9807508599032422E-001
+	tr = 5, ncut = 240    1.6010139997375489E-001   -1.9689600999314005E-001
+	tr = 6, ncut = 330    1.6272594386978503E-001   -1.9604435904871487E-001
 \end{verbatim}
+
+\vspace{2em}
+\begin{itemize}
+	\item 减去初始磁矩的计算结果
+\end{itemize}
+由于我们采用的倒格矢截断是一个正方形截断，有限平面波基底在\(c3z\)旋转下并不严格封闭。因此，即使在没有施加应力的情况下，截断后的有限维哈密顿量一般也不能保持\(C_{3z}\)对称性。同时，对于具有\(C_{3z}\)对称性的系统，面内轨道磁矩一般会满足\(\bm{m } = 0\), 但是，在有限平面波截断、有限能带求和以及离散动量积分下，数值计算得到的\(\bm{m}\)可能不严格为零。为了削弱有限截断引入的共同数值背景，我们将存在应力情况下计算得到的轨道磁矩减去零应力下的轨道磁矩，即
+\begin{align}
+	\Delta \bm{m } = \bm{m } \left(\epsilon\right) - \bm{m } \left(\epsilon = 0\right),
+\end{align}
+
+我们还是在\(\mathrm{tr } = 4\), 即哈密顿量大小为\(324 \times 324\)的情况下计算轨道磁矩，同时\(\epsilon = 0.05 \%\), \(\phi = 20^{\circ}\), \(\mu = 0.5 \operatorname{meV}\)的情况下计算轨道磁矩，这里布里渊区的分割取为\(\mathrm{nk} = 40\)。 我们首先计算了使用未施加应力的莫尔布里渊区和施加了应力的布里渊区的矩磁结果，结果如下
+\begin{figure}[h!]
+	\captionsetup{list=false}
+	\centering
+	\begin{tabular}{cc}
+		\includegraphics[width=0.65\textwidth]{figure/tbg/temp/delta_m/strain_pristine.png}
+	\end{tabular}
+	\caption{
+		使用施加应力的莫尔布里渊区和零应力下的莫尔布里渊区对应的计算结果
+	}
+	\label{8}
+\end{figure}
+
+可以看到在\(\mathrm{ncut}\)属于\(90 \sim 110\)的区间内，采用施加应力的莫尔布里渊区进行积分得到的轨道磁矩比未施加应力的莫尔布里渊区进行积分得到的轨道磁矩整体约高出了约\(0.0018 \operatorname{\mu_{B}/\mathrm{cell}}\)，这个误差的占比大概就是 \(0.0018/0.088 \approx 2.05 \%\)。这其实可以从应力强度\(\epsilon\)上面进行估计，对于未施加应力的TBG，莫尔倒格矢的尺度大概满足
+\begin{align}
+	\left|\bm{g }_{0}\right| \sim \theta \left|\bm{G }\right|，
+\end{align}
+而应力引起的倒格矢的变化大概是
+\begin{align}
+	\left|\delta \bm{g }\right| \sim \epsilon \left|\bm{G }\right|,
+\end{align}
+因此
+\begin{align}
+	\boxed{
+		\frac{\left|\delta \bm{g }\right|}{ \left|\bm{g }_{0}\right|} \sim \frac{\epsilon}{\theta}.
+	}
+\end{align}
+当\(\theta = 1.4 ^{\circ} \approx 0.0244\), \(\epsilon = 0.0005\), 此时\(\epsilon/\theta \approx 2.05 \%\)。同时这说明只有\(0.05 \%\)的应力，但是可以百分之几的几何变化。因此，在后续的计算过程中，我们都采用施加应力后的莫尔布里渊区进行积分得到轨道磁矩。
+
+对于\(\mathrm{tr} = 4\), 我们取\(\mathrm{ncut}\)从\(60\)到\(160\), 结果如下
+\begin{figure}[h!]
+	\captionsetup{list=false}
+	\centering
+	\begin{tabular}{ccc}
+		\includegraphics[width=0.33\textwidth]{figure/tbg/temp/delta_m/tr4_mxy.pdf}
+		&
+		\includegraphics[width=0.33\textwidth]{figure/tbg/temp/delta_m/tr4_mx.pdf}
+		&
+		\includegraphics[width=0.33\textwidth]{figure/tbg/temp/delta_m/tr4_my.pdf}
+	\end{tabular}
+	\caption{
+		\(\mathrm{tr} = 4\) 时的轨道磁矩的示意图，
+	}
+	\label{9}
+\end{figure}
+
+可以看到，\(\mathrm{ncut}\)在\(100\)这左右振荡，\textcolor{red}{Q: 那么这里我可以认为\(\mathrm{ncut} = 100 \)的时候已经收敛了吗，整个变化大概是\(1 \% \)。}
+
+后续我们还是同样计算了\(\mathrm{tr} = 5\)， 对应哈密顿量大小为\(484 \times 484\)的轨道磁矩，结果如下
+\begin{figure}[h!]
+	\captionsetup{list=false}
+	\centering
+	\begin{tabular}{ccc}
+		\includegraphics[width=0.33\textwidth]{figure/tbg/temp/delta_m/tr5_mxy.pdf}
+		&
+		\includegraphics[width=0.33\textwidth]{figure/tbg/temp/delta_m/tr5_mx.pdf}
+		&
+		\includegraphics[width=0.33\textwidth]{figure/tbg/temp/delta_m/tr5_my.pdf}
+	\end{tabular}
+	\caption{
+		\(\mathrm{tr} = 5\) 时的轨道磁矩的示意图，
+	}
+	\label{10}
+\end{figure}
+
+同样是看起来数据几乎是在\(\mathrm{ncut} = 160\)左右变化不太明显，\textcolor{red}{但是这里新的问题是，\(\mathrm{tr} = 4, \, \mathrm{ncut} = 100\)和\(\mathrm{tr} = 5, \, \mathrm{ncut} = 160\)所对应的\(m_x, \, m_y\)并不相等，大概差了\(0.0005 \operatorname{\mu_{B}/\mathrm{cell}}\), 大概占比是\(< 0.5 \%\)，这种情况下我还可以认为是收敛吗？}
+
 
 
 
@@ -1977,6 +2120,83 @@ So
 \end{align}
 
 \subsection{粒子空穴对称性}
+The definition of particle-hole symmetry is 
+\begin{align}
+	\mathcal{C} H \left(\bm{k}\right) \mathcal{C}^{-1} = - H \left(- \bm{k}\right).
+\end{align}
+So for the eigen equation
+\begin{align}
+	H \left(\bm{k}\right)  \ket{u_{n } \left(\bm{k}\right)} = E_{n} \left(\bm{k}\right) \ket{u_{n } \left(\bm{k}\right)} ,
+\end{align}
+Acting the \(\mathcal{C}\) on this equation leads to 
+\begin{align}
+	\mathcal{C}	 H \left(\bm{k}\right) \ket{u_{n } \left(\bm{k}\right)} = \mathcal{C} E_{n } \left(\bm{k}\right) \ket{u_{n } \left(\bm{k}\right)},
+\end{align}
+which is 
+\begin{align}
+	- H \left(- \bm{k}\right) \mathcal{C} \ket{u_{n } \left(\bm{k}\right)} = E_{n } \left(\bm{k}\right) \ket{u_{n } \left(\bm{k}\right)},
+\end{align}
+or 
+\begin{align}
+	H \left(- \bm{k}\right) \mathcal{C} \ket{u_{n } \left(\bm{k}\right)} = - E_{n } \left(\bm{k}\right) \mathcal{C} \ket{u_{n } \left(\bm{k}\right)}.
+\end{align}
+Setting the new eigen state is \(\ket{u_{\bar{n}} \left(- \bm{k}\right)}\) which the corresponding eigen equation is 
+\begin{align}
+	H \left(- \bm{k}\right) \ket{u_{\bar{n }} \left(-\bm{k}\right)} = E_{\bar{n } \left(-\bm{k}\right)} \ket{u_{\bar{n }} \left(-\bm{k}\right)}.		
+\end{align}
+Thus, the relation between the eigenvalues and eigenstates are 
+\begin{align}
+	\boxed{
+		E_{\bar{n }} \left( - \bm{k}\right) = - E_{n } \left(\bm{k}\right),
+	}
+\end{align}
+and
+\begin{align}
+	\boxed{
+		\mathcal{C} \ket{u_{n } \left(\bm{k}\right)} = \ket{u_{\bar{n }} \left(- \bm{k}\right)},
+	}
+\end{align}
+also 
+\begin{align}
+	 \mathcal{C} \Pi_{n } \left(\bm{k} \right) \mathcal{C}^{-1} = \Pi_{\bar{n }}  \left(- \bm{k}\right),
+\end{align}
+where \(\Pi_{n } \left(\bm{k}\right) = \ket{u_{n } \left(\bm{k}\right)} \bra{u_{n } \left(\bm{k}\right)}\).
+
+Considering the chemical potential \(\mu\), the definition of occupied projector at \(T = 0 \operatorname{K}\) is 
+\begin{align}
+	\mathcal{P}_{\mu} \left(\bm{k}\right) = \sum_{n } \Theta \left(\mu - E_{n } \left(\bm{k}\right)\right) \ket{u_{n } \left(\bm{k}\right)} \bra{u_{n } \left(\bm{k}\right)},
+\end{align}
+and the empty projector is 
+\begin{align}
+	\mathcal{Q}_{\mu } \left(\bm{k}\right) = \sum_{n } \Theta \left(E_{n } \left(\bm{k}\right) - \mu\right) \ket{u_{n } \left(\bm{k}\right)} \bra{u_{n } \left(\bm{k}\right)}.
+\end{align}
+Similarly, acting \(\mathcal{C}\) on \(\mathcal{P}_{\mu} \left(\bm{k}\right)\) 
+\begin{align}
+	\begin{split}
+		\mathcal{C} \mathcal{P}_{\mu} \left(\bm{k}\right) \mathcal{C}^{-1}  & = \sum_{n }  \Theta \left(\mu - E_{n } \left(\bm{k}\right)\right) \mathcal{C} \Pi_{n } \left(\bm{k}\right) \mathcal{C}^{-1} \\
+		& = \sum_{n } \Theta \left(\mu - E_{n } \left(\bm{k}\right)	\right) \Pi_{\bar{n } } \left( - \bm{k}\right) \\
+		& = \sum_{\bar{n }} \Theta \left(\mu + E_{\bar{n }} \left( - \bm{k}\right) \right)	\Pi_{\bar{n }} \left(-\bm{k}\right) \\ 
+		& = \sum_{\bar{n }} \Theta \left(E_{\bar{n }} \left(-\bm{k}\right) - \left(- \mu\right)\right)  \Pi_{\bar{n } } \left( - \bm{k}\right)  \\
+		& = \mathcal{Q}_{- \mu} \left( -\bm{k}\right),
+	\end{split}
+\end{align}
+which is 
+\begin{align}
+	\boxed{
+		\mathcal{C} \mathcal{P}_{\mu} \left(\bm{k}\right) \mathcal{C}^{-1} =  \mathcal{Q}_{- \mu} \left( -\bm{k}\right).
+	}
+\end{align}
+Similarly, 
+\begin{align}
+	\mathcal{C} \mathcal{Q}_{\mu} \left(\bm{k}\right) \mathcal{C}^{-1}  = 1 - \mathcal{C} \mathcal{P}_{\mu} \mathcal{C}^{-1} = 1 - \mathcal{Q}_{-\mu} \left( -\bm{k}\right) = \mathcal{P}_{- \mu} \left(-\bm{k}\right),
+\end{align}
+which is 
+\begin{align}
+	\boxed{
+		\mathcal{C} \mathcal{Q}_{\mu} \left(\bm{k}\right) \mathcal{C}^{-1} = \mathcal{P}_{ - \mu} \left(-\bm{k}\right).
+	}
+\end{align}
+
 
 
 
