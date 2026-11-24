@@ -1869,7 +1869,7 @@ QWZ 模型中拓扑相变只可能发生在能隙关闭的四个狄拉克点，�
 \begin{itemize}
 	\item 减去初始磁矩的计算结果
 \end{itemize}
-由于我们采用的倒格矢截断是一个正方形截断，有限平面波基底在\(c3z\)旋转下并不严格封闭。因此，即使在没有施加应力的情况下，截断后的有限维哈密顿量一般也不能保持\(C_{3z}\)对称性。同时，对于具有\(C_{3z}\)对称性的系统，面内轨道磁矩一般会满足\(\bm{m } = 0\), 但是，在有限平面波截断、有限能带求和以及离散动量积分下，数值计算得到的\(\bm{m}\)可能不严格为零。为了削弱有限截断引入的共同数值背景，我们将存在应力情况下计算得到的轨道磁矩减去零应力下的轨道磁矩，即
+由于我们采用的倒格矢截断是一个正方形截断，有限平面波基底在\(C_{3z}\)旋转下并不严格封闭。因此，即使在没有施加应力的情况下，截断后的有限维哈密顿量一般也不能保持\(C_{3z}\)对称性。同时，对于具有\(C_{3z}\)对称性的系统，面内轨道磁矩一般会满足\(\bm{m } = 0\), 但是，在有限平面波截断、有限能带求和以及离散动量积分下，数值计算得到的\(\bm{m}\)可能不严格为零。为了削弱有限截断引入的共同数值背景，我们将存在应力情况下计算得到的轨道磁矩减去零应力下的轨道磁矩，即
 \begin{align}
 	\Delta \bm{m } = \bm{m } \left(\epsilon\right) - \bm{m } \left(\epsilon = 0\right),
 \end{align}
@@ -1903,44 +1903,20 @@ QWZ 模型中拓扑相变只可能发生在能隙关闭的四个狄拉克点，�
 \end{align}
 当\(\theta = 1.4 ^{\circ} \approx 0.0244\), \(\epsilon = 0.0005\), 此时\(\epsilon/\theta \approx 2.05 \%\)。同时这说明只有\(0.05 \%\)的应力，但是可以百分之几的几何变化。因此，在后续的计算过程中，我们都采用施加应力后的莫尔布里渊区进行积分得到轨道磁矩。
 
-对于\(\mathrm{tr} = 4\), 我们取\(\mathrm{ncut}\)从\(60\)到\(160\), 结果如下
+这里我们分别计算了\(\mathrm{tr} = 4\)和\(\mathrm{tr} = 5\)的结果
 \begin{figure}[h!]
 	\captionsetup{list=false}
 	\centering
-	\begin{tabular}{ccc}
-		\includegraphics[width=0.33\textwidth]{figure/tbg/temp/delta_m/tr4_mxy.pdf}
+	\begin{tabular}{cc}
+		\includegraphics[width=0.5\textwidth]{figure/tbg/temp/delta_m/tr4.pdf}
 		&
-		\includegraphics[width=0.33\textwidth]{figure/tbg/temp/delta_m/tr4_mx.pdf}
-		&
-		\includegraphics[width=0.33\textwidth]{figure/tbg/temp/delta_m/tr4_my.pdf}
+		\includegraphics[width=0.5\textwidth]{figure/tbg/temp/delta_m/tr5.pdf}
 	\end{tabular}
 	\caption{
-		\(\mathrm{tr} = 4\) 时的轨道磁矩的示意图，
+		\(\Delta \bm{m}\)和\(\bm{m}\)的示意图
 	}
 	\label{9}
 \end{figure}
-
-可以看到，\(\mathrm{ncut}\)在\(100\)这左右振荡，\textcolor{red}{Q: 那么这里我可以认为\(\mathrm{ncut} = 100 \)的时候已经收敛了吗，整个变化大概是\(1 \% \)。}
-
-后续我们还是同样计算了\(\mathrm{tr} = 5\)， 对应哈密顿量大小为\(484 \times 484\)的轨道磁矩，结果如下
-\begin{figure}[h!]
-	\captionsetup{list=false}
-	\centering
-	\begin{tabular}{ccc}
-		\includegraphics[width=0.33\textwidth]{figure/tbg/temp/delta_m/tr5_mxy.pdf}
-		&
-		\includegraphics[width=0.33\textwidth]{figure/tbg/temp/delta_m/tr5_mx.pdf}
-		&
-		\includegraphics[width=0.33\textwidth]{figure/tbg/temp/delta_m/tr5_my.pdf}
-	\end{tabular}
-	\caption{
-		\(\mathrm{tr} = 5\) 时的轨道磁矩的示意图，
-	}
-	\label{10}
-\end{figure}
-
-同样是看起来数据几乎是在\(\mathrm{ncut} = 160\)左右变化不太明显，\textcolor{red}{但是这里新的问题是，\(\mathrm{tr} = 4, \, \mathrm{ncut} = 100\)和\(\mathrm{tr} = 5, \, \mathrm{ncut} = 160\)所对应的\(m_x, \, m_y\)并不相等，大概差了\(0.0005 \operatorname{\mu_{B}/\mathrm{cell}}\), 大概占比是\(< 0.5 \%\)，这种情况下我还可以认为是收敛吗？}
-
 
 
 
